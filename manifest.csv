@@ -1,0 +1,21 @@
+﻿カテゴリ,プロンプト,フォルダ,公開URL（GitHub Pages想定・未公開）,主なファイル,応募時に取り出すもの,納品zip
+マスター（索引）,P00,index.html,https://harugreed.github.io/coconala-portfolio/,index.html,索引URL 1本,deliveries/P00-portfolio-site.zip
+Web制作（カフェ）,P01,works/web/shop-cafe/,https://harugreed.github.io/coconala-portfolio/works/web/shop-cafe/,index.html,ページURL・screenshots/pc-top.png,deliveries/P01-shop-cafe.zip
+Web制作（ラーメン）,P02,works/web/shop-ramen/,https://harugreed.github.io/coconala-portfolio/works/web/shop-ramen/,index.html,ページURL・screenshots/pc-top.png,deliveries/P02-shop-ramen.zip
+Web制作（サロン）,P03,works/web/shop-salon/,https://harugreed.github.io/coconala-portfolio/works/web/shop-salon/,index.html,ページURL・screenshots/pc-top.png,deliveries/P03-shop-salon.zip
+Web制作（法人公式）,P04,works/web/corporate/,https://harugreed.github.io/coconala-portfolio/works/web/corporate/,index.html ほか4ページ,ページURL・構成一覧（README.md）,deliveries/P04-web-corporate.zip
+LP（サービス申込）,P05,works/web/lp-service/,https://harugreed.github.io/coconala-portfolio/works/web/lp-service/,index.html,ページURL・構成（README.md）,deliveries/P05-lp-service.zip
+LP（イベント）,P06,works/web/lp-event/,https://harugreed.github.io/coconala-portfolio/works/web/lp-event/,index.html,ページURL,deliveries/P06-lp-event.zip
+Web（リニューアル提案）,P07,works/web/renewal/,https://harugreed.github.io/coconala-portfolio/works/web/renewal/,before/・after/・proposal/proposal.pdf,Before／After URL・提案書PDF,deliveries/P07-web-renewal.zip
+動画（テロップ）,P08,works/video/telop/,https://harugreed.github.io/coconala-portfolio/works/video/telop/,telop-main.mp4・before-after.mp4・manual.md,本編・比較動画・仕様表・再現マニュアル,deliveries/P08-video-telop.zip
+動画（リール）,P09,works/video/reels/・works/video/thumbnail/,https://harugreed.github.io/coconala-portfolio/works/video/reels/,reel-*.mp4・thumbnail/out/,ショート3本・サムネイル6枚,deliveries/P09-video-reels.zip・P09-video-thumbnail.zip
+記事・文書,P10,works/writing/,https://harugreed.github.io/coconala-portfolio/works/writing/,*/article.md ほか,記事ファイル・構成メモ,deliveries/P10-writing.zip
+自動化（スクレイピング）,P11,works/automation/scraping/,https://harugreed.github.io/coconala-portfolio/works/automation/scraping/,output/books_100.xlsx・scrape.py,成果Excel・実行キャプチャ・説明文,deliveries/P11-automation-scraping.zip
+自動化（データ変換）,P12,works/automation/data-convert/,https://harugreed.github.io/coconala-portfolio/works/automation/data-convert/,csv-to-pdf/・excel-invoice/・data-cleaning/,入出力サンプル一式,deliveries/P12-data-convert.zip（個別は P12a〜P12c）
+自動化（リスト）,P12,works/automation/list-sample/,https://harugreed.github.io/coconala-portfolio/works/automation/list-sample/,sales_list.xlsx・influencer_list.xlsx,形式見本,deliveries/P12d-list-sample.zip
+SNS（Instagram）,P13,works/sns/instagram-set/,https://harugreed.github.io/coconala-portfolio/works/sns/instagram-set/,posts/post-01〜06.png・captions.md・calendar.xlsx,投稿画像・キャプション・カレンダー,deliveries/P13a-instagram-set.zip
+資料（プレゼン）,P13,works/design/presentation/,https://harugreed.github.io/coconala-portfolio/works/design/presentation/,proposal-slides.pdf,10スライドのPDF,deliveries/P13b-presentation.zip
+デザイン（バナー・メニュー）,P13,works/design/banner/,https://harugreed.github.io/coconala-portfolio/works/design/banner/,out/banner-*.png・out/menu-a4.pdf,バナー4サイズ・メニュー表,deliveries/P13c-banner-menu.zip
+デザイン（UI／UX提案）,P13,works/design/uiux/,https://harugreed.github.io/coconala-portfolio/works/design/uiux/,uiux-proposal.pdf,提案書PDF,deliveries/P13d-uiux-proposal.zip
+土台（カバー・図解）,P14,assets/covers/・assets/diagrams/,―,cover-*.png・diagram-*.png,カバー画像4枚・図解3枚,deliveries/P14-assets.zip
+土台（取り出しセット）,P14,extracts/,―,extracts/*/README.md,案件カテゴリ別のURL一覧と紹介文,deliveries/P14-extracts.zip

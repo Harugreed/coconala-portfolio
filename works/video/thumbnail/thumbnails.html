@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>ショート動画のサムネイル（書き出し用）</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+1p:wght@800&family=Zen+Maru+Gothic:wght@900&display=swap" rel="stylesheet">
+<style>
+  /* 1080×1920（縦型）。上下の約250pxはアプリの表示で隠れることがあるため、文字は中央寄りに置く */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #777; }
+  .th { width: 1080px; height: 1920px; position: relative; overflow: hidden; margin: 0 auto 30px; }
+  body.single .th { display: none; margin: 0; } body.single .th.on { display: block; }
+  .bg { position: absolute; inset: 0; background: center / cover no-repeat; }
+  .s { position: absolute; right: 30px; bottom: 30px; font: 22px sans-serif; color: rgba(255,255,255,.7); }
+
+  /* グルメ A：写真全面＋丸い札 */
+  #t1 .bg { background-image: url(src/bake.jpg); background-position: 58% center; filter: saturate(1.15); }
+  #t1 .tag { position: absolute; left: 70px; top: 640px; font-family: "Zen Maru Gothic"; font-weight: 900; }
+  #t1 .tag p { display: inline-block; background: #fff; color: #2B211B; font-size: 96px; padding: 18px 44px; border-radius: 999px; margin-bottom: 22px; }
+  #t1 .tag .pr { background: #2C6670; color: #fff; font-size: 120px; }
+  /* グルメ B：上下2分割（写真＋価格の一覧） */
+  #t2 { background: #2B211B; color: #fff; font-family: "Zen Maru Gothic"; font-weight: 900; }
+  #t2 .bg { bottom: 50%; background-image: url(src/gourmet.png); }
+  #t2 .list { position: absolute; left: 80px; right: 80px; top: 1010px; }
+  #t2 h2 { font-size: 84px; color: #8FC1C8; margin-bottom: 30px; }
+  #t2 .row { display: flex; justify-content: space-between; font-size: 66px; padding: 18px 0; border-bottom: 3px solid rgba(255,255,255,.2); }
+
+  /* ノウハウ A：黒地に大きな文字 */
+  #t3 { background: #111; color: #fff; font-family: "M PLUS 1p"; font-weight: 800; }
+  #t3 .k { position: absolute; left: 80px; top: 420px; font-size: 54px; border-left: 14px solid #FFD43B; padding-left: 26px; }
+  #t3 h1 { position: absolute; left: 80px; right: 40px; top: 620px; font-size: 124px; line-height: 1.2; }
+  #t3 h1 span { background: #FFD43B; color: #111; padding: 0 12px; }
+  #t3 .cats { position: absolute; left: 80px; top: 1250px; display: flex; flex-wrap: wrap; gap: 20px; }
+  #t3 .cats b { font-size: 56px; border: 5px solid #fff; padding: 10px 28px; }
+  /* ノウハウ B：問いかけ＋写真 */
+  #t4 { background: #FFD43B; color: #111; font-family: "M PLUS 1p"; font-weight: 800; }
+  #t4 .bg { top: 1060px; background-image: url(src/table.jpg); }
+  #t4 h1 { position: absolute; left: 80px; right: 60px; top: 330px; font-size: 104px; line-height: 1.25; }
+  #t4 .q { position: absolute; left: 80px; top: 820px; font-size: 58px; background: #111; color: #FFD43B; padding: 14px 30px; }
+
+  /* クイズ A：問題文の吹き出し */
+  #t5 { background: #FFF2C6; font-family: "Dela Gothic One"; color: #1E1E1E; }
+  #t5 .box { position: absolute; left: 70px; right: 70px; top: 520px; background: #1E1E1E; color: #FFF2C6; border-radius: 40px; padding: 70px 60px; transform: rotate(-3deg); }
+  #t5 .box p { font-size: 70px; color: #FF6B3D; }
+  #t5 .box h1 { font-size: 124px; line-height: 1.2; margin-top: 20px; font-weight: 400; }
+  #t5 .opts { position: absolute; left: 90px; right: 90px; top: 1280px; display: flex; gap: 26px; }
+  #t5 .opts b { flex: 1; text-align: center; font-size: 110px; font-weight: 400; background: #fff; border: 8px solid #1E1E1E; border-radius: 30px; padding: 30px 0; box-shadow: 12px 12px 0 #1E1E1E; }
+  /* クイズ B：豆の写真＋「？」 */
+  #t6 { background: #1E1E1E; color: #fff; font-family: "Dela Gothic One"; }
+  #t6 .bg { background-image: url(src/roaster.jpg); opacity: .55; }
+  #t6 .qm { position: absolute; right: 60px; top: 300px; font-size: 520px; color: #FF6B3D; line-height: 1; }
+  #t6 h1 { position: absolute; left: 80px; right: 60px; top: 960px; font-size: 112px; line-height: 1.2; font-weight: 400; }
+  #t6 .ans { position: absolute; left: 80px; top: 1380px; font-size: 64px; background: #FFF2C6; color: #1E1E1E; padding: 14px 32px; border-radius: 20px; }
+</style>
+</head>
+<body>
+<section class="th" id="t1"><div class="bg"></div><div class="tag"><p>焦がしバターの<br>フィナンシェ</p><br><p class="pr">320円</p></div><p class="s">自主制作サンプル</p></section>
+<section class="th" id="t2"><div class="bg"></div><div class="list"><h2>白杢珈琲の価格</h2><div class="row"><span>ドリップ</span><span>520円</span></div><div class="row"><span>カフェラテ</span><span>600円</span></div><div class="row"><span>フィナンシェ</span><span>320円</span></div></div><p class="s">自主制作サンプル</p></section>
+<section class="th" id="t3"><p class="k">小さな店の集客メモ</p><h1>マップの写真は<br><span>4種類</span></h1><div class="cats"><b>外観</b><b>店内</b><b>商品</b><b>メニュー</b></div><p class="s">自主制作サンプル</p></section>
+<section class="th" id="t4"><h1>Googleマップの<br>写真、何枚<br>ありますか？</h1><p class="q">目安は20枚</p><div class="bg"></div><p class="s">自主制作サンプル</p></section>
+<section class="th" id="t5"><div class="box"><p>コーヒー豆クイズ</p><h1>焼く前の<br>生豆は何色？</h1></div><div class="opts"><b>黒</b><b>緑</b><b>赤</b></div><p class="s" style="color:rgba(30,30,30,.6)">自主制作サンプル</p></section>
+<section class="th" id="t6"><div class="bg"></div><div class="qm">？</div><h1>焙煎する前の<br>豆の色、<br>知っていますか</h1><p class="ans">答えは動画で</p><p class="s">自主制作サンプル</p></section>
+<script>
+  const n = new URLSearchParams(location.search).get('n');
+  if (n) { document.body.classList.add('single'); document.getElementById('t' + n).classList.add('on'); }
+</script>
+</body>
+</html>

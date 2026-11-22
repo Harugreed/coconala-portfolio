@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ハル｜よろずサポート屋 ポートフォリオ</title>
+<meta name="description" content="ココナラ出品者「ハル｜よろずサポート屋」の自主制作サンプル集。Web制作・動画編集・記事作成・自動化・SNS・資料デザイン。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;800&display=swap" rel="stylesheet">
+<style>
+  /* 出品カバー・図解と同じ配色：紺 #1F2A44・琥珀 #F2A524・地 #F4F6F9 */
+  :root { --navy: #1F2A44; --amber: #F2A524; --ground: #F4F6F9; --line: #D5DBE5; --sub: #56627A; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--ground); color: var(--navy); font-family: "M PLUS 1p", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; font-size: 16px; line-height: 1.8; word-break: auto-phrase; line-break: strict; }
+  h1, h2, h3, p, ul, dl, dd { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  .head { position: sticky; top: 0; z-index: 10; background: var(--navy); color: #fff; }
+  .head-in { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .brand { font-weight: 800; font-size: 17px; letter-spacing: .04em; text-decoration: none; }
+  .brand span { color: var(--amber); }
+  .nav { display: flex; gap: 22px; font-size: 14px; }
+  .nav a { text-decoration: none; opacity: .9; }
+  .nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+
+  .intro { background: var(--navy); color: #fff; padding: 64px 0 72px; }
+  .intro h1 { font-size: 44px; font-weight: 800; line-height: 1.35; }
+  .intro h1::after { content: ""; display: block; width: 96px; height: 8px; background: var(--amber); margin-top: 22px; }
+  .intro p { margin-top: 22px; max-width: 44em; color: #C9D4E8; }
+  .counts { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid rgba(255,255,255,.2); }
+  .counts div { padding: 16px 28px 0 0; margin-right: 28px; }
+  .counts b { display: block; font-size: 30px; font-weight: 800; color: var(--amber); line-height: 1.2; }
+  .counts span { font-size: 14px; color: #C9D4E8; }
+
+  section.cat { padding: 72px 0 24px; }
+  .cat-head { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; padding-bottom: 12px; border-bottom: 3px solid var(--navy); }
+  .cat-head h2 { font-size: 28px; font-weight: 800; }
+  .cat-head p { font-size: 14px; color: var(--sub); }
+  .works { margin-top: 8px; }
+  .work { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; padding: 24px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .work img { width: 300px; height: 188px; object-fit: cover; display: block; border: 1px solid var(--line); background: #fff; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 800; color: var(--navy); background: var(--amber); padding: 1px 8px; margin-right: 10px; vertical-align: 2px; }
+  .work h3 { font-size: 20px; font-weight: 800; line-height: 1.5; }
+  .work h3 a { text-decoration: none; }
+  .work h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .work .sum { margin-top: 6px; font-size: 15px; }
+  .work .tech { margin-top: 8px; font-size: 13px; color: var(--sub); }
+  .work .links { margin-top: 8px; font-size: 14px; display: flex; flex-wrap: wrap; gap: 4px 18px; }
+
+  .profile { background: #fff; margin-top: 72px; padding: 64px 0 72px; border-top: 3px solid var(--navy); }
+  .profile h2 { font-size: 28px; font-weight: 800; }
+  .pgrid { margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .pgrid h3 { font-size: 17px; font-weight: 800; padding-bottom: 8px; border-bottom: 2px solid var(--amber); margin-bottom: 10px; }
+  .pgrid li { font-size: 15px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .price li { display: flex; justify-content: space-between; gap: 12px; }
+  .price b { white-space: nowrap; }
+  .pnote { margin-top: 18px; font-size: 13px; color: var(--sub); }
+  .foot { padding: 36px 0 48px; font-size: 13px; color: var(--sub); }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 18px; }
+    .nav { display: none; }
+    .intro { padding: 44px 0 52px; }
+    .intro h1 { font-size: 30px; }
+    .work { grid-template-columns: 1fr; gap: 14px; }
+    .work img { width: 100%; height: auto; aspect-ratio: 16 / 10; }
+    .pgrid { grid-template-columns: 1fr; gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="head">
+  <div class="wrap head-in">
+    <a class="brand" href="#top">ハル<span>｜</span>よろずサポート屋</a>
+    <nav class="nav" aria-label="カテゴリ">
+      <a href="#web">Web制作</a><a href="#video">動画</a><a href="#writing">記事・文書</a><a href="#automation">自動化・データ</a><a href="#design">SNS・デザイン</a><a href="#profile">料金・対応業務</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="intro">
+  <div class="wrap">
+    <h1>自主制作サンプル集</h1>
+    <p>ココナラ出品者「ハル｜よろずサポート屋」のポートフォリオです。掲載している作品はすべて自主制作のサンプルで、店名・会社名・人名・数値は架空のものです。実在のお客様の制作実績ではありません。</p>
+    <div class="counts">
+      <div><b>7</b><span>Web制作</span></div>
+      <div><b>5</b><span>動画（本編・比較・ショート3本）</span></div>
+      <div><b>9</b><span>記事・文書</span></div>
+      <div><b>5</b><span>自動化・データ</span></div>
+      <div><b>4</b><span>SNS・資料・デザイン</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" id="web">
+  <div class="wrap">
+    <div class="cat-head"><h2>Web制作</h2><p>店舗HP・団体の公式サイト・LP・リニューアル提案</p></div>
+    <ul class="works">
+      <li class="work"><a href="works/web/shop-cafe/"><img src="assets/thumbs/cafe.jpg" alt="カフェのHPのトップ画面" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/web/shop-cafe/">カフェの店舗HP「白杢珈琲」</a></h3>
+        <p class="sum">焙煎機の写真から拾った3色で配色し、店名を明朝の縦書きにした1ページHPです。営業時間・定休日・所在地を最初の画面に置いています。</p>
+        <p class="tech">HTML／CSS・Google Fonts・デザイン仕様書つき</p></div></li>
+      <li class="work"><a href="works/web/shop-ramen/"><img src="assets/thumbs/ramen.jpg" alt="ラーメン店のHPのトップ画面" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/web/shop-ramen/">ラーメン店のHP「らぁめん 雷紋堂」</a></h3>
+        <p class="sum">余白を詰め、メニューを券売機の食券の形にして品名と価格を大きく出しました。食券の買い方を4手順で載せています。</p>
+        <p class="tech">HTML／CSS・丼の雷紋をSVGで再現</p></div></li>
+      <li class="work"><a href="works/web/shop-salon/"><img src="assets/thumbs/salon.jpg" alt="サロンのHPのトップ画面" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/web/shop-salon/">ネイル・まつげサロンのHP「atelier GRIS」</a></h3>
+        <p class="sum">ジェルの青灰1色の濃淡と細いゴシックで静かにまとめ、料金表・施術の流れ・LINE予約の手順を1ページに載せています。</p>
+        <p class="tech">HTML／CSS・PCは左に固定の目次列</p></div></li>
+      <li class="work"><a href="works/web/corporate/"><img src="assets/thumbs/corporate.jpg" alt="団体の公式サイトのトップ画面" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/web/corporate/">一般社団法人の公式サイト（5ページ）</a></h3>
+        <p class="sum">公的機関の型で、トップ・事業内容・団体概要・お知らせ・お問い合わせの5ページを作りました。お知らせはデータに1行足すだけで更新できます。</p>
+        <p class="tech">HTML／CSS／JavaScript・BIZ UDPゴシック・アクセシビリティに配慮</p></div></li>
+      <li class="work"><a href="works/web/lp-service/"><img src="assets/thumbs/lp-service.jpg" alt="介護タクシーのLP" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/web/lp-service/">サービス申込LP「介護タクシー」</a></h3>
+        <p class="sum">料金の計算例・5手順の流れ・よくある質問の順に置き、初めての利用の不安を下げてから申込フォームへ進む構成です。</p>
+        <p class="tech">HTML／CSS・後から動画を入れる枠つき</p></div></li>
+      <li class="work"><a href="works/web/lp-event/"><img src="assets/thumbs/lp-event.jpg" alt="オンライン講座のLP" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/web/lp-event/">イベントLP「Instagram集客講座」</a></h3>
+        <p class="sum">日時・形式・参加費・定員・締切を入場券の形にまとめ、時間割・講師・注意事項まで1ページで確認できます。</p>
+        <p class="tech">HTML／CSS</p></div></li>
+      <li class="work"><a href="works/web/renewal/"><img src="assets/thumbs/renewal.jpg" alt="和菓子店のリニューアル後の画面" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/web/renewal/">リニューアル提案セット「御菓子司 つきしろ」</a></h3>
+        <p class="sum">古いHPのBefore・作り直したAfter・A4 2ページの改善提案書（問題点・改善内容・流れ・料金）の3点です。</p>
+        <p class="tech">HTML／CSS・提案書はPDF付き</p>
+        <p class="links"><a href="works/web/renewal/before/">Before</a><a href="works/web/renewal/after/">After</a><a href="works/web/renewal/proposal/proposal.pdf">提案書（PDF）</a></p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cat" id="video">
+  <div class="wrap">
+    <div class="cat-head"><h2>動画編集</h2><p>テロップ・図解入りの解説動画・縦型ショート・サムネイル</p></div>
+    <ul class="works">
+      <li class="work"><a href="works/video/telop/"><img src="assets/thumbs/telop.jpg" alt="テロップ入り動画の1場面" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/video/telop/">YouTubeテロップ編集（3分08秒）</a></h3>
+        <p class="sum">句読点での改行・強調語の色・章の見出し・図解の動きを仕様表で決めて作りました。自動字幕のままの版と並べた30秒の比較動画もあります。</p>
+        <p class="tech">Remotion・テロップ仕様表・再現マニュアル（A4 5ページ程度）</p>
+        <p class="links"><a href="works/video/telop/spec.html">仕様表</a><a href="works/video/telop/manual.html">再現マニュアル</a></p></div></li>
+      <li class="work"><a href="works/video/reels/"><img src="assets/thumbs/reels.jpg" alt="ショート動画のサムネイル6枚" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/video/reels/">縦型ショート3本・サムネイル6枚</a></h3>
+        <p class="sum">グルメ紹介・ビジネスノウハウ・クイズの3スタイルで、書体・テロップの形・カットの間隔を変えています。サムネイルは1本につき2案です。</p>
+        <p class="tech">Remotion・1080×1920</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cat" id="writing">
+  <div class="wrap">
+    <div class="cat-head"><h2>記事・文書</h2><p>IT解説・SEO記事・商品紹介・ビジネス文書</p></div>
+    <ul class="works">
+      <li class="work"><a href="works/writing/"><img src="assets/thumbs/writing.jpg" alt="案内メールの文書" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/writing/">記事・文書サンプル一式</a></h3>
+        <p class="sum">IT解説記事（約3,000字）、検索意図メモと見出し構成つきのSEO記事（約2,500字）、商品紹介文・レビュー、案内メール・依頼文・議事録です。</p>
+        <p class="tech">Markdown／HTML・SEO記事の数値は出典つき・敬語の確認記録つき</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cat" id="automation">
+  <div class="wrap">
+    <div class="cat-head"><h2>自動化・データ</h2><p>スクレイピング・CSV変換・Excel自動化・リスト作成</p></div>
+    <ul class="works">
+      <li class="work"><a href="works/automation/scraping/"><img src="assets/thumbs/scraping.jpg" alt="収集結果のExcel" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/automation/scraping/">スクレイピング実演（100件→Excel）</a></h3>
+        <p class="sum">練習用に公開されているECサイトから商品100件を集め、絞り込みとリンクを設定したExcelに保存しました。robots.txt の確認と取得間隔を組み込んでいます。</p>
+        <p class="tech">Python・openpyxl</p></div></li>
+      <li class="work"><a href="works/automation/data-convert/"><img src="assets/thumbs/convert.jpg" alt="請求書のPDF" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/automation/data-convert/">CSV→PDF・請求書ブック・データ整形</a></h3>
+        <p class="sum">受注CSVから出荷伝票のPDF、取引先と月を選ぶだけで切り替わる請求書ブック（マクロなし）、表記ゆれを整える整形の Before／After です。</p>
+        <p class="tech">Python・Excelの数式・変更ログつき</p></div></li>
+      <li class="work"><a href="works/automation/list-sample/"><img src="assets/thumbs/lists.jpg" alt="スクリプトの実行画面" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/automation/list-sample/">リスト作成の形式見本</a></h3>
+        <p class="sum">営業リスト50行・SNSインフルエンサーリスト30行の形式見本です。データはすべて架空で、実在の個人情報は含みません。</p>
+        <p class="tech">Excel／CSV・入力規則と絞り込みつき</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cat" id="design">
+  <div class="wrap">
+    <div class="cat-head"><h2>SNS・資料・デザイン</h2><p>Instagram投稿・プレゼン資料・バナー・UI／UX提案</p></div>
+    <ul class="works">
+      <li class="work"><a href="works/sns/instagram-set/"><img src="assets/thumbs/instagram.jpg" alt="Instagram投稿画像6枚" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/sns/instagram-set/">Instagram投稿セット</a></h3>
+        <p class="sum">投稿画像6枚・キャプション・1週間分の投稿カレンダーです。店のHPと配色・書体をそろえています。</p>
+        <p class="tech">画像 1080×1080・Excelのカレンダー</p></div></li>
+      <li class="work"><a href="works/design/presentation/"><img src="assets/thumbs/slides.jpg" alt="提案資料のスライド" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/design/presentation/">集客提案のプレゼン資料（10スライド）</a></h3>
+        <p class="sum">見出しを結論の1文にし、グラフ・流れの図・ガントチャート・表で中身を見せる図解中心の資料です。</p>
+        <p class="tech">PDF・画像・HTMLの3形式</p>
+        <p class="links"><a href="works/design/presentation/proposal-slides.pdf">PDFを開く</a></p></div></li>
+      <li class="work"><a href="works/design/banner/"><img src="assets/thumbs/banner.jpg" alt="横長のバナー" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/design/banner/">バナー4サイズ・メニュー表</a></h3>
+        <p class="sum">1200×628・1080×1080・728×90・300×250のバナー・印刷用A4のメニュー表です。サイズごとに載せる情報の数を変えています。</p>
+        <p class="tech">PNG・PDF</p></div></li>
+      <li class="work"><a href="works/design/uiux/"><img src="assets/thumbs/uiux.jpg" alt="UI／UX改善提案書の1ページ目" loading="lazy"></a><div>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/design/uiux/">申込フォームのUI／UX改善提案書</a></h3>
+        <p class="sum">現在の画面の図に問題の箇所を番号で示し、改善後の画面と改善内容・根拠（WCAG 2.2）を並べたA4 2ページの提案書です。</p>
+        <p class="tech">PDF・HTML</p>
+        <p class="links"><a href="works/design/uiux/uiux-proposal.pdf">PDFを開く</a></p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="profile" id="profile">
+  <div class="wrap">
+    <h2>対応業務・料金・納期</h2>
+    <div class="pgrid">
+      <div>
+        <h3>対応業務</h3>
+        <ul>
+          <li>店舗・団体のホームページ制作</li>
+          <li>LP（申込・イベント）の制作</li>
+          <li>YouTubeのテロップ編集・ショート動画</li>
+          <li>記事作成・ビジネス文書</li>
+          <li>Excel自動化・データ収集・リスト作成</li>
+          <li>SNS投稿画像・資料・バナー</li>
+        </ul>
+      </div>
+      <div class="price">
+        <h3>料金の目安（税込）</h3>
+        <ul>
+          <li><span>ホームページ制作（1ページ）</span><b>29,800円</b></li>
+          <li><span>動画編集</span><b>お見積もり</b></li>
+          <li><span>記事・文書</span><b>お見積もり</b></li>
+          <li><span>自動化・データ</span><b>お見積もり</b></li>
+          <li><span>SNS・資料・デザイン</span><b>お見積もり</b></li>
+        </ul>
+      </div>
+      <div>
+        <h3>納期の目安</h3>
+        <ul>
+          <li>内容・量をうかがってからお伝えします</li>
+          <li>原稿・写真・データがそろった日から数えます</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pnote">ご依頼・ご相談はココナラのメッセージからお送りください。料金表の「お見積もり」の項目は、内容をうかがってから金額をお伝えします。</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>このサイトに掲載している作品はすべて自主制作のサンプルです。店名・会社名・団体名・人名・価格・数値は架空のもので、実在の店舗・企業とは関係ありません。写真は Unsplash、素材映像・音楽は Mixkit のライセンスに基づき使用しています（出典は各作品の credits.md）。</p>
+  </div>
+</footer>
+</body>
+</html>

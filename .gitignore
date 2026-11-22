@@ -1,0 +1,5 @@
+deliveries/
+video-src/
+.tools/
+.claude/
+__pycache__/

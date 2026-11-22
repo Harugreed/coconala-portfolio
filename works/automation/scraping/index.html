@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公開商品ページの収集デモ（スクレイピング実演セット）｜自主制作サンプル</title><meta name="robots" content="noindex"><style>
+:root{--ink:#24262B;--sub:#5D626B;--line:#DCDFE4;--accent:#3D5A80;--paper:#FFFFFF;--bg:#F3F4F6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:17px;line-height:2;word-break:auto-phrase;line-break:strict}
+.flag{margin:0;background:var(--ink);color:#fff;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;padding:6px 20px}
+article{max-width:760px;margin:40px auto 80px;background:var(--paper);padding:56px 64px}
+h1{font-size:28px;line-height:1.5;margin:0 0 24px}
+h2{font-size:21px;line-height:1.6;margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+h3{font-size:18px;margin:32px 0 8px}
+p{margin:0 0 1em}
+blockquote{margin:0 0 32px;padding:12px 16px;background:var(--bg);border-left:4px solid var(--accent);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14px;line-height:1.8;color:var(--sub)}
+blockquote p{margin:0}
+ul,ol{margin:0 0 1em;padding-left:1.5em}
+table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14.5px;line-height:1.7}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+thead th{border-bottom:2px solid var(--ink)}
+hr{border:0;border-top:1px dashed var(--line);margin:32px 0}
+a{color:var(--accent);word-break:break-all}
+figure{margin:16px 0 28px}figure img{width:100%;display:block;border:1px solid var(--line)}figcaption{font-family:sans-serif;font-size:13px;color:var(--sub);margin-top:6px}
+.back{display:block;max-width:760px;margin:24px auto 0;font-family:sans-serif;font-size:14px}
+@media(max-width:640px){article{margin:0;padding:32px 20px}body{font-size:16px}h1{font-size:23px}h2{font-size:19px}}
+</style></head>
+<body><p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」の文章サンプルです。</p>
+<a class="back" href="../index.html">← 一覧に戻る</a>
+<article>
+<h1>公開商品ページの収集デモ（スクレイピング実演セット）</h1>
+<blockquote><p>自主制作サンプル：スクレイピング練習用に公開されているサンドボックスのECサイト（books.toscrape.com）を題材にしています。サイトの価格・評価はサイト側でランダムに付けられた値で、実在の商品情報ではありません。</p></blockquote>
+<h2>成果物</h2>
+<table><thead><tr><th>ファイル</th><th>内容</th></tr></thead><tbody><tr><td>output/books_100.xlsx</td><td>収集結果のExcel（商品名・価格・評価・在庫数・分類・商品コード・URL、100行）と取得条件のシート</td></tr><tr><td>scrape.py</td><td>収集スクリプト（Python 3.10以上・openpyxl）</td></tr><tr><td>run-log.txt</td><td>実行したときのログ（100件・137秒）</td></tr><tr><td>screenshots/run.png</td><td>実行画面のキャプチャ</td></tr><tr><td>screenshots/excel.png</td><td>Excelの表示を再現したプレビュー画像（1〜18行目）</td></tr></tbody></table>
+<figure><img src="screenshots/run.png" alt="実行画面（100件を137秒で取得）"><figcaption>実行画面（100件を137秒で取得）</figcaption></figure>
+<figure><img src="screenshots/excel.png" alt="収集結果のExcel（商品一覧シート）"><figcaption>収集結果のExcel（商品一覧シート）</figcaption></figure>
+<h2>処理の流れ</h2>
+<ol><li>robots.txt を読み、取得が禁止されたページがないか確認します</li><li>商品一覧のページを1ページ目から順に読み、商品名・価格・評価・詳細ページのURLを取り出します</li><li>商品ごとに詳細ページを開き、分類・在庫数・商品コードを取り出します</li><li>指定の件数（100件）に達したら止め、Excelに保存します</li><li>Excelには見出しの固定・絞り込み・価格の書式・URLのリンクを設定し、取得条件を別のシートに残します</li></ol>
+<h2>実案件での条件の決め方</h2>
+<table><thead><tr><th>項目</th><th>このデモ</th><th>実案件で決めること</th></tr></thead><tbody><tr><td>対象</td><td>books.toscrape.com の商品一覧・詳細ページ</td><td>対象サイトのURL・取得してよいページの範囲</td></tr><tr><td>取得する項目</td><td>商品名・価格・評価・在庫数・分類・商品コード・URL</td><td>必要な項目・表の列の順番</td></tr><tr><td>頻度</td><td>1回</td><td>1回のみ／毎週月曜の朝など。定期実行は Windows のタスクスケジューラで設定できます</td></tr><tr><td>件数・時間</td><td>100件・約2分20秒</td><td>件数から所要時間を見積もります（1件あたり約1.4秒）</td></tr><tr><td>納品形式</td><td>Excel（.xlsx）</td><td>Excel・CSV・Googleスプレッドシート</td></tr></tbody></table>
+<h2>注意点</h2>
+<ul><li>対象サイトの利用規約・robots.txt を確認し、収集が禁止されているサイトでは行いません</li><li>ログインが必要なページ・会員限定の情報・認証を回避する処理は扱いません</li><li>1リクエストごとに1秒の間隔をあけ、サーバーに負荷をかけないようにしています（0.5秒未満は設定できない作り）</li><li>個人情報（氏名・メールアドレス・電話番号など）は収集しません</li><li>サイトの作りが変わると取り出せなくなるため、定期実行する場合は取得件数を毎回ログで確認します</li></ul>
+<h2>応募時の紹介文（3行）</h2>
+<p>ECサイトの公開商品ページから、商品名・価格・在庫数などを集めてExcelにまとめる収集スクリプトの自主制作サンプルです。<br>robots.txt の確認・1秒の取得間隔・失敗時の再試行を組み込み、ログインが必要な情報は扱わない範囲で作っています。<br>100件を約2分20秒で取得し、絞り込みとリンクを設定したExcelで納品します。</p>
+</article></body></html>

@@ -1,0 +1,91 @@
+{
+ "title": "Googleマップの写真は4種類",
+ "total": 28.436,
+ "scenes": [
+  {
+   "id": "q",
+   "start": 0.6,
+   "end": 4.729,
+   "visual": {
+    "type": "text"
+   },
+   "chapter": null,
+   "lines": [
+    {
+     "file": "s01.wav",
+     "text": "[[Googleマップ]]の写真、何枚載せていますか。",
+     "start": 0.6,
+     "dur": 3.329
+    }
+   ]
+  },
+  {
+   "id": "a",
+   "start": 4.729,
+   "end": 12.575,
+   "visual": {
+    "type": "text"
+   },
+   "chapter": null,
+   "lines": [
+    {
+     "file": "s02.wav",
+     "text": "見る人が確かめるのは、[[外観]]、[[店内]]、[[商品]]、[[メニュー]]の4つです。",
+     "start": 4.729,
+     "dur": 7.046
+    }
+   ]
+  },
+  {
+   "id": "b",
+   "start": 12.575,
+   "end": 17.938,
+   "visual": {
+    "type": "text"
+   },
+   "chapter": null,
+   "lines": [
+    {
+     "file": "s03.wav",
+     "text": "それぞれ5枚ずつ、合計[[20枚]]を目安にそろえましょう。",
+     "start": 12.575,
+     "dur": 4.563
+    }
+   ]
+  },
+  {
+   "id": "c",
+   "start": 17.938,
+   "end": 23.122,
+   "visual": {
+    "type": "text"
+   },
+   "chapter": null,
+   "lines": [
+    {
+     "file": "s04.wav",
+     "text": "メニューの写真は、[[価格が読める明るさ]]で撮るのがコツです。",
+     "start": 17.938,
+     "dur": 4.385
+    }
+   ]
+  },
+  {
+   "id": "d",
+   "start": 23.122,
+   "end": 27.636,
+   "visual": {
+    "type": "text"
+   },
+   "chapter": null,
+   "lines": [
+    {
+     "file": "s05.wav",
+     "text": "保存して、写真を撮るときに見返してください。",
+     "start": 23.122,
+     "dur": 3.714
+    }
+   ]
+  }
+ ]
+}

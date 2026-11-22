@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>白杢珈琲 様 集客のご提案（自主制作サンプル）</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  :root { --g: #E4E7E5; --g2: #D3D8D5; --r: #2B211B; --r60: rgba(43,33,27,.62); --gr: #2C6670; --gr2: #8FB8BE; --w: #F6F7F6;
+          --m: "Shippori Mincho B1", serif; --s: "Zen Kaku Gothic New", sans-serif; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #6E7370; font-family: var(--s); color: var(--r); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .slide { width: 1280px; height: 720px; background: var(--w); position: relative; overflow: hidden; margin: 24px auto; padding: 64px 80px 56px; display: flex; flex-direction: column; break-after: page; }
+  @media print { body { background: #fff; } .slide { margin: 0; } }
+  body.single .slide { display: none; margin: 0; } body.single .slide.on { display: flex; }
+  .kicker { font-size: 18px; font-weight: 700; color: var(--gr); letter-spacing: .08em; }
+  h2 { font-family: var(--m); font-size: 40px; line-height: 1.35; margin-top: 8px; }
+  .lead { font-size: 21px; margin-top: 14px; line-height: 1.7; color: var(--r60); }
+  .content { flex: 1; margin-top: 32px; min-height: 0; }
+  .pn { position: absolute; right: 48px; bottom: 26px; font-size: 14px; color: var(--r60); }
+  .src { position: absolute; left: 80px; bottom: 26px; font-size: 13px; color: var(--r60); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; height: 100%; }
+  .card { background: #fff; border-top: 5px solid var(--r); padding: 24px 28px; }
+  .card h3 { font-size: 22px; margin-bottom: 10px; }
+  .card p, .card li { font-size: 18px; line-height: 1.7; }
+  .card ul { list-style: none; } .card li { padding: 6px 0; border-bottom: 1px solid var(--g); }
+  .big { font-family: var(--m); font-size: 64px; line-height: 1; color: var(--gr); }
+  .unit { font-size: 22px; margin-left: 4px; color: var(--r); font-family: var(--s); }
+  table { width: 100%; border-collapse: collapse; font-size: 19px; }
+  th, td { padding: 13px 14px; border-bottom: 1px solid var(--g2); text-align: left; }
+  thead th { background: var(--r); color: #fff; font-size: 17px; }
+  td.n { text-align: right; font-family: var(--m); font-size: 22px; }
+  .seal { width: 56px; height: 56px; }
+
+  /* 1 表紙 */
+  #s1 { background: var(--r); color: var(--g); justify-content: space-between; }
+  #s1 .ph { position: absolute; right: 0; top: 0; bottom: 0; width: 520px; background: url(img/roaster.jpg) center / cover; }
+  #s1 .ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--r), rgba(43,33,27,0) 40%); }
+  #s1 h1 { font-family: var(--m); font-size: 58px; line-height: 1.4; max-width: 700px; }
+  #s1 .to { font-size: 26px; font-family: var(--m); }
+  #s1 .meta { font-size: 17px; line-height: 1.8; opacity: .8; }
+  /* 3 課題 */
+  .issues { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; height: 100%; }
+  .issues .card { display: flex; flex-direction: column; }
+  .issues .no { font-family: var(--m); font-size: 46px; color: var(--gr); line-height: 1; margin-bottom: 14px; }
+  .issues .fact { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--g2); font-size: 16px; color: var(--r60); }
+  /* 4 流れ */
+  .funnel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: stretch; height: 100%; }
+  .funnel .st { position: relative; padding: 28px 30px 24px 44px; background: var(--g); clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%, 28px 50%); }
+  .funnel .st:first-child { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 50%, calc(100% - 28px) 100%, 0 100%); padding-left: 30px; }
+  .funnel .st:nth-child(2) { background: var(--g2); } .funnel .st:nth-child(3) { background: var(--gr2); } .funnel .st:nth-child(4) { background: var(--gr); color: #fff; }
+  .funnel h3 { font-family: var(--m); font-size: 30px; }
+  .funnel .ch { margin-top: 12px; font-size: 17px; font-weight: 700; }
+  .funnel p { margin-top: 10px; font-size: 16px; line-height: 1.65; }
+  .funnel-note { margin-top: 18px; font-size: 18px; }
+  /* 5 GBP */
+  .check li { display: grid; grid-template-columns: 26px 1fr auto; gap: 12px; align-items: baseline; }
+  .check li::before { content: ""; width: 16px; height: 16px; border: 2px solid var(--gr); display: inline-block; transform: translateY(2px); }
+  .check .now { font-size: 15px; color: var(--r60); }
+  .mock { background: #fff; border: 1px solid var(--g2); padding: 22px; font-size: 16px; }
+  .mock .name { font-size: 22px; font-weight: 700; }
+  .mock .row { display: flex; gap: 10px; margin-top: 10px; }
+  .mock .row span { flex: 1; height: 86px; background: center / cover; }
+  .mock .btns { display: flex; gap: 10px; margin-top: 14px; }
+  .mock .btns span { border: 1px solid var(--gr); color: var(--gr); padding: 6px 14px; border-radius: 999px; font-size: 14px; }
+  .mock dl { margin-top: 12px; display: grid; grid-template-columns: 5em 1fr; row-gap: 4px; }
+  /* 6 Instagram */
+  .ig { display: grid; grid-template-columns: repeat(3, 150px); gap: 6px; }
+  .ig img { width: 150px; height: 150px; display: block; }
+  /* 8 ガント */
+  .gantt { display: grid; grid-template-columns: 260px repeat(12, 1fr); font-size: 16px; }
+  .gantt > div { padding: 10px 8px; border-bottom: 1px solid var(--g2); }
+  .gantt .h { font-weight: 700; background: var(--r); color: #fff; text-align: center; border: 0; }
+  .gantt .mh { grid-column: span 4; }
+  .gantt .bar { position: relative; }
+  .gantt .bar i { position: absolute; top: 9px; bottom: 9px; left: 2px; right: 2px; background: var(--gr); border-radius: 3px; }
+  .gantt .bar i.l { background: var(--gr2); }
+  /* 9 目標 */
+  .arrow { color: var(--gr); font-weight: 700; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="4"/><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M50 38c9 0 15 5 15 12s-6 12-15 12-13-6-13-12 4-12 13-12z"/><path d="M50 28c16 0 26 9 26 22 0 14-11 23-26 23S24 63 24 50c0-12 10-22 26-22z"/><path d="M14 46c6-17 20-28 37-28 19 0 32 11 35 27"/><path d="M86 56c-5 16-19 26-36 26-16 0-30-9-35-23"/></g><circle cx="50" cy="50" r="5" fill="currentColor"/></symbol></svg>
+
+<!-- 1 -->
+<section class="slide" id="s1">
+  <div class="ph"></div>
+  <div style="position:relative">
+    <p class="to">白杢珈琲 様</p>
+    <h1 style="margin-top:28px">平日の午後の来店を<br>増やす集客のご提案</h1>
+  </div>
+  <div style="position:relative;display:flex;align-items:flex-end;gap:20px">
+    <svg class="seal" style="color:#E4E7E5"><use href="#seal"/></svg>
+    <p class="meta">2026年11月22日　ハル｜よろずサポート屋<br>対象期間 2026年12月〜2027年2月<br>※自主制作サンプル（店名・数値は架空）</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="slide" id="s2">
+  <p class="kicker">1. 現在の状況</p>
+  <h2>新規客の6割は「通りがかり」と「知人の紹介」です</h2>
+  <div class="content two">
+    <div>
+      <svg viewBox="0 0 520 330" width="520" height="330" role="img" aria-label="来店のきっかけの割合">
+        <g font-family="Zen Kaku Gothic New, sans-serif" font-size="17" fill="#2B211B">
+          <text x="0" y="40">通りがかり</text><rect x="150" y="20" width="266" height="30" fill="#2B211B"/><text x="426" y="42" font-size="20" font-family="Shippori Mincho B1">38%</text>
+          <text x="0" y="100">知人の紹介</text><rect x="150" y="80" width="168" height="30" fill="#2B211B"/><text x="328" y="102" font-size="20" font-family="Shippori Mincho B1">24%</text>
+          <text x="0" y="160">Instagram</text><rect x="150" y="140" width="126" height="30" fill="#2C6670"/><text x="286" y="162" font-size="20" font-family="Shippori Mincho B1">18%</text>
+          <text x="0" y="220">Googleマップ</text><rect x="150" y="200" width="84" height="30" fill="#2C6670"/><text x="244" y="222" font-size="20" font-family="Shippori Mincho B1">12%</text>
+          <text x="0" y="280">その他</text><rect x="150" y="260" width="56" height="30" fill="#B9BEC4"/><text x="216" y="282" font-size="20" font-family="Shippori Mincho B1">8%</text>
+        </g>
+      </svg>
+      <p style="font-size:16px;color:rgba(43,33,27,.62);margin-top:8px">初めて来店したお客様120人へのアンケート（2026年10月・架空）</p>
+    </div>
+    <div style="display:grid;gap:20px;align-content:start">
+      <div class="card"><h3>平日の来店数（1日平均）</h3><p><span class="big">62</span><span class="unit">人</span></p></div>
+      <div class="card"><h3>平日 14:00〜16:00 の席の利用率</h3><p><span class="big">31</span><span class="unit">%</span>　<span style="font-size:17px">昼（12:00〜14:00）は 84%</span></p></div>
+    </div>
+  </div>
+  <p class="pn">2 / 10</p>
+</section>
+
+<!-- 3 -->
+<section class="slide" id="s3">
+  <p class="kicker">2. 課題</p>
+  <h2>検索で見つけた人に、来店の判断材料が届いていません</h2>
+  <div class="content issues">
+    <div class="card"><p class="no">1</p><h3>Googleマップの情報が少ない</h3><p>写真が3枚だけで、メニューと焼き菓子の写真がありません。営業時間の「定休日」も未登録です。</p><p class="fact">確認日：2026年11月20日</p></div>
+    <div class="card"><p class="no">2</p><h3>Instagramの投稿が月2回</h3><p>直近3か月の投稿は6本で、価格・焼き上がり時刻など来店の判断に使う情報がありません。</p><p class="fact">フォロワー 840人（架空）</p></div>
+    <div class="card"><p class="no">3</p><h3>平日14時〜16時が空いている</h3><p>昼の混雑時は席が足りない一方、14時以降は利用率が31%まで下がります。</p><p class="fact">店の売上データ（2026年9〜10月・架空）</p></div>
+  </div>
+  <p class="pn">3 / 10</p>
+</section>
+
+<!-- 4 -->
+<section class="slide" id="s4">
+  <p class="kicker">3. 方針</p>
+  <h2>「知る→調べる→来る→また来る」に3つの施策を置きます</h2>
+  <div class="content" style="display:flex;flex-direction:column">
+    <div class="funnel" style="height:300px">
+      <div class="st"><h3>知る</h3><p class="ch">Instagram</p><p>週6本の投稿で、焙煎・焼き菓子を見せる</p></div>
+      <div class="st"><h3>調べる</h3><p class="ch">Googleマップ</p><p>営業時間・写真・メニューを整えて、来店の判断材料をそろえる</p></div>
+      <div class="st"><h3>来る</h3><p class="ch">平日午後のセット</p><p>14時〜16時に焼き菓子セットを用意し、空いている時間に来る理由を作る</p></div>
+      <div class="st"><h3>また来る</h3><p class="ch">豆の販売</p><p>帰りに豆を買ってもらい、自宅で淹れ方の投稿を使ってもらう</p></div>
+    </div>
+    <p class="funnel-note">費用をかける広告は使わず、店がすでに持っている写真・焙煎・焼き菓子を情報として出していきます。</p>
+  </div>
+  <p class="pn">4 / 10</p>
+</section>
+
+<!-- 5 -->
+<section class="slide" id="s5">
+  <p class="kicker">4. 施策1：Googleビジネスプロフィールを整える</p>
+  <h2>地図で見つけた人が、その場で来店を決められる情報にします</h2>
+  <div class="content two">
+    <div class="card"><h3>整える項目</h3>
+      <ul class="check">
+        <li><span>営業時間・定休日（第3水曜）</span><span class="now">現在 未登録</span></li>
+        <li><span>写真（外観・店内・ドリップ・焼き菓子）</span><span class="now">3枚 → 20枚</span></li>
+        <li><span>メニューと価格</span><span class="now">現在 なし</span></li>
+        <li><span>駐車場3台・電源席・Wi-Fi の属性</span><span class="now">現在 なし</span></li>
+        <li><span>焙煎日・焼き上がり時刻の投稿</span><span class="now">週1回</span></li>
+      </ul>
+    </div>
+    <div class="mock">
+      <p class="name">白杢珈琲</p>
+      <p style="color:rgba(43,33,27,.62)">カフェ・コーヒー豆店　若葉台駅から徒歩6分</p>
+      <div class="row"><span style="background-image:url(img/roaster.jpg)"></span><span style="background-image:url(img/table.jpg)"></span><span style="background-image:url(img/bake.jpg)"></span></div>
+      <div class="btns"><span>経路</span><span>電話</span><span>メニュー</span><span>ウェブサイト</span></div>
+      <dl><dt>営業時間</dt><dd>8:00〜17:00</dd><dt>定休日</dt><dd>火曜・第3水曜</dd><dt>設備</dt><dd>駐車場3台・電源席・Wi-Fi</dd></dl>
+      <p style="font-size:13px;color:rgba(43,33,27,.62);margin-top:10px">整えた後の表示のイメージ（実際の画面ではありません）</p>
+    </div>
+  </div>
+  <p class="pn">5 / 10</p>
+</section>
+
+<!-- 6 -->
+<section class="slide" id="s6">
+  <p class="kicker">5. 施策2：Instagramを週6本の型で回す</p>
+  <h2>毎週同じ型で投稿し、1本あたりの作成時間を15分にします</h2>
+  <div class="content two" style="grid-template-columns:auto 1fr">
+    <div class="ig">
+      <img src="img/post-01.png" alt=""><img src="img/post-02.png" alt=""><img src="img/post-03.png" alt="">
+      <img src="img/post-04.png" alt=""><img src="img/post-05.png" alt=""><img src="img/post-06.png" alt="">
+    </div>
+    <table>
+      <thead><tr><th>曜日</th><th>投稿の型</th><th>素材</th></tr></thead>
+      <tbody>
+        <tr><td>月</td><td>焙煎日</td><td>焙煎機の写真</td></tr>
+        <tr><td>火</td><td>今週の豆（予約投稿）</td><td>ドリップの写真</td></tr>
+        <tr><td>水</td><td>焼き菓子</td><td>焼き上がりの写真</td></tr>
+        <tr><td>木</td><td>淹れ方・豆の知識</td><td>文字中心の画像</td></tr>
+        <tr><td>金</td><td>店内・設備</td><td>席の写真</td></tr>
+        <tr><td>土</td><td>営業案内</td><td>文字中心の画像</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="pn">6 / 10</p>
+</section>
+
+<!-- 7 -->
+<section class="slide" id="s7">
+  <p class="kicker">6. 施策3：平日14時〜16時の焼き菓子セット</p>
+  <h2>空いている時間に、来る理由をひとつ用意します</h2>
+  <div class="content two">
+    <div class="card" style="border-top-color:var(--gr)">
+      <h3>内容</h3>
+      <ul>
+        <li>対象：平日 14:00〜16:00（ラストオーダー16:00）</li>
+        <li>ドリンク＋焼き菓子1品で 50円引き</li>
+        <li>告知：店頭のPOP・Instagramの水曜投稿・Googleマップの投稿</li>
+        <li>期間：2026年12月7日〜2027年2月26日</li>
+      </ul>
+    </div>
+    <div>
+      <svg viewBox="0 0 520 300" width="520" height="300" role="img" aria-label="時間帯別の席の利用率">
+        <g font-family="Zen Kaku Gothic New, sans-serif" font-size="15" fill="#2B211B">
+          <line x1="40" y1="250" x2="510" y2="250" stroke="#B9BEC4"/>
+          <rect x="60" y="120" width="70" height="130" fill="#B9BEC4"/><text x="70" y="275">8〜10時</text><text x="78" y="112">52%</text>
+          <rect x="150" y="90" width="70" height="160" fill="#B9BEC4"/><text x="155" y="275">10〜12時</text><text x="168" y="82">64%</text>
+          <rect x="240" y="40" width="70" height="210" fill="#2B211B"/><text x="245" y="275">12〜14時</text><text x="258" y="32">84%</text>
+          <rect x="330" y="172" width="70" height="78" fill="#2C6670"/><text x="335" y="275">14〜16時</text><text x="348" y="164" fill="#2C6670">31%</text>
+          <rect x="420" y="190" width="70" height="60" fill="#B9BEC4"/><text x="425" y="275">16〜17時</text><text x="438" y="182">24%</text>
+        </g>
+      </svg>
+      <p style="font-size:16px;color:rgba(43,33,27,.62)">平日の時間帯別 席の利用率（2026年9〜10月・架空）</p>
+    </div>
+  </div>
+  <p class="pn">7 / 10</p>
+</section>
+
+<!-- 8 -->
+<section class="slide" id="s8">
+  <p class="kicker">7. スケジュール</p>
+  <h2>12月の最初の2週間で準備を終え、3か月で効果を測ります</h2>
+  <div class="content">
+    <div class="gantt">
+      <div class="h" style="text-align:left">作業</div><div class="h mh">2026年12月</div><div class="h mh">2027年1月</div><div class="h mh">2月</div>
+      <div>Googleマップの情報を整える</div><div class="bar"><i></i></div><div class="bar"><i></i></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+      <div>写真の撮影（20枚）</div><div class="bar"><i></i></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+      <div>Instagram 週6本の投稿</div><div></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div><div class="bar"><i></i></div>
+      <div>平日午後の焼き菓子セット</div><div></div><div class="bar"><i class="l"></i></div><div class="bar"><i class="l"></i></div><div class="bar"><i class="l"></i></div><div class="bar"><i class="l"></i></div><div class="bar"><i class="l"></i></div><div class="bar"><i class="l"></i></div><div class="bar"><i class="l"></i></div><div class="bar"><i class="l"></i></div><div class="bar"><i class="l"></i></div><div class="bar"><i class="l"></i></div><div class="bar"><i class="l"></i></div>
+      <div>数値の確認（月1回）</div><div></div><div></div><div></div><div class="bar"><i></i></div><div></div><div></div><div></div><div class="bar"><i></i></div><div></div><div></div><div></div><div class="bar"><i></i></div>
+    </div>
+    <p style="font-size:16px;margin-top:14px;color:rgba(43,33,27,.62)">1マスは約1週間です。</p>
+  </div>
+  <p class="pn">8 / 10</p>
+</section>
+
+<!-- 9 -->
+<section class="slide" id="s9">
+  <p class="kicker">8. 目標と測り方</p>
+  <h2>4つの数字を毎月同じ方法で測ります</h2>
+  <div class="content">
+    <table>
+      <thead><tr><th>指標</th><th>測り方</th><th style="text-align:right">現在</th><th style="text-align:right">2月の目標</th></tr></thead>
+      <tbody>
+        <tr><td>Googleマップからの経路検索・電話</td><td>ビジネスプロフィールの「パフォーマンス」</td><td class="n">月 48回</td><td class="n arrow">月 90回</td></tr>
+        <tr><td>Instagramの保存数</td><td>投稿ごとのインサイト（月の合計）</td><td class="n">月 35件</td><td class="n arrow">月 150件</td></tr>
+        <tr><td>平日14時〜16時の席の利用率</td><td>レジの時間帯別の会計件数から計算</td><td class="n">31%</td><td class="n arrow">45%</td></tr>
+        <tr><td>焼き菓子セットの注文数</td><td>レジのセット用ボタンの件数</td><td class="n">―</td><td class="n arrow">1日 12件</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:16px;margin-top:14px;color:rgba(43,33,27,.62)">現在の値は架空です。実案件では、提案前に店のデータで確認します。</p>
+  </div>
+  <p class="pn">9 / 10</p>
+</section>
+
+<!-- 10 -->
+<section class="slide" id="s10">
+  <p class="kicker">9. 費用と次の一歩</p>
+  <h2>初月の準備・3か月の運用の費用です</h2>
+  <div class="content two">
+    <table>
+      <thead><tr><th>項目</th><th style="text-align:right">金額（税込）</th></tr></thead>
+      <tbody>
+        <tr><td>Googleビジネスプロフィールの整備</td><td class="n">15,000円</td></tr>
+        <tr><td>Instagram 投稿の型と画像テンプレート6種</td><td class="n">24,000円</td></tr>
+        <tr><td>店頭POP（A4・1種）</td><td class="n">5,000円</td></tr>
+        <tr><td>月1回の数値確認と改善提案（3か月）</td><td class="n">18,000円</td></tr>
+        <tr><th>合計</th><th style="text-align:right;font-family:var(--m);font-size:24px">62,000円</th></tr>
+      </tbody>
+    </table>
+    <div class="card" style="border-top-color:var(--gr)">
+      <h3>次の一歩</h3>
+      <ul>
+        <li>12月1日（火）までに、進めるかどうかをご連絡ください</li>
+        <li>12月2日（水）にGoogleビジネスプロフィールの管理者権限を共有していただきます</li>
+        <li>12月7日（月）から写真の撮影と投稿を始めます</li>
+      </ul>
+    </div>
+  </div>
+  <p class="pn">10 / 10</p>
+</section>
+
+<script>
+  const n = new URLSearchParams(location.search).get('n');
+  if (n) { document.body.classList.add('single'); document.getElementById('s' + n).classList.add('on'); }
+</script>
+</body>
+</html>

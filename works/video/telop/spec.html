@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>テロップ仕様表：Googleマップで見つけてもらう3つの準備｜自主制作サンプル</title><meta name="robots" content="noindex"><style>
+:root{--ink:#24262B;--sub:#5D626B;--line:#DCDFE4;--accent:#3D5A80;--paper:#FFFFFF;--bg:#F3F4F6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:17px;line-height:2;word-break:auto-phrase;line-break:strict}
+.flag{margin:0;background:var(--ink);color:#fff;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;padding:6px 20px}
+article{max-width:760px;margin:40px auto 80px;background:var(--paper);padding:56px 64px}
+h1{font-size:28px;line-height:1.5;margin:0 0 24px}
+h2{font-size:21px;line-height:1.6;margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+h3{font-size:18px;margin:32px 0 8px}
+p{margin:0 0 1em}
+blockquote{margin:0 0 32px;padding:12px 16px;background:var(--bg);border-left:4px solid var(--accent);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14px;line-height:1.8;color:var(--sub)}
+blockquote p{margin:0}
+ul,ol{margin:0 0 1em;padding-left:1.5em}
+table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14.5px;line-height:1.7}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+thead th{border-bottom:2px solid var(--ink)}
+hr{border:0;border-top:1px dashed var(--line);margin:32px 0}
+a{color:var(--accent);word-break:break-all}
+figure{margin:16px 0 28px}figure img{width:100%;display:block;border:1px solid var(--line)}figcaption{font-family:sans-serif;font-size:13px;color:var(--sub);margin-top:6px}
+.back{display:block;max-width:760px;margin:24px auto 0;font-family:sans-serif;font-size:14px}
+@media(max-width:640px){article{margin:0;padding:32px 20px}body{font-size:16px}h1{font-size:23px}h2{font-size:19px}}
+</style></head>
+<body><p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」の文章サンプルです。</p>
+<a class="back" href="index.html">← テロップ編集サンプルに戻る</a>
+<article>
+<h1>テロップ仕様表：Googleマップで見つけてもらう3つの準備</h1>
+<blockquote><p>自主制作サンプル：本編動画（telop-main.mp4）で使ったテロップの仕様です。値は Remotion のコード（source/src/TelopMain.tsx の SPEC）と同じです。</p></blockquote>
+<h2>1. 本文テロップ（話している言葉）</h2>
+<table><thead><tr><th>項目</th><th>値</th></tr></thead><tbody><tr><td>書体</td><td>M PLUS 1p ExtraBold（SIL Open Font License）</td></tr><tr><td>大きさ</td><td>46px（1280×720の画面に対して。1920×1080なら69px）</td></tr><tr><td>1行の上限</td><td>全角20字。超える文は読点 → 助詞の後ろ → 中央の順で改行する</td></tr><tr><td>1画面の行数</td><td>2行まで。3行以上になる文は、2行ずつのページに分けて切り替える</td></tr><tr><td>文字の色</td><td>#FFFFFF</td></tr><tr><td>強調語の色</td><td>#FFD43B（台本で [[ ]] に囲んだ語）</td></tr><tr><td>縁取り</td><td>#14213D・9px（文字の外側に付ける）</td></tr><tr><td>影</td><td>下に4px・ぼかし10px・黒の35%</td></tr><tr><td>位置</td><td>画面の下から54px・左右中央</td></tr><tr><td>文末</td><td>「。」は表示しない</td></tr><tr><td>出かた</td><td>4フレーム（約0.13秒）で、下から10px動きながら現れる</td></tr><tr><td>消えかた</td><td>読み終わってから0.25秒後に消える（次の文との間は0.45秒）</td></tr></tbody></table>
+<h2>2. 章の見出し（左上）</h2>
+<table><thead><tr><th>項目</th><th>値</th></tr></thead><tbody><tr><td>書体・大きさ</td><td>M PLUS 1p ExtraBold・24px</td></tr><tr><td>色</td><td>地 #14213D・文字 #FFFFFF・左の帯 #FFD43B（幅10px）</td></tr><tr><td>位置</td><td>画面の上から34px・左端に付ける</td></tr><tr><td>出かた</td><td>章が変わったときだけ、10フレームで左から40px滑り込む。切り替わりに効果音（whoosh）を音量18%で鳴らす</td></tr></tbody></table>
+<h2>3. 図解の場面</h2>
+<table><thead><tr><th>項目</th><th>値</th></tr></thead><tbody><tr><td>地の色</td><td>#EEF2F6</td></tr><tr><td>文字・図形</td><td>#14213D・強調は #FFD43B・グラフの最新月は #2A6F97</td></tr><tr><td>動き</td><td>要素ごとにばね（damping 14・stiffness 140）で現れる。ナレーションで触れた瞬間に出す</td></tr><tr><td>配置</td><td>本文テロップと重ならないよう、図解は画面の上から約560pxまでに収める</td></tr></tbody></table>
+<h2>4. 素材映像の場面</h2>
+<ul><li>6秒ごとに素材を切り替え、各カットで1.00倍 → 1.07倍にゆっくり寄る</li><li>画面の下半分に黒の55%→0%のグラデーションを敷き、テロップを読みやすくする</li></ul>
+<h2>5. 音</h2>
+<table><thead><tr><th>項目</th><th>値</th></tr></thead><tbody><tr><td>ナレーション</td><td>Irodori-TTS（MIT License）でローカル合成。文ごとに WAV を作り、文の間は0.45秒・場面の間は0.8秒</td></tr><tr><td>BGM</td><td>Mixkit「Motivating Mornings」・音量7%・繰り返し</td></tr><tr><td>効果音</td><td>Mixkit の whoosh・章の切り替わりだけ</td></tr></tbody></table>
+</article></body></html>

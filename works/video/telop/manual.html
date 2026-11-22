@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>テロップ再現マニュアル｜自主制作サンプル</title><meta name="robots" content="noindex"><style>
+:root{--ink:#24262B;--sub:#5D626B;--line:#DCDFE4;--accent:#3D5A80;--paper:#FFFFFF;--bg:#F3F4F6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:17px;line-height:2;word-break:auto-phrase;line-break:strict}
+.flag{margin:0;background:var(--ink);color:#fff;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;padding:6px 20px}
+article{max-width:760px;margin:40px auto 80px;background:var(--paper);padding:56px 64px}
+h1{font-size:28px;line-height:1.5;margin:0 0 24px}
+h2{font-size:21px;line-height:1.6;margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+h3{font-size:18px;margin:32px 0 8px}
+p{margin:0 0 1em}
+blockquote{margin:0 0 32px;padding:12px 16px;background:var(--bg);border-left:4px solid var(--accent);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14px;line-height:1.8;color:var(--sub)}
+blockquote p{margin:0}
+ul,ol{margin:0 0 1em;padding-left:1.5em}
+table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14.5px;line-height:1.7}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+thead th{border-bottom:2px solid var(--ink)}
+hr{border:0;border-top:1px dashed var(--line);margin:32px 0}
+a{color:var(--accent);word-break:break-all}
+figure{margin:16px 0 28px}figure img{width:100%;display:block;border:1px solid var(--line)}figcaption{font-family:sans-serif;font-size:13px;color:var(--sub);margin-top:6px}
+.back{display:block;max-width:760px;margin:24px auto 0;font-family:sans-serif;font-size:14px}
+@media(max-width:640px){article{margin:0;padding:32px 20px}body{font-size:16px}h1{font-size:23px}h2{font-size:19px}}
+</style></head>
+<body><p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」の文章サンプルです。</p>
+<a class="back" href="index.html">← テロップ編集サンプルに戻る</a>
+<article>
+<h1>テロップ再現マニュアル</h1>
+<blockquote><p>自主制作サンプル：依頼者から「この動画のようなテロップにしてほしい」と参考動画を渡されたときに、テロップを再現する手順をまとめたものです。A4で5ページ程度の分量です。手順の中のツールは、無料で使えるもの（ffmpeg・画像編集ソフトのスポイト・Google Fonts）に限っています。</p></blockquote>
+<h2>1. 全体の流れ</h2>
+<ol><li>参考動画から、テロップが出ている場面の画像を書き出す</li><li>書体の候補を絞り、手元の書体と重ねて比べる</li><li>文字・縁取り・影・帯の色を、画像から数値で拾う</li><li>大きさ・位置・行の上限を、画面の大きさに対する比で測る</li><li>出かた・消えかた・表示時間を、フレーム単位で測る</li><li>拾った値を仕様表にまとめ、依頼者に確認してから全編に当てる</li></ol>
+<p>仕様表を先に作るのは、制作の途中で「前半と後半でテロップの大きさが違う」といったずれを防ぐためです。本編の仕様表は spec.md を見本にしてください。</p>
+<h2>2. 参考動画から画像を書き出す</h2>
+<h3>2-1. テロップが出ている場面を探す</h3>
+<p>参考動画を再生し、次の3種類の場面の時刻をメモします。</p>
+<ul><li>本文のテロップが1行の場面・2行の場面</li><li>強調語（色や大きさが変わっている語）がある場面</li><li>章の見出しや、画面の端に出る小さな文字がある場面</li></ul>
+<h3>2-2. その時刻の画像を書き出す</h3>
+<p>ffmpeg で、メモした時刻の1フレームを PNG で書き出します。動画の解像度のまま書き出すことが大切です。縮小した画像では、縁取りの太さが正しく測れません。</p>
+<p>```<br>ffmpeg -ss 00:01:23.40 -i reference.mp4 -frames:v 1 frame_0123.png<br>```</p>
+<p>テロップが出てから消えるまでを調べるときは、その前後を1フレームずつ書き出します。</p>
+<p>```<br>ffmpeg -ss 00:01:23 -t 2 -i reference.mp4 -vf fps=30 seq_%03d.png<br>```</p>
+<p>30fps の動画なら、2秒で60枚の画像になります。テロップが最初に見えた番号・完全に表示された番号・消えた番号を記録しておくと、5章の時間を測るときに使えます。</p>
+<h2>3. 書体の候補を絞る</h2>
+<h3>3-1. 字の形で分ける</h3>
+<p>書き出した画像を拡大し、次の点を確認します。</p>
+<table><thead><tr><th>確認する点</th><th>見分けられること</th></tr></thead><tbody><tr><td>線の端が丸いか角か</td><td>丸ゴシック系か、角ゴシック系か</td></tr><tr><td>縦と横の線の太さが同じか</td><td>ゴシックか、明朝か</td></tr><tr><td>「あ」「な」「ふ」のふところの広さ</td><td>字面が大きい書体か、小さい書体か</td></tr><tr><td>「さ」「き」がつながっているか</td><td>手書き風・デザイン書体かどうか</td></tr><tr><td>数字の「1」「7」の形</td><td>欧文の書体を別に組み合わせているか</td></tr></tbody></table>
+<h3>3-2. 候補を重ねて比べる</h3>
+<p>候補の書体で同じ文字を打ち、参考画像の上に半透明で重ねます。線の太さ・字の幅・「ー」の長さが合う書体を選びます。</p>
+<ul><li>商用利用できる書体を候補にします。Google Fonts の書体（M PLUS 1p・Noto Sans JP・Zen Maru Gothic など）は SIL Open Font License で、動画への使用ができます</li><li>参考動画の書体が有料の書体と分かった場合は、依頼者が使用許諾を持っているかを確認します。持っていない場合は、形の近い無料の書体を2〜3案出して選んでもらいます</li><li>書体名を断定できないときは、仕様表に「○○に近い形の書体として△△を使用」と書き、推測であることを残します</li></ul>
+<h2>4. 色・大きさ・位置を測る</h2>
+<h3>4-1. 色を拾う</h3>
+<p>画像編集ソフトのスポイトで、次の4か所の色を拾います。</p>
+<table><thead><tr><th>拾う場所</th><th>注意点</th></tr></thead><tbody><tr><td>文字の中心</td><td>縁に近い部分は、縁取りと混ざった色になるので避ける</td></tr><tr><td>縁取りの中心</td><td>縁取りが2重のときは、内側・外側を別々に拾う</td></tr><tr><td>影</td><td>影は背景と混ざるので、背景が白に近い場面で拾う</td></tr><tr><td>帯・座布団（文字の後ろの図形）</td><td>半透明のときは、背景が黒の場面と白の場面の両方で拾い、透明度を計算する</td></tr></tbody></table>
+<p>動画は圧縮で色が少しずれます。同じ場所を3つの場面で拾い、中央の値を採用します。拾った色は16進数（例 #FFD43B）で仕様表に書きます。</p>
+<h3>4-2. 大きさと位置を比で測る</h3>
+<p>画面の大きさが違う動画に当てられるよう、ピクセルではなく画面に対する比で測ります。</p>
+<table><thead><tr><th>測る値</th><th>測り方</th><th>本編の例（1280×720）</th></tr></thead><tbody><tr><td>文字の大きさ</td><td>漢字1字の高さ ÷ 画面の高さ</td><td>46 ÷ 720 = 6.4%</td></tr><tr><td>縁取りの太さ</td><td>縁取りの幅 ÷ 文字の大きさ</td><td>9 ÷ 46 = 約20%</td></tr><tr><td>下からの位置</td><td>2行目の下端から画面の下端まで ÷ 画面の高さ</td><td>54 ÷ 720 = 7.5%</td></tr><tr><td>1行の字数</td><td>いちばん長い行の字数を数える</td><td>20字</td></tr></tbody></table>
+<p>1920×1080 の動画に当てる場合は、比をかけ直します（文字の大きさ 1080 × 6.4% = 69px）。</p>
+<h2>5. タイミングを付ける</h2>
+<h3>5-1. 参考動画の出かた・消えかたを測る</h3>
+<p>2-2 で書き出した連番の画像で、次の3つを数えます。</p>
+<ul><li>現れ始めてから完全に表示されるまでのフレーム数（本編は4フレーム）</li><li>動き方（その場で現れる・下から上がる・左から滑る・大きくなる）</li><li>話し終わってから消えるまでのフレーム数（本編は約8フレーム）</li></ul>
+<h3>5-2. 自分の動画に当てるときの決まり</h3>
+<p>本編では、次の決まりでタイミングを付けました。</p>
+<ol><li>テロップは、その文を話し始めるフレームで出す。話し始めより早く出すと、視聴者が先に読んでしまい音声と合わなくなる</li><li>文が長く3行以上になるときは、2行ずつのページに分け、字数の割合で表示時間を配る</li><li>次の文までの間が短いときも、同じテロップを0.5秒以上は表示する</li><li>章が変わるときは、章の見出しを先に出し、本文のテロップはその後に出す</li></ol>
+<h3>5-3. 文ごとの時刻を取る方法</h3>
+<p>ナレーションを文ごとに別の音声ファイルとして作ると、各ファイルの長さから文の開始時刻が計算できます。本編では、台本の各文を音声合成で読み上げ、文の長さと文の間（0.45秒）を足し合わせて、すべてのテロップの開始時刻を自動で決めています（source/tools/synth.py が作る timing.json）。</p>
+<p>人の声を収録した動画の場合は、文字起こしツールの単語ごとの時刻を使うか、波形の無音の部分を目で見て区切ります。</p>
+<h2>6. 改行と表記の決まり</h2>
+<p>自動字幕のままでは読みにくくなる主な原因は、改行の位置と表記の揺れです。本編では次の決まりを使いました。</p>
+<table><thead><tr><th>決まり</th><th>理由</th></tr></thead><tbody><tr><td>改行は読点の位置を優先し、次に助詞（は・が・を・に・で など）の後ろで切る</td><td>意味の切れ目で改行すると、1行ずつ読んでも意味が分かる</td></tr><tr><td>単語・強調語の途中では改行しない</td><td>「営業時」「間」のように切れると読み返しが起きる</td></tr><tr><td>文末の「。」は表示しない</td><td>テロップの行末がそろい、画面がすっきりする</td></tr><tr><td>固有名詞・数字は台本の表記に統一する</td><td>自動字幕は「Googleマップ」を「グーグルマップ」、「口コミ」を「口込み」と誤ることがある</td></tr><tr><td>強調語は1文に2〜3語まで</td><td>強調が多いと、どれが大事か分からなくなる</td></tr></tbody></table>
+<p>比較動画（before-after.mp4）で、同じ音声の自動字幕風の表示・この決まりで作ったテロップを並べています。</p>
+<h2>7. 仕様表の作り方と確認</h2>
+<p>拾った値は、次の項目で仕様表にまとめます（spec.md を見本にしてください）。</p>
+<ol><li>書体・大きさ・1行の字数・行数</li><li>文字・強調・縁取り・影・帯の色（16進数）</li><li>位置（画面に対する比・実際のピクセル）</li><li>出かた・消えかた・表示時間（フレーム数）</li><li>章の見出しなど、本文以外のテロップの仕様</li></ol>
+<p>依頼者には、仕様表と「1行の場面」「2行の場面」「強調語がある場面」の3枚の画像を先に送り、確認をもらってから全編に当てます。全編に当てた後で書体や色を変えると、すべての場面の確認をやり直すことになるためです。</p>
+<h2>8. 納品前の確認項目</h2>
+<ul><li>テロップの誤字・脱字がない（台本と1文ずつ照らし合わせる）</li><li>3行以上になっている画面がない</li><li>単語の途中で改行している箇所がない</li><li>テロップが図や人物の顔に重なっていない</li><li>話し始めとテロップの出るタイミングがずれていない（10か所を抜き出して確認する）</li><li>スマートフォンの画面で読める大きさになっている</li></ul>
+</article></body></html>

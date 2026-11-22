@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>白杢珈琲 Instagram投稿（自主制作サンプル）</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* 白杢珈琲（P01）のブランドに合わせる：ステンレス #E4E7E5／焦げ茶 #2B211B／焙煎機の緑 #2C6670 */
+  :root { --g: #E4E7E5; --r: #2B211B; --gr: #2C6670; --m: "Shippori Mincho B1", serif; --s: "Zen Kaku Gothic New", sans-serif; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #888; font-family: var(--s); color: var(--r); }
+  .post { width: 1080px; height: 1080px; position: relative; overflow: hidden; background: var(--g); margin: 0 auto 40px; }
+  body.single .post { display: none; margin: 0; }
+  body.single .post.on { display: block; }
+  .ph { position: absolute; background: center / cover no-repeat; }
+  .seal { width: 64px; height: 64px; color: currentColor; }
+  .brand { display: flex; align-items: center; gap: 14px; font-family: var(--m); font-weight: 700; font-size: 30px; letter-spacing: .16em; }
+  .tag { display: inline-block; font-size: 26px; font-weight: 700; letter-spacing: .12em; padding: 8px 22px; background: var(--gr); color: #fff; }
+  .num { font-family: var(--m); }
+  .sample { position: absolute; right: 24px; bottom: 16px; font-size: 18px; opacity: .55; }
+
+  /* 1 焙煎日 */
+  #p1 .ph { inset: 0 0 360px 0; background-image: url(../img/roaster.jpg); background-position: center 40%; }
+  #p1 .box { position: absolute; left: 0; right: 0; bottom: 0; height: 360px; background: var(--r); color: var(--g); padding: 56px 72px; display: grid; grid-template-columns: 1fr auto; align-items: end; }
+  #p1 h2 { font-family: var(--m); font-size: 92px; letter-spacing: .1em; line-height: 1.1; }
+  #p1 p { font-size: 32px; margin-top: 18px; }
+  #p1 .days { display: flex; gap: 14px; }
+  #p1 .days span { width: 118px; height: 118px; border-radius: 50%; border: 3px solid var(--g); display: grid; place-items: center; font-family: var(--m); font-size: 56px; }
+
+  /* 2 今週の豆 */
+  #p2 .ph { left: 0; top: 0; bottom: 0; width: 470px; background-image: url(../img/pour.jpg); }
+  #p2 .body { position: absolute; left: 470px; right: 0; top: 0; bottom: 0; padding: 88px 72px; display: flex; flex-direction: column; }
+  #p2 h2 { font-family: var(--m); font-size: 64px; line-height: 1.3; margin: 28px 0 32px; }
+  #p2 dl { border-top: 3px solid var(--r); font-size: 30px; }
+  #p2 dl div { display: grid; grid-template-columns: 5em 1fr; padding: 18px 0; border-bottom: 1px solid rgba(43,33,27,.3); }
+  #p2 dt { opacity: .7; }
+  #p2 .price { margin-top: auto; font-family: var(--m); font-size: 76px; color: var(--gr); }
+  #p2 .price small { font-size: 30px; color: var(--r); margin-right: 16px; font-family: var(--s); }
+
+  /* 3 焼き菓子 */
+  #p3 .ph { inset: 0; background-image: url(../img/bake.jpg); background-position: center 60%; }
+  #p3 .box { position: absolute; left: 64px; top: 64px; width: 520px; background: var(--g); padding: 48px 52px; }
+  #p3 h2 { font-family: var(--m); font-size: 56px; line-height: 1.35; margin: 22px 0 18px; }
+  #p3 .price { font-family: var(--m); font-size: 64px; color: var(--gr); }
+  #p3 p { font-size: 28px; line-height: 1.7; margin-top: 18px; }
+
+  /* 4 淹れ方 */
+  #p4 { background: var(--r); color: var(--g); padding: 80px 80px; }
+  #p4 h2 { font-family: var(--m); font-size: 66px; letter-spacing: .06em; margin: 24px 0 44px; }
+  #p4 ol { list-style: none; padding: 0; display: grid; gap: 0; border-top: 2px solid rgba(228,231,229,.4); }
+  #p4 li { display: grid; grid-template-columns: 110px 1fr auto; align-items: baseline; padding: 26px 0; border-bottom: 2px solid rgba(228,231,229,.25); font-size: 34px; }
+  #p4 li .n { font-family: var(--m); font-size: 56px; color: #8FC1C8; }
+  #p4 li .t { font-family: var(--m); font-size: 34px; opacity: .8; }
+  #p4 .note { margin-top: 30px; font-size: 26px; opacity: .8; }
+
+  /* 5 店内 */
+  #p5 .ph { inset: 0 0 0 0; background-image: url(../img/table.jpg); background-position: center 60%; }
+  #p5 .box { position: absolute; left: 0; right: 0; bottom: 0; background: rgba(228,231,229,.94); padding: 52px 72px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  #p5 .box div { border-left: 3px solid var(--r); padding-left: 22px; }
+  #p5 .box b { display: block; font-family: var(--m); font-size: 70px; line-height: 1.1; }
+  #p5 .box span { font-size: 25px; white-space: nowrap; }
+  #p5 .top { position: absolute; left: 72px; top: 64px; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.45); }
+  #p5 .top h2 { font-family: var(--m); font-size: 64px; margin-top: 20px; }
+
+  /* 6 営業案内 */
+  #p6 { padding: 80px; display: grid; grid-template-rows: auto 1fr auto; }
+  #p6 h2 { font-family: var(--m); font-size: 70px; margin: 24px 0 0; }
+  #p6 dl { align-self: center; border-top: 4px solid var(--r); }
+  #p6 dl div { display: grid; grid-template-columns: 200px 1fr; padding: 26px 0; border-bottom: 2px solid rgba(43,33,27,.25); align-items: baseline; }
+  #p6 dt { font-size: 30px; opacity: .75; }
+  #p6 dd { font-family: var(--m); font-size: 50px; }
+  #p6 dd small { display: block; font-family: var(--s); font-size: 28px; margin-top: 6px; }
+  #p6 .foot { display: flex; justify-content: space-between; align-items: center; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="4"/><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M50 38c9 0 15 5 15 12s-6 12-15 12-13-6-13-12 4-12 13-12z"/><path d="M50 28c16 0 26 9 26 22 0 14-11 23-26 23S24 63 24 50c0-12 10-22 26-22z"/><path d="M14 46c6-17 20-28 37-28 19 0 32 11 35 27"/><path d="M86 56c-5 16-19 26-36 26-16 0-30-9-35-23"/></g><circle cx="50" cy="50" r="5" fill="currentColor"/></symbol></svg>
+
+<section class="post" id="p1">
+  <div class="ph"></div>
+  <div class="box">
+    <div><span class="tag">焙煎日</span><h2>月・木・土</h2><p>店内の5kg焙煎機で、営業前の6:00から焙煎しています</p></div>
+    <svg class="seal" style="width:96px;height:96px"><use href="#seal"/></svg>
+  </div>
+  <p class="sample" style="color:#E4E7E5">自主制作サンプル</p>
+</section>
+
+<section class="post" id="p2">
+  <div class="ph"></div>
+  <div class="body">
+    <span class="tag" style="align-self:flex-start">今週の豆</span>
+    <h2>エチオピア<br>ゲデオ</h2>
+    <dl>
+      <div><dt>焙煎度</dt><dd>浅煎り</dd></div>
+      <div><dt>産地</dt><dd>ゲデオ地区</dd></div>
+      <div><dt>精製</dt><dd>ウォッシュト</dd></div>
+    </dl>
+    <p class="price"><small>100g</small>1,280円</p>
+  </div>
+  <p class="sample">自主制作サンプル</p>
+</section>
+
+<section class="post" id="p3">
+  <div class="ph"></div>
+  <div class="box">
+    <span class="tag">焼き菓子</span>
+    <h2>焦がしバターの<br>フィナンシェ</h2>
+    <p class="price">320円</p>
+    <p>毎朝11:00に焼き上がります。<br>売り切れ次第終了します。</p>
+  </div>
+  <p class="sample" style="color:#fff">自主制作サンプル</p>
+</section>
+
+<section class="post" id="p4">
+  <span class="tag">店のドリップ</span>
+  <h2>1杯の淹れ方</h2>
+  <ol>
+    <li><span class="n">1</span><span>中挽きの粉を入れる</span><span class="t">15g</span></li>
+    <li><span class="n">2</span><span>お湯を注いで蒸らす</span><span class="t">30秒</span></li>
+    <li><span class="n">3</span><span>3回に分けて注ぐ</span><span class="t">240ml</span></li>
+    <li><span class="n">4</span><span>落ちきるまで待つ</span><span class="t">2分30秒</span></li>
+  </ol>
+  <p class="note">お湯の温度は90℃です。浅煎りの豆は92℃で淹れています。</p>
+  <p class="sample">自主制作サンプル</p>
+</section>
+
+<section class="post" id="p5">
+  <div class="ph"></div>
+  <div class="top"><span class="tag">店内</span><h2>窓際の席</h2></div>
+  <div class="box">
+    <div><b>18<small style="font-size:32px">席</small></b><span>カウンター6・テーブル12</span></div>
+    <div><b>6<small style="font-size:32px">席</small></b><span>電源のある席</span></div>
+    <div><b>90<small style="font-size:32px">分</small></b><span>混雑時のご利用時間</span></div>
+  </div>
+</section>
+
+<section class="post" id="p6">
+  <div><span class="tag">営業案内</span><h2>白杢珈琲</h2></div>
+  <dl>
+    <div><dt>営業時間</dt><dd>8:00〜17:00<small>ラストオーダー 16:30</small></dd></div>
+    <div><dt>定休日</dt><dd>火曜・第3水曜</dd></div>
+    <div><dt>場所</dt><dd>若葉台駅 南口 徒歩6分<small>駐車場3台</small></dd></div>
+  </dl>
+  <div class="foot"><div class="brand"><svg class="seal"><use href="#seal"/></svg>白杢珈琲</div><p style="font-size:20px;opacity:.55">自主制作サンプル</p></div>
+</section>
+
+<script>
+  const n = new URLSearchParams(location.search).get('n');
+  if (n) { document.body.classList.add('single'); document.getElementById('p' + n).classList.add('on'); }
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>リニューアル提案セット｜御菓子司 つきしろ（自主制作サンプル）</title>
+<meta name="robots" content="noindex">
+<style>
+  :root { --ink: #1A1D1A; --green: #5E7A42; --line: #CFD3CB; --ground: #F4F5F1; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif; font-size: 16px; line-height: 1.8; word-break: auto-phrase; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 48px 24px 80px; }
+  .flag { font-size: 13px; background: var(--ink); color: #fff; padding: 6px 24px; margin: 0; }
+  h1 { font-size: 28px; margin: 0 0 8px; }
+  p { margin: 0; }
+  .grid { margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .grid a { display: block; color: var(--ink); text-decoration: none; border-top: 4px solid var(--ink); padding-top: 12px; }
+  .grid a.after { border-top-color: var(--green); }
+  .grid img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; display: block; border: 1px solid var(--line); background: #fff; }
+  .grid b { display: block; font-size: 18px; margin-bottom: 8px; text-decoration: underline; text-underline-offset: 3px; }
+  .grid span { display: block; margin-top: 8px; font-size: 14px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<p class="flag">自主制作サンプルです。店名・内容は架空のものです。</p>
+<div class="wrap">
+  <h1>リニューアル提案セット：御菓子司 つきしろ</h1>
+  <p>2016年ごろに作られた想定の古いホームページ（Before）・同じ店の情報で作り直したページ（After）・改善提案書（A4・2ページ）の3点です。</p>
+  <div class="grid">
+    <a href="before/"><b>Before：現在のホームページ</b><img src="proposal/img/before-pc.jpg" alt="Before のPC表示"><span>幅800pxの表で組んだ古い作り。情報は2016年で止まっています。</span></a>
+    <a class="after" href="after/"><b>After：作り直したページ</b><img src="proposal/img/after-pc.jpg" alt="After のPC表示"><span>スマートフォン対応の1ページ構成。営業時間・場所・価格を先に載せています。</span></a>
+    <a href="proposal/"><b>改善提案書（A4・2ページ）</b><img src="proposal/img/proposal-thumb.jpg" alt="改善提案書の1ページ目"><span>問題点・改善内容・制作の流れ・料金。PDF版は proposal/proposal.pdf です。</span></a>
+  </div>
+</div>
+</body>
+</html>

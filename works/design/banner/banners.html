@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>白杢珈琲 バナー4サイズ（自主制作サンプル）</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --g: #E4E7E5; --r: #2B211B; --gr: #2C6670; --m: "Shippori Mincho B1", serif; --s: "Zen Kaku Gothic New", sans-serif; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #777; font-family: var(--s); color: var(--r); padding: 24px; display: grid; gap: 24px; justify-items: start; }
+  body.single { padding: 0; background: #fff; }
+  body.single .bn { display: none; } body.single .bn.on { display: block; }
+  .bn { position: relative; overflow: hidden; background: var(--g); }
+  .ph { position: absolute; background: url(img/bake.jpg) center 62% / cover no-repeat; }
+  .seal { color: currentColor; }
+  .price { font-family: var(--m); color: var(--gr); }
+  .s { position: absolute; font-size: 10px; opacity: .55; }
+
+  /* 1200×628（SNS・広告の横長） */
+  #b1 { width: 1200px; height: 628px; }
+  #b1 .ph { left: 560px; right: 0; top: 0; bottom: 0; }
+  #b1 .txt { position: absolute; left: 64px; top: 64px; bottom: 64px; width: 470px; display: flex; flex-direction: column; }
+  #b1 .when { font-size: 26px; font-weight: 700; color: #fff; background: var(--gr); align-self: flex-start; padding: 8px 18px; letter-spacing: .06em; }
+  #b1 h1 { font-family: var(--m); font-size: 60px; white-space: nowrap; line-height: 1.3; margin-top: 30px; }
+  #b1 .price { font-size: 44px; margin-top: 20px; }
+  #b1 .price small { font-family: var(--s); font-size: 22px; color: var(--r); display: block; font-weight: 500; }
+  #b1 .brand { margin-top: auto; display: flex; align-items: center; gap: 12px; font-family: var(--m); font-weight: 700; font-size: 26px; letter-spacing: .14em; }
+  #b1 .brand svg { width: 44px; height: 44px; }
+  #b1 .s { right: 16px; bottom: 10px; color: #fff; font-size: 13px; }
+
+  /* 1080×1080（正方形） */
+  #b2 { width: 1080px; height: 1080px; }
+  #b2 .ph { inset: 0 0 420px 0; }
+  #b2 .txt { position: absolute; left: 0; right: 0; bottom: 0; height: 420px; background: var(--r); color: var(--g); padding: 56px 72px; display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr auto; column-gap: 40px; }
+  #b2 .when { font-size: 30px; font-weight: 700; color: #8FC1C8; letter-spacing: .06em; }
+  #b2 h1 { font-family: var(--m); font-size: 76px; line-height: 1.25; margin-top: 18px; grid-column: 1; }
+  #b2 .price { grid-column: 2; grid-row: 1 / 3; align-self: center; text-align: right; color: #8FC1C8; font-size: 64px; line-height: 1.15; }
+  #b2 .price small { display: block; font-family: var(--s); font-size: 26px; color: var(--g); }
+  #b2 .brand { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; font-family: var(--m); font-size: 28px; letter-spacing: .14em; border-top: 1px solid rgba(228,231,229,.3); padding-top: 22px; }
+  #b2 .brand svg { width: 44px; height: 44px; }
+  #b2 .s { right: 20px; bottom: 12px; color: var(--g); font-size: 14px; }
+
+  /* 728×90（横長の帯） */
+  #b3 { width: 728px; height: 90px; background: var(--r); color: var(--g); }
+  #b3 .ph { left: 0; top: 0; bottom: 0; width: 150px; }
+  #b3 .txt { position: absolute; left: 164px; right: 12px; top: 0; bottom: 0; display: flex; align-items: center; gap: 16px; }
+  #b3 .when { font-size: 13px; font-weight: 700; color: #8FC1C8; line-height: 1.35; white-space: nowrap; }
+  #b3 h1 { font-family: var(--m); font-size: 22px; white-space: nowrap; }
+  #b3 .price { color: #8FC1C8; font-size: 18px; white-space: nowrap; margin-left: auto; }
+  #b3 .brand { font-family: var(--m); font-size: 14px; letter-spacing: .1em; border-left: 1px solid rgba(228,231,229,.35); padding-left: 14px; white-space: nowrap; }
+  #b3 .s { right: 6px; bottom: 2px; color: var(--g); font-size: 8px; }
+
+  /* 300×250（レクタングル） */
+  #b4 { width: 300px; height: 250px; }
+  #b4 .ph { inset: 0 0 128px 0; }
+  #b4 .txt { position: absolute; left: 0; right: 0; bottom: 0; height: 128px; padding: 12px 16px; }
+  #b4 .when { font-size: 12px; font-weight: 700; color: #fff; background: var(--gr); display: inline-block; padding: 2px 8px; }
+  #b4 h1 { font-family: var(--m); font-size: 22px; line-height: 1.3; margin-top: 6px; }
+  #b4 .row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; }
+  #b4 .price { font-size: 19px; }
+  #b4 .brand { font-family: var(--m); font-size: 13px; font-weight: 700; letter-spacing: .1em; }
+  #b4 .s { left: 16px; bottom: 3px; font-size: 8px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="5"/><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M50 38c9 0 15 5 15 12s-6 12-15 12-13-6-13-12 4-12 13-12z"/><path d="M50 28c16 0 26 9 26 22 0 14-11 23-26 23S24 63 24 50c0-12 10-22 26-22z"/><path d="M14 46c6-17 20-28 37-28 19 0 32 11 35 27"/><path d="M86 56c-5 16-19 26-36 26-16 0-30-9-35-23"/></g><circle cx="50" cy="50" r="6" fill="currentColor"/></symbol></svg>
+
+<section class="bn" id="b1">
+  <div class="ph"></div>
+  <div class="txt">
+    <p class="when">平日 14:00〜16:00</p>
+    <h1>焼き菓子セット</h1>
+    <p class="price"><small>ドリンク＋焼き菓子1品</small>同時注文で50円引き</p>
+    <p class="brand"><svg><use href="#seal"/></svg>白杢珈琲</p>
+  </div>
+  <p class="s">自主制作サンプル</p>
+</section>
+
+<section class="bn" id="b2">
+  <div class="ph"></div>
+  <div class="txt">
+    <div><p class="when">平日 14:00〜16:00</p><h1>焼き菓子セット</h1></div>
+    <p class="price"><small>ドリンク＋焼き菓子</small>50円引き</p>
+    <p class="brand"><svg><use href="#seal"/></svg>白杢珈琲　若葉台駅 南口 徒歩6分</p>
+  </div>
+  <p class="s">自主制作サンプル</p>
+</section>
+
+<section class="bn" id="b3">
+  <div class="ph"></div>
+  <div class="txt">
+    <p class="when">平日<br>14:00〜16:00</p>
+    <h1>焼き菓子セット</h1>
+    <p class="price">同時注文で50円引き</p>
+    <p class="brand">白杢珈琲</p>
+  </div>
+  <p class="s">自主制作サンプル</p>
+</section>
+
+<section class="bn" id="b4">
+  <div class="ph"></div>
+  <div class="txt">
+    <p class="when">平日 14:00〜16:00</p>
+    <h1>焼き菓子セット</h1>
+    <div class="row"><p class="price">50円引き</p><p class="brand">白杢珈琲</p></div>
+  </div>
+  <p class="s">自主制作サンプル</p>
+</section>
+
+<script>
+  const n = new URLSearchParams(location.search).get('n');
+  if (n) { document.body.classList.add('single'); document.getElementById('b' + n).classList.add('on'); }
+</script>
+</body>
+</html>

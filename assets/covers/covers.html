@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>出品カバー画像（書き出し用）</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;800&family=Shippori+Mincho+B1:wght@700&family=Zen+Maru+Gothic:wght@700&display=swap" rel="stylesheet">
+<style>
+  /* 1220×1240px。上下120px・右下（販売実績の表示などが重なる位置）には文字を置かない */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #777; font-family: "M PLUS 1p", sans-serif; }
+  .cv { width: 1220px; height: 1240px; position: relative; overflow: hidden; margin: 0 auto 30px; }
+  body.single .cv { display: none; margin: 0; } body.single .cv.on { display: block; }
+  .safe { position: absolute; left: 90px; right: 90px; top: 150px; bottom: 150px; }
+  h1 { font-weight: 800; line-height: 1.22; letter-spacing: .02em; }
+  .sub { font-weight: 500; line-height: 1.6; }
+  .shot { position: absolute; background: center top / cover no-repeat; box-shadow: 0 30px 60px rgba(0,0,0,.28); }
+  .phone { position: absolute; border: 14px solid #15181E; border-radius: 46px; overflow: hidden; background: center top / cover no-repeat; box-shadow: 0 30px 60px rgba(0,0,0,.3); }
+
+  /* Web制作：紺地・実際の制作サンプルの画面を並べる */
+  #c1 { background: #1F2A44; color: #fff; }
+  #c1 h1 { font-size: 96px; }
+  #c1 .sub { font-size: 40px; margin-top: 26px; color: #C9D4E8; }
+  #c1 .line { width: 120px; height: 10px; background: #F2A524; margin-bottom: 34px; }
+  #c1 .shot { left: 90px; top: 640px; width: 700px; height: 394px; border-radius: 12px; background-image: url(src/cafe-pc.png); }
+  #c1 .p1 { left: 760px; top: 560px; width: 210px; height: 455px; background-image: url(src/ramen-sp.png); }
+  #c1 .p2 { left: 930px; top: 610px; width: 210px; height: 455px; background-image: url(src/salon-sp.png); }
+
+  /* 動画編集：黒地・テロップの見本を大きく */
+  #c2 { background: #111; color: #fff; }
+  #c2 .frame { position: absolute; left: 90px; right: 90px; top: 520px; height: 586px; background: center / cover no-repeat url(src/video1.png); border-radius: 10px; }
+  #c2 h1 { font-size: 104px; }
+  #c2 h1 span { color: #FFD43B; }
+  #c2 .sub { font-size: 40px; margin-top: 24px; color: #D0D0D0; }
+
+  /* 記事・文書：明るい灰の地・原稿の紙 */
+  #c3 { background: #EEF0F3; color: #24262B; }
+  #c3 h1 { font-family: "Shippori Mincho B1", serif; font-size: 100px; line-height: 1.28; }
+  #c3 .sub { font-size: 40px; margin-top: 28px; color: #3D5A80; }
+  #c3 .paper { position: absolute; width: 560px; height: 720px; background: #fff center top / cover no-repeat url(src/doc.png); box-shadow: 0 24px 50px rgba(36,38,43,.18); }
+  #c3 .pa { left: 600px; top: 600px; transform: rotate(4deg); }
+  #c3 .pb { left: 500px; top: 630px; transform: rotate(-3deg); background-image: none; padding: 60px 54px; font-family: "Shippori Mincho B1", serif; font-size: 34px; line-height: 2; color: #24262B; }
+  #c3 .pb b { display: block; font-size: 40px; margin-bottom: 18px; }
+
+  /* 自動化・データ：緑地・表の画面 */
+  #c4 { background: #0F5132; color: #fff; }
+  #c4 h1 { font-size: 96px; }
+  #c4 .sub { font-size: 40px; margin-top: 26px; color: #C6E6D4; }
+  #c4 .shot { left: 90px; top: 620px; width: 1040px; height: 448px; border-radius: 10px; background-image: url(src/excel.png); background-position: left top; }
+  #c4 .flow { position: absolute; left: 90px; top: 520px; display: flex; gap: 18px; align-items: center; font-size: 34px; font-weight: 800; }
+  #c4 .flow span { background: #fff; color: #0F5132; padding: 8px 22px; border-radius: 8px; }
+  #c4 .flow i { font-style: normal; color: #9FD8B8; }
+</style>
+</head>
+<body>
+<section class="cv" id="c1">
+  <div class="safe"><div class="line"></div><h1>店舗の<br>ホームページ制作</h1><p class="sub">1ページ構成・スマホ対応・写真の調整込み</p></div>
+  <div class="shot"></div><div class="phone p1"></div><div class="phone p2"></div>
+</section>
+<section class="cv" id="c2">
+  <div class="safe"><h1>YouTube<br><span>テロップ</span>編集</h1><p class="sub">テロップ・図解・効果音・縦型ショート</p></div>
+  <div class="frame"></div>
+</section>
+<section class="cv" id="c3">
+  <div class="safe"><h1>記事作成と<br>ビジネス文書</h1><p class="sub">SEO記事・IT解説・案内メール・議事録</p></div>
+  <div class="paper pa"></div>
+  <div class="paper pb"><b>議事録</b>1. 決定事項<br>2. 確認した内容<br>3. 宿題（担当・期限）<br>4. 次回の打ち合わせ</div>
+</section>
+<section class="cv" id="c4">
+  <div class="safe"><h1>Excel自動化と<br>データ収集</h1><p class="sub">スクレイピング・CSV変換・請求書の自動作成</p></div>
+  <div class="flow"><span>Webページ</span><i>→</i><span>Python</span><i>→</i><span>Excel・PDF</span></div>
+  <div class="shot"></div>
+</section>
+<script>
+  const n = new URLSearchParams(location.search).get('n');
+  if (n) { document.body.classList.add('single'); document.getElementById('c' + n).classList.add('on'); }
+</script>
+</body>
+</html>

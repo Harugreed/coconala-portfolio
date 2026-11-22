@@ -1,0 +1,93 @@
+/* 御菓子司 つきしろ（架空・After）— 仕様は ../DESIGN.md */
+:root {
+  --ground: #F4F5F1;    /* 練り切りの白 */
+  --lacquer: #1A1D1A;   /* 盆の漆 */
+  --green: #5E7A42;     /* 練り切りの若草（文字用に暗くした） */
+  --lacquer-70: rgba(26, 29, 26, .72);
+  --line: rgba(26, 29, 26, .18);
+  --mincho: "Kaisei Opti", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --gothic: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --a: 8px; --b: 16px; --c: 32px; --d: 56px; --e: 96px; --f: 136px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--ground); color: var(--lacquer); font-family: var(--gothic); font-size: 15.5px; line-height: 2; letter-spacing: .05em; word-break: auto-phrase; line-break: strict; }
+h1, h2, h3, p, dl, dd, ol { margin: 0; }
+ol { padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--d); }
+.sample-flag { background: var(--lacquer); color: var(--ground); font-size: 12.5px; padding: 6px var(--d); line-height: 1.6; }
+
+.head { background: var(--lacquer); color: var(--ground); }
+.head-in { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 64px; padding: 0 var(--d); }
+.mark { display: flex; align-items: center; gap: 12px; font-family: var(--mincho); font-weight: 700; font-size: 19px; letter-spacing: .14em; }
+.mark svg { width: 30px; height: 30px; }
+.gnav { display: flex; gap: var(--c); }
+.gnav a { text-decoration: none; font-size: 14px; letter-spacing: .14em; padding: 4px 0; border-bottom: 1px solid transparent; }
+.gnav a:hover { border-bottom-color: currentColor; }
+
+/* 最初の画面：写真と店名の帯 */
+.top { background: var(--lacquer); color: var(--ground); }
+.top-photo { aspect-ratio: 2.8 / 1; max-height: 500px; width: 100%; background: #000 url(img/nerikiri.jpg) center 50% / cover no-repeat; }
+.top-body { max-width: 1280px; margin: 0 auto; padding: var(--d) var(--d) var(--e); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--a) var(--e); align-items: end; }
+.top h1 { font-family: var(--mincho); font-weight: 700; font-size: 60px; line-height: 1.2; letter-spacing: .16em; }
+.since { grid-row: 2; font-family: var(--mincho); font-size: 16px; letter-spacing: .3em; color: #A9C08D; }
+.top-info { grid-row: 1 / 3; grid-column: 2; border-top: 1px solid rgba(244, 245, 241, .4); }
+.top-info > div { display: grid; grid-template-columns: 6em minmax(0, 1fr); padding: 12px 0; border-bottom: 1px solid rgba(244, 245, 241, .2); }
+.top-info dt { font-size: 13px; color: #A9C08D; }
+.top-info dd { font-size: 15.5px; }
+
+.sec { padding: var(--f) 0; }
+.sec.dark { background: #E7E9E2; }
+h2 { font-family: var(--mincho); font-weight: 500; font-size: 30px; letter-spacing: .2em; line-height: 1.5; }
+.lead { margin-top: var(--a); font-size: 14px; color: var(--lacquer-70); }
+.two { display: grid; grid-template-columns: 13em minmax(0, 1fr); gap: var(--d); align-items: start; }
+
+/* お品書き */
+.items { margin-top: var(--d); display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--e); align-items: start; }
+.item-list > div { display: flex; justify-content: space-between; align-items: baseline; gap: var(--b); padding: 20px 0; border-bottom: 1px solid var(--line); }
+.item-list > div:first-child { border-top: 2px solid var(--lacquer); }
+.item-list dt { font-family: var(--mincho); font-weight: 500; font-size: 20px; letter-spacing: .1em; line-height: 1.6; }
+.item-list dt small { display: block; font-family: var(--gothic); font-size: 13px; letter-spacing: .04em; color: var(--lacquer-70); }
+.item-list dd { font-family: var(--mincho); font-size: 21px; color: var(--green); white-space: nowrap; }
+.items-photo { aspect-ratio: 3 / 2; background: #ccc url(img/tea.jpg) center / cover no-repeat; }
+.note { margin-top: var(--b); font-size: 13px; color: var(--lacquer-70); }
+
+/* ご注文 */
+.order li { padding: var(--c) 0; border-bottom: 1px solid var(--line); }
+.order li:first-child { border-top: 2px solid var(--lacquer); padding-top: var(--c); }
+.order h3 { font-family: var(--mincho); font-weight: 500; font-size: 20px; letter-spacing: .12em; margin-bottom: 4px; }
+.order p { font-size: 15px; }
+.tel { margin-top: var(--c); font-size: 14px; }
+.tel span { font-family: var(--mincho); font-size: 26px; letter-spacing: .08em; margin: 0 8px; color: var(--green); }
+
+/* 店舗情報 */
+.info > div { display: grid; grid-template-columns: 7em minmax(0, 1fr); padding: 16px 0; border-bottom: 1px solid var(--line); }
+.info > div:first-child { border-top: 2px solid var(--lacquer); }
+.info dt { font-family: var(--mincho); font-weight: 500; letter-spacing: .1em; }
+
+.foot { background: var(--lacquer); color: var(--ground); padding: var(--e) var(--d); }
+.foot .mark { justify-content: flex-start; }
+.disclaimer { margin-top: var(--c); max-width: 50em; font-size: 12px; line-height: 1.9; opacity: .65; }
+
+@media (max-width: 900px) {
+  .top-body { grid-template-columns: 1fr; }
+  .top-info { grid-row: auto; grid-column: 1; margin-top: var(--c); }
+  .items, .two { grid-template-columns: 1fr; gap: var(--c); }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 20px; }
+  .sample-flag { padding: 6px 20px; }
+  .head-in { padding: 0 20px; height: auto; flex-direction: column; align-items: flex-start; gap: 4px; padding-top: 12px; padding-bottom: 12px; }
+  .gnav { gap: 20px; }
+  .top-photo { aspect-ratio: 4 / 3; }
+  .top-body { padding: var(--c) 20px var(--d); }
+  .top h1 { font-size: 36px; letter-spacing: .12em; }
+  .sec { padding: var(--e) 0; }
+  h2 { font-size: 24px; }
+  .item-list dt { font-size: 17.5px; }
+  .item-list dd { font-size: 18px; }
+  .tel span { display: block; margin: 4px 0; }
+}

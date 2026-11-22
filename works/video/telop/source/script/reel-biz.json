@@ -1,0 +1,7 @@
+{ "title": "Googleマップの写真は4種類", "scenes": [
+  { "id": "q", "visual": {"type": "text"}, "chapter": null, "lines": ["[[Googleマップ]]の写真、何枚載せていますか。"] },
+  { "id": "a", "visual": {"type": "text"}, "chapter": null, "lines": ["見る人が確かめるのは、[[外観]]、[[店内]]、[[商品]]、[[メニュー]]の4つです。"] },
+  { "id": "b", "visual": {"type": "text"}, "chapter": null, "lines": ["それぞれ5枚ずつ、合計[[20枚]]を目安にそろえましょう。"] },
+  { "id": "c", "visual": {"type": "text"}, "chapter": null, "lines": ["メニューの写真は、[[価格が読める明るさ]]で撮るのがコツです。"] },
+  { "id": "d", "visual": {"type": "text"}, "chapter": null, "lines": ["保存して、写真を撮るときに見返してください。"] }
+] }

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせ｜一般社団法人 えんぴつ学習ネット</title>
+<meta name="description" content="一般社団法人 えんぴつ学習ネット（架空）へのお問い合わせ・お申し込み。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/common.css">
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<p class="sample-flag">自主制作サンプルです。団体名・住所・電話番号・記事は架空のものです。</p>
+<header class="header">
+  <div class="wrap header-top">
+    <a class="brand" href="index.html"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3 35 20H13z" fill="#E8C53A"/><path d="M24 3 28.6 10H19.4z" fill="#2B3038"/><rect x="13" y="20" width="22" height="25" fill="#E8C53A"/><path d="M20.3 20v25M27.7 20v25" stroke="#2B3038" stroke-width="1.6"/><path d="M13 20h22" stroke="#2B3038" stroke-width="2"/></svg><span class="brand-text"><small>一般社団法人</small><b>えんぴつ学習ネット</b></span></a>
+    <p class="header-tel">事務局 電話（平日 9:00〜17:00）<b>000-0000-0000</b></p>
+    <button class="menu-btn" aria-expanded="false" aria-controls="gnav"><span></span><span></span><span></span>メニュー</button>
+  </div>
+  <nav class="gnav" id="gnav" aria-label="サイト内"><ul><li><a href="index.html">トップ</a></li><li><a href="business.html">事業内容</a></li><li><a href="about.html">団体概要</a></li><li><a href="news.html">お知らせ</a></li><li><a href="contact.html" aria-current="page">お問い合わせ</a></li></ul></nav>
+</header>
+<nav class="crumbs wrap" aria-label="現在の位置"><ol><li><a href="index.html">トップ</a></li><li aria-current="page">お問い合わせ</li></ol></nav>
+<main id="main">
+<div class="wrap page-title">
+  <h1>お問い合わせ</h1>
+  <p>学習室の利用・講座や相談会への申込・寄付についてのお問い合わせを受け付けています。返信は3営業日以内にお送りします。</p>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="h2">電話でのお問い合わせ</h2>
+    <table class="table">
+      <tr><th scope="row">電話番号</th><td>000-0000-0000</td></tr>
+      <tr><th scope="row">受付時間</th><td>平日 9:00〜17:00</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="h2">フォームでのお問い合わせ</h2>
+    <form class="form" onsubmit="return false" novalidate>
+      <fieldset class="field">
+        <legend>お問い合わせの種類<span class="req">必須</span></legend>
+        <div class="choices">
+          <label><input type="radio" name="kind" value="room"> 学習室の利用</label>
+          <label><input type="radio" name="kind" value="volunteer"> 養成講座の申込</label>
+          <label><input type="radio" name="kind" value="consult"> 進路相談会の申込</label>
+          <label><input type="radio" name="kind" value="donate"> 寄付・会員</label>
+          <label><input type="radio" name="kind" value="other"> その他</label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="name">お名前<span class="req">必須</span></label>
+        <input type="text" id="name" name="name" autocomplete="name" placeholder="例：さくら 花子">
+      </div>
+      <div class="field">
+        <label for="kana">ふりがな<span class="req">必須</span></label>
+        <input type="text" id="kana" name="kana" placeholder="例：さくら はなこ">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス<span class="req">必須</span></label>
+        <p class="hint" id="email-hint">返信はこのアドレスにお送りします。</p>
+        <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-hint">
+      </div>
+      <div class="field">
+        <label for="tel">電話番号</label>
+        <p class="hint" id="tel-hint">半角数字でご入力ください。ハイフンは不要です。</p>
+        <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="numeric" aria-describedby="tel-hint">
+      </div>
+      <div class="field">
+        <label for="school">お子さまの学年（学習室の利用の場合）</label>
+        <select id="school" name="school">
+          <option value="">選択してください</option>
+          <option>小学4年生</option><option>小学5年生</option><option>小学6年生</option>
+          <option>中学1年生</option><option>中学2年生</option><option>中学3年生</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="body">お問い合わせ内容<span class="req">必須</span></label>
+        <textarea id="body" name="body"></textarea>
+      </div>
+      <div class="field">
+        <label class="agree"><input type="checkbox" name="agree"> 個人情報は、このお問い合わせへの返信だけに使い、第三者に提供しません。この扱いに同意して送信します。</label>
+      </div>
+      <div class="submit-area">
+        <button class="submit" type="submit" disabled aria-describedby="sample-note">確認画面へ進む</button>
+        <p class="sample-note" id="sample-note">このフォームは見た目のサンプルです。送信機能は付けていません。実案件では、フォーム送信サービスまたはサーバーの送信処理を接続します。</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-name">一般社団法人 えんぴつ学習ネット</p>
+        <p class="foot-addr">〒000-0000 さくら台市本町2-5-1 さくら台市民センター3階<br>電話 000-0000-0000（平日 9:00〜17:00）</p>
+      </div>
+      <ul class="foot-nav"><li><a href="index.html">トップ</a></li><li><a href="business.html">事業内容</a></li><li><a href="about.html">団体概要</a></li><li><a href="news.html">お知らせ</a></li><li><a href="contact.html">お問い合わせ</a></li></ul>
+    </div>
+    <p class="disclaimer">このサイトはココナラ出品者「ハル｜よろずサポート屋」の自主制作サンプルです。団体名・住所・電話番号・お知らせの内容は架空のもので、実在の団体とは関係ありません。写真は Unsplash License に基づき使用しています（出典は credits.md）。</p>
+  </div>
+</footer>
+<script src="assets/news-data.js"></script>
+<script src="assets/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>縦型ショート動画3本の仕様（テロップとカット）｜自主制作サンプル</title><meta name="robots" content="noindex"><style>
+:root{--ink:#24262B;--sub:#5D626B;--line:#DCDFE4;--accent:#3D5A80;--paper:#FFFFFF;--bg:#F3F4F6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:17px;line-height:2;word-break:auto-phrase;line-break:strict}
+.flag{margin:0;background:var(--ink);color:#fff;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;padding:6px 20px}
+article{max-width:760px;margin:40px auto 80px;background:var(--paper);padding:56px 64px}
+h1{font-size:28px;line-height:1.5;margin:0 0 24px}
+h2{font-size:21px;line-height:1.6;margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+h3{font-size:18px;margin:32px 0 8px}
+p{margin:0 0 1em}
+blockquote{margin:0 0 32px;padding:12px 16px;background:var(--bg);border-left:4px solid var(--accent);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14px;line-height:1.8;color:var(--sub)}
+blockquote p{margin:0}
+ul,ol{margin:0 0 1em;padding-left:1.5em}
+table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14.5px;line-height:1.7}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+thead th{border-bottom:2px solid var(--ink)}
+hr{border:0;border-top:1px dashed var(--line);margin:32px 0}
+a{color:var(--accent);word-break:break-all}
+figure{margin:16px 0 28px}figure img{width:100%;display:block;border:1px solid var(--line)}figcaption{font-family:sans-serif;font-size:13px;color:var(--sub);margin-top:6px}
+.back{display:block;max-width:760px;margin:24px auto 0;font-family:sans-serif;font-size:14px}
+@media(max-width:640px){article{margin:0;padding:32px 20px}body{font-size:16px}h1{font-size:23px}h2{font-size:19px}}
+</style></head>
+<body><p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」の文章サンプルです。</p>
+<a class="back" href="index.html">← ショート動画に戻る</a>
+<article>
+<h1>縦型ショート動画3本の仕様（テロップとカット）</h1>
+<blockquote><p>自主制作サンプル：1080×1920・30fps。3本とも Remotion で作り、コードは ../telop/source/src/Reels.tsx にあります。店名・価格は架空のカフェ「白杢珈琲」（Web制作サンプル P01）のものです。</p></blockquote>
+<table><thead><tr><th>項目</th><th>1. グルメ紹介</th><th>2. ビジネスノウハウ</th><th>3. エンタメ（クイズ）</th></tr></thead><tbody><tr><td>ファイル</td><td>reel-gourmet.mp4</td><td>reel-biz.mp4</td><td>reel-quiz.mp4</td></tr><tr><td>長さ</td><td>20秒</td><td>約30秒</td><td>22秒</td></tr><tr><td>目的</td><td>店の雰囲気・価格・営業時間を一気に見せる</td><td>保存して見返してもらえる知識を1つ渡す</td><td>最後まで見てもらい、コメントを誘う</td></tr><tr><td>音声</td><td>ナレーションなし・BGM（Mixkit「Sicilian Cafe」）</td><td>ナレーション（Irodori-TTS）・BGM小さめ</td><td>ナレーションなし・BGM＋効果音（ポン・緊張音・正解音）</td></tr><tr><td>カット</td><td>約2.8秒ごとに7カット。動画と写真を交互にし、各カットで1.05→1.15倍に寄る</td><td>1文ごとに1カット（5カット）。背景はぼかした店の写真を32%の濃さで敷く</td><td>1カットのまま。出題→選択肢→3・2・1→正解→解説の5段階で画面の中身を変える</td></tr><tr><td>書体</td><td>Zen Maru Gothic Black（丸ゴシック）</td><td>M PLUS 1p ExtraBold</td><td>Dela Gothic One（見出し）・Zen Maru Gothic Black（解説）</td></tr><tr><td>テロップの形</td><td>白い角丸の札（66px）＋価格の緑の札（84px）＋補足の札（44px）。左下にまとめる</td><td>黒地に白の大きな文字（92px・1行9字）。強調語は黄色の地に黒文字。文の中の行を順に出す</td><td>黒い吹き出しの問題文（76px）、白い札の選択肢（80px）、正解は緑の札に変わる</td></tr><tr><td>動き</td><td>札がばねで大きくなりながら出る。カットごとに「ポン」の効果音</td><td>行ごとに下から上がる。画面上に進行バー（黄色）</td><td>選択肢が右から順に入る。正解の瞬間に画面が左右に揺れる</td></tr><tr><td>色</td><td>白 #FFFFFF・焙煎機の緑 #2C6670・焦げ茶 #2B211B</td><td>黒 #111111・黄色 #FFD43B</td><td>クリーム #FFF2C6・黒 #1E1E1E・朱 #FF6B3D・正解の緑 #2FA36B</td></tr><tr><td>画面の安全域</td><td>下から420pxより上に文字を置く（アプリの操作ボタンと重ねない）</td><td>文字は上から230〜1500pxに収める</td><td>文字は上から170〜1700pxに収める</td></tr></tbody></table>
+</article></body></html>

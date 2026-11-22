@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>図解画像（書き出し用）</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #777; font-family: "M PLUS 1p", sans-serif; color: #1F2A44; }
+  .dg { width: 1220px; height: 1240px; background: #F4F6F9; position: relative; overflow: hidden; margin: 0 auto 30px; padding: 150px 96px; }
+  body.single .dg { display: none; margin: 0; } body.single .dg.on { display: block; }
+  h1 { font-size: 64px; font-weight: 800; letter-spacing: .02em; }
+  h1::after { content: ""; display: block; width: 110px; height: 10px; background: #F2A524; margin-top: 22px; }
+  .note { font-size: 26px; color: #56627A; font-weight: 500; }
+
+  /* 流れ */
+  .steps { margin-top: 56px; display: grid; gap: 18px; }
+  .step { display: grid; grid-template-columns: 92px 1fr; gap: 28px; align-items: center; background: #fff; border-left: 12px solid #1F2A44; padding: 22px 30px; }
+  .step .n { font-size: 60px; font-weight: 800; color: #F2A524; text-align: center; }
+  .step b { display: block; font-size: 40px; }
+  .step span { font-size: 27px; color: #3B4660; font-weight: 500; }
+
+  /* 料金 */
+  table { width: 100%; border-collapse: collapse; margin-top: 56px; font-size: 32px; }
+  th, td { padding: 26px 20px; border-bottom: 2px solid #D5DBE5; text-align: left; }
+  thead th { background: #1F2A44; color: #fff; font-size: 28px; }
+  td.p { text-align: right; font-weight: 800; font-size: 40px; white-space: nowrap; }
+  td.q { text-align: right; color: #56627A; font-size: 30px; }
+  td small { display: block; font-size: 24px; color: #56627A; font-weight: 500; }
+
+  /* 納品物 */
+  .cards { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .card { background: #fff; padding: 30px 32px; border-top: 10px solid #1F2A44; }
+  .card:nth-child(2) { border-top-color: #111; } .card:nth-child(3) { border-top-color: #3D5A80; } .card:nth-child(4) { border-top-color: #0F5132; }
+  .card b { font-size: 38px; display: block; margin-bottom: 14px; }
+  .card li { list-style: none; font-size: 27px; line-height: 1.75; font-weight: 500; padding-left: 28px; position: relative; }
+  .card li::before { content: ""; position: absolute; left: 0; top: 17px; width: 14px; height: 14px; background: #F2A524; }
+</style>
+</head>
+<body>
+<section class="dg" id="d1">
+  <h1>制作・納品の流れ</h1>
+  <div class="steps">
+    <div class="step"><p class="n">1</p><p><b>ご相談・お見積もり</b><span>作りたいもの・期限・予算をメッセージでお知らせください</span></p></div>
+    <div class="step"><p class="n">2</p><p><b>ヒアリング</b><span>必要な情報・素材（写真・原稿・データ）を確認します</span></p></div>
+    <div class="step"><p class="n">3</p><p><b>構成案のご確認</b><span>ページ構成・台本・仕様表などを先にお送りします</span></p></div>
+    <div class="step"><p class="n">4</p><p><b>制作・修正</b><span>完成形をお送りし、ご指摘の箇所を修正します</span></p></div>
+    <div class="step"><p class="n">5</p><p><b>納品</b><span>ファイル一式と、使い方・更新方法の説明をお渡しします</span></p></div>
+  </div>
+</section>
+
+<section class="dg" id="d2">
+  <h1>料金表</h1>
+  <table>
+    <thead><tr><th>サービス</th><th style="text-align:right">料金（税込）</th></tr></thead>
+    <tbody>
+      <tr><td>店舗のホームページ制作<small>1ページ構成・スマホ対応</small></td><td class="p">29,800円</td></tr>
+      <tr><td>YouTube テロップ編集<small>テロップ・図解・効果音</small></td><td class="q">お見積もり</td></tr>
+      <tr><td>記事作成・ビジネス文書<small>SEO記事・IT解説・案内文・議事録</small></td><td class="q">お見積もり</td></tr>
+      <tr><td>Excel自動化・データ収集<small>スクレイピング・CSV変換・帳票作成</small></td><td class="q">お見積もり</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:28px">内容・量によって変わるサービスは、ご相談の内容をもとに金額をお伝えします。</p>
+</section>
+
+<section class="dg" id="d3">
+  <h1>納品物一覧</h1>
+  <div class="cards">
+    <div class="card"><b>ホームページ</b><ul><li>HTML・CSS・画像の一式</li><li>デザイン仕様書</li><li>PC・スマホの画面写真</li><li>写真の出典の一覧</li></ul></div>
+    <div class="card"><b>動画</b><ul><li>MP4の動画ファイル</li><li>テロップの仕様表</li><li>サムネイル画像</li><li>素材・音楽の出典</li></ul></div>
+    <div class="card"><b>記事・文書</b><ul><li>原稿（Markdown・HTML）</li><li>構成案・検索意図のメモ</li><li>出典の一覧</li><li>敬語の確認記録</li></ul></div>
+    <div class="card"><b>自動化・データ</b><ul><li>スクリプト（Python）</li><li>Excel・CSV・PDFの成果物</li><li>実行画面のキャプチャ</li><li>使い方の説明書</li></ul></div>
+  </div>
+</section>
+<script>
+  const n = new URLSearchParams(location.search).get('n');
+  if (n) { document.body.classList.add('single'); document.getElementById('d' + n).classList.add('on'); }
+</script>
+</body>
+</html>
