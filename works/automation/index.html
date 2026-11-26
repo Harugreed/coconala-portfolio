@@ -8,6 +8,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>setTimeout(function(){document.documentElement.classList.add('ready')},3500);</script>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -20,7 +21,7 @@
 body{
   font-family:"Zen Kaku Gothic New","Helvetica Neue",Arial,sans-serif;
   background:var(--paper);color:var(--navy);
-  font-size:16px;line-height:1.8;overflow-x:clip;
+  font-size:16px;line-height:1.95;overflow-x:clip;
 }
 img{display:block;max-width:100%}
 a{color:inherit}
@@ -34,6 +35,12 @@ ul{list-style:none}
 .seg{display:block}
 .en{font-family:"Kanit",sans-serif;font-weight:800;letter-spacing:.02em}
 .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+/* headline reveal scaffolding (benchmark: top page) */
+html:not(.ready) [data-reveal]{visibility:hidden}
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
+
 
 .flag{background:var(--navy);color:var(--paper);font-size:13px}
 .flag .wrap{padding-top:8px;padding-bottom:8px}
@@ -45,40 +52,43 @@ ul{list-style:none}
 .top .idx{font-family:"Kanit",sans-serif;font-weight:600;letter-spacing:.08em}
 
 /* ---------- hero = navy noren ---------- */
-.hero{background:var(--navy);color:var(--paper);border-radius:0 0 48px 48px;padding:64px 0 48px}
+.hero{background:var(--navy);color:var(--paper);border-radius:0 0 48px 48px;padding:96px 0 80px;position:relative;overflow:hidden}
+.hero-ghost{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:0;font-family:"Kanit",sans-serif;font-weight:800;line-height:1;letter-spacing:.01em;font-size:19vw;white-space:nowrap;pointer-events:none;user-select:none;color:rgba(220,227,234,.04);-webkit-text-stroke:1.5px rgba(220,227,234,.2)}
+.hero .wrap{position:relative;z-index:1}
 .hero .kicker{font-size:14px;color:var(--mist);letter-spacing:.16em}
-h1{font-size:48px;line-height:1.3;font-weight:900;margin:16px 0 24px}
+h1{font-size:56px;line-height:1.35;font-weight:900;margin:24px 0 32px}
 .hero p.lead{max-width:640px;font-size:15px;color:var(--mist)}
 .flow{
   display:flex;flex-wrap:wrap;align-items:flex-start;gap:16px;
-  margin-top:32px;padding-top:24px;border-top:2px solid var(--paper);
+  margin-top:48px;padding-top:32px;border-top:2px solid var(--paper);
 }
 .flow .step .en{display:block;font-size:24px;line-height:1.2;color:var(--brass)}
 .flow .step small{font-size:12px;color:var(--mist)}
 .flow .arr{font-family:"Kanit",sans-serif;font-weight:800;font-size:20px;color:var(--paper);padding-top:4px}
 
 /* ---------- ledger layer on mist ---------- */
-.ledger{background:var(--mist);border-radius:48px 48px 0 0;margin-top:-32px;position:relative;padding:64px 0 48px}
+.ledger{background:var(--mist);border-radius:48px 48px 0 0;margin-top:-32px;position:relative;padding:96px 0 80px}
 .entry{
-  display:grid;grid-template-columns:96px minmax(0,1fr) 240px;gap:32px;
-  padding:32px 0;border-bottom:1px solid var(--navy);align-items:start;
+  display:grid;grid-template-columns:96px minmax(0,1fr) 240px;gap:40px;
+  padding:56px 0;border-bottom:1px solid var(--navy);align-items:start;
 }
 .entry:first-child{padding-top:0}
 .entry:last-child{border-bottom:none;padding-bottom:0}
-.entry .no{font-family:"Kanit",sans-serif;font-weight:800;font-size:64px;line-height:1;color:var(--brass)}
-.entry h2{font-size:24px;line-height:1.4;font-weight:900;margin-bottom:8px}
+.entry .no{font-family:"Kanit",sans-serif;font-weight:800;font-size:64px;line-height:1;color:var(--brass);transition:transform .6s cubic-bezier(.65,.05,0,1)}
+.entry:hover .no{transform:translateX(8px)}
+.entry h2{font-size:24px;line-height:1.5;font-weight:900;margin-bottom:16px}
 .entry h2 a{text-decoration:none;border-bottom:2px solid var(--brass);padding-bottom:2px}
 .entry h2 a:hover{color:var(--brass)}
 .entry .desc{font-size:15px;max-width:512px}
-.entry .spec{margin-top:16px;border-top:1px solid var(--navy);font-size:13px;max-width:512px}
-.entry .spec li{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid var(--navy)}
+.entry .spec{margin-top:24px;border-top:1px solid var(--navy);font-size:13px;max-width:512px}
+.entry .spec li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--navy)}
 .entry .spec .k{font-weight:700;white-space:nowrap}
 .entry .spec .v{text-align:right}
 .entry figure{background:var(--paper)}
 .entry figure .ph{aspect-ratio:16/10;overflow:hidden}
 .entry figure img{width:100%;height:100%;object-fit:cover}
 .entry figcaption{font-size:12px;padding:8px;border-top:1px solid var(--mist)}
-.go{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-weight:700;font-size:15px;text-decoration:none}
+.go{display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-weight:700;font-size:15px;text-decoration:none}
 .go .arr{
   display:inline-grid;place-items:center;width:24px;height:24px;flex:none;
   background:var(--brass);color:var(--paper);transition:transform .2s ease;
@@ -87,7 +97,7 @@ h1{font-size:48px;line-height:1.3;font-weight:900;margin:16px 0 24px}
 .go .arr svg{width:12px;height:12px}
 
 /* ---------- footer layer ---------- */
-footer{background:var(--paper);border-radius:48px 48px 0 0;margin-top:-32px;position:relative;padding:48px 0;font-size:12px}
+footer{background:var(--paper);border-radius:48px 48px 0 0;margin-top:-32px;position:relative;padding:72px 0;font-size:12px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
 footer a{font-weight:700}
 
@@ -98,15 +108,17 @@ footer a{font-weight:700}
 }
 @media (max-width:600px){
   .wrap{padding:0 20px}
-  .hero{padding:48px 0 32px;border-radius:0 0 32px 32px}
+  .hero{padding:64px 0 48px;border-radius:0 0 32px 32px}
+  .ledger{padding:64px 0 56px}
+  footer{padding:56px 0}
   .ledger,footer{border-radius:32px 32px 0 0}
   h1{font-size:28px}
-  .entry{grid-template-columns:1fr;gap:16px;padding:24px 0}
+  .entry{grid-template-columns:1fr;gap:16px;padding:40px 0}
   .entry .no{font-size:36px}
   .entry figure{grid-column:auto}
 }
 @media (prefers-reduced-motion: reduce){
-  .go .arr{transition:none}
+  .go .arr,.entry .no{transition:none}
 }
 </style>
 </head>
@@ -122,9 +134,10 @@ footer a{font-weight:700}
 
 <main>
   <section class="hero">
+    <div class="hero-ghost en" aria-hidden="true">LEDGER</div>
     <div class="wrap">
       <p class="en kicker">AUTOMATION / DATA</p>
-      <h1><span class="seg"><span class="nb">自動化・</span><span class="nb">データ処理サンプル</span></span></h1>
+      <h1 data-reveal="chars"><span class="seg line"><span class="nb">自動化・</span><span class="nb">データ処理サンプル</span></span></h1>
       <p class="lead"><span class="seg"><span class="nb">入力ファイル・スクリプト・出力ファイルを</span></span><span class="seg"><span class="nb">1組ずつ置いています</span></span><span class="seg"><span class="nb">サンプルは3組です</span></span></p>
       <div class="flow" aria-label="各サンプルの構成">
         <span class="step"><span class="en">Input</span><small>入力ファイル</small></span>
@@ -141,7 +154,7 @@ footer a{font-weight:700}
       <article class="entry">
         <span class="no" aria-hidden="true">01</span>
         <div>
-          <h2><a href="scraping/">スクレイピング実演</a></h2>
+          <h2 data-reveal="chars"><a href="scraping/">スクレイピング実演</a></h2>
           <p class="desc"><span class="nb">練習用ECサイトから</span><span class="nb">商品100件を集めて</span><span class="nb">Excelに保存しています</span><span class="nb">実行画面のキャプチャを付けています</span></p>
           <ul class="spec">
             <li><span class="k">件数</span><span class="v">100件</span></li>
@@ -159,7 +172,7 @@ footer a{font-weight:700}
       <article class="entry">
         <span class="no" aria-hidden="true">02</span>
         <div>
-          <h2><a href="data-convert/">データ変換・Excel自動化</a></h2>
+          <h2 data-reveal="chars"><a href="data-convert/">データ変換・Excel自動化</a></h2>
           <p class="desc"><span class="nb">CSVから出荷伝票PDFを作る変換、</span><span class="nb">請求書自動生成ブック、</span><span class="nb">表記ゆれのデータ整形の</span><span class="nb">3点を置いています</span><span class="nb">データ整形はBeforeとAfterを</span><span class="nb">並べて確認できます</span></p>
           <ul class="spec">
             <li><span class="k">内容</span><span class="v">変換・請求書・整形の3点</span></li>
@@ -177,7 +190,7 @@ footer a{font-weight:700}
       <article class="entry">
         <span class="no" aria-hidden="true">03</span>
         <div>
-          <h2><a href="list-sample/">リスト作成（形式見本）</a></h2>
+          <h2 data-reveal="chars"><a href="list-sample/">リスト作成（形式見本）</a></h2>
           <p class="desc"><span class="nb">営業リストと</span><span class="nb">SNSインフルエンサーリストの</span><span class="nb">形式見本です</span><span class="nb">データはすべて架空です</span></p>
           <ul class="spec">
             <li><span class="k">営業リスト</span><span class="v">50行</span></li>
@@ -197,5 +210,74 @@ footer a{font-weight:700}
     <span><span class="nb">自主制作サンプルです</span><span class="nb">会社名・金額・データは架空、</span><span class="nb">または練習用サイトのものです</span></span>
   </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.documentElement.classList.add("ready");
+  function splitChars(el){
+    var chars = [];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType === 3){
+          var frag = document.createDocumentFragment();
+          var word = null;
+          n.textContent.split("").forEach(function(c){
+            var s = document.createElement("span");
+            s.className = "ch"; s.textContent = c; chars.push(s);
+            if(c === " " || c === "\u3000"){ word = null; frag.appendChild(s); }
+            else {
+              if(!word){ word = document.createElement("span"); word.className = "w"; frag.appendChild(word); }
+              word.appendChild(s);
+            }
+          });
+          node.replaceChild(frag, n);
+        } else if(n.nodeType === 1 && n.tagName !== "BR"){ walk(n); }
+      });
+    }
+    el.querySelectorAll(".line").forEach(function(line){ walk(line); });
+    return chars;
+  }
+  function ensureLine(el){
+    if(el.querySelector(".line")) return;
+    var line = document.createElement("span"); line.className = "line";
+    while(el.firstChild) line.appendChild(el.firstChild);
+    el.appendChild(line);
+  }
+  var wide = window.innerWidth >= 601;
+  var revealChars = {};
+  document.querySelectorAll("[data-reveal='chars']").forEach(function(el, i){
+    if(el.tagName === "H1" && !wide) return;
+    ensureLine(el);
+    revealChars[i] = splitChars(el);
+    el.dataset.revealIdx = i;
+  });
+  if(typeof gsap === "undefined" || reduced){ return; }
+  gsap.registerPlugin(ScrollTrigger);
+  var h1 = document.querySelector("h1");
+  if(h1 && revealChars[h1.dataset.revealIdx]){
+    gsap.fromTo(revealChars[h1.dataset.revealIdx], { yPercent: 135 },
+      { yPercent: 0, duration: 1.2, ease: "expo.out", stagger: 0.025, delay: 0.3 });
+  }
+  gsap.fromTo(".hero p.lead, .flow .step", { y: 28, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 1.1, ease: "expo.out", stagger: 0.16, delay: 0.7 });
+  document.querySelectorAll("main [data-reveal='chars']:not(h1)").forEach(function(el){
+    var chars = revealChars[el.dataset.revealIdx];
+    if(!chars) return;
+    gsap.fromTo(chars, { yPercent: 135 }, {
+      yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.03,
+      scrollTrigger: { trigger: el, start: "top 88%", once: true }
+    });
+  });
+  var ghost = document.querySelector(".hero-ghost");
+  if(ghost){
+    gsap.to(ghost, { yPercent: 22, ease: "none",
+      scrollTrigger: { trigger: ghost.parentElement, start: "top top", end: "bottom top", scrub: 0.6 } });
+  }
+})();
+</script>
 </body>
 </html>

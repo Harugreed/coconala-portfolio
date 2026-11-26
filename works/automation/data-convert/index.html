@@ -8,11 +8,18 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>setTimeout(function(){document.documentElement.classList.add('ready')},3500);</script>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--paper:#FFFFFF;--ink:#1A2E22;--accent:#217346;--line:#C9D4CC;--wash:#EEF3EF}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Noto Sans JP",sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.8}
+body{font-family:"Noto Sans JP",sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.95}
+/* headline reveal scaffolding (benchmark: top page) */
+html:not(.ready) [data-reveal]{visibility:hidden}
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
+
 .nb{display:inline-block;white-space:nowrap}
 .seg{display:block}
 .mono{font-family:"JetBrains Mono",monospace}
@@ -22,19 +29,21 @@ header.top{max-width:68rem;margin:0 auto;padding:24px 24px 0;display:flex;justif
 header.top a{font-size:14px;text-decoration:none}
 header.top .en{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 main{max-width:68rem;margin:0 auto;padding:0 24px}
-.hero{padding:48px 0 32px;border-bottom:2px solid var(--ink)}
-h1{font-size:2.6rem;line-height:1.3;font-weight:900;margin-bottom:16px}
+.hero{padding:80px 0 56px;border-bottom:2px solid var(--ink);position:relative;overflow:hidden}
+.hero>*{position:relative;z-index:1}
+.hero-ghost{position:absolute;top:16px;right:-8px;z-index:0;font-family:"JetBrains Mono",monospace;font-weight:700;line-height:1;font-size:7.5rem;letter-spacing:.02em;white-space:nowrap;pointer-events:none;user-select:none;color:transparent;-webkit-text-stroke:1.5px rgba(33,115,70,.28)}
+h1{font-size:2.6rem;line-height:1.35;font-weight:900;margin-bottom:24px}
 .hero p.lead{max-width:40rem;font-size:15px}
-.facts{display:flex;flex-wrap:wrap;gap:0;margin-top:32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.facts div{flex:1 1 12rem;padding:16px 16px 16px 0}
-.facts .num{font-family:"JetBrains Mono",monospace;font-size:1.6rem;font-weight:700;color:var(--accent);display:block;line-height:1.3}
+.facts{display:flex;flex-wrap:wrap;gap:0;margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts div{flex:1 1 12rem;padding:24px 16px 24px 0}
+.facts .num{font-family:"JetBrains Mono",monospace;font-size:2rem;font-weight:700;color:var(--accent);display:block;line-height:1.3}
 .facts .lbl{font-size:13px;display:block}
-section{padding:48px 0;border-bottom:1px solid var(--line)}
-h2{font-size:1.7rem;line-height:1.4;font-weight:900;margin-bottom:8px}
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+h2{font-size:1.7rem;line-height:1.45;font-weight:900;margin-bottom:16px}
 h2 .no{font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:1rem;display:block;letter-spacing:.08em;margin-bottom:8px}
-.sec-lead{font-size:15px;max-width:42rem;margin-bottom:24px}
+.sec-lead{font-size:15px;max-width:42rem;margin-bottom:40px}
 table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.7}
-th,td{border-bottom:1px solid var(--line);padding:8px 16px 8px 0;text-align:left;vertical-align:top}
+th,td{border-bottom:1px solid var(--line);padding:12px 16px 12px 0;text-align:left;vertical-align:top}
 thead th{border-bottom:2px solid var(--ink);font-size:13px}
 .diff td.before{color:#5A6B5E}
 .diff td.arrow{color:var(--accent);font-family:"JetBrains Mono",monospace;width:2.5rem;padding-left:0;padding-right:0}
@@ -42,15 +51,17 @@ thead th{border-bottom:2px solid var(--ink);font-size:13px}
 .diff td.item{font-weight:700;white-space:nowrap}
 .files td:first-child{font-family:"JetBrains Mono",monospace;font-size:13px}
 .files a{text-decoration:none;border-bottom:1px solid var(--accent)}
-ul.notes{list-style:none;margin-top:16px}
-ul.notes li{font-size:14px;padding:8px 0 8px 16px;border-left:2px solid var(--accent);margin-bottom:8px}
-figure{margin:24px 0 0;background:var(--paper);box-shadow:8px 8px 0 var(--wash),16px 16px 0 #DFE8E0}
+ul.notes{list-style:none;margin-top:24px}
+ul.notes li{font-size:14px;padding:12px 0 12px 16px;border-left:2px solid var(--accent);margin-bottom:16px}
+figure{margin:40px 0 0;background:var(--paper);box-shadow:12px 12px 0 var(--wash),24px 24px 0 #DFE8E0}
+table.diff{background:var(--paper);border:1px solid var(--line);box-shadow:12px 12px 0 var(--wash),24px 24px 0 #DFE8E0}
+table.diff th,table.diff td{padding-left:16px}
 figure img{width:100%;height:auto;display:block;border:1px solid var(--line)}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-.intro{background:var(--wash);padding:32px;margin:48px 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.intro{background:var(--wash);padding:48px;margin:80px 0;box-shadow:12px 12px 0 #DFE8E0}
 .intro p{font-size:15px}
-footer{max-width:68rem;margin:0 auto;padding:32px 24px 48px;font-size:13px;display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
-@media(max-width:768px){h1{font-size:2rem}.split{grid-template-columns:1fr}section{padding:32px 0}
+footer{max-width:68rem;margin:0 auto;padding:48px 24px 72px;font-size:13px;display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
+@media(max-width:768px){h1{font-size:2rem}.split{grid-template-columns:1fr}section{padding:56px 0}.hero{padding:56px 0 40px}.hero-ghost{font-size:4rem}.intro{padding:32px;margin:56px 0}
 .diff thead{display:none}
 .diff tr{display:block;padding:8px 0;border-bottom:1px solid var(--line)}
 .diff td{display:block;border-bottom:0;padding:4px 0}
@@ -71,7 +82,8 @@ footer{max-width:68rem;margin:0 auto;padding:32px 24px 48px;font-size:13px;displ
 </header>
 <main>
 <div class="hero">
-<h1><span class="nb">データ変換・</span><span class="nb">Excel自動化サンプル</span></h1>
+<div class="hero-ghost" aria-hidden="true">CONVERT</div>
+<h1 data-reveal="chars"><span class="nb">データ変換・</span><span class="nb">Excel自動化サンプル</span></h1>
 <p class="lead"><span class="seg"><span class="nb">CSVから出荷伝票のPDFを作る変換と</span></span><span class="seg"><span class="nb">請求書を数式で自動作成するExcelブックと</span></span><span class="seg"><span class="nb">表記ゆれを整えるデータ整形の3組です</span></span><span class="seg"><span class="nb">入力ファイル・スクリプト・出力ファイルを</span><span class="nb">そろえています</span></span></p>
 <div class="facts">
 <div><span class="num">16行 → 10件</span><span class="lbl"><span class="nb">受注CSVから</span><span class="nb">出荷伝票10件</span></span></div>
@@ -156,5 +168,74 @@ footer{max-width:68rem;margin:0 auto;padding:32px 24px 48px;font-size:13px;displ
 <span>ハル｜よろずサポート屋｜自主制作サンプル</span>
 <a href="../index.html">← 一覧に戻る</a>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.documentElement.classList.add("ready");
+  function splitChars(el){
+    var chars = [];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType === 3){
+          var frag = document.createDocumentFragment();
+          var word = null;
+          n.textContent.split("").forEach(function(c){
+            var s = document.createElement("span");
+            s.className = "ch"; s.textContent = c; chars.push(s);
+            if(c === " " || c === "\u3000"){ word = null; frag.appendChild(s); }
+            else {
+              if(!word){ word = document.createElement("span"); word.className = "w"; frag.appendChild(word); }
+              word.appendChild(s);
+            }
+          });
+          node.replaceChild(frag, n);
+        } else if(n.nodeType === 1 && n.tagName !== "BR"){ walk(n); }
+      });
+    }
+    el.querySelectorAll(".line").forEach(function(line){ walk(line); });
+    return chars;
+  }
+  function ensureLine(el){
+    if(el.querySelector(".line")) return;
+    var line = document.createElement("span"); line.className = "line";
+    while(el.firstChild) line.appendChild(el.firstChild);
+    el.appendChild(line);
+  }
+  var wide = window.innerWidth >= 601;
+  var revealChars = {};
+  document.querySelectorAll("[data-reveal='chars']").forEach(function(el, i){
+    if(el.tagName === "H1" && !wide) return;
+    ensureLine(el);
+    revealChars[i] = splitChars(el);
+    el.dataset.revealIdx = i;
+  });
+  if(typeof gsap === "undefined" || reduced){ return; }
+  gsap.registerPlugin(ScrollTrigger);
+  var h1 = document.querySelector("h1");
+  if(h1 && revealChars[h1.dataset.revealIdx]){
+    gsap.fromTo(revealChars[h1.dataset.revealIdx], { yPercent: 135 },
+      { yPercent: 0, duration: 1.2, ease: "expo.out", stagger: 0.025, delay: 0.3 });
+  }
+  gsap.fromTo(".hero p.lead, .facts div", { y: 28, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 1.1, ease: "expo.out", stagger: 0.16, delay: 0.7 });
+  document.querySelectorAll("main [data-reveal='chars']:not(h1)").forEach(function(el){
+    var chars = revealChars[el.dataset.revealIdx];
+    if(!chars) return;
+    gsap.fromTo(chars, { yPercent: 135 }, {
+      yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.03,
+      scrollTrigger: { trigger: el, start: "top 88%", once: true }
+    });
+  });
+  var ghost = document.querySelector(".hero-ghost");
+  if(ghost){
+    gsap.to(ghost, { yPercent: 22, ease: "none",
+      scrollTrigger: { trigger: ghost.parentElement, start: "top top", end: "bottom top", scrub: 0.6 } });
+  }
+})();
+</script>
 </body>
 </html>
