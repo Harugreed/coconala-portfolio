@@ -7,167 +7,169 @@
 <meta name="description" content="ココナラ出品者「ハル｜よろずサポート屋」の自主制作サンプル集。Web制作・動画編集・記事作成・自動化・SNS・資料デザイン。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Playfair+Display:ital,wght@1,400..800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#FAF3E4;
-  --ink:#141110;
-  --tomato:#EF4A23;
+  --paper:#F6F7F4;
+  --navy:#1F3A5F;
+  --brass:#B7791F;
+  --mist:#DCE3EA;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
 body{
-  font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;
+  font-family:"Zen Kaku Gothic New","Helvetica Neue",Arial,sans-serif;
   font-size:16px;line-height:1.8;
-  background:var(--cream);color:var(--ink);
+  background:var(--paper);color:var(--navy);
   overflow-x:clip;
 }
 img{display:block;max-width:100%}
 a{color:inherit}
 ul{list-style:none}
-::selection{background:var(--tomato);color:var(--cream)}
-:focus-visible{outline:3px solid var(--tomato);outline-offset:2px}
+::selection{background:var(--brass);color:var(--paper)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
 /* Japanese line breaks are decided by markup, not CSS:
    each meaning chunk is a .nb (nowrap) span; breaks happen only between chunks.
    Never combine word-break:keep-all with overflow-wrap:anywhere (splits words). */
 .nb{display:inline-block;white-space:nowrap}
 .seg{display:block}
-.en{font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;letter-spacing:-.02em}
-.serif{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;letter-spacing:-.02em}
-.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.en{font-family:"Kanit",sans-serif;font-weight:800;letter-spacing:.02em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
 
 /* ---------- header ---------- */
-.head{border-bottom:1px solid var(--ink)}
+.head{background:var(--paper)}
 .head-in{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:16px 0}
 .brand{font-size:18px;font-weight:900;text-decoration:none;white-space:nowrap}
-.brand b{color:var(--tomato);font-weight:900}
-.nav{display:flex;gap:24px;font-size:14px;font-weight:500}
+.brand i{display:inline-block;width:12px;height:12px;background:var(--brass);margin-right:8px}
+.nav{display:flex;gap:24px;font-size:14px;font-weight:700}
 .nav a{text-decoration:none}
-.nav a:hover{color:var(--tomato)}
+.nav a:hover{color:var(--brass)}
 
-/* ---------- hero = table of contents ---------- */
-.hero{padding:64px 0 48px}
-.hero-kicker{font-size:21px;color:var(--tomato)}
-.hero h1{
-  font-size:88px;line-height:.95;font-weight:900;letter-spacing:-.01em;
-  margin:16px 0 24px;
-}
-.hero h1 .serif{font-size:68px;color:var(--tomato)}
-.hero-lead{max-width:640px;font-size:16px}
-.toc{margin-top:48px;border-top:2px solid var(--ink)}
+/* ---------- hero = shopfront noren ---------- */
+.hero{background:var(--navy);color:var(--paper);border-radius:0 0 48px 48px;padding:64px 0 48px}
+.hero-kicker{font-size:14px;color:var(--mist);letter-spacing:.16em}
+.hero h1{font-size:80px;line-height:1.2;font-weight:900;margin:16px 0 24px}
+.hero h1 .en{font-size:64px;color:var(--brass)}
+.hero-lead{max-width:640px;font-size:16px;color:var(--mist)}
+.toc{margin-top:48px;border-top:2px solid var(--paper)}
 .toc a{
   display:flex;align-items:baseline;gap:32px;
-  padding:16px 8px;border-bottom:1px solid var(--ink);
-  text-decoration:none;
-  transition:transform .3s ease,color .3s ease;
+  padding:16px 8px;border-bottom:1px solid var(--mist);
+  text-decoration:none;transition:color .2s ease;
 }
-.toc a:hover{color:var(--tomato);transform:translateX(8px)}
-.toc .no{font-size:68px;line-height:1;min-width:120px}
-.toc .cat-name{font-size:32px;font-weight:900}
-.toc .cat-sub{font-size:14px;margin-left:auto;text-align:right}
+.toc a:hover{color:var(--brass)}
+.toc .no{font-size:48px;line-height:1;min-width:96px;color:var(--brass)}
+.toc .cat-name{font-size:28px;font-weight:900}
+.toc .cat-sub{font-size:14px;margin-left:auto;text-align:right;color:var(--mist)}
 
-/* ---------- section common ---------- */
-section.cat{padding:96px 0 48px}
-.cat-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;padding-bottom:16px;border-bottom:2px solid var(--ink)}
-.cat-head .no{font-size:52px;line-height:1;color:var(--tomato)}
-.cat-head h2{font-size:40px;font-weight:900;line-height:1.3}
-.cat-head .serif{font-size:21px}
+/* ---------- marquee strip (seed: MotionSites Jack portfolio) ---------- */
+.marquee{overflow:hidden;padding:32px 0 8px;background:var(--paper)}
+.marquee-track{display:flex;gap:16px;width:max-content;animation:marquee 48s linear infinite}
+.marquee-track img{width:280px;height:176px;object-fit:cover}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- section common: layered sheets ---------- */
+section.cat{padding:64px 0 48px;border-radius:48px 48px 0 0;margin-top:-32px;position:relative}
+section.sheet{background:var(--paper)}
+section.navy{background:var(--navy);color:var(--paper)}
+section.mist{background:var(--mist)}
+.cat-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;padding-bottom:16px;border-bottom:2px solid currentColor}
+.cat-head .no{font-size:48px;line-height:1;color:var(--brass)}
+.cat-head h2{font-size:36px;font-weight:900;line-height:1.3}
+.cat-head .en-sub{font-size:14px;letter-spacing:.16em}
 .cat-head p{font-size:14px;margin-left:auto}
 .badge{
   display:inline-block;font-size:12px;font-weight:700;line-height:1.6;
-  background:var(--tomato);color:var(--cream);padding:0 8px;margin-right:8px;vertical-align:2px;white-space:nowrap;
+  background:var(--brass);color:var(--paper);padding:0 8px;margin-right:8px;vertical-align:2px;white-space:nowrap;
 }
-.work h3{font-size:21px;font-weight:900;line-height:1.5}
+.work h3{font-size:20px;font-weight:900;line-height:1.5}
 .work h3 a{text-decoration:none}
-.work h3 a:hover{color:var(--tomato);text-decoration:underline;text-underline-offset:4px}
+.work h3 a:hover{color:var(--brass);text-decoration:underline;text-underline-offset:4px}
 .work .sum{margin-top:8px;font-size:15px}
-.work .tech{margin-top:8px;font-size:13px;opacity:.72}
+.work .tech{margin-top:8px;font-size:13px;opacity:.75}
 .work .links{margin-top:8px;font-size:14px;display:flex;flex-wrap:wrap;gap:4px 24px}
 .work .links a{font-weight:700}
-.work img{width:100%;height:auto;border:1px solid var(--ink)}
+.work img{width:100%;height:auto}
 
-/* ---------- web: editorial rows ---------- */
-.feat{display:grid;grid-template-columns:7fr 5fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--ink);align-items:start}
-.feat h3{font-size:26px}
-.rows .work{display:grid;gap:32px;padding:32px 0;border-bottom:1px solid var(--ink);align-items:start}
+/* ---------- web: featured + alternating rows ---------- */
+.feat{padding:32px 0;border-bottom:1px solid var(--navy)}
+.feat .feat-body{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:24px;align-items:start}
+.feat h3{font-size:24px}
+.rows .work{display:grid;gap:32px;padding:32px 0;border-bottom:1px solid var(--navy);align-items:start}
 .rows .work:nth-child(odd){grid-template-columns:5fr 7fr}
 .rows .work:nth-child(even){grid-template-columns:7fr 5fr}
 .rows .work:nth-child(even) .thumb{order:2}
 
-/* ---------- video: ink band ---------- */
-.band{background:var(--ink);color:var(--cream)}
-.band .cat-head{border-bottom-color:var(--cream)}
-.band .work{display:grid;grid-template-columns:8fr 4fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--cream);align-items:start}
-.band .work:last-child{border-bottom:none}
-.band .work img{border-color:var(--cream)}
-.band .work h3 a:hover{color:var(--tomato)}
-.band .tech{opacity:.8}
+/* ---------- video: navy layer ---------- */
+.navy .work{display:grid;grid-template-columns:8fr 4fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--mist);align-items:start}
+.navy .work:last-child{border-bottom:none}
 
 /* ---------- writing: text-led ---------- */
-.writing-grid{display:grid;grid-template-columns:8fr 4fr;gap:48px;padding:32px 0;border-bottom:1px solid var(--ink);align-items:start}
-.writing-grid h3{font-size:26px}
-.doc-list{margin-top:24px;border-top:1px solid var(--ink)}
-.doc-list li{display:flex;justify-content:space-between;gap:24px;padding:8px 0;border-bottom:1px solid rgba(20,17,16,.35);font-size:15px}
-.doc-list b{font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;white-space:nowrap}
+.writing-grid{display:grid;grid-template-columns:8fr 4fr;gap:48px;padding:32px 0;align-items:start}
+.writing-grid h3{font-size:24px}
+.doc-list{margin-top:24px;border-top:1px solid var(--navy)}
+.doc-list li{display:flex;justify-content:space-between;gap:24px;padding:8px 0;border-bottom:1px solid var(--mist);font-size:15px}
+.doc-list b{font-family:"Kanit",sans-serif;font-weight:600;white-space:nowrap}
 
-/* ---------- automation: ledger ---------- */
-.ledger .work{display:grid;grid-template-columns:64px 240px minmax(0,1fr);gap:32px;padding:24px 0;border-bottom:1px solid var(--ink);align-items:start}
-.ledger .idx{font-size:40px;line-height:1.2;color:var(--tomato);white-space:nowrap}
+/* ---------- automation: ledger on mist ---------- */
+.ledger .work{display:grid;grid-template-columns:64px 240px minmax(0,1fr);gap:32px;padding:24px 0;border-bottom:1px solid var(--navy);align-items:start}
+.ledger .idx{font-size:36px;line-height:1.2;color:var(--brass);white-space:nowrap}
 
 /* ---------- design: asymmetric ---------- */
 .design-grid{display:grid;grid-template-columns:7fr 5fr;gap:48px;padding-top:32px}
-.design-grid .work{padding-bottom:32px;border-bottom:1px solid var(--ink)}
-.design-grid .col2{padding-top:64px}
+.design-grid .work{padding-bottom:32px;border-bottom:1px solid var(--navy)}
+.design-grid .col2{padding-top:48px}
 .design-grid .col2 .work{margin-bottom:48px}
 .design-grid .col2 .work:last-child{margin-bottom:0}
 
-/* ---------- profile ---------- */
-.profile{padding:96px 0 64px}
-.profile .cat-head{margin-bottom:8px}
-.price-list{border-bottom:1px solid var(--ink)}
-.price-list li{display:flex;justify-content:space-between;align-items:baseline;gap:32px;padding:16px 0;border-bottom:1px solid rgba(20,17,16,.35)}
+/* ---------- profile: navy closing layer ---------- */
+.profile{padding:64px 0;border-radius:48px 48px 0 0;margin-top:-32px;position:relative;background:var(--navy);color:var(--paper)}
+.price-list{border-bottom:1px solid var(--mist)}
+.price-list li{display:flex;justify-content:space-between;align-items:baseline;gap:32px;padding:16px 0;border-bottom:1px solid var(--mist)}
 .price-list li:last-child{border-bottom:none}
-.price-list .amt{font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;font-size:32px;white-space:nowrap}
-.price-list .amt small{font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:500}
+.price-list .amt{font-family:"Kanit",sans-serif;font-weight:800;font-size:28px;white-space:nowrap;color:var(--brass)}
+.price-list .amt small{font-family:"Zen Kaku Gothic New",sans-serif;font-size:14px;font-weight:500;color:var(--paper)}
 .pcols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
-.pcols h3{font-size:21px;font-weight:900;padding-bottom:8px;border-bottom:2px solid var(--tomato);margin-bottom:8px}
-.pcols li{font-size:15px;padding:8px 0;border-bottom:1px solid rgba(20,17,16,.35)}
-.pnote{margin-top:24px;font-size:13px;opacity:.8}
+.pcols h3{font-size:20px;font-weight:900;padding-bottom:8px;border-bottom:2px solid var(--brass);margin-bottom:8px}
+.pcols li{font-size:15px;padding:8px 0;border-bottom:1px solid var(--mist)}
+.pnote{margin-top:24px;font-size:13px;color:var(--mist)}
 
 /* ---------- footer ---------- */
-footer{border-top:2px solid var(--ink);padding:32px 0 48px;font-size:13px}
-footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
+footer{padding:32px 0 48px;font-size:13px;background:var(--paper)}
+footer .flogo{font-size:20px;color:var(--brass);margin-bottom:8px}
 
 @media (max-width:900px){
   .nav{display:none}
-  .toc .no{font-size:52px;min-width:96px}
-  .feat,.band .work,.writing-grid,.design-grid,.pcols{grid-template-columns:1fr}
+  .toc .no{font-size:36px;min-width:72px}
+  .feat .feat-body,.navy .work,.writing-grid,.design-grid,.pcols{grid-template-columns:1fr}
   .design-grid .col2{padding-top:0}
   .ledger .work{grid-template-columns:56px minmax(0,1fr)}
-  .ledger .idx{font-size:32px}
+  .ledger .idx{font-size:28px}
   .ledger .thumb{display:none}
 }
 @media (max-width:600px){
   .wrap{padding:0 20px}
-  .hero{padding:48px 0 32px}
-  .hero h1{font-size:52px}
-  .hero h1 .serif{font-size:40px}
+  .hero{padding:48px 0 32px;border-radius:0 0 32px 32px}
+  .hero h1{font-size:40px}
+  .hero h1 .en{font-size:32px}
+  section.cat,.profile{border-radius:32px 32px 0 0}
   .toc a{gap:16px;flex-wrap:wrap}
-  .toc .no{font-size:40px;min-width:72px}
-  .toc .cat-name{font-size:26px}
+  .toc .no{font-size:28px;min-width:56px}
+  .toc .cat-name{font-size:24px}
   .toc .cat-sub{margin-left:0;text-align:left;width:100%}
-  section.cat{padding:64px 0 32px}
-  .cat-head .no{font-size:40px}
-  .cat-head h2{font-size:32px}
+  section.cat{padding:48px 0 32px}
+  .cat-head .no{font-size:36px}
+  .cat-head h2{font-size:28px}
   .cat-head p{margin-left:0;width:100%}
-  .rows .work{grid-template-columns:1fr}
+  .rows .work,.rows .work:nth-child(odd),.rows .work:nth-child(even){grid-template-columns:1fr}
   .rows .work:nth-child(even) .thumb{order:0}
-  .price-list .amt{font-size:26px}
+  .price-list .amt{font-size:24px}
+  .marquee-track img{width:200px;height:124px}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
+  .marquee-track{animation:none}
   .toc a{transition:none}
-  .toc a:hover{transform:none}
 }
 </style>
 </head>
@@ -175,7 +177,7 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
 
 <header class="head">
   <div class="wrap head-in">
-    <a class="brand" href="#top">ハル<b>｜</b>よろずサポート屋</a>
+    <a class="brand" href="#top"><i aria-hidden="true"></i>ハル｜よろずサポート屋</a>
     <nav class="nav" aria-label="カテゴリ">
       <a href="#web">Web制作</a><a href="#video">動画</a><a href="#writing">記事・文書</a><a href="#automation">自動化・データ</a><a href="#design">SNS・デザイン</a><a href="#profile">料金・対応業務</a>
     </nav>
@@ -184,11 +186,11 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
 
 <main id="top">
 
-<!-- ============ HERO = TABLE OF CONTENTS ============ -->
+<!-- ============ HERO = SHOPFRONT NOREN ============ -->
 <section class="hero">
   <div class="wrap">
-    <p class="serif hero-kicker">Portfolio, self-made samples</p>
-    <h1><span class="seg">自主制作</span><span class="seg">サンプル集 <span class="serif">index</span></span></h1>
+    <p class="en hero-kicker">YOROZU SUPPORT / PORTFOLIO</p>
+    <h1><span class="seg"><span class="nb">ハル｜</span><span class="nb">よろず</span><span class="nb">サポート屋</span></span><span class="seg"><span class="nb"><span class="en">Samples</span></span> <span class="nb">自主制作</span><span class="nb">サンプル集</span></span></h1>
     <p class="hero-lead"><span class="nb">ココナラ出品者「ハル｜よろずサポート屋」の</span><span class="nb">ポートフォリオです。</span><span class="nb">掲載している作品はすべて自主制作のサンプルで、</span><span class="nb">店名・会社名・人名・数値は架空のものです。</span><span class="nb">実在のお客様の制作実績ではありません</span></p>
     <nav class="toc" aria-label="カテゴリ目次">
       <a href="#web"><span class="en no">07</span><span class="cat-name">Web制作</span><span class="cat-sub"><span class="seg">店舗HP・団体の公式サイト</span><span class="seg">LP・リニューアル提案</span></span></a>
@@ -200,17 +202,41 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
   </div>
 </section>
 
+<!-- ============ MARQUEE = SHOPFRONT DISPLAY ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <img src="assets/thumbs/cafe.jpg" alt="" width="280" height="176">
+    <img src="assets/thumbs/ramen.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/salon.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/telop.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/reels.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/writing.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/scraping.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/instagram.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/cafe.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/ramen.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/salon.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/telop.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/reels.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/writing.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/scraping.jpg" alt="" width="280" height="176" loading="lazy">
+    <img src="assets/thumbs/instagram.jpg" alt="" width="280" height="176" loading="lazy">
+  </div>
+</div>
+
 <!-- ============ WEB ============ -->
-<section class="cat" id="web">
+<section class="cat sheet" id="web">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">01</span><h2>Web制作</h2><span class="serif">Web production</span><p>店舗HP・団体の公式サイト・LP・リニューアル提案</p></div>
+    <div class="cat-head"><span class="en no">01</span><h2>Web制作</h2><span class="en en-sub">WEB</span><p>店舗HP・団体の公式サイト・LP・リニューアル提案</p></div>
 
     <article class="work feat">
       <a class="thumb" href="works/web/shop-cafe/"><img src="assets/thumbs/cafe.jpg" alt="カフェのHPのトップ画面" width="1200" height="750"></a>
-      <div>
+      <div class="feat-body">
         <h3><span class="badge">自主制作サンプル</span><a href="works/web/shop-cafe/">カフェの店舗HP<span class="nb">「白杢珈琲」</span></a></h3>
-        <p class="sum"><span class="nb">焙煎機の写真から拾った3色で配色し、</span><span class="nb">店名を明朝の縦書きにした1ページHPです</span><span class="nb">営業時間・定休日・所在地を</span><span class="nb">最初の画面に置いています</span></p>
-        <p class="tech"><span class="nb">HTML／CSS・</span><span class="nb">Google Fonts・</span><span class="nb">デザイン仕様書つき</span></p>
+        <div>
+          <p class="sum"><span class="nb">焙煎機の写真から拾った3色で配色し、</span><span class="nb">店名を明朝の縦書きにした1ページHPです</span><span class="nb">営業時間・定休日・所在地を</span><span class="nb">最初の画面に置いています</span></p>
+          <p class="tech"><span class="nb">HTML／CSS・</span><span class="nb">Google Fonts・</span><span class="nb">デザイン仕様書つき</span></p>
+        </div>
       </div>
     </article>
 
@@ -234,7 +260,7 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
       <article class="work">
         <a class="thumb" href="works/web/corporate/"><img src="assets/thumbs/corporate.jpg" alt="団体の公式サイトのトップ画面" loading="lazy" width="600" height="376"></a>
         <div>
-          <h3><span class="badge">自主制作サンプル</span><a href="works/web/corporate/">一般社団法人の公式サイト（5ページ）</a></h3>
+          <h3><span class="badge">自主制作サンプル</span><a href="works/web/corporate/"><span class="nb">一般社団法人の</span><span class="nb">公式サイト（5ページ）</span></a></h3>
           <p class="sum"><span class="nb">公的機関の型で</span><span class="nb">トップ・事業内容・団体概要・</span><span class="nb">お知らせ・お問い合わせの</span><span class="nb">5ページを作りました。</span><span class="nb">お知らせはデータに1行足すだけで更新できます</span></p>
           <p class="tech"><span class="nb">HTML／CSS／JavaScript・</span><span class="nb">BIZ UDPゴシック・</span><span class="nb">アクセシビリティに配慮</span></p>
         </div>
@@ -269,9 +295,9 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
 </section>
 
 <!-- ============ VIDEO ============ -->
-<section class="cat band" id="video">
+<section class="cat navy" id="video">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">02</span><h2>動画編集</h2><span class="serif">Video editing</span><p>テロップ・図解入りの解説動画・縦型ショート・サムネイル</p></div>
+    <div class="cat-head"><span class="en no">02</span><h2>動画編集</h2><span class="en en-sub">VIDEO</span><p><span class="nb">テロップ・図解入りの解説動画・</span><span class="nb">縦型ショート・サムネイル</span></p></div>
     <article class="work">
       <a class="thumb" href="works/video/telop/"><img src="assets/thumbs/telop.jpg" alt="テロップ入り動画の1場面" loading="lazy" width="900" height="564"></a>
       <div>
@@ -284,7 +310,7 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
     <article class="work">
       <a class="thumb" href="works/video/reels/"><img src="assets/thumbs/reels.jpg" alt="ショート動画のサムネイル6枚" loading="lazy" width="900" height="564"></a>
       <div>
-        <h3><span class="badge">自主制作サンプル</span><a href="works/video/reels/">縦型ショート3本・サムネイル6枚</a></h3>
+        <h3><span class="badge">自主制作サンプル</span><a href="works/video/reels/"><span class="nb">縦型ショート3本・</span><span class="nb">サムネイル6枚</span></a></h3>
         <p class="sum"><span class="nb">グルメ紹介・ビジネスノウハウ・</span><span class="nb">クイズの3スタイルで</span><span class="nb">書体・テロップの形・カットの間隔を変えています。</span><span class="nb">サムネイルは1本につき2案です</span></p>
         <p class="tech"><span class="nb">Remotion・</span><span class="nb">1080×1920</span></p>
       </div>
@@ -293,9 +319,9 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
 </section>
 
 <!-- ============ WRITING ============ -->
-<section class="cat" id="writing">
+<section class="cat sheet" id="writing">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">03</span><h2>記事・文書</h2><span class="serif">Writing</span><p>IT解説・SEO記事・商品紹介・ビジネス文書</p></div>
+    <div class="cat-head"><span class="en no">03</span><h2>記事・文書</h2><span class="en en-sub">WRITING</span><p>IT解説・SEO記事・商品紹介・ビジネス文書</p></div>
     <div class="writing-grid">
       <article class="work">
         <h3><span class="badge">自主制作サンプル</span><a href="works/writing/">記事・文書サンプル一式</a></h3>
@@ -314,9 +340,9 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
 </section>
 
 <!-- ============ AUTOMATION ============ -->
-<section class="cat" id="automation">
+<section class="cat mist" id="automation">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">04</span><h2>自動化・データ</h2><span class="serif">Automation &amp; data</span><p>スクレイピング・CSV変換・Excel自動化・リスト作成</p></div>
+    <div class="cat-head"><span class="en no">04</span><h2>自動化・データ</h2><span class="en en-sub">AUTOMATION</span><p>スクレイピング・CSV変換・Excel自動化・リスト作成</p></div>
     <div class="ledger">
       <article class="work">
         <span class="en idx">A-1</span>
@@ -331,8 +357,8 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
         <span class="en idx">A-2</span>
         <a class="thumb" href="works/automation/data-convert/"><img src="assets/thumbs/convert.jpg" alt="請求書のPDF" loading="lazy" width="480" height="300"></a>
         <div>
-          <h3><span class="badge">自主制作サンプル</span><a href="works/automation/data-convert/">CSV→PDF・請求書ブック・データ整形</a></h3>
-          <p class="sum"><span class="nb">受注CSVから出荷伝票のPDF、</span><span class="nb">取引先と月を選ぶだけで</span><span class="nb">切り替わる請求書ブック（マクロなし）、</span><span class="nb">表記ゆれを整える整形の Before／After です</span></p>
+          <h3><span class="badge">自主制作サンプル</span><a href="works/automation/data-convert/"><span class="nb">CSV→PDF・</span><span class="nb">請求書ブック・</span><span class="nb">データ整形</span></a></h3>
+          <p class="sum"><span class="nb">受注CSVから出荷伝票のPDF、</span><span class="nb">取引先と月を選ぶだけで</span><span class="nb">切り替わる請求書ブック（マクロなし）、</span><span class="nb">表記ゆれを整える整形の</span><span class="nb">Before／After です</span></p>
           <p class="tech"><span class="nb">Python・</span><span class="nb">Excelの数式・</span><span class="nb">変更ログつき</span></p>
         </div>
       </article>
@@ -340,7 +366,7 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
         <span class="en idx">A-3</span>
         <a class="thumb" href="works/automation/list-sample/"><img src="assets/thumbs/lists.jpg" alt="スクリプトの実行画面" loading="lazy" width="480" height="300"></a>
         <div>
-          <h3><span class="badge">自主制作サンプル</span><a href="works/automation/list-sample/">リスト作成の形式見本</a></h3>
+          <h3><span class="badge">自主制作サンプル</span><a href="works/automation/list-sample/"><span class="nb">リスト作成の</span><span class="nb">形式見本</span></a></h3>
           <p class="sum"><span class="nb">営業リスト50行・</span><span class="nb">SNSインフルエンサーリスト30行の</span><span class="nb">形式見本です。</span><span class="nb">データはすべて架空で、</span><span class="nb">実在の個人情報は含みません</span></p>
           <p class="tech"><span class="nb">Excel／CSV・</span><span class="nb">入力規則と絞り込みつき</span></p>
         </div>
@@ -350,9 +376,9 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
 </section>
 
 <!-- ============ DESIGN ============ -->
-<section class="cat" id="design">
+<section class="cat sheet" id="design">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">05</span><h2>SNS・資料・デザイン</h2><span class="serif">SNS &amp; design</span><p>Instagram投稿・プレゼン資料・バナー・UI／UX提案</p></div>
+    <div class="cat-head"><span class="en no">05</span><h2>SNS・資料・デザイン</h2><span class="en en-sub">DESIGN</span><p>Instagram投稿・プレゼン資料・バナー・UI／UX提案</p></div>
     <div class="design-grid">
       <div class="col1">
         <article class="work">
@@ -371,14 +397,14 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
       <div class="col2">
         <article class="work">
           <h3><span class="badge">自主制作サンプル</span><a href="works/design/presentation/">集客提案のプレゼン資料（10スライド）</a></h3>
-          <p class="sum"><span class="nb">見出しを結論の1文にし、</span><span class="nb">グラフ・流れの図・ガントチャート・表で中身を見せる</span><span class="nb">図解中心の資料です</span></p>
+          <p class="sum"><span class="nb">見出しを結論の1文にし、</span><span class="nb">グラフ・流れの図・</span><span class="nb">ガントチャート・表で中身を見せる</span><span class="nb">図解中心の資料です</span></p>
           <p class="tech"><span class="nb">PDF・</span><span class="nb">画像・</span><span class="nb">HTMLの3形式</span></p>
           <p class="links"><a href="works/design/presentation/proposal-slides.pdf">PDFを開く</a></p>
           <a class="thumb" href="works/design/presentation/"><img src="assets/thumbs/slides.jpg" alt="提案資料のスライド" loading="lazy" width="700" height="438" style="margin-top:16px"></a>
         </article>
         <article class="work">
           <a class="thumb" href="works/design/uiux/"><img src="assets/thumbs/uiux.jpg" alt="UI／UX改善提案書の1ページ目" loading="lazy" width="700" height="438"></a>
-          <h3 style="margin-top:16px"><span class="badge">自主制作サンプル</span><a href="works/design/uiux/">申込フォームのUI／UX改善提案書</a></h3>
+          <h3 style="margin-top:16px"><span class="badge">自主制作サンプル</span><a href="works/design/uiux/"><span class="nb">申込フォームの</span><span class="nb">UI／UX改善提案書</span></a></h3>
           <p class="sum"><span class="nb">現在の画面の図に問題の箇所を番号で示し</span><span class="nb">改善後の画面と</span><span class="nb">改善内容・根拠（WCAG 2.2）を並べた</span><span class="nb">A4 2ページの提案書です</span></p>
           <p class="tech"><span class="nb">PDF・</span><span class="nb">HTML</span></p>
           <p class="links"><a href="works/design/uiux/uiux-proposal.pdf">PDFを開く</a></p>
@@ -391,7 +417,7 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
 <!-- ============ PROFILE ============ -->
 <section class="profile" id="profile">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">06</span><h2>対応業務・料金・納期</h2><span class="serif">Price &amp; services</span></div>
+    <div class="cat-head"><span class="en no">06</span><h2>対応業務・料金・納期</h2><span class="en en-sub">PRICE</span></div>
     <ul class="price-list">
       <li><span>ホームページ制作（1ページ）</span><span class="amt">¥29,800</span></li>
       <li><span>動画編集</span><span class="amt"><small>お見積もり</small></span></li>
@@ -426,8 +452,8 @@ footer .flogo{font-size:21px;color:var(--tomato);margin-bottom:8px}
 
 <footer>
   <div class="wrap">
-    <p class="serif flogo">Haru, Yorozu Support</p>
-    <p><span class="nb">このサイトに掲載している作品はすべて自主制作のサンプルです。</span><span class="nb">店名・会社名・団体名・人名・価格・数値は架空のもので</span><span class="nb">実在の店舗・企業とは関係ありません。</span><span class="nb">写真は Unsplash、素材映像・音楽は</span><span class="nb">Mixkit のライセンスに基づき</span><span class="nb">使用しています</span><span class="nb">（出典は各作品の credits.md）</span></p>
+    <p class="en flogo">YOROZU SUPPORT</p>
+    <p><span class="nb">このサイトに掲載している作品は</span><span class="nb">すべて自主制作のサンプルです。</span><span class="nb">店名・会社名・団体名・人名・価格・数値は架空のもので</span><span class="nb">実在の店舗・企業とは関係ありません。</span><span class="nb">写真は Unsplash、素材映像・音楽は</span><span class="nb">Mixkit のライセンスに基づき</span><span class="nb">使用しています</span><span class="nb">（出典は各作品の credits.md）</span></p>
   </div>
 </footer>
 </body>
