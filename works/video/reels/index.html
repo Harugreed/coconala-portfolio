@@ -8,6 +8,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("anim")}</script>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -19,6 +20,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
+  overflow-x:clip;
   background:var(--bg);color:var(--ink);
   font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
   font-size:16px;line-height:1.8;
@@ -30,64 +32,95 @@ a{color:var(--ink)}
 .seg{display:block}
 .flag{background:var(--verm);color:var(--bg);font-size:13px;padding:8px 16px;font-weight:700}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-.back{display:inline-block;margin:24px 0 0;font-size:13px}
-header{padding:48px 0 0}
-.kicker{font-size:13px;font-weight:700;color:var(--verm);margin-bottom:16px}
+.back{display:inline-block;margin:32px 0 0;font-size:13px}
+header{padding:80px 0 0}
+.kicker{font-size:13px;font-weight:700;color:var(--verm);margin-bottom:24px}
 h1{
   font-family:"Zen Maru Gothic",sans-serif;font-weight:900;
-  font-size:44px;line-height:1.35;margin-bottom:24px;
+  font-size:44px;line-height:1.35;margin-bottom:40px;
 }
 .stats{
-  display:flex;gap:48px;flex-wrap:wrap;background:var(--cream);
-  padding:24px 32px;margin-bottom:32px;
+  display:flex;gap:56px;flex-wrap:wrap;background:var(--cream);
+  padding:32px 40px;margin-bottom:56px;
 }
 .stat b{display:block;font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:26px;line-height:1.3}
 .stat span{font-size:13px;color:var(--soft)}
-.lead{max-width:720px;margin-bottom:48px}
+.lead{max-width:720px;margin-bottom:88px;line-height:2}
 /* rail: three phones in a row (seed: MotionSites "Boutique Rail") */
 .rail{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:48px;
   border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);
-  padding:32px 0;
+  padding:56px 0 88px;
 }
 .rail figure{margin:0}
 .rail video{aspect-ratio:9/16;object-fit:cover}
-.rail figcaption{padding-top:16px}
+.rail figcaption{padding-top:24px}
 .rail .no{
   font-family:"Zen Maru Gothic",sans-serif;font-weight:900;
   font-size:34px;line-height:1;color:var(--verm);display:block;margin-bottom:8px;
 }
 .rail .name{font-weight:700;font-size:20px;display:block}
 .rail .meta{font-size:13px;color:var(--soft);display:block}
-section{padding:64px 0 0}
+section{padding:112px 0 0}
 h2{
   font-family:"Zen Maru Gothic",sans-serif;font-weight:900;
   font-size:34px;line-height:1.4;margin-bottom:8px;
 }
-.sec-note{color:var(--soft);margin-bottom:32px;max-width:720px}
-.spec-block{border-top:2px solid var(--ink);padding:32px 0}
+.sec-note{color:var(--soft);margin-bottom:48px;max-width:720px}
+.spec-block{border-top:2px solid var(--ink);padding:56px 0}
 .spec-block h3{
   font-family:"Zen Maru Gothic",sans-serif;font-weight:900;
-  font-size:26px;line-height:1.4;margin-bottom:16px;
+  font-size:26px;line-height:1.4;margin-bottom:24px;
 }
 .spec-block h3 .no{color:var(--verm);margin-right:16px}
 .rows{border-top:1px solid var(--ink)}
 .row{
-  display:grid;grid-template-columns:200px 1fr;gap:24px;
-  padding:12px 0;border-bottom:1px solid var(--ink);
+  display:grid;grid-template-columns:200px 1fr;gap:32px;
+  padding:20px 0;border-bottom:1px solid var(--ink);
 }
 .row .k{font-size:13px;font-weight:700;color:var(--verm)}
-.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
 .strip img{width:100%;height:auto}
-.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:24px}
 .thumbs figure{margin:0}
 .thumbs img{width:100%;height:auto}
-.thumbs figcaption{font-size:13px;color:var(--soft);padding-top:8px}
-.links{display:flex;gap:24px;flex-wrap:wrap;margin-top:8px}
+.thumbs figcaption{font-size:13px;color:var(--soft);padding-top:12px}
+.links{display:flex;gap:32px;flex-wrap:wrap;margin-top:16px}
 .links a{font-weight:700;border-bottom:2px solid var(--verm);text-decoration:none;padding-bottom:4px}
 footer{
-  margin-top:96px;border-top:1px solid var(--ink);
-  padding:32px 0 48px;font-size:13px;color:var(--soft);
+  margin-top:144px;border-top:1px solid var(--ink);
+  padding:48px 0 64px;font-size:13px;color:var(--soft);
+}
+
+/* headline reveal (benchmark pattern, vanilla JS at page end) */
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
+html.anim [data-reveal] .ch{transform:translateY(135%);transition:transform 1.15s cubic-bezier(.65,.05,0,1)}
+html.anim [data-reveal].in .ch{transform:translateY(0)}
+@keyframes ghostdrift{from{transform:translateX(0)}to{transform:translateX(-24px)}}
+
+/* hero ghost: the 9:16 ratio itself, outlined */
+header{position:relative}
+.hero-ghost{
+  position:absolute;top:-8px;right:-8px;z-index:0;pointer-events:none;user-select:none;
+  font-family:"Zen Maru Gothic",sans-serif;font-weight:900;line-height:1;
+  font-size:15vw;white-space:nowrap;color:transparent;
+  -webkit-text-stroke:1.5px rgba(30,30,30,.14);
+  animation:ghostdrift 30s ease-in-out infinite alternate;
+}
+header .kicker,header h1,header .stats,header .lead{position:relative;z-index:1}
+/* boutique rail: centre phone rests lower, all rise slowly on hover */
+.rail figure{transition:transform .9s cubic-bezier(.65,.05,0,1)}
+.rail figure:hover{transform:translateY(-8px)}
+@media (min-width:769px){
+  .rail figure:nth-child(2){transform:translateY(32px)}
+  .rail figure:nth-child(2):hover{transform:translateY(24px)}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-ghost{animation:none}
+  .rail figure{transition:none}
+  html.anim [data-reveal] .ch{transform:none;transition:none}
 }
 @media (max-width:1024px){
   .thumbs{grid-template-columns:repeat(3,1fr)}
@@ -109,8 +142,9 @@ footer{
 <a class="back" href="../index.html">← 動画サンプルの一覧</a>
 
 <header>
+  <div class="hero-ghost" aria-hidden="true">9:16</div>
   <p class="kicker">縦型ショート動画</p>
-  <h1><span class="nb">縦型ショート動画</span><span class="nb">3本</span></h1>
+  <h1 data-reveal="chars"><span class="seg"><span class="nb">縦型ショート動画</span><span class="nb">3本</span></span></h1>
   <div class="stats">
     <p class="stat"><b>3本</b><span>動画の本数</span></p>
     <p class="stat"><b>1080×1920</b><span>画面サイズ</span></p>
@@ -138,7 +172,7 @@ footer{
 </div>
 
 <section aria-label="本ごとの仕様">
-  <h2>本ごとの仕様</h2>
+  <h2 data-reveal="chars">本ごとの仕様</h2>
   <p class="sec-note"><span class="nb">3本とも Remotion で作っています。</span><span class="nb">詳しい仕様は spec.html にまとめています。</span></p>
 
   <div class="spec-block">
@@ -197,7 +231,7 @@ footer{
 </section>
 
 <section aria-label="サムネイル">
-  <h2>サムネイル（1本につき2案）</h2>
+  <h2 data-reveal="chars">サムネイル（1本につき2案）</h2>
   <p class="sec-note"><span class="nb">動画と一緒に納品するサムネイルです。</span><span class="nb">6枚の一覧画像も用意しています。</span></p>
   <div class="thumbs">
     <figure><img src="../thumbnail/out/thumb-gourmet-a.png" alt="グルメ編サムネイル A案" width="1080" height="1920" loading="lazy"><figcaption>グルメ A案</figcaption></figure>
@@ -211,7 +245,7 @@ footer{
 </section>
 
 <section aria-label="資料">
-  <h2>資料</h2>
+  <h2 data-reveal="chars">資料</h2>
   <p class="links"><a href="spec.html">3本のテロップとカットの仕様</a><a href="../telop/credits.html">素材・音声・書体の出典</a></p>
 </section>
 </main>
@@ -220,5 +254,45 @@ footer{
   <p><span class="nb">自主制作サンプルです。</span><span class="nb">店名・価格は架空のカフェ</span><span class="nb">「白杢珈琲」のものです。</span><span class="nb">制作に使った Remotion のコードは</span><span class="nb">telop の source にあります。</span></p>
 </footer>
 </div>
+
+<script>
+(function(){
+  "use strict";
+  if(!document.documentElement.classList.contains("anim")) return;
+  function splitChars(el){
+    var chars=[];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag=document.createDocumentFragment(), word=null;
+          n.textContent.split("").forEach(function(c){
+            var s=document.createElement("span"); s.className="ch"; s.textContent=c; chars.push(s);
+            if(c===" "||c==="\u3000"){ word=null; frag.appendChild(s); }
+            else{ if(!word){ word=document.createElement("span"); word.className="w"; frag.appendChild(word); } word.appendChild(s); }
+          });
+          node.replaceChild(frag,n);
+        } else if(n.nodeType===1 && n.tagName!=="BR"){ walk(n); }
+      });
+    }
+    var lines=el.querySelectorAll(".seg,.line");
+    if(!lines.length){
+      var line=document.createElement("span"); line.className="line";
+      while(el.firstChild) line.appendChild(el.firstChild);
+      el.appendChild(line); lines=[line];
+    }
+    lines.forEach(function(l){ l.classList.add("line"); walk(l); });
+    chars.forEach(function(s,i){ s.style.transitionDelay=(i*26)+"ms"; });
+    return chars;
+  }
+  var els=document.querySelectorAll("[data-reveal]");
+  els.forEach(function(el){ splitChars(el); });
+  if(!("IntersectionObserver" in window)){ els.forEach(function(el){ el.classList.add("in"); }); return; }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{threshold:.35});
+  els.forEach(function(el,i){ if(i===0){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.classList.add("in"); }); }); } else { io.observe(el); } });
+  setTimeout(function(){ els.forEach(function(el){ el.classList.add("in"); }); },4500); /* safety: never leave a headline hidden */
+})();
+</script>
 </body>
 </html>

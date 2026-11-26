@@ -8,6 +8,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("anim")}</script>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -15,6 +16,7 @@
   --navy:#1F3A5F;
   --brass:#B7791F;
   --mist:#DCE3EA;
+  --ease:cubic-bezier(.65,.05,0,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -46,27 +48,27 @@ video{display:block;width:100%;background:var(--navy)}
 .top .idx{font-family:"Kanit",sans-serif;font-weight:600;letter-spacing:.08em}
 
 /* ---------- hero = program table on paper ---------- */
-.hero{padding:48px 0 64px}
+.hero{padding:80px 0 104px}
 .hero .kicker{font-size:14px;color:var(--brass);letter-spacing:.16em}
-h1{font-size:48px;line-height:1.3;font-weight:900;margin:16px 0 32px}
-.program{display:flex;flex-wrap:wrap;gap:32px;border-top:2px solid var(--navy);border-bottom:2px solid var(--navy);padding:24px 0}
-.program .t{display:block;font-family:"Kanit",sans-serif;font-weight:800;font-size:36px;line-height:1.2;color:var(--brass)}
+h1{font-size:48px;line-height:1.3;font-weight:900;margin:24px 0 48px}
+.program{display:flex;flex-wrap:wrap;gap:48px;border-top:2px solid var(--navy);border-bottom:2px solid var(--navy);padding:32px 0}
+.program .t{display:block;font-family:"Kanit",sans-serif;font-weight:800;font-size:44px;line-height:1.2;color:var(--brass)}
 .program .t small{font-size:18px}
 .program li{font-size:13px}
 
 /* ---------- layers ---------- */
-.layer{border-radius:48px 48px 0 0;margin-top:-32px;position:relative;padding:64px 0 48px}
+.layer{border-radius:48px 48px 0 0;margin-top:-32px;position:relative;padding:104px 0 80px}
 .layer.navy{background:var(--navy);color:var(--paper)}
 .layer.sheet{background:var(--paper)}
 .layer.mist{background:var(--mist)}
-.sec-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.sec-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:40px}
 .sec-head .no{font-family:"Kanit",sans-serif;font-weight:600;font-size:14px;letter-spacing:.16em;color:var(--brass)}
 h2{font-size:28px;line-height:1.4;font-weight:900}
 h2 a{text-decoration:none;border-bottom:2px solid var(--brass);padding-bottom:2px}
 h2 a:hover{color:var(--brass)}
 .sec-head .time{margin-left:auto;font-family:"Kanit",sans-serif;font-weight:800;font-size:24px;color:var(--brass);white-space:nowrap}
-.layer p{margin-top:24px;font-size:15px;max-width:640px}
-.go{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-weight:700;font-size:15px;text-decoration:none}
+.layer p{margin-top:32px;font-size:15px;max-width:640px;line-height:2}
+.go{display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-weight:700;font-size:15px;text-decoration:none}
 .go .arr{
   display:inline-grid;place-items:center;width:24px;height:24px;flex:none;
   background:var(--brass);color:var(--paper);transition:transform .2s ease;
@@ -75,11 +77,11 @@ h2 a:hover{color:var(--brass)}
 .go .arr svg{width:12px;height:12px}
 
 /* ---------- screening ---------- */
-.screen-frame{background:var(--paper);padding:16px}
+.screen-frame{background:var(--paper);padding:24px}
 .screen-frame video{aspect-ratio:16/9}
 
 /* ---------- film strip ---------- */
-.film{background:var(--navy);padding:32px 24px;position:relative}
+.film{background:var(--navy);padding:48px 32px;position:relative}
 .film::before,.film::after{
   content:"";position:absolute;left:0;right:0;height:8px;
   background-image:radial-gradient(circle,4px 4px at 8px 50%,var(--mist) 98%,transparent);
@@ -87,18 +89,40 @@ h2 a:hover{color:var(--brass)}
 }
 .film::before{top:8px}
 .film::after{bottom:8px}
-.frames{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.frames{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
 .frame .ph{aspect-ratio:9/16;overflow:hidden;background:var(--navy)}
 .frame img{width:100%;height:100%;object-fit:cover}
-.frame figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px;color:var(--paper);font-size:13px;padding-top:8px}
+.frame figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px;color:var(--paper);font-size:13px;padding-top:16px}
 .frame figcaption .sec{font-family:"Kanit",sans-serif;font-weight:600;color:var(--brass);white-space:nowrap}
 
 /* ---------- thumbnails ---------- */
 .thumb-fig{background:var(--paper)}
 .thumb-fig img{width:100%}
 
+
+/* headline reveal (benchmark pattern, vanilla JS at page end) */
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
+html.anim [data-reveal] .ch{transform:translateY(135%);transition:transform 1.15s cubic-bezier(.65,.05,0,1)}
+html.anim [data-reveal].in .ch{transform:translateY(0)}
+@keyframes ghostdrift{from{transform:translateX(0)}to{transform:translateX(-24px)}}
+
+/* hero ghost outline + screening moment */
+.hero{position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:1}
+.hero-ghost{
+  position:absolute;top:16px;right:-16px;z-index:0;pointer-events:none;user-select:none;
+  font-family:"Kanit",sans-serif;font-weight:800;line-height:1;letter-spacing:.01em;
+  font-size:19vw;white-space:nowrap;color:transparent;
+  -webkit-text-stroke:1.5px rgba(31,58,95,.16);
+  animation:ghostdrift 30s ease-in-out infinite alternate;
+}
+.screen-frame{box-shadow:16px 16px 0 rgba(183,121,31,.45)}
+.frame .ph img{transition:transform 1.2s var(--ease)}
+.frame:hover .ph img{transform:scale(1.03)}
 /* ---------- footer ---------- */
-footer{padding:32px 0 48px;font-size:12px}
+footer{padding:48px 0 64px;font-size:12px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
 footer a{font-weight:700}
 
@@ -106,16 +130,19 @@ footer a{font-weight:700}
   .wrap{padding:0 20px}
   h1{font-size:28px}
   h2{font-size:20px}
-  .hero{padding:32px 0 48px}
-  .layer{border-radius:32px 32px 0 0;padding:48px 0 32px}
+  .hero{padding:56px 0 72px}
+  .layer{border-radius:32px 32px 0 0;padding:72px 0 56px}
   .program{gap:24px}
   .program .t{font-size:28px}
   .frames{grid-template-columns:1fr;max-width:240px;margin:0 auto}
-  .screen-frame{padding:8px}
+  .screen-frame{padding:12px}
   .sec-head .time{margin-left:0}
 }
 @media (prefers-reduced-motion: reduce){
   .go .arr{transition:none}
+  .hero-ghost{animation:none}
+  .frame .ph img{transition:none}
+  html.anim [data-reveal] .ch{transform:none;transition:none}
 }
 </style>
 </head>
@@ -131,9 +158,10 @@ footer a{font-weight:700}
 
 <main>
   <section class="hero">
+    <div class="hero-ghost en" aria-hidden="true">VIDEO</div>
     <div class="wrap">
       <p class="en kicker">VIDEO WORKS</p>
-      <h1><span class="seg"><span class="nb">動画サンプル</span></span></h1>
+      <h1 data-reveal="chars"><span class="seg"><span class="nb">動画サンプル</span></span></h1>
       <ul class="program">
         <li><span class="t">3<small>min</small> 08<small>sec</small></span>テロップ本編</li>
         <li><span class="t">30<small>sec</small></span>Before／After比較</li>
@@ -147,7 +175,7 @@ footer a{font-weight:700}
     <div class="wrap">
       <div class="sec-head">
         <span class="no">PROGRAM 01</span>
-        <h2><a href="telop/">YouTubeテロップ編集</a></h2>
+        <h2 data-reveal="chars"><a href="telop/">YouTubeテロップ編集</a></h2>
         <span class="time">3:08 ＋ 0:30</span>
       </div>
       <div class="screen-frame">
@@ -162,7 +190,7 @@ footer a{font-weight:700}
     <div class="wrap">
       <div class="sec-head">
         <span class="no">PROGRAM 02</span>
-        <h2><a href="reels/">縦型ショート動画3本</a></h2>
+        <h2 data-reveal="chars"><a href="reels/">縦型ショート動画3本</a></h2>
         <span class="time">20s ／ 30s ／ 22s</span>
       </div>
       <div class="film">
@@ -190,7 +218,7 @@ footer a{font-weight:700}
     <div class="wrap">
       <div class="sec-head">
         <span class="no">PROGRAM 03</span>
-        <h2><a href="reels/">サムネイル6枚</a></h2>
+        <h2 data-reveal="chars"><a href="reels/">サムネイル6枚</a></h2>
         <span class="time">2案 × 3本</span>
       </div>
       <figure class="thumb-fig">
@@ -208,5 +236,45 @@ footer a{font-weight:700}
     <span><span class="nb">自主制作サンプルです</span><span class="nb">素材映像・音楽：Mixkit</span><span class="nb">音声合成：Irodori-TTS</span></span>
   </div>
 </footer>
+
+<script>
+(function(){
+  "use strict";
+  if(!document.documentElement.classList.contains("anim")) return;
+  function splitChars(el){
+    var chars=[];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag=document.createDocumentFragment(), word=null;
+          n.textContent.split("").forEach(function(c){
+            var s=document.createElement("span"); s.className="ch"; s.textContent=c; chars.push(s);
+            if(c===" "||c==="\u3000"){ word=null; frag.appendChild(s); }
+            else{ if(!word){ word=document.createElement("span"); word.className="w"; frag.appendChild(word); } word.appendChild(s); }
+          });
+          node.replaceChild(frag,n);
+        } else if(n.nodeType===1 && n.tagName!=="BR"){ walk(n); }
+      });
+    }
+    var lines=el.querySelectorAll(".seg,.line");
+    if(!lines.length){
+      var line=document.createElement("span"); line.className="line";
+      while(el.firstChild) line.appendChild(el.firstChild);
+      el.appendChild(line); lines=[line];
+    }
+    lines.forEach(function(l){ l.classList.add("line"); walk(l); });
+    chars.forEach(function(s,i){ s.style.transitionDelay=(i*26)+"ms"; });
+    return chars;
+  }
+  var els=document.querySelectorAll("[data-reveal]");
+  els.forEach(function(el){ splitChars(el); });
+  if(!("IntersectionObserver" in window)){ els.forEach(function(el){ el.classList.add("in"); }); return; }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{threshold:.35});
+  els.forEach(function(el,i){ if(i===0){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.classList.add("in"); }); }); } else { io.observe(el); } });
+  setTimeout(function(){ els.forEach(function(el){ el.classList.add("in"); }); },4500); /* safety: never leave a headline hidden */
+})();
+</script>
 </body>
 </html>

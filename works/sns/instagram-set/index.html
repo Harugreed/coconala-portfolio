@@ -8,6 +8,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("anim")}</script>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -19,6 +20,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
+  overflow-x:clip;
   background:var(--paper);color:var(--ink);
   font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
   font-size:16px;line-height:1.8;
@@ -32,66 +34,95 @@ a{color:var(--roaster)}
   font-size:13px;padding:8px 16px;
 }
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-.back{display:inline-block;margin:24px 0 0;font-size:13px}
+.back{display:inline-block;margin:32px 0 0;font-size:13px}
 /* profile summary (Mobbin "Instagram iOS Account Profile" structure: summary on top, grid below) */
-.profile{padding:48px 0 32px;border-bottom:2px solid var(--ink)}
-.profile-kicker{font-size:13px;color:var(--roaster);font-weight:700;margin-bottom:16px}
+.profile{padding:88px 0 64px;border-bottom:2px solid var(--ink)}
+.profile-kicker{font-size:13px;color:var(--roaster);font-weight:700;margin-bottom:24px}
 h1{
   font-family:"Shippori Mincho B1","Hiragino Mincho ProN",serif;
-  font-size:44px;line-height:1.4;font-weight:700;margin-bottom:24px;
+  font-size:44px;line-height:1.4;font-weight:700;margin-bottom:40px;
 }
 .profile-stats{
-  display:flex;gap:48px;flex-wrap:wrap;
+  display:flex;gap:56px;flex-wrap:wrap;
   border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
-  padding:16px 0;margin-bottom:24px;
+  padding:24px 0;margin-bottom:40px;
 }
 .stat b{
   display:block;font-family:"Shippori Mincho B1",serif;
   font-size:26px;line-height:1.3;font-weight:700;
 }
 .stat span{font-size:13px;color:var(--ink-soft)}
-.profile-note{max-width:720px}
-section{padding:64px 0 0}
+.profile-note{max-width:720px;line-height:2}
+section{padding:112px 0 0}
 h2{
   font-family:"Shippori Mincho B1",serif;
   font-size:34px;line-height:1.4;font-weight:700;margin-bottom:8px;
 }
-.sec-note{color:var(--ink-soft);margin-bottom:32px;max-width:720px}
+.sec-note{color:var(--ink-soft);margin-bottom:48px;max-width:720px}
 /* feed grid: no gaps, like a profile grid */
 .feed{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
 .feed figure{margin:0}
 .feed img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
 .feed figcaption{
-  font-size:13px;padding:8px 0 16px;color:var(--ink-soft);
+  font-size:13px;padding:12px 0 24px;color:var(--ink-soft);
   display:flex;justify-content:space-between;gap:16px;
 }
 .feed figcaption b{color:var(--ink);font-weight:700}
 /* ruled detail list */
 .rows{border-top:2px solid var(--ink)}
 .row{
-  display:grid;grid-template-columns:200px 200px 1fr;gap:24px;
-  padding:16px 0;border-bottom:1px solid var(--ink);
+  display:grid;grid-template-columns:200px 200px 1fr;gap:32px;
+  padding:24px 0;border-bottom:1px solid var(--ink);
 }
 .row .file{font-size:13px;color:var(--roaster);font-weight:700}
 .row .name{font-weight:700}
 .row .policy{color:var(--ink-soft)}
-.photos{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 .photos img{width:100%;height:auto}
-.links{display:flex;gap:24px;flex-wrap:wrap;margin-top:8px}
+.links{display:flex;gap:32px;flex-wrap:wrap;margin-top:16px}
 .links a{
   font-weight:700;border-bottom:2px solid var(--roaster);
   text-decoration:none;padding-bottom:4px;
 }
 table{width:100%;border-collapse:collapse;font-size:16px}
-th,td{border-bottom:1px solid var(--ink);padding:12px 8px;text-align:left;vertical-align:top}
+th,td{border-bottom:1px solid var(--ink);padding:16px 8px;text-align:left;vertical-align:top}
 thead th{border-bottom:2px solid var(--ink);font-size:13px;color:var(--roaster)}
 .intro-lines{
-  font-family:"Shippori Mincho B1",serif;font-size:20px;line-height:2;
-  border-top:2px solid var(--ink);padding-top:32px;
+  font-family:"Shippori Mincho B1",serif;font-size:20px;line-height:2.2;
+  border-top:2px solid var(--ink);padding-top:48px;
 }
 footer{
-  margin-top:96px;border-top:1px solid var(--ink);
-  padding:32px 0 48px;font-size:13px;color:var(--ink-soft);
+  margin-top:144px;border-top:1px solid var(--ink);
+  padding:48px 0 64px;font-size:13px;color:var(--ink-soft);
+}
+
+/* headline reveal (benchmark pattern, vanilla JS at page end) */
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
+html.anim [data-reveal] .ch{transform:translateY(135%);transition:transform 1.15s cubic-bezier(.65,.05,0,1)}
+html.anim [data-reveal].in .ch{transform:translateY(0)}
+@keyframes ghostdrift{from{transform:translateX(0)}to{transform:translateX(-24px)}}
+
+/* profile ghost: the shop name in outline Mincho behind the header */
+.profile{position:relative;overflow:hidden}
+.profile .profile-kicker,.profile h1,.profile .profile-stats,.profile .profile-note{position:relative;z-index:1}
+.profile-ghost{
+  position:absolute;top:24px;right:-16px;z-index:0;pointer-events:none;user-select:none;
+  font-family:"Shippori Mincho B1",serif;font-weight:700;line-height:1.2;
+  font-size:10vw;white-space:nowrap;color:transparent;
+  -webkit-text-stroke:1.5px rgba(43,33,27,.13);
+  animation:ghostdrift 30s ease-in-out infinite alternate;
+}
+/* source photos: editorial stagger, second frame rests lower */
+@media (min-width:769px){
+  .photos img:nth-child(2){margin-top:40px}
+}
+.photos img{transition:transform 1.2s cubic-bezier(.65,.05,0,1)}
+@media (prefers-reduced-motion: reduce){
+  .profile-ghost{animation:none}
+  .photos img{transition:none}
+  html.anim [data-reveal] .ch{transform:none;transition:none}
 }
 @media (max-width:1024px){
   .row{grid-template-columns:160px 160px 1fr}
@@ -117,8 +148,9 @@ footer{
 <a class="back" href="../../../index.html">← ポートフォリオ索引</a>
 
 <header class="profile">
+  <div class="profile-ghost" aria-hidden="true">白杢珈琲</div>
   <p class="profile-kicker">Instagram投稿セット</p>
-  <h1><span class="nb">Instagram投稿セット</span><span class="nb">白杢珈琲</span></h1>
+  <h1 data-reveal="chars"><span class="seg"><span class="nb">Instagram投稿セット</span></span><span class="seg"><span class="nb">白杢珈琲</span></span></h1>
   <div class="profile-stats">
     <p class="stat"><b>6枚</b><span>投稿画像</span></p>
     <p class="stat"><b>1080×1080px</b><span>画像サイズ</span></p>
@@ -130,7 +162,7 @@ footer{
 
 <main>
 <section aria-label="投稿画像6枚">
-  <h2>投稿画像</h2>
+  <h2 data-reveal="chars">投稿画像</h2>
   <p class="sec-note"><span class="nb">プロフィール画面の一覧と同じ並びで</span><span class="nb">6枚を置いています。</span><span class="nb">写真は Unsplash License に基づき</span><span class="nb">使用しています。</span></p>
   <div class="feed">
     <figure><img src="posts/post-01.png" alt="投稿画像1 焙煎日の案内" width="1080" height="1080"><figcaption><b>post-01</b><span>焙煎日（月・木・土）</span></figcaption></figure>
@@ -144,7 +176,7 @@ footer{
 </section>
 
 <section aria-label="投稿の中身">
-  <h2>投稿の中身</h2>
+  <h2 data-reveal="chars">投稿の中身</h2>
   <p class="sec-note"><span class="nb">1枚ごとに載せる情報を決め、</span><span class="nb">作り方をそろえています。</span></p>
   <div class="rows">
     <div class="row"><p class="file">posts/post-01.png</p><p class="name">焙煎日（月・木・土）</p><p class="policy"><span class="nb">写真の下に</span><span class="nb">毎週変わらない情報を</span><span class="nb">大きく置く</span></p></div>
@@ -154,11 +186,11 @@ footer{
     <div class="row"><p class="file">posts/post-05.png</p><p class="name">店内</p><p class="policy"><span class="nb">席数・電源のある席・利用時間を</span><span class="nb">数字で示す</span></p></div>
     <div class="row"><p class="file">posts/post-06.png</p><p class="name">営業案内</p><p class="policy"><span class="nb">営業時間・定休日・アクセスを</span><span class="nb">1枚にまとめる</span></p></div>
   </div>
-  <p style="margin-top:24px"><span class="nb">配色と書体は</span><span class="nb">店のホームページ（P01）と</span><span class="nb">同じにしています</span><span class="nb">（ステンレス #E4E7E5・</span><span class="nb">焦げ茶 #2B211B・</span><span class="nb">焙煎機の緑 #2C6670、</span><span class="nb">Shippori Mincho B1・</span><span class="nb">Zen Kaku Gothic New）。</span><span class="nb">画像は posts/posts.html から</span><span class="nb">書き出しています。</span><span class="nb">文字や価格を変える場合は</span><span class="nb">HTMLを直して書き出し直します。</span></p>
+  <p style="margin-top:40px"><span class="nb">配色と書体は</span><span class="nb">店のホームページ（P01）と</span><span class="nb">同じにしています</span><span class="nb">（ステンレス #E4E7E5・</span><span class="nb">焦げ茶 #2B211B・</span><span class="nb">焙煎機の緑 #2C6670、</span><span class="nb">Shippori Mincho B1・</span><span class="nb">Zen Kaku Gothic New）。</span><span class="nb">画像は posts/posts.html から</span><span class="nb">書き出しています。</span><span class="nb">文字や価格を変える場合は</span><span class="nb">HTMLを直して書き出し直します。</span></p>
 </section>
 
 <section aria-label="素材写真">
-  <h2>素材写真</h2>
+  <h2 data-reveal="chars">素材写真</h2>
   <p class="sec-note"><span class="nb">投稿画像に使っている実写真です。</span><span class="nb">出典は credits.md にまとめています。</span></p>
   <div class="photos">
     <img src="img/roaster.jpg" alt="店内の焙煎機" width="2200" height="1467" loading="lazy">
@@ -167,13 +199,13 @@ footer{
 </section>
 
 <section aria-label="キャプション">
-  <h2>キャプション</h2>
+  <h2 data-reveal="chars">キャプション</h2>
   <p><span class="nb">6投稿分を captions.md に</span><span class="nb">載せています。</span><span class="nb">1投稿の文は事実だけにし、</span><span class="nb">ハッシュタグは5個までにしています。</span></p>
   <p class="links"><a href="captions.md">captions.md を見る</a><a href="captions.html">キャプションのページを見る</a></p>
 </section>
 
 <section aria-label="投稿カレンダー">
-  <h2>1週間分の投稿カレンダー</h2>
+  <h2 data-reveal="chars">1週間分の投稿カレンダー</h2>
   <p class="sec-note"><span class="nb">2026年11月30日から12月6日までの予定です。</span><span class="nb">ファイルは calendar.xlsx</span><span class="nb">（「投稿カレンダー」「方針」の2シート）です。</span></p>
   <table>
     <thead><tr><th>日付</th><th>時刻</th><th>種類</th><th>投稿</th></tr></thead>
@@ -193,7 +225,7 @@ footer{
 </section>
 
 <section aria-label="紹介文">
-  <h2>応募時の紹介文</h2>
+  <h2 data-reveal="chars">応募時の紹介文</h2>
   <p class="intro-lines"><span class="seg"><span class="nb">架空のカフェのInstagram投稿画像6枚と</span><span class="nb">キャプション、</span></span><span class="seg"><span class="nb">1週間分の投稿カレンダーの</span><span class="nb">自主制作サンプルです</span></span><span class="seg"><span class="nb">店のホームページと配色・書体をそろえ、</span></span><span class="seg"><span class="nb">価格・時刻・席数などの具体的な情報を</span><span class="nb">1枚ずつ大きく載せています</span></span><span class="seg"><span class="nb">カレンダーには投稿の時刻・種類・素材を決めてあり、</span></span><span class="seg"><span class="nb">定休日は予約投稿で回す運用まで書いています</span></span></p>
 </section>
 </main>
@@ -202,5 +234,45 @@ footer{
   <p><span class="nb">自主制作サンプルです。</span><span class="nb">店名・価格は架空です。</span><span class="nb">写真の出典は</span><a href="credits.md">credits.md</a><span class="nb">をご覧ください。</span></p>
 </footer>
 </div>
+
+<script>
+(function(){
+  "use strict";
+  if(!document.documentElement.classList.contains("anim")) return;
+  function splitChars(el){
+    var chars=[];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag=document.createDocumentFragment(), word=null;
+          n.textContent.split("").forEach(function(c){
+            var s=document.createElement("span"); s.className="ch"; s.textContent=c; chars.push(s);
+            if(c===" "||c==="\u3000"){ word=null; frag.appendChild(s); }
+            else{ if(!word){ word=document.createElement("span"); word.className="w"; frag.appendChild(word); } word.appendChild(s); }
+          });
+          node.replaceChild(frag,n);
+        } else if(n.nodeType===1 && n.tagName!=="BR"){ walk(n); }
+      });
+    }
+    var lines=el.querySelectorAll(".seg,.line");
+    if(!lines.length){
+      var line=document.createElement("span"); line.className="line";
+      while(el.firstChild) line.appendChild(el.firstChild);
+      el.appendChild(line); lines=[line];
+    }
+    lines.forEach(function(l){ l.classList.add("line"); walk(l); });
+    chars.forEach(function(s,i){ s.style.transitionDelay=(i*26)+"ms"; });
+    return chars;
+  }
+  var els=document.querySelectorAll("[data-reveal]");
+  els.forEach(function(el){ splitChars(el); });
+  if(!("IntersectionObserver" in window)){ els.forEach(function(el){ el.classList.add("in"); }); return; }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{threshold:.35});
+  els.forEach(function(el,i){ if(i===0){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.classList.add("in"); }); }); } else { io.observe(el); } });
+  setTimeout(function(){ els.forEach(function(el){ el.classList.add("in"); }); },4500); /* safety: never leave a headline hidden */
+})();
+</script>
 </body>
 </html>

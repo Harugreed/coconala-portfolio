@@ -8,6 +8,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script>if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("anim")}</script>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -19,6 +20,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
+  overflow-x:clip;
   background:var(--paper);color:var(--ink);
   font-family:"M PLUS 1p","Hiragino Kaku Gothic ProN",sans-serif;
   font-size:16px;line-height:1.8;
@@ -32,30 +34,30 @@ a{color:var(--ink)}
 .flag{background:var(--ink);color:var(--white);font-size:13px;padding:8px 16px}
 .flag b{color:var(--sun);font-weight:700}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-.back{display:inline-block;margin:24px 0;font-size:13px}
+.back{display:inline-block;margin:32px 0;font-size:13px}
 /* title band: same build as the film's 0:00 title card (navy ground, yellow line) */
-.titleband{background:var(--ink);color:var(--white);padding:48px 32px 40px;margin-bottom:32px}
-.titleband .kicker{font-size:13px;color:var(--sun);font-weight:700;margin-bottom:16px}
-h1{font-size:34px;line-height:1.5;font-weight:800;margin-bottom:16px}
-.titleband .theme{font-size:20px;font-weight:700;margin-bottom:24px}
+.titleband{background:var(--ink);color:var(--white);padding:80px 48px 64px;margin-bottom:56px}
+.titleband .kicker{font-size:13px;color:var(--sun);font-weight:700;margin-bottom:24px}
+h1{font-size:34px;line-height:1.5;font-weight:800;margin-bottom:24px}
+.titleband .theme{font-size:20px;font-weight:700;margin-bottom:32px}
 .titleband .rule{height:4px;background:var(--sun);width:160px}
 .stats{
-  display:flex;gap:48px;flex-wrap:wrap;
+  display:flex;gap:56px;flex-wrap:wrap;
   border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
-  padding:16px 0;margin-bottom:32px;
+  padding:24px 0;margin-bottom:56px;
 }
 .stat b{display:block;font-size:26px;line-height:1.3;font-weight:800}
 .stat span{font-size:13px;color:var(--soft)}
-.lead{max-width:760px;margin-bottom:32px}
-section{padding:64px 0 0}
+.lead{max-width:760px;margin-bottom:56px;line-height:2}
+section{padding:112px 0 0}
 h2{font-size:34px;line-height:1.4;font-weight:800;margin-bottom:8px}
 h2 .tc{color:var(--ink);border-bottom:4px solid var(--sun)}
-.sec-note{color:var(--soft);margin-bottom:32px;max-width:760px}
+.sec-note{color:var(--soft);margin-bottom:48px;max-width:760px}
 /* timeline: chapters as tracks on a time axis (seed: MotionSites "Video Editor") */
 .timeline{border-top:2px solid var(--ink)}
 .track{
-  display:grid;grid-template-columns:120px 1fr 320px;gap:32px;
-  padding:24px 0;border-bottom:1px solid var(--ink);align-items:start;
+  display:grid;grid-template-columns:120px 1fr 320px;gap:40px;
+  padding:44px 0;border-bottom:1px solid var(--ink);align-items:start;
 }
 .track .tc{font-size:20px}
 .track h3{font-size:20px;line-height:1.5;font-weight:700;margin-bottom:8px}
@@ -64,23 +66,62 @@ h2 .tc{color:var(--ink);border-bottom:4px solid var(--sun)}
 .track .still-empty{font-size:13px;color:var(--soft)}
 .rows{border-top:2px solid var(--ink)}
 .row{
-  display:grid;grid-template-columns:240px 1fr;gap:24px;
-  padding:12px 0;border-bottom:1px solid var(--ink);
+  display:grid;grid-template-columns:240px 1fr;gap:32px;
+  padding:20px 0;border-bottom:1px solid var(--ink);
 }
 .row .k{font-size:13px;font-weight:700}
 .steps{border-top:2px solid var(--ink)}
 .step{
-  display:grid;grid-template-columns:120px 1fr;gap:32px;
-  padding:24px 0;border-bottom:1px solid var(--ink);
+  display:grid;grid-template-columns:120px 1fr;gap:40px;
+  padding:40px 0;border-bottom:1px solid var(--ink);
 }
 .step .no{font-size:26px;font-weight:800}
 .step h3{font-size:20px;font-weight:700;margin-bottom:8px}
 .step p{color:var(--soft)}
-.links{display:flex;gap:24px;flex-wrap:wrap;margin-top:8px}
+.links{display:flex;gap:32px;flex-wrap:wrap;margin-top:16px}
 .links a{font-weight:700;border-bottom:2px solid var(--sun);text-decoration:none;padding-bottom:4px}
 footer{
-  margin-top:96px;border-top:1px solid var(--ink);
-  padding:32px 0 48px;font-size:13px;color:var(--soft);
+  margin-top:144px;border-top:1px solid var(--ink);
+  padding:48px 0 64px;font-size:13px;color:var(--soft);
+}
+
+/* headline reveal (benchmark pattern, vanilla JS at page end) */
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
+html.anim [data-reveal] .ch{transform:translateY(135%);transition:transform 1.15s cubic-bezier(.65,.05,0,1)}
+html.anim [data-reveal].in .ch{transform:translateY(0)}
+@keyframes ghostdrift{from{transform:translateX(0)}to{transform:translateX(-24px)}}
+
+/* title band ghost timecode + rule that draws itself once */
+.titleband{position:relative;overflow:hidden}
+.titleband .kicker,.titleband h1,.titleband .theme,.titleband .rule{position:relative;z-index:1}
+.band-ghost{
+  position:absolute;top:8px;right:16px;z-index:0;pointer-events:none;user-select:none;
+  font-family:"M PLUS 1p",sans-serif;font-weight:800;line-height:1;
+  font-size:11vw;white-space:nowrap;color:transparent;
+  -webkit-text-stroke:1.5px rgba(255,255,255,.16);
+  animation:ghostdrift 30s ease-in-out infinite alternate;
+}
+.titleband .rule{transform-origin:left}
+html.anim .titleband .rule{animation:ruledraw 1.8s cubic-bezier(.65,.05,0,1) .5s both}
+@keyframes ruledraw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* timeline: each timecode earns its yellow underline as it arrives */
+.track .tc{position:relative;padding-bottom:8px}
+.track .tc::after{
+  content:"";position:absolute;left:0;bottom:0;height:4px;width:100%;
+  background:var(--sun);transform:scaleX(0);transform-origin:left;
+  transition:transform 1.2s cubic-bezier(.65,.05,0,1);
+}
+.track.in .tc::after{transform:scaleX(1)}
+.track img{transition:transform 1.2s cubic-bezier(.65,.05,0,1)}
+.track:hover img{transform:scale(1.02)}
+@media (prefers-reduced-motion: reduce){
+  .band-ghost{animation:none}
+  html.anim .titleband .rule{animation:none}
+  .track .tc::after{transition:none;transform:scaleX(1)}
+  .track img{transition:none}
+  html.anim [data-reveal] .ch{transform:none;transition:none}
 }
 @media (max-width:1024px){
   .track{grid-template-columns:96px 1fr 240px;gap:24px}
@@ -88,7 +129,7 @@ footer{
 @media (max-width:768px){
   h1{font-size:26px}
   h2{font-size:26px}
-  .titleband{padding:32px 16px}
+  .titleband{padding:48px 20px}
   .track{grid-template-columns:1fr;gap:8px}
   .row{grid-template-columns:1fr;gap:4px}
   .step{grid-template-columns:1fr;gap:8px}
@@ -104,8 +145,9 @@ footer{
 
 <header>
   <div class="titleband">
+    <div class="band-ghost" aria-hidden="true">00:00</div>
     <p class="kicker">YouTubeテロップ編集</p>
-    <h1><span class="nb">YouTubeテロップ編集</span><span class="nb">サンプル</span></h1>
+    <h1 data-reveal="chars"><span class="seg"><span class="nb">YouTubeテロップ編集</span><span class="nb">サンプル</span></span></h1>
     <p class="theme"><span class="nb">本編の題名は</span><span class="nb">「Googleマップで</span><span class="nb">見つけてもらう3つの準備」です</span></p>
     <div class="rule" aria-hidden="true"></div>
   </div>
@@ -120,14 +162,14 @@ footer{
 </header>
 
 <main>
-<section aria-label="本編" style="padding-top:32px">
-  <h2><span class="tc">00:00</span> 本編</h2>
+<section aria-label="本編" style="padding-top:48px">
+  <h2 data-reveal="chars"><span class="tc">00:00</span> 本編</h2>
   <p class="sec-note"><span class="nb">再生すると音が出ます。</span><span class="nb">ナレーションは音声合成です。</span></p>
   <video src="telop-main.mp4" controls preload="metadata" poster="frames/main-055s.jpg"></video>
 </section>
 
 <section aria-label="章のタイムライン">
-  <h2>章のタイムライン</h2>
+  <h2 data-reveal="chars">章のタイムライン</h2>
   <p class="sec-note"><span class="nb">本編9章の見せ方です。</span><span class="nb">場面写真は本編から切り出した画像です。</span></p>
   <div class="timeline">
     <div class="track"><p class="tc">0:00</p><div><h3>タイトル</h3><p class="how"><span class="nb">紺地に題名を置き</span><span class="nb">黄色の線が伸びる</span></p></div><img src="frames/main-002s.jpg" alt="本編0分02秒のタイトル画面" width="1280" height="720" loading="lazy"></div>
@@ -143,13 +185,13 @@ footer{
 </section>
 
 <section aria-label="Before After">
-  <h2>Before／After（30秒）</h2>
+  <h2 data-reveal="chars">Before／After（30秒）</h2>
   <p class="sec-note"><span class="nb">同じ映像と音声で、</span><span class="nb">自動字幕のままの表示（左）と</span><span class="nb">デザイン済みテロップ（右）を</span><span class="nb">並べています。</span></p>
   <video src="before-after.mp4" controls preload="metadata" poster="frames/before-after-12s.jpg"></video>
 </section>
 
 <section aria-label="テロップ仕様の要点">
-  <h2>テロップ仕様の要点</h2>
+  <h2 data-reveal="chars">テロップ仕様の要点</h2>
   <p class="sec-note"><span class="nb">仕様表（spec.html）からの抜粋です。</span><span class="nb">値は Remotion のコードと同じです。</span></p>
   <div class="rows">
     <div class="row"><p class="k">本文テロップの書体</p><p>M PLUS 1p ExtraBold・46px（1280×720の画面に対して）</p></div>
@@ -163,7 +205,7 @@ footer{
 </section>
 
 <section aria-label="制作の手順">
-  <h2>制作の手順</h2>
+  <h2 data-reveal="chars">制作の手順</h2>
   <div class="steps">
     <div class="step"><p class="no">1</p><div><h3>台本を書く</h3><p>台本を文ごとに書き、強調語を [[ ]] で囲みます。</p></div></div>
     <div class="step"><p class="no">2</p><div><h3>音声を合成し、時刻表を作る</h3><p>文ごとにナレーションを合成し、時刻表（timing.json）を作ります。</p></div></div>
@@ -173,7 +215,7 @@ footer{
 </section>
 
 <section aria-label="資料">
-  <h2>資料</h2>
+  <h2 data-reveal="chars">資料</h2>
   <p class="links"><a href="spec.html">テロップの仕様表</a><a href="manual.html">テロップ再現マニュアル</a><a href="credits.html">素材・音声・書体の出典</a></p>
 </section>
 </main>
@@ -182,5 +224,56 @@ footer{
   <p><span class="nb">自主制作サンプルです。</span><span class="nb">参考動画のテロップを再現する手順は</span><span class="nb">マニュアルにまとめています。</span></p>
 </footer>
 </div>
+
+<script>
+(function(){
+  "use strict";
+  if(!document.documentElement.classList.contains("anim")) return;
+  function splitChars(el){
+    var chars=[];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag=document.createDocumentFragment(), word=null;
+          n.textContent.split("").forEach(function(c){
+            var s=document.createElement("span"); s.className="ch"; s.textContent=c; chars.push(s);
+            if(c===" "||c==="\u3000"){ word=null; frag.appendChild(s); }
+            else{ if(!word){ word=document.createElement("span"); word.className="w"; frag.appendChild(word); } word.appendChild(s); }
+          });
+          node.replaceChild(frag,n);
+        } else if(n.nodeType===1 && n.tagName!=="BR"){ walk(n); }
+      });
+    }
+    var lines=el.querySelectorAll(".seg,.line");
+    if(!lines.length){
+      var line=document.createElement("span"); line.className="line";
+      while(el.firstChild) line.appendChild(el.firstChild);
+      el.appendChild(line); lines=[line];
+    }
+    lines.forEach(function(l){ l.classList.add("line"); walk(l); });
+    chars.forEach(function(s,i){ s.style.transitionDelay=(i*26)+"ms"; });
+    return chars;
+  }
+  var els=document.querySelectorAll("[data-reveal]");
+  els.forEach(function(el){ splitChars(el); });
+  if(!("IntersectionObserver" in window)){ els.forEach(function(el){ el.classList.add("in"); }); return; }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{threshold:.35});
+  els.forEach(function(el,i){ if(i===0){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.classList.add("in"); }); }); } else { io.observe(el); } });
+  setTimeout(function(){ els.forEach(function(el){ el.classList.add("in"); }); },4500); /* safety: never leave a headline hidden */
+})();
+</script>
+<script>
+(function(){
+  var tracks=document.querySelectorAll(".track");
+  if(!("IntersectionObserver" in window)){ tracks.forEach(function(t){ t.classList.add("in"); }); return; }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{threshold:.3});
+  tracks.forEach(function(t){ io.observe(t); });
+})();
+</script>
+
 </body>
 </html>
