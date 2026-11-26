@@ -45,13 +45,60 @@ h3{font-size:16px;line-height:1.6;margin:0;padding:0}
 }
 </style>
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* 改修(2026-11-26): 主役の瞬間=ロゴの文字リビール+ネイル写真の緩やかなズームアウト、
+   背景にアウトラインのゴースト文字「GRIS」。余白はセクション144px・料金表の行高拡大。 */
+.site-header{position:relative;overflow:hidden}
+.head-ghost{
+  position:absolute;top:0;right:-8px;z-index:0;
+  font-size:19vw;line-height:1.05;font-weight:300;letter-spacing:.04em;
+  color:transparent;-webkit-text-stroke:1px rgba(107,83,68,.16);
+  pointer-events:none;user-select:none;
+}
+.head-inner{position:relative;z-index:1;padding:64px 24px 48px}
+.logo .ch{display:inline-block;white-space:pre;animation:salonRise .7s cubic-bezier(.22,.61,.21,1) both}
+@keyframes salonRise{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
+.photo-nails{margin-top:64px;overflow:hidden}
+.photo-nails img{animation:salonZoom 2.4s ease-out both}
+@keyframes salonZoom{from{transform:scale(1.04)}to{transform:scale(1)}}
+.intro{padding-top:64px}
+.sec{padding:144px 0}
+.lead{margin-top:24px}
+.menu-cat{margin-top:64px}
+.menu-cat:first-of-type{margin-top:48px}
+.price-list>div{padding:24px 0}
+.flow{margin-top:48px}
+.flow li{padding:32px 0}
+.reserve-steps{margin-top:48px}
+.reserve-steps li{padding:24px 0}
+.rules{margin-top:64px}
+.rules>div{padding:24px 0}
+.shop-info{margin-top:48px}
+.photo-room{margin-top:64px}
+.foot-inner{padding:64px 24px 96px}
+@media (max-width:640px){
+  .head-inner{padding:48px 16px 32px}
+  .head-ghost{font-size:36vw}
+  .photo-nails{margin-top:48px}
+  .intro{padding-top:48px}
+  .sec{padding:96px 0}
+  .flow li{padding:24px 0}
+  .foot-inner{padding:48px 16px 64px}
+}
+@media (prefers-reduced-motion: reduce){
+  .logo .ch,.photo-nails img{animation:none}
+}
+</style>
+
 </head>
 <body>
 
 <p class="sample-flag"><span class="nb">自主制作サンプルです</span><span class="nb">店名・住所・電話番号・メニューは架空のものです</span></p>
 
 <header class="site-header" id="top">
-  <div class="head-inner">
+  <span class="head-ghost latin" aria-hidden="true">GRIS</span>
+    <div class="head-inner">
     <h1 class="logo latin"><a href="#top">atelier GRIS</a><span>アトリエ グリ</span></h1>
     <p class="kind">ネイル・まつげ</p>
     <nav class="head-nav" aria-label="ページ内">
@@ -158,5 +205,22 @@ h3{font-size:16px;line-height:1.6;margin:0;padding:0}
   </div>
 </footer>
 
+
+<script>
+  /* ロゴの文字リビール（ヘッダーのみ） */
+  (function(){
+    var link = document.querySelector('.logo a');
+    if(!link || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var text = link.textContent;
+    link.textContent = '';
+    Array.prototype.forEach.call(text, function(c, i){
+      var sp = document.createElement('span');
+      sp.className = 'ch';
+      sp.style.animationDelay = (i * 40) + 'ms';
+      sp.textContent = c;
+      link.appendChild(sp);
+    });
+  })();
+</script>
 </body>
 </html>

@@ -46,6 +46,56 @@ h3{font-size:20px;line-height:1.5;margin:0;padding:0}
 }
 </style>
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* 改修(2026-11-26): 主役の瞬間=店名の文字リビール+焙煎機写真の緩やかなズームアウト、
+   背景に縦書きのゴースト文字「焙煎」。余白はセクション144pxを基準に拡大。 */
+.hero{position:relative}
+.hero-ghost{
+  position:absolute;top:48px;right:3vw;z-index:0;
+  writing-mode:vertical-rl;font-size:8.5vw;line-height:1;letter-spacing:.06em;
+  color:transparent;-webkit-text-stroke:1px rgba(35,32,28,.15);
+  pointer-events:none;user-select:none;
+}
+.hero .wrap,.hero .hero-photo{position:relative;z-index:1}
+.shop-name .ch{display:inline-block;animation:cafeRise .9s cubic-bezier(.22,.61,.21,1) both}
+.hero-facts{animation:cafeRise .9s cubic-bezier(.22,.61,.21,1) .35s both}
+@keyframes cafeRise{from{transform:translateY(28px);opacity:0}to{transform:none;opacity:1}}
+.hero-photo{margin-top:96px;overflow:hidden}
+.hero-photo img{animation:cafeZoom 2.6s ease-out both}
+@keyframes cafeZoom{from{transform:scale(1.05)}to{transform:scale(1)}}
+.hero-lower{padding-top:96px;padding-bottom:144px;gap:96px}
+section.menu,section.beans,section.space,section.access{padding:144px 0}
+.lead{margin-top:24px}
+.menu-cols{margin-top:64px;gap:96px}
+.items li{padding:32px 0}
+.beans table{margin-top:48px}
+.beans tbody th,.beans td{padding:24px 8px 24px 0}
+.beans-grid{gap:96px}
+.spec{margin-top:64px}
+.spec>div{padding:24px 0}
+.map{margin-top:64px}
+.access-grid{gap:64px}
+.access-body{padding-top:128px}
+.site-footer{padding:96px 0 64px}
+@media (max-width:960px){
+  .hero-lower,.menu-cols,.beans-grid{gap:48px}
+  .access-body{padding-top:0}
+}
+@media (max-width:640px){
+  .hero{padding-top:64px}
+  .hero-ghost{top:24px;font-size:17vw}
+  .hero-photo{margin-top:48px}
+  .hero-lower{padding-top:48px;padding-bottom:96px}
+  section.menu,section.beans,section.space,section.access{padding:96px 0}
+  .items li{padding:24px 0}
+  .site-footer{padding:64px 0 48px}
+}
+@media (prefers-reduced-motion: reduce){
+  .shop-name .ch,.hero-facts,.hero-photo img{animation:none}
+}
+</style>
+
 </head>
 <body>
 
@@ -81,6 +131,7 @@ h3{font-size:20px;line-height:1.5;margin:0;padding:0}
 <main id="top">
 
 <section class="hero">
+  <span class="hero-ghost mincho" aria-hidden="true">焙煎</span>
   <div class="wrap">
     <h1 class="shop-name mincho">白杢珈琲</h1>
     <p class="hero-facts"><span class="nb">焙煎所兼カフェ</span><span class="nb">みどり野市若葉台2-14-3</span><span class="nb">8:00〜17:00</span></p>
@@ -262,6 +313,21 @@ h3{font-size:20px;line-height:1.5;margin:0;padding:0}
     t.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('nav-open');
   }));
+
+  /* 店名の文字リビール（ヒーローのみ） */
+  (function(){
+    var name = document.querySelector('.shop-name');
+    if(!name || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var text = name.textContent;
+    name.textContent = '';
+    Array.prototype.forEach.call(text, function(c, i){
+      var sp = document.createElement('span');
+      sp.className = 'ch';
+      sp.style.animationDelay = (i * 90) + 'ms';
+      sp.textContent = c;
+      name.appendChild(sp);
+    });
+  })();
 </script>
 </body>
 </html>

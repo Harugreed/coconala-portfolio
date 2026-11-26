@@ -153,6 +153,29 @@ h2{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-we
   .hero h1,.hero-facts,.hero-note{animation:none}
 }
 
+
+/* 改修(2026-11-26): 主役の瞬間=ヒーロー背景のゴースト文字「雷」と主力食券の入場。
+   余白拡大はセクション間と見出し周りのみ。メニュー・価格の密度は現行のまま。 */
+.hero{position:relative}
+.hero>*{position:relative;z-index:1}
+.hero .hero-ghost{
+  position:absolute;right:8px;top:0;z-index:0;
+  font-size:19vw;line-height:1;
+  color:transparent;-webkit-text-stroke:2px rgba(242,165,36,.25);
+  pointer-events:none;user-select:none;
+}
+.ticket-hero{animation:rise .7s ease-out .35s both}
+.menu,.order,.shop{padding:64px 0}
+.sec-head{margin-bottom:40px}
+@media (max-width:640px){
+  .hero .hero-ghost{font-size:36vw}
+  .menu,.order,.shop{padding:56px 0}
+  .sec-head{margin-bottom:32px}
+}
+@media (prefers-reduced-motion: reduce){
+  .ticket-hero{animation:none}
+}
+
 /* タブレット */
 @media (max-width:980px){
   .topbar-info{display:none}
@@ -217,6 +240,7 @@ h2{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-we
 <main id="top">
 
 <section class="hero">
+  <span class="hero-ghost mincho" aria-hidden="true">雷</span>
   <h1><span class="pre">らぁめん</span><span class="name">雷紋堂</span></h1>
   <dl class="hero-facts">
     <div><dt>営業</dt><dd><span class="nb">11:00〜15:00</span> <span class="nb">18:00〜22:00</span></dd></div>
