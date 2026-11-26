@@ -8,34 +8,214 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F5F7;
+  --white:#FFFFFF;
+  --blue:#2C5A88;
+  --deep:#1A2E44;
+  --red:#C24A35;
+  --line:#C9D6E3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  font-size:18px;line-height:1.8;color:var(--deep);background:var(--paper);
+  overflow-x:clip;
+}
+/* Japanese line breaks are decided by markup, not CSS:
+   each meaning chunk is a .nb (nowrap) span; breaks happen only between chunks.
+   Never combine word-break:keep-all with overflow-wrap:anywhere (splits words). */
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+ul,ol{list-style:none}
+::selection{background:var(--blue);color:var(--white)}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.num{font-family:"Oswald",sans-serif;font-variant-numeric:tabular-nums}
+.wrap{max-width:1120px;margin:0 auto;padding:0 40px}
+
+/* ---------- sample flag / header ---------- */
+.sample-flag{background:var(--deep);color:var(--white);font-size:13px;line-height:1.6;padding:8px 40px}
+.head{background:var(--white);border-bottom:1px solid var(--line)}
+.head-in{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-top:16px;padding-bottom:16px}
+.logo{font-weight:900;font-size:20px;color:var(--blue);letter-spacing:.04em}
+.logo small{display:block;font-size:13px;font-weight:700;color:var(--deep)}
+.head-tel{text-align:right;font-size:13px;line-height:1.5}
+.head-tel b{display:block;font-size:24px;color:var(--blue);letter-spacing:.06em}
+
+/* ---------- hero : fare chart ---------- */
+.hero-photo{width:100%;aspect-ratio:21/9;max-height:440px;object-fit:cover;object-position:center 30%}
+.hero{background:var(--white);border-bottom:4px solid var(--blue)}
+.hero-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;padding-top:48px;padding-bottom:64px}
+.hero-kicker{font-size:14px;font-weight:700;color:var(--blue);letter-spacing:.12em;margin-bottom:16px}
+h1{font-size:32px;font-weight:900;line-height:1.55;letter-spacing:.02em}
+.hero-lead{margin-top:24px;font-size:18px}
+.fare{border:2px solid var(--deep);background:var(--paper);align-self:start}
+.fare-head{padding:16px 24px 8px;font-size:14px;font-weight:700;letter-spacing:.1em;color:var(--blue)}
+.fare-main{display:flex;align-items:baseline;gap:8px;padding:0 24px 16px;border-bottom:1px solid var(--line)}
+.fare-main .yen{font-size:28px;font-weight:600}
+.fare-main .amount{font-size:96px;line-height:1;font-weight:600;color:var(--deep)}
+.fare-main .unit{font-size:16px;font-weight:700}
+.fare-rows{padding:8px 24px 16px}
+.fare-rows div{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.fare-rows div:last-child{border-bottom:0}
+.fare-rows dt{font-size:14px;color:var(--blue);font-weight:700}
+.fare-rows dd{font-size:16px;font-weight:700;text-align:right}
+.cta{
+  display:inline-block;margin-top:32px;background:var(--red);color:var(--white);
+  font-weight:700;font-size:20px;text-decoration:none;padding:16px 40px;border-radius:4px;
+  transition:background-color .3s;
+}
+.cta:hover{background:var(--deep)}
+.formula{margin-top:24px;font-size:16px;font-weight:700}
+.formula .num{color:var(--blue)}
+
+/* ---------- sections ---------- */
+.sec{padding:96px 0}
+.sec.alt{background:var(--white)}
+h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bottom:16px;margin-bottom:40px;border-bottom:3px solid var(--blue)}
+.lead{margin-bottom:40px}
+.note{margin-top:24px;font-size:14px}
+
+/* scenes / fare examples */
+.scenes{display:grid;grid-template-columns:1fr;gap:48px}
+.scene{display:grid;grid-template-columns:12em minmax(0,1fr);gap:40px;padding-bottom:48px;border-bottom:1px solid var(--line)}
+.scene:last-child{border-bottom:0;padding-bottom:0}
+.scene h3{font-size:28px;font-weight:900;color:var(--blue)}
+.scene p{font-size:18px}
+.example{margin-top:24px;background:var(--white);border-left:6px solid var(--blue);padding:24px}
+.alt .example{background:var(--paper)}
+.example dt{font-weight:700;font-size:16px;line-height:1.6;margin-bottom:8px}
+.example dd{display:flex;flex-wrap:wrap;gap:8px 32px;font-size:16px}
+.example .sum{margin-top:8px;padding-top:8px;border-top:1px dashed var(--blue);font-weight:900;font-size:24px;color:var(--red)}
+
+/* flow ledger */
+.flow-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:start}
+.flow li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:24px;padding-top:24px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.flow li:first-child{padding-top:0}
+.flow .no{font-size:48px;line-height:1.1;font-weight:600;color:var(--blue)}
+.flow h3{font-size:20px;font-weight:900;color:var(--deep);margin-bottom:8px}
+.flow p{font-size:16px}
+.flow-photo{width:100%;aspect-ratio:3/2;object-fit:cover}
+.video-slot{margin-top:24px}
+.video-frame{aspect-ratio:16/9;display:grid;place-items:center;text-align:center;padding:24px;border:2px dashed var(--blue);background:var(--white);font-size:14px;color:var(--blue)}
+.video-slot figcaption{margin-top:8px;font-size:13px}
+
+/* price tables */
+.price-stack{display:grid;grid-template-columns:1fr;gap:48px}
+.price{width:100%;border-collapse:collapse;background:var(--white)}
+.price caption{text-align:left;font-weight:900;font-size:20px;color:var(--blue);padding-bottom:8px}
+.price th,.price td{padding:16px 24px 16px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;vertical-align:top}
+.price tr:first-child th,.price tr:first-child td{border-top:3px solid var(--blue)}
+.price th{text-align:left;font-weight:500}
+.price td{text-align:right;font-weight:700;font-size:20px;white-space:nowrap;padding-right:0}
+
+/* faq */
+.faq details{background:var(--white);border-left:6px solid var(--blue);margin-bottom:16px}
+.faq summary{cursor:pointer;list-style:none;padding:16px 56px 16px 24px;font-weight:700;font-size:18px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:28px;color:var(--blue)}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 24px 16px;font-size:16px}
+
+/* form */
+.form{max-width:832px}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.field{padding:16px 0;border:0}
+.field label,.field legend{display:block;font-weight:700;margin-bottom:8px;padding:0}
+.req{margin-left:8px;font-size:13px;padding:4px 8px;border-radius:4px;background:var(--red);color:var(--white);vertical-align:2px}
+.field input[type=text],.field input[type=tel],.field input[type=date],.field input[type=time],.field textarea{
+  width:100%;font:inherit;font-size:18px;padding:12px 16px;border:2px solid var(--blue);border-radius:4px;background:var(--white);color:var(--deep);
+}
+.field textarea{min-height:144px}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--red)}
+.choices{display:flex;flex-wrap:wrap;gap:8px 24px}
+.choices label{font-weight:500;display:flex;align-items:center;gap:8px;margin:0}
+.choices input{width:20px;height:20px;accent-color:var(--blue)}
+.submit-area{padding-top:24px}
+.submit{font:inherit;font-weight:700;font-size:20px;padding:16px 48px;border:0;border-radius:4px;background:var(--red);color:var(--white);opacity:.5;cursor:not-allowed}
+.sample-note{margin-top:16px;font-size:14px;padding:16px;background:var(--white);border-left:4px solid var(--blue)}
+
+.sticky-cta{display:none}
+
+/* footer */
+.foot{background:var(--deep);color:var(--white);padding:64px 0 96px;font-size:14px;line-height:1.9}
+.foot-name{font-size:20px;font-weight:900;margin-bottom:8px}
+.foot .disclaimer{margin-top:24px;padding-top:16px;border-top:1px solid var(--blue);font-size:13px}
+
+@media (max-width:900px){
+  .hero-in{grid-template-columns:1fr;gap:40px}
+  .flow-grid{grid-template-columns:1fr;gap:48px}
+  .scene{grid-template-columns:1fr;gap:16px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .sample-flag{padding:8px 16px}
+  .head-tel{display:none}
+  .logo{font-size:18px}
+  .hero-photo{aspect-ratio:4/3;max-height:none}
+  .hero-in{padding-top:32px;padding-bottom:48px}
+  h1{font-size:24px}
+  .fare-main .amount{font-size:64px}
+  .cta{display:block;text-align:center}
+  .sec{padding:64px 0}
+  h2{font-size:24px;margin-bottom:32px}
+  .scene h3{font-size:24px}
+  .flow li{grid-template-columns:48px minmax(0,1fr);gap:16px}
+  .flow .no{font-size:32px}
+  .price th{width:52%}
+  .row2{grid-template-columns:1fr;gap:0}
+  .faq summary{font-size:16px;padding:16px 48px 16px 16px}
+  .sticky-cta{display:block;position:fixed;left:16px;right:16px;bottom:16px;z-index:20;text-align:center;background:var(--red);color:var(--white);font-weight:700;font-size:16px;text-decoration:none;padding:16px;border-radius:4px}
+  .foot{padding-bottom:112px}
+}
+</style>
 </head>
 <body>
 
-<p class="sample-flag">自主制作サンプルです。事業者名・電話番号・料金は架空のものです。</p>
+<p class="sample-flag"><span class="nb">自主制作サンプルです</span><span class="nb">事業者名・電話番号・料金は架空のものです</span></p>
 
 <header class="head">
   <div class="wrap head-in">
-    <p class="logo"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#2C5A88"/><path d="M11 24c4-9 14-13 19-11-3 1-6 4-7 8-3 6-8 6-12 3z" fill="#fff"/><path d="M13 27c6-1 10-4 13-9" stroke="#2C5A88" stroke-width="1.6" fill="none"/></svg>あおば移送サービス</p>
-    <p class="head-tel">予約電話 8:00〜18:00<b>000-0000-0000</b></p>
+    <p class="logo">あおば移送サービス<small>介護タクシー</small></p>
+    <p class="head-tel">予約電話 8:00〜18:00<b class="num">000-0000-0000</b></p>
   </div>
 </header>
 
 <main>
 
-<!-- 最初の画面 -->
-<section class="fv">
-  <div class="fv-photo" role="img" aria-label="公園で車いすを押して散歩する介助者"></div>
-  <div class="wrap fv-body">
-    <h1>車いすのまま乗れる介護タクシーです。<br>通院・買い物の外出を、玄関から玄関まで送迎しています。</h1>
-    <dl class="fv-facts">
-      <div><dt>運賃</dt><dd>初乗り2kmまで 750円</dd></div>
-      <div><dt>介助料</dt><dd>乗り降り1回 1,000円</dd></div>
-      <div><dt>エリア</dt><dd>あおば市・隣接3市</dd></div>
-      <div><dt>予約</dt><dd>前日17:00まで</dd></div>
+<!-- 最初の画面：運賃表 -->
+<section class="hero">
+  <img class="hero-photo" src="img/care.jpg" alt="公園で車いすを押して散歩する介助者" width="2200" height="1468">
+  <div class="wrap hero-in">
+    <div>
+      <p class="hero-kicker">介護タクシー</p>
+      <h1>
+        <span class="seg"><span class="nb">車いすのまま乗れる</span><span class="nb">介護タクシーです</span></span>
+        <span class="seg"><span class="nb">通院・買い物の外出を</span><span class="nb">玄関から玄関まで</span><span class="nb">送迎しています</span></span>
+      </h1>
+      <p class="hero-lead">
+        <span class="seg"><span class="nb">料金は運賃・介助料・</span><span class="nb">機材の料金の合計です</span></span>
+        <span class="seg"><span class="nb">予約は前日17:00まで受け付けています</span></span>
+      </p>
+      <p class="formula">合計 ＝ <span class="nb">運賃</span> ＋ <span class="nb">介助料</span> ＋ <span class="nb">機材の料金</span></p>
+      <a class="cta" href="#apply">申込フォームへ進む</a>
+    </div>
+    <dl class="fare" aria-label="料金と利用条件">
+      <div class="fare-head">運賃・初乗り</div>
+      <div class="fare-main"><span class="yen num">¥</span><span class="amount num">750</span><span class="unit">2kmまで</span></div>
+      <div class="fare-rows">
+        <div><dt>介助料</dt><dd>乗り降り1回 1,000円</dd></div>
+        <div><dt>対応エリア</dt><dd>あおば市・隣接3市</dd></div>
+        <div><dt>予約</dt><dd>前日17:00まで</dd></div>
+      </div>
     </dl>
-    <a class="cta" href="#apply">申込フォームへ進む</a>
   </div>
 </section>
 
@@ -46,58 +226,77 @@
     <div class="scenes">
       <article class="scene">
         <h3>通院</h3>
-        <p>自宅から病院の受付まで送迎し、診察の待ち時間も付き添います。<br>会計・薬の受け取りまで済ませてから、ご自宅へお送りします。</p>
-        <dl class="example">
-          <dt>例：自宅 → あおば総合病院（片道5km・付き添い2時間）</dt>
-          <dd><span>運賃 往復 3,300円</span><span>乗り降りの介助 4回 4,000円</span><span>付き添い 2時間 4,000円</span></dd>
-          <dd class="sum">合計 11,300円</dd>
-        </dl>
+        <div>
+          <p><span class="nb">自宅から病院の受付まで送迎し</span><span class="nb">診察の待ち時間も付き添います</span><span class="nb">会計・薬の受け取りまで済ませてから</span><span class="nb">ご自宅へお送りします</span></p>
+          <dl class="example">
+            <dt><span class="nb">例：自宅 → あおば総合病院</span><span class="nb">（片道5km・付き添い2時間）</span></dt>
+            <dd><span>運賃 往復 3,300円</span><span>乗り降りの介助 4回 4,000円</span><span>付き添い 2時間 4,000円</span></dd>
+            <dd class="sum">合計 11,300円</dd>
+          </dl>
+        </div>
       </article>
       <article class="scene">
         <h3>買い物</h3>
-        <p>スーパー・ホームセンターでの買い物に同行し、荷物を車まで運びます。<br>購入した荷物は玄関の中までお運びします。</p>
-        <dl class="example">
-          <dt>例：自宅 → 駅前のスーパー（片道3km・買い物1時間）</dt>
-          <dd><span>運賃 往復 2,100円</span><span>乗り降りの介助 4回 4,000円</span><span>付き添い 1時間 2,000円</span></dd>
-          <dd class="sum">合計 8,100円</dd>
-        </dl>
+        <div>
+          <p><span class="nb">スーパー・ホームセンターでの</span><span class="nb">買い物に同行し</span><span class="nb">荷物を車まで運びます</span><span class="nb">購入した荷物は玄関の中までお運びします</span></p>
+          <dl class="example">
+            <dt><span class="nb">例：自宅 → 駅前のスーパー</span><span class="nb">（片道3km・買い物1時間）</span></dt>
+            <dd><span>運賃 往復 2,100円</span><span>乗り降りの介助 4回 4,000円</span><span>付き添い 1時間 2,000円</span></dd>
+            <dd class="sum">合計 8,100円</dd>
+          </dl>
+        </div>
       </article>
     </div>
   </div>
 </section>
 
 <!-- 利用の流れ -->
-<section class="sec tint" id="flow">
+<section class="sec alt" id="flow">
   <div class="wrap">
     <h2>予約から帰宅までの流れ</h2>
     <div class="flow-grid">
       <ol class="flow">
         <li>
-          <h3>予約</h3>
-          <p>利用日の前日17:00までに、電話または申込フォームでお申し込みください<br>行き先・時刻・車いすの有無を確認し、料金の目安をお伝えします</p>
+          <span class="no num" aria-hidden="true">1</span>
+          <div>
+            <h3>予約</h3>
+            <p><span class="nb">利用日の前日17:00までに</span><span class="nb">電話または</span><span class="nb">申込フォームでお申し込みください</span><span class="nb">行き先・時刻・車いすの有無を確認し</span><span class="nb">料金の目安をお伝えします</span></p>
+          </div>
         </li>
         <li>
-          <h3>お迎え</h3>
-          <p>予約時刻の5分前にご自宅へ伺います<br>玄関の段差・2階までの階段は、介助者が車いすごと運びます</p>
+          <span class="no num" aria-hidden="true">2</span>
+          <div>
+            <h3>お迎え</h3>
+            <p><span class="nb">予約時刻の5分前にご自宅へ伺います</span><span class="nb">玄関の段差・2階までの階段は</span><span class="nb">介助者が車いすごと運びます</span></p>
+          </div>
         </li>
         <li>
-          <h3>乗車</h3>
-          <p>後ろのスロープから車いすのまま乗車し、4か所のベルトで固定します<br>付き添いの家族も2人まで同乗できます</p>
+          <span class="no num" aria-hidden="true">3</span>
+          <div>
+            <h3>乗車</h3>
+            <p><span class="nb">後ろのスロープから車いすのまま乗車し</span><span class="nb">4か所のベルトで固定します</span><span class="nb">付き添いの家族も2人まで同乗できます</span></p>
+          </div>
         </li>
         <li>
-          <h3>付き添い</h3>
-          <p>病院内の受付・診察室への移動・会計・薬の受け取りに付き添います<br>買い物では売り場の移動と荷物の運搬を手伝います</p>
+          <span class="no num" aria-hidden="true">4</span>
+          <div>
+            <h3>付き添い</h3>
+            <p><span class="nb">病院内の受付・診察室への移動・</span><span class="nb">会計・薬の受け取りに付き添います</span><span class="nb">買い物では売り場の移動と</span><span class="nb">荷物の運搬を手伝います</span></p>
+          </div>
         </li>
         <li>
-          <h3>帰宅</h3>
-          <p>ご自宅の室内まで車いすを押してお送りします<br>料金はその場で現金または交通系ICでお支払いください</p>
+          <span class="no num" aria-hidden="true">5</span>
+          <div>
+            <h3>帰宅</h3>
+            <p><span class="nb">ご自宅の室内まで</span><span class="nb">車いすを押してお送りします</span><span class="nb">料金はその場で現金または</span><span class="nb">交通系ICでお支払いください</span></p>
+          </div>
         </li>
       </ol>
-      <div class="flow-side">
-        <div class="flow-photo" role="img" aria-label="車いすの方の手を介助者が支えているところ"></div>
+      <div>
+        <img class="flow-photo" src="img/hands.jpg" alt="車いすの方の手を介助者が支えているところ" width="1800" height="1200" loading="lazy">
         <figure class="video-slot" aria-label="動画を入れる枠">
           <div class="video-frame">
-            <p>乗車の様子の動画（30秒程度）を入れる枠です</p>
+            <p><span class="nb">乗車の様子の動画（30秒程度）を入れる枠です</span></p>
           </div>
           <figcaption>実案件では、事業者が撮影した乗車・固定の動画に差し替えます</figcaption>
         </figure>
@@ -110,20 +309,20 @@
 <section class="sec" id="price">
   <div class="wrap">
     <h2>料金</h2>
-    <p class="lead">料金は「運賃」「介助料」「機材の料金」の合計です。価格はすべて税込です。</p>
-    <div class="price-grid">
+    <p class="lead"><span class="nb">料金は「運賃」「介助料」</span><span class="nb">「機材の料金」の合計です</span><span class="nb">価格はすべて税込です</span></p>
+    <div class="price-stack">
       <table class="price">
         <caption>運賃</caption>
         <tr><th scope="row">初乗り（2kmまで）</th><td>750円</td></tr>
         <tr><th scope="row">以降 1kmごと</th><td>300円</td></tr>
         <tr><th scope="row">迎車料</th><td>無料</td></tr>
-        <tr><th scope="row">22:00〜5:00の運行</th><td>運賃の2割増し</td></tr>
+        <tr><th scope="row">22:00〜5:00の運行</th><td><span class="nb">運賃の2割増し</span></td></tr>
       </table>
       <table class="price">
         <caption>介助料</caption>
         <tr><th scope="row">乗り降りの介助</th><td>1回 1,000円</td></tr>
         <tr><th scope="row">階段の介助（2階まで）</th><td>片道 2,000円</td></tr>
-        <tr><th scope="row">付き添い（病院・買い物）</th><td>30分ごと 1,000円</td></tr>
+        <tr><th scope="row"><span class="nb">付き添い</span><span class="nb">（病院・買い物）</span></th><td>30分ごと 1,000円</td></tr>
       </table>
       <table class="price">
         <caption>機材</caption>
@@ -137,14 +336,14 @@
 </section>
 
 <!-- よくある質問 -->
-<section class="sec tint" id="faq">
+<section class="sec alt" id="faq">
   <div class="wrap">
     <h2>よくある質問</h2>
     <div class="faq">
-      <details><summary>車いすを持っていなくても利用できますか</summary><p>利用できます。普通型の車いすは無料でお貸ししています。予約時にお申し付けください。</p></details>
+      <details><summary><span class="nb">車いすを持っていなくても</span><span class="nb">利用できますか</span></summary><p>利用できます。普通型の車いすは無料でお貸ししています。予約時にお申し付けください。</p></details>
       <details><summary>家族は一緒に乗れますか</summary><p>付き添いの方は2人まで同乗できます。同乗の料金はかかりません。</p></details>
       <details><summary>当日の予約はできますか</summary><p>空きがあれば受け付けます。8:00以降にお電話でお問い合わせください。</p></details>
-      <details><summary>病院の待ち時間が長くなった場合はどうなりますか</summary><p>付き添いの料金が30分ごとに1,000円加わります。待ち時間中に一度ご自宅へ戻ることもできます。</p></details>
+      <details><summary><span class="nb">病院の待ち時間が長くなった場合は</span><span class="nb">どうなりますか</span></summary><p>付き添いの料金が30分ごとに1,000円加わります。待ち時間中に一度ご自宅へ戻ることもできます。</p></details>
       <details><summary>キャンセル料はかかりますか</summary><p>前日17:00までは無料です。当日のキャンセルは迎車料として1,000円を頂いています。</p></details>
       <details><summary>支払い方法を教えてください</summary><p>降車時に現金または交通系ICでお支払いください。月ごとの請求書払いは、2回目の利用からご相談ください。</p></details>
     </div>
@@ -155,7 +354,7 @@
 <section class="sec" id="apply">
   <div class="wrap">
     <h2>申込フォーム</h2>
-    <p class="lead">送信後、営業時間内に電話で予約内容と料金の目安をお伝えします。電話がつながった時点で予約が確定します。</p>
+    <p class="lead"><span class="nb">送信後、営業時間内に電話で</span><span class="nb">予約内容と料金の目安をお伝えします</span><span class="nb">電話がつながった時点で予約が確定します</span></p>
     <form class="form" onsubmit="return false" novalidate>
       <div class="row2">
         <div class="field"><label for="date">利用日<span class="req">必須</span></label><input type="date" id="date"></div>
