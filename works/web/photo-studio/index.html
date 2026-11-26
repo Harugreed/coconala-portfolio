@@ -7,23 +7,26 @@
 <meta name="description" content="新潟県柏崎市の古民家写真スタジオ「穂波写真室」。家族写真、七五三、成人式、ウェディング撮影に対応しています。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FFFFFF;
-  --ink:#161513;
-  --gray:#6E6A63;
-  --line:#E5E2DB;
+  --bg:#FAF5EA;
+  --ink:#3B2E23;
+  --muted:#6F5D47;
+  --line:#E2D5BF;
+  --amber:#B07C24;
+  --film:#2A2019;
+  --frame:#453322;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
   background:var(--bg);
   color:var(--ink);
-  font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+  font-family:"Zen Kaku Gothic New",sans-serif;
   font-weight:300;
-  font-size:14.5px;
-  line-height:2.0;
+  font-size:15px;
+  line-height:1.9;
   letter-spacing:.04em;
   -webkit-font-smoothing:antialiased;
 }
@@ -34,17 +37,27 @@ a{color:var(--ink);}
 .label{
   font-size:11px;
   letter-spacing:.32em;
-  color:var(--gray);
+  color:var(--muted);
   font-weight:500;
+}
+.label::before{
+  content:"";
+  display:inline-block;
+  width:24px;
+  height:1px;
+  background:var(--amber);
+  vertical-align:middle;
+  margin-right:16px;
 }
 h2{
-  font-weight:500;
-  font-size:19px;
+  font-family:"Shippori Mincho",serif;
+  font-weight:600;
+  font-size:20px;
   line-height:1.6;
-  letter-spacing:.12em;
+  letter-spacing:.14em;
   margin:16px 0 56px;
 }
-section{padding:144px 0;}
+section{padding:128px 0;}
 
 /* ---------- header ---------- */
 .site-header{
@@ -54,9 +67,10 @@ section{padding:144px 0;}
   padding:24px 32px;
 }
 .site-header .logo{
-  font-size:15px;
-  font-weight:500;
-  letter-spacing:.2em;
+  font-family:"Shippori Mincho",serif;
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:.24em;
   text-decoration:none;
 }
 .site-header nav{display:flex;gap:32px;}
@@ -65,60 +79,120 @@ section{padding:144px 0;}
   font-size:12px;
   letter-spacing:.16em;
   font-weight:400;
-  color:var(--gray);
+  color:var(--muted);
 }
 .site-header nav a:hover{color:var(--ink);}
 
-/* ---------- title ---------- */
-.title-block{
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  gap:32px;
-  padding:64px 0 48px;
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 32px;
 }
-.title-block h1{
-  font-weight:500;
-  font-size:30px;
-  line-height:1.5;
-  letter-spacing:.16em;
+.hero-photo{
+  position:relative;
+  overflow:hidden;
 }
-.title-block .place{
-  font-size:12.5px;
-  letter-spacing:.16em;
-  color:var(--gray);
-  font-weight:400;
-  text-align:right;
-}
-
-/* ---------- photo index ---------- */
-.photo-index{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:48px 32px;
-}
-.photo-index figure{overflow:hidden;}
-.photo-index img{
+.hero-photo img{
   width:100%;
-  height:100%;
-  object-fit:cover;
-  aspect-ratio:3/2;
-  animation:indexIn 1.6s ease-out both;
+  height:auto;
+  animation:heroIn 1.6s ease-out both;
 }
-.photo-index .d1 img{animation-delay:.15s;}
-.photo-index .d2 img{animation-delay:.3s;}
-.photo-index .d3 img{animation-delay:.45s;}
-@keyframes indexIn{
+@keyframes heroIn{
   from{opacity:0;transform:scale(1.03);}
   to{opacity:1;transform:scale(1);}
 }
-@media (prefers-reduced-motion:reduce){
-  .photo-index img{animation:none;}
+.hero-photo::after{
+  content:"";
+  position:absolute;
+  top:0;right:0;bottom:0;
+  width:40%;
+  background:linear-gradient(to left, rgba(43,32,22,.52), rgba(43,32,22,0));
+  pointer-events:none;
 }
-.span7{grid-column:span 7;}
-.span5{grid-column:span 5;}
-.span12{grid-column:span 12;}
-.span12 img{aspect-ratio:16/9;}
+.hero-name{
+  position:absolute;
+  top:48px;
+  right:64px;
+  z-index:2;
+  writing-mode:vertical-rl;
+  font-family:"Shippori Mincho",serif;
+  font-weight:600;
+  font-size:clamp(64px, 10vw, 112px);
+  line-height:1.15;
+  letter-spacing:.12em;
+  color:var(--bg);
+  text-shadow:0 2px 24px rgba(43,32,22,.45);
+  animation:heroIn 1.6s ease-out .2s both;
+}
+.hero-place{
+  position:absolute;
+  left:64px;
+  bottom:48px;
+  z-index:2;
+  background:var(--bg);
+  padding:16px 24px;
+  font-size:13px;
+  line-height:1.9;
+  letter-spacing:.16em;
+  font-weight:400;
+}
+.hero-place .sub{color:var(--muted);}
+
+/* ---------- film band ---------- */
+.film{
+  background:var(--film);
+  padding:24px 0 28px;
+  overflow:hidden;
+  margin-top:96px;
+}
+.film::before,.film::after{
+  content:"";
+  display:block;
+  height:12px;
+  background-image:radial-gradient(circle, var(--bg) 4px, rgba(0,0,0,0) 5px);
+  background-size:36px 12px;
+  background-repeat:repeat-x;
+  background-position:center;
+  opacity:.85;
+}
+.film::before{margin-bottom:20px;}
+.film::after{margin-top:20px;}
+.film-viewport{overflow:hidden;}
+.film-track{
+  display:flex;
+  width:max-content;
+  animation:filmScroll 55s linear infinite;
+}
+.film-track.reverse{
+  animation-duration:68s;
+  animation-direction:reverse;
+}
+.film:hover .film-track{animation-play-state:paused;}
+.film-set{
+  display:flex;
+  gap:24px;
+  padding-right:24px;
+}
+.film-set figure{
+  border:6px solid var(--frame);
+  flex:none;
+}
+.film-set img{
+  height:200px;
+  width:auto;
+  aspect-ratio:3/2;
+  object-fit:cover;
+}
+@keyframes filmScroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@media (prefers-reduced-motion:reduce){
+  .film-track{animation:none;}
+  .hero-photo img,.hero-name{animation:none;}
+}
 
 /* ---------- about ---------- */
 .about-text{max-width:640px;}
@@ -140,7 +214,7 @@ section{padding:144px 0;}
 .facts dt{
   font-size:11px;
   letter-spacing:.28em;
-  color:var(--gray);
+  color:var(--muted);
   font-weight:500;
   margin-bottom:8px;
 }
@@ -162,12 +236,12 @@ section{padding:144px 0;}
 .plan-table thead th{
   font-size:11px;
   letter-spacing:.24em;
-  color:var(--gray);
+  color:var(--muted);
   font-weight:500;
   padding:16px;
 }
 .plan-table .plan-name{
-  font-size:15.5px;
+  font-size:16px;
   font-weight:500;
   letter-spacing:.08em;
   white-space:nowrap;
@@ -179,8 +253,26 @@ section{padding:144px 0;}
   white-space:nowrap;
 }
 .plan-table th:last-child{text-align:right;}
-.plan-notes{margin-top:32px;font-size:13px;line-height:2.1;color:var(--gray);}
+.plan-notes{margin-top:32px;font-size:13px;line-height:2.0;color:var(--muted);}
 .plan-notes p{margin:0;}
+
+/* ---------- gallery ---------- */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:48px 32px;
+}
+.gallery-grid figure{overflow:hidden;}
+.gallery-grid img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  aspect-ratio:3/2;
+}
+.span7{grid-column:span 7;}
+.span5{grid-column:span 5;}
+.span12{grid-column:span 12;}
+.span12 img{aspect-ratio:16/9;}
 
 /* ---------- profile ---------- */
 .profile-inner{
@@ -191,9 +283,10 @@ section{padding:144px 0;}
 }
 .profile-inner img{width:100%;height:auto;}
 .profile-name{
-  font-size:17px;
-  font-weight:500;
-  letter-spacing:.1em;
+  font-family:"Shippori Mincho",serif;
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:.12em;
   margin-bottom:32px;
 }
 .profile-text p{margin-bottom:32px;}
@@ -228,7 +321,7 @@ section{padding:144px 0;}
   width:112px;
   font-size:11px;
   letter-spacing:.24em;
-  color:var(--gray);
+  color:var(--muted);
   font-weight:500;
   white-space:nowrap;
   padding-top:20px;
@@ -243,7 +336,7 @@ section{padding:144px 0;}
   text-decoration:none;
   border:1px solid var(--ink);
   padding:16px 48px;
-  font-size:13.5px;
+  font-size:13px;
   letter-spacing:.16em;
   font-weight:400;
   transition:background .3s ease,color .3s ease;
@@ -263,22 +356,23 @@ footer{
 }
 .footer-index a{
   text-decoration:none;
-  font-size:12.5px;
+  font-size:12px;
   letter-spacing:.16em;
   font-weight:400;
 }
 .footer-index a span{
-  color:var(--gray);
+  color:var(--amber);
   margin-left:8px;
   letter-spacing:.08em;
 }
 .footer-name{
+  font-family:"Shippori Mincho",serif;
   font-size:16px;
-  font-weight:500;
-  letter-spacing:.2em;
+  font-weight:600;
+  letter-spacing:.24em;
   margin-bottom:24px;
 }
-footer p{font-size:12.5px;line-height:2.1;color:var(--gray);}
+footer p{font-size:12px;line-height:2.0;color:var(--muted);}
 footer .note{margin-top:32px;}
 
 /* ---------- responsive ---------- */
@@ -287,18 +381,34 @@ footer .note{margin-top:32px;}
   .facts dl{grid-template-columns:repeat(2,1fr);}
   .profile-inner,.access-inner{grid-template-columns:1fr;gap:48px;}
   .site-header nav{display:none;}
-  .photo-index{grid-template-columns:1fr;gap:32px;}
+  .gallery-grid{grid-template-columns:1fr;gap:32px;}
   .span7,.span5,.span12{grid-column:span 1;}
   .span12 img{aspect-ratio:3/2;}
+  .hero-name{right:48px;top:40px;}
+  .hero-place{left:48px;bottom:40px;}
+  .film{margin-top:80px;}
+  .film-set img{height:160px;}
 }
 @media (max-width:560px){
   section{padding:80px 0;}
-  h2{font-size:17px;margin-bottom:40px;}
+  h2{font-size:18px;margin-bottom:40px;}
   .wrap{padding:0 24px;}
   .site-header{padding:20px 24px;}
-  .title-block{flex-direction:column;gap:8px;padding:48px 0 40px;}
-  .title-block h1{font-size:24px;}
-  .title-block .place{text-align:left;}
+  .hero{padding:0;}
+  .hero-name{
+    right:24px;
+    top:32px;
+    font-size:32px;
+  }
+  .hero-place{
+    left:24px;
+    bottom:24px;
+    padding:12px 16px;
+    font-size:12px;
+  }
+  .film{margin-top:64px;}
+  .film-set img{height:128px;}
+  .film-set{gap:16px;padding-right:16px;}
   .plan-table thead{display:none;}
   .plan-table,.plan-table tbody,.plan-table tr,.plan-table td{display:block;}
   .plan-table tr{padding:24px 0;border-bottom:1px solid var(--line);}
@@ -309,12 +419,12 @@ footer .note{margin-top:32px;}
     min-width:72px;
     font-size:11px;
     letter-spacing:.16em;
-    color:var(--gray);
+    color:var(--muted);
     font-weight:500;
   }
-  .plan-table .plan-name{font-size:15.5px;}
+  .plan-table .plan-name{font-size:16px;}
   .plan-table .plan-name::before{content:none;}
-  .plan-table .price{text-align:left;font-size:14.5px;}
+  .plan-table .price{text-align:left;font-size:15px;}
   .facts div{padding:24px 16px 0 0;}
 }
 </style>
@@ -335,17 +445,34 @@ footer .note{margin-top:32px;}
 
 <main>
 
-  <!-- title + photo index -->
-  <div class="wrap">
-    <div class="title-block">
-      <h1>穂波写真室</h1>
-      <p class="place"><span class="nb">新潟県柏崎市</span><br><span class="nb">自然光の写真スタジオ</span></p>
+  <!-- hero: vertical name over the studio photo -->
+  <div class="hero">
+    <div class="hero-photo">
+      <img src="images/hero.jpg" alt="穂波写真室の撮影スペース。格子窓から自然光が入る古民家の和室" width="1600" height="1066">
+      <h1 class="hero-name">穂波写真室</h1>
+      <p class="hero-place"><span class="nb">新潟県柏崎市</span><br><span class="nb sub">自然光の写真スタジオ</span></p>
     </div>
-    <div class="photo-index" aria-label="撮影写真">
-      <figure class="span7"><img src="images/hero.jpg" alt="穂波写真室の撮影スペース。格子窓から自然光が入る古民家の和室" width="1600" height="1066"></figure>
-      <figure class="span5 d1"><img src="images/gallery-family.jpg" alt="庭で撮影した家族写真" width="1125" height="750"></figure>
-      <figure class="span5 d2"><img src="images/gallery-shichigosan.jpg" alt="水辺で撮影した七五三の着物姿" width="1124" height="750"></figure>
-      <figure class="span7 d3"><img src="images/gallery-wedding.jpg" alt="ブーケの上で指輪を交換する手元" width="999" height="750"></figure>
+  </div>
+
+  <!-- film band 1 -->
+  <div class="film" aria-label="撮影写真のフィルム">
+    <div class="film-viewport">
+      <div class="film-track">
+        <div class="film-set">
+          <figure><img src="images/gallery-family.jpg" alt="庭で撮影した家族写真" width="450" height="300"></figure>
+          <figure><img src="images/gallery-shichigosan.jpg" alt="水辺で撮影した七五三の着物姿" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/gallery-wedding.jpg" alt="ブーケの上で指輪を交換する手元" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/gallery-baby.jpg" alt="白い服の両親に抱かれた赤ちゃん" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/gallery-seijin.jpg" alt="桜の前で撮影した成人式の振袖姿" width="450" height="300" loading="lazy"></figure>
+        </div>
+        <div class="film-set" aria-hidden="true">
+          <figure><img src="images/gallery-family.jpg" alt="" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/gallery-shichigosan.jpg" alt="" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/gallery-wedding.jpg" alt="" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/gallery-baby.jpg" alt="" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/gallery-seijin.jpg" alt="" width="450" height="300" loading="lazy"></figure>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -445,13 +572,35 @@ footer .note{margin-top:32px;}
     <div class="wrap">
       <p class="label">GALLERY</p>
       <h2>ギャラリー</h2>
-      <div class="photo-index">
+      <div class="gallery-grid">
         <figure class="span7"><img src="images/gallery-seijin.jpg" alt="桜の前で撮影した成人式の振袖姿" width="1125" height="750" loading="lazy"></figure>
         <figure class="span5"><img src="images/gallery-baby.jpg" alt="白い服の両親に抱かれた赤ちゃん" width="1260" height="750" loading="lazy"></figure>
         <figure class="span12"><img src="images/gallery-flowers.jpg" alt="撮影用の花を束ねる手元" width="1260" height="750" loading="lazy"></figure>
       </div>
     </div>
   </section>
+
+  <!-- film band 2 -->
+  <div class="film" aria-label="スタジオと装花のフィルム">
+    <div class="film-viewport">
+      <div class="film-track reverse">
+        <div class="film-set">
+          <figure><img src="images/gallery-flowers.jpg" alt="撮影用の花を束ねる手元" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/about.jpg" alt="改装した古民家の内部" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/access.jpg" alt="穂波写真室の外観。庭の緑と木の外壁" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/profile.jpg" alt="花束を仕上げる運営者" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/hero.jpg" alt="格子窓から自然光が入る古民家の和室" width="450" height="300" loading="lazy"></figure>
+        </div>
+        <div class="film-set" aria-hidden="true">
+          <figure><img src="images/gallery-flowers.jpg" alt="" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/about.jpg" alt="" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/access.jpg" alt="" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/profile.jpg" alt="" width="450" height="300" loading="lazy"></figure>
+          <figure><img src="images/hero.jpg" alt="" width="450" height="300" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- profile -->
   <section id="profile">
