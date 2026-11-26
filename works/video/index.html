@@ -8,155 +8,110 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Playfair+Display:ital,wght@1,400..800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#FAF3E4;
-  --ink:#141110;
-  --tomato:#EF4A23;
-  --line:rgba(20,17,16,.28);
-  --ease:cubic-bezier(.65,.05,0,1);
+  --paper:#F6F7F4;
+  --navy:#1F3A5F;
+  --brass:#B7791F;
+  --mist:#DCE3EA;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;
-  background:var(--cream);color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Helvetica Neue",Arial,sans-serif;
+  background:var(--paper);color:var(--navy);
   font-size:16px;line-height:1.8;overflow-x:clip;
 }
 img{display:block;max-width:100%}
 a{color:inherit}
-video{display:block;width:100%;background:#000}
+ul{list-style:none}
+video{display:block;width:100%;background:var(--navy)}
+::selection{background:var(--brass);color:var(--paper)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
 /* Japanese line breaks are decided by markup, not CSS:
    each meaning chunk is a .nb (nowrap) span; breaks happen only between chunks.
    Never combine word-break:keep-all with overflow-wrap:anywhere (splits words). */
 .nb{display:inline-block;white-space:nowrap}
 .seg{display:block}
-::selection{background:var(--tomato);color:var(--cream)}
-.serif{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;letter-spacing:-.02em}
+.en{font-family:"Kanit",sans-serif;font-weight:800;letter-spacing:.02em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
 
-.flag{background:var(--tomato);color:#fff;font-size:13px;padding:.55rem 3rem}
-.wrap{max-width:72rem;margin:0 auto;padding:0 3rem}
+.flag{background:var(--navy);color:var(--paper);font-size:13px}
+.flag .wrap{padding-top:8px;padding-bottom:8px}
 
 /* ---------- header ---------- */
-.top{
-  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
-  padding:1.4rem 0 0;font-size:13px;font-weight:700;letter-spacing:.06em;
-}
-.top a{text-decoration:none;border-bottom:2px solid var(--tomato);padding-bottom:.15em}
-.top .idx{
-  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  text-transform:uppercase;letter-spacing:.02em;
-}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;font-size:13px;font-weight:700}
+.top a{text-decoration:none;border-bottom:2px solid var(--brass);padding-bottom:2px}
+.top a:hover{color:var(--brass)}
+.top .idx{font-family:"Kanit",sans-serif;font-weight:600;letter-spacing:.08em}
 
-/* ---------- hero ---------- */
-.hero{padding:4.5rem 0 3rem}
-.hero .eyebrow{
-  font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
-  font-size:1.4rem;letter-spacing:-.02em;margin-bottom:1rem;
+/* ---------- hero = program table on paper ---------- */
+.hero{padding:48px 0 64px}
+.hero .kicker{font-size:14px;color:var(--brass);letter-spacing:.16em}
+h1{font-size:48px;line-height:1.3;font-weight:900;margin:16px 0 32px}
+.program{display:flex;flex-wrap:wrap;gap:32px;border-top:2px solid var(--navy);border-bottom:2px solid var(--navy);padding:24px 0}
+.program .t{display:block;font-family:"Kanit",sans-serif;font-weight:800;font-size:36px;line-height:1.2;color:var(--brass)}
+.program .t small{font-size:18px}
+.program li{font-size:13px}
+
+/* ---------- layers ---------- */
+.layer{border-radius:48px 48px 0 0;margin-top:-32px;position:relative;padding:64px 0 48px}
+.layer.navy{background:var(--navy);color:var(--paper)}
+.layer.sheet{background:var(--paper)}
+.layer.mist{background:var(--mist)}
+.sec-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.sec-head .no{font-family:"Kanit",sans-serif;font-weight:600;font-size:14px;letter-spacing:.16em;color:var(--brass)}
+h2{font-size:28px;line-height:1.4;font-weight:900}
+h2 a{text-decoration:none;border-bottom:2px solid var(--brass);padding-bottom:2px}
+h2 a:hover{color:var(--brass)}
+.sec-head .time{margin-left:auto;font-family:"Kanit",sans-serif;font-weight:800;font-size:24px;color:var(--brass);white-space:nowrap}
+.layer p{margin-top:24px;font-size:15px;max-width:640px}
+.go{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-weight:700;font-size:15px;text-decoration:none}
+.go .arr{
+  display:inline-grid;place-items:center;width:24px;height:24px;flex:none;
+  background:var(--brass);color:var(--paper);transition:transform .2s ease;
 }
-.hero .eyebrow b{color:var(--tomato);font-weight:500}
-h1{
-  font-size:3.4rem;line-height:1.16;font-weight:900;letter-spacing:.01em;
-  margin-bottom:1.4rem;
-}
-h1 .en{
-  display:block;font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tomato);
-  margin-bottom:1rem;
-}
-.program{
-  display:flex;flex-wrap:wrap;gap:0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
-}
-.program li{
-  list-style:none;padding:1rem 1.6rem 1rem 0;margin-right:1.6rem;
-  font-size:13px;
-}
-.program .t{
-  display:block;font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  font-size:1.5rem;line-height:1.1;letter-spacing:-.01em;
-}
-.program .t em{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;font-size:.85em;color:var(--tomato)}
+.go:hover .arr{transform:translateX(4px)}
+.go .arr svg{width:12px;height:12px}
 
 /* ---------- screening ---------- */
-.screen{padding:3.5rem 0;border-bottom:1px solid var(--ink)}
-.sec-head{display:flex;align-items:baseline;gap:1.4rem;flex-wrap:wrap;margin-bottom:1.6rem}
-.sec-head .no{
-  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  font-size:1rem;letter-spacing:.14em;color:var(--tomato);text-transform:uppercase;
-}
-h2{font-size:2rem;line-height:1.35;font-weight:900}
-h2 a{text-decoration:none;border-bottom:.09em solid var(--tomato);padding-bottom:.06em}
-h2 a:hover{color:var(--tomato)}
-.sec-head .time{
-  margin-left:auto;font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  font-size:1.4rem;letter-spacing:-.01em;white-space:nowrap;
-}
-.screen-frame{background:var(--ink);padding:1.2rem}
+.screen-frame{background:var(--paper);padding:16px}
 .screen-frame video{aspect-ratio:16/9}
-.screen p{margin-top:1.4rem;font-size:15px;max-width:40rem}
-.go{
-  display:inline-flex;align-items:center;gap:.5em;margin-top:1.1rem;
-  font-weight:700;font-size:.95rem;text-decoration:none;
-}
-.go .arr{
-  display:inline-grid;place-items:center;width:1.6em;height:1.6em;flex:none;
-  background:var(--tomato);color:#fff;transition:transform .4s var(--ease);
-}
-.go:hover .arr{transform:translateX(.25em)}
-.go .arr svg{width:.8em;height:.8em}
 
 /* ---------- film strip ---------- */
-.strip-sec{padding:3.5rem 0;border-bottom:1px solid var(--ink)}
-.film{
-  background:var(--ink);padding:1.4rem 1.2rem;position:relative;
-}
+.film{background:var(--navy);padding:32px 24px;position:relative}
 .film::before,.film::after{
-  content:"";position:absolute;left:0;right:0;height:.7rem;
-  background-image:radial-gradient(circle,.55rem .32rem at .7rem 50%,var(--cream) 98%,transparent);
-  background-size:1.9rem 100%;background-repeat:repeat-x;opacity:.9;
+  content:"";position:absolute;left:0;right:0;height:8px;
+  background-image:radial-gradient(circle,4px 4px at 8px 50%,var(--mist) 98%,transparent);
+  background-size:32px 100%;background-repeat:repeat-x;
 }
-.film::before{top:.35rem}
-.film::after{bottom:.35rem}
-.frames{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.frame{margin:0}
-.frame .ph{aspect-ratio:9/16;overflow:hidden;background:#000}
+.film::before{top:8px}
+.film::after{bottom:8px}
+.frames{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.frame .ph{aspect-ratio:9/16;overflow:hidden;background:var(--navy)}
 .frame img{width:100%;height:100%;object-fit:cover}
-.frame figcaption{
-  display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;
-  color:var(--cream);font-size:13px;padding:.6rem .1rem 0;
-}
-.frame figcaption .sec{
-  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  color:var(--tomato);white-space:nowrap;
-}
-.strip-sec p{margin-top:1.4rem;font-size:15px;max-width:40rem}
+.frame figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px;color:var(--paper);font-size:13px;padding-top:8px}
+.frame figcaption .sec{font-family:"Kanit",sans-serif;font-weight:600;color:var(--brass);white-space:nowrap}
 
 /* ---------- thumbnails ---------- */
-.thumb-sec{padding:3.5rem 0 1rem}
-.thumb-sec figure{border:1px solid var(--ink);background:#fff}
-.thumb-sec figure img{width:100%}
-.thumb-sec p{margin-top:1.4rem;font-size:15px;max-width:40rem}
+.thumb-fig{background:var(--paper)}
+.thumb-fig img{width:100%}
 
 /* ---------- footer ---------- */
-footer{
-  border-top:1px solid var(--line);margin-top:3rem;
-  padding:2.2rem 0 3rem;font-size:12px;
-  display:flex;flex-wrap:wrap;gap:.6rem 3rem;justify-content:space-between;
-}
+footer{padding:32px 0 48px;font-size:12px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
 footer a{font-weight:700}
 
-@media (max-width:991px){
-  .flag{padding:.55rem 1.5rem}
-  .wrap{padding:0 1.5rem}
-}
 @media (max-width:600px){
-  .wrap{padding:0 1.25rem}
-  .flag{padding:.55rem 1.25rem}
-  h1{font-size:2.3rem}
-  h2{font-size:1.55rem}
-  .hero{padding:3rem 0 2.2rem}
-  .frames{grid-template-columns:1fr;max-width:15rem;margin:0 auto}
-  .screen-frame{padding:.6rem}
+  .wrap{padding:0 20px}
+  h1{font-size:28px}
+  h2{font-size:20px}
+  .hero{padding:32px 0 48px}
+  .layer{border-radius:32px 32px 0 0;padding:48px 0 32px}
+  .program{gap:24px}
+  .program .t{font-size:28px}
+  .frames{grid-template-columns:1fr;max-width:240px;margin:0 auto}
+  .screen-frame{padding:8px}
   .sec-head .time{margin-left:0}
 }
 @media (prefers-reduced-motion: reduce){
@@ -165,29 +120,33 @@ footer a{font-weight:700}
 </style>
 </head>
 <body>
-<p class="flag"><span class="nb">自主制作サンプルです</span><span class="nb">店名・価格は架空です</span><span class="nb">素材映像・音楽：Mixkit</span><span class="nb">音声合成：Irodori-TTS</span></p>
+<div class="flag"><div class="wrap"><span class="nb">自主制作サンプルです</span><span class="nb">店名・価格は架空です</span><span class="nb">素材映像・音楽：Mixkit</span><span class="nb">音声合成：Irodori-TTS</span></div></div>
 
 <div class="wrap">
   <header class="top">
     <a href="../../index.html">← ポートフォリオ索引</a>
-    <span class="idx">Video / Index 02</span>
+    <span class="idx">VIDEO / INDEX 02</span>
   </header>
+</div>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">Telop, reels <b>&amp; thumbnails</b></p>
-      <h1><span class="en">Video works</span><span class="seg"><span class="nb">動画サンプル</span></span></h1>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="en kicker">VIDEO WORKS</p>
+      <h1><span class="seg"><span class="nb">動画サンプル</span></span></h1>
       <ul class="program">
-        <li><span class="t">3<em>min</em> 08<em>sec</em></span>テロップ本編</li>
-        <li><span class="t">30<em>sec</em></span>Before／After比較</li>
-        <li><span class="t">3<em>reels</em></span>縦型ショート動画</li>
-        <li><span class="t">6<em>thumbs</em></span>サムネイル</li>
+        <li><span class="t">3<small>min</small> 08<small>sec</small></span>テロップ本編</li>
+        <li><span class="t">30<small>sec</small></span>Before／After比較</li>
+        <li><span class="t">3<small>reels</small></span>縦型ショート動画</li>
+        <li><span class="t">6<small>thumbs</small></span>サムネイル</li>
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <section class="screen">
+  <section class="layer navy">
+    <div class="wrap">
       <div class="sec-head">
-        <span class="no">Program 01</span>
+        <span class="no">PROGRAM 01</span>
         <h2><a href="telop/">YouTubeテロップ編集</a></h2>
         <span class="time">3:08 ＋ 0:30</span>
       </div>
@@ -196,11 +155,13 @@ footer a{font-weight:700}
       </div>
       <p><span class="nb">ビジネス解説風の動画に</span><span class="nb">テロップ・図解・強調演出を付けています</span><span class="nb">同じ映像・同じ音声で</span><span class="nb">自動字幕のままの表示と</span><span class="nb">デザイン済みテロップを並べた</span><span class="nb">Before／After（30秒）も置いています</span></p>
       <a class="go" href="telop/">テロップ編集の詳細を見る<span class="arr"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h11M8 2.5 12.5 7 8 11.5" stroke="currentColor" stroke-width="1.8"/></svg></span></a>
-    </section>
+    </div>
+  </section>
 
-    <section class="strip-sec">
+  <section class="layer sheet">
+    <div class="wrap">
       <div class="sec-head">
-        <span class="no">Program 02</span>
+        <span class="no">PROGRAM 02</span>
         <h2><a href="reels/">縦型ショート動画3本</a></h2>
         <span class="time">20s ／ 30s ／ 22s</span>
       </div>
@@ -222,26 +183,30 @@ footer a{font-weight:700}
       </div>
       <p><span class="nb">スタイルごとに</span><span class="nb">書体・テロップの形・カットの間隔を</span><span class="nb">変えています</span><span class="nb">再生は詳細ページで行えます</span></p>
       <a class="go" href="reels/">縦型ショート動画の詳細を見る<span class="arr"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h11M8 2.5 12.5 7 8 11.5" stroke="currentColor" stroke-width="1.8"/></svg></span></a>
-    </section>
+    </div>
+  </section>
 
-    <section class="thumb-sec">
+  <section class="layer mist">
+    <div class="wrap">
       <div class="sec-head">
-        <span class="no">Program 03</span>
+        <span class="no">PROGRAM 03</span>
         <h2><a href="reels/">サムネイル6枚</a></h2>
         <span class="time">2案 × 3本</span>
       </div>
-      <figure>
+      <figure class="thumb-fig">
         <img src="thumbnail/out/thumbs-all.png" alt="サムネイル6枚" loading="lazy" width="1296" height="384">
       </figure>
       <p><span class="nb">縦型ショート3本に</span><span class="nb">それぞれ2案ずつ作っています</span><span class="nb">文字は中央寄りに置き、</span><span class="nb">アプリで隠れる上下の範囲を避けています</span></p>
       <a class="go" href="reels/">サムネイルの詳細を見る<span class="arr"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h11M8 2.5 12.5 7 8 11.5" stroke="currentColor" stroke-width="1.8"/></svg></span></a>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <footer>
+<footer>
+  <div class="wrap">
     <a href="../../index.html">← ポートフォリオ索引に戻る</a>
     <span><span class="nb">自主制作サンプルです</span><span class="nb">素材映像・音楽：Mixkit</span><span class="nb">音声合成：Irodori-TTS</span></span>
-  </footer>
-</div>
+  </div>
+</footer>
 </body>
 </html>

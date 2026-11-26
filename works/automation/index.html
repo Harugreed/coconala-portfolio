@@ -8,140 +8,102 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Playfair+Display:ital,wght@1,400..800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#FAF3E4;
-  --ink:#141110;
-  --tomato:#EF4A23;
-  --line:rgba(20,17,16,.28);
-  --ease:cubic-bezier(.65,.05,0,1);
+  --paper:#F6F7F4;
+  --navy:#1F3A5F;
+  --brass:#B7791F;
+  --mist:#DCE3EA;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;
-  background:var(--cream);color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Helvetica Neue",Arial,sans-serif;
+  background:var(--paper);color:var(--navy);
   font-size:16px;line-height:1.8;overflow-x:clip;
 }
 img{display:block;max-width:100%}
 a{color:inherit}
 ul{list-style:none}
+::selection{background:var(--brass);color:var(--paper)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
 /* Japanese line breaks are decided by markup, not CSS:
    each meaning chunk is a .nb (nowrap) span; breaks happen only between chunks.
    Never combine word-break:keep-all with overflow-wrap:anywhere (splits words). */
 .nb{display:inline-block;white-space:nowrap}
 .seg{display:block}
-::selection{background:var(--tomato);color:var(--cream)}
-.serif{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;letter-spacing:-.02em}
+.en{font-family:"Kanit",sans-serif;font-weight:800;letter-spacing:.02em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
 
-.flag{background:var(--ink);color:var(--cream);font-size:13px;padding:.55rem 3rem}
-.wrap{max-width:72rem;margin:0 auto;padding:0 3rem}
+.flag{background:var(--navy);color:var(--paper);font-size:13px}
+.flag .wrap{padding-top:8px;padding-bottom:8px}
 
 /* ---------- header ---------- */
-.top{
-  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
-  padding:1.4rem 0 0;font-size:13px;font-weight:700;letter-spacing:.06em;
-}
-.top a{text-decoration:none;border-bottom:2px solid var(--tomato);padding-bottom:.15em}
-.top .idx{
-  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  text-transform:uppercase;letter-spacing:.02em;
-}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;font-size:13px;font-weight:700}
+.top a{text-decoration:none;border-bottom:2px solid var(--brass);padding-bottom:2px}
+.top a:hover{color:var(--brass)}
+.top .idx{font-family:"Kanit",sans-serif;font-weight:600;letter-spacing:.08em}
 
-/* ---------- hero ---------- */
-.hero{padding:4.5rem 0 3.5rem;border-bottom:2px solid var(--ink)}
-.hero .eyebrow{
-  font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
-  font-size:1.4rem;letter-spacing:-.02em;margin-bottom:1rem;
-}
-.hero .eyebrow b{color:var(--tomato);font-weight:500}
-h1{
-  font-size:3.4rem;line-height:1.16;font-weight:900;letter-spacing:.01em;
-  margin-bottom:1.4rem;
-}
-h1 .en{
-  display:block;font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tomato);
-  margin-bottom:1rem;
-}
-.hero p{max-width:38rem;font-size:15px}
+/* ---------- hero = navy noren ---------- */
+.hero{background:var(--navy);color:var(--paper);border-radius:0 0 48px 48px;padding:64px 0 48px}
+.hero .kicker{font-size:14px;color:var(--mist);letter-spacing:.16em}
+h1{font-size:48px;line-height:1.3;font-weight:900;margin:16px 0 24px}
+.hero p.lead{max-width:640px;font-size:15px;color:var(--mist)}
 .flow{
-  display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;
-  margin-top:2.2rem;padding:1rem 0 0;border-top:1px solid var(--line);
-  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;
+  display:flex;flex-wrap:wrap;align-items:flex-start;gap:16px;
+  margin-top:32px;padding-top:24px;border-top:2px solid var(--paper);
 }
-.flow .arr{color:var(--tomato);font-size:1.1rem}
-.flow .step small{
-  display:block;font-family:"Noto Sans JP",sans-serif;font-weight:400;
-  font-size:12px;letter-spacing:0;text-transform:none;color:var(--ink);
-}
+.flow .step .en{display:block;font-size:24px;line-height:1.2;color:var(--brass)}
+.flow .step small{font-size:12px;color:var(--mist)}
+.flow .arr{font-family:"Kanit",sans-serif;font-weight:800;font-size:20px;color:var(--paper);padding-top:4px}
 
-/* ---------- ledger ---------- */
-.ledger{padding:1rem 0 2rem}
+/* ---------- ledger layer on mist ---------- */
+.ledger{background:var(--mist);border-radius:48px 48px 0 0;margin-top:-32px;position:relative;padding:64px 0 48px}
 .entry{
-  display:grid;grid-template-columns:9rem 1fr 15rem;gap:2.5rem;
-  padding:3rem 0;border-bottom:1px solid var(--ink);
-  align-items:start;
+  display:grid;grid-template-columns:96px minmax(0,1fr) 240px;gap:32px;
+  padding:32px 0;border-bottom:1px solid var(--navy);align-items:start;
 }
-.entry .no{
-  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  font-size:6.5rem;line-height:.85;letter-spacing:-.02em;color:var(--tomato);
-}
-.entry h2{font-size:1.5rem;line-height:1.45;font-weight:700;margin-bottom:.7rem}
-.entry h2 a{text-decoration:none;border-bottom:.09em solid var(--tomato);padding-bottom:.08em}
-.entry h2 a:hover{color:var(--tomato)}
-.entry .desc{font-size:15px;max-width:32rem}
-.entry .spec{
-  margin-top:1.1rem;border-top:1px solid var(--line);
-  font-size:13px;
-}
-.entry .spec li{
-  display:flex;justify-content:space-between;gap:1rem;
-  padding:.45rem 0;border-bottom:1px solid var(--line);
-}
+.entry:first-child{padding-top:0}
+.entry:last-child{border-bottom:none;padding-bottom:0}
+.entry .no{font-family:"Kanit",sans-serif;font-weight:800;font-size:64px;line-height:1;color:var(--brass)}
+.entry h2{font-size:24px;line-height:1.4;font-weight:900;margin-bottom:8px}
+.entry h2 a{text-decoration:none;border-bottom:2px solid var(--brass);padding-bottom:2px}
+.entry h2 a:hover{color:var(--brass)}
+.entry .desc{font-size:15px;max-width:512px}
+.entry .spec{margin-top:16px;border-top:1px solid var(--navy);font-size:13px;max-width:512px}
+.entry .spec li{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid var(--navy)}
 .entry .spec .k{font-weight:700;white-space:nowrap}
 .entry .spec .v{text-align:right}
-.entry figure{border:1px solid var(--ink);background:#fff}
+.entry figure{background:var(--paper)}
 .entry figure .ph{aspect-ratio:16/10;overflow:hidden}
 .entry figure img{width:100%;height:100%;object-fit:cover}
-.entry figure img.top{align-self:flex-start}
-.entry figcaption{font-size:12px;padding:.5rem .7rem;border-top:1px solid var(--line)}
-.go{
-  display:inline-flex;align-items:center;gap:.5em;margin-top:1.2rem;
-  font-weight:700;font-size:.95rem;text-decoration:none;
-}
+.entry figcaption{font-size:12px;padding:8px;border-top:1px solid var(--mist)}
+.go{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-weight:700;font-size:15px;text-decoration:none}
 .go .arr{
-  display:inline-grid;place-items:center;width:1.6em;height:1.6em;flex:none;
-  background:var(--tomato);color:#fff;transition:transform .4s var(--ease);
+  display:inline-grid;place-items:center;width:24px;height:24px;flex:none;
+  background:var(--brass);color:var(--paper);transition:transform .2s ease;
 }
-.go:hover .arr{transform:translateX(.25em)}
-.go .arr svg{width:.8em;height:.8em}
+.go:hover .arr{transform:translateX(4px)}
+.go .arr svg{width:12px;height:12px}
 
-/* ---------- footer ---------- */
-footer{
-  border-top:1px solid var(--line);margin-top:3rem;
-  padding:2.2rem 0 3rem;font-size:12px;
-  display:flex;flex-wrap:wrap;gap:.6rem 3rem;justify-content:space-between;
-}
+/* ---------- footer layer ---------- */
+footer{background:var(--paper);border-radius:48px 48px 0 0;margin-top:-32px;position:relative;padding:48px 0;font-size:12px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
 footer a{font-weight:700}
 
-@media (max-width:991px){
-  .flag{padding:.55rem 1.5rem}
-  .wrap{padding:0 1.5rem}
-  .entry{grid-template-columns:6rem 1fr;gap:1.5rem}
-  .entry .no{font-size:4.4rem}
-  .entry figure{grid-column:2;max-width:22rem}
+@media (max-width:900px){
+  .entry{grid-template-columns:64px minmax(0,1fr);gap:24px}
+  .entry .no{font-size:48px}
+  .entry figure{grid-column:2;max-width:320px}
 }
 @media (max-width:600px){
-  .wrap{padding:0 1.25rem}
-  .flag{padding:.55rem 1.25rem}
-  h1{font-size:2.3rem}
-  .hero{padding:3rem 0 2.5rem}
-  .entry{grid-template-columns:1fr;gap:1rem;padding:2.2rem 0}
-  .entry .no{font-size:3.4rem}
+  .wrap{padding:0 20px}
+  .hero{padding:48px 0 32px;border-radius:0 0 32px 32px}
+  .ledger,footer{border-radius:32px 32px 0 0}
+  h1{font-size:28px}
+  .entry{grid-template-columns:1fr;gap:16px;padding:24px 0}
+  .entry .no{font-size:36px}
   .entry figure{grid-column:auto}
-  .flow{gap:.5rem}
 }
 @media (prefers-reduced-motion: reduce){
   .go .arr{transition:none}
@@ -149,29 +111,33 @@ footer a{font-weight:700}
 </style>
 </head>
 <body>
-<p class="flag"><span class="nb">自主制作サンプルです</span><span class="nb">データはすべて架空、</span><span class="nb">または練習用に公開されているサイトのものです</span></p>
+<div class="flag"><div class="wrap"><span class="nb">自主制作サンプルです</span><span class="nb">データはすべて架空、</span><span class="nb">または練習用に公開されているサイトのものです</span></div></div>
 
 <div class="wrap">
   <header class="top">
     <a href="../../index.html">← ポートフォリオ索引</a>
-    <span class="idx">Automation / Index 03</span>
+    <span class="idx">AUTOMATION / INDEX 04</span>
   </header>
+</div>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">Scripts, spreadsheets <b>&amp; data</b></p>
-      <h1><span class="en">Automation / Data</span><span class="seg"><span class="nb">自動化・</span><span class="nb">データ処理サンプル</span></span></h1>
-      <p><span class="seg"><span class="nb">入力ファイル・スクリプト・出力ファイルを</span></span><span class="seg"><span class="nb">1組ずつ置いています</span></span><span class="seg"><span class="nb">サンプルは3組です</span></span></p>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="en kicker">AUTOMATION / DATA</p>
+      <h1><span class="seg"><span class="nb">自動化・</span><span class="nb">データ処理サンプル</span></span></h1>
+      <p class="lead"><span class="seg"><span class="nb">入力ファイル・スクリプト・出力ファイルを</span></span><span class="seg"><span class="nb">1組ずつ置いています</span></span><span class="seg"><span class="nb">サンプルは3組です</span></span></p>
       <div class="flow" aria-label="各サンプルの構成">
-        <span class="step">Input<small>入力ファイル</small></span>
+        <span class="step"><span class="en">Input</span><small>入力ファイル</small></span>
         <span class="arr" aria-hidden="true">→</span>
-        <span class="step">Script<small>Pythonスクリプト</small></span>
+        <span class="step"><span class="en">Script</span><small>Pythonスクリプト</small></span>
         <span class="arr" aria-hidden="true">→</span>
-        <span class="step">Output<small>Excel・PDF</small></span>
+        <span class="step"><span class="en">Output</span><small>Excel・PDF</small></span>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div class="ledger">
+  <section class="ledger">
+    <div class="wrap">
       <article class="entry">
         <span class="no" aria-hidden="true">01</span>
         <div>
@@ -222,12 +188,14 @@ footer a{font-weight:700}
         </div>
       </article>
     </div>
-  </main>
+  </section>
+</main>
 
-  <footer>
+<footer>
+  <div class="wrap">
     <a href="../../index.html">← ポートフォリオ索引に戻る</a>
     <span><span class="nb">自主制作サンプルです</span><span class="nb">会社名・金額・データは架空、</span><span class="nb">または練習用サイトのものです</span></span>
-  </footer>
-</div>
+  </div>
+</footer>
 </body>
 </html>

@@ -8,153 +8,136 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Playfair+Display:ital,wght@1,400..800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#FAF3E4;
-  --ink:#141110;
-  --tomato:#EF4A23;
-  --line:rgba(20,17,16,.28);
-  --ease:cubic-bezier(.65,.05,0,1);
+  --paper:#F6F7F4;
+  --navy:#1F3A5F;
+  --brass:#B7791F;
+  --mist:#DCE3EA;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;
-  background:var(--cream);color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Helvetica Neue",Arial,sans-serif;
+  background:var(--paper);color:var(--navy);
   font-size:16px;line-height:1.8;overflow-x:clip;
 }
 a{color:inherit}
 ul{list-style:none}
+::selection{background:var(--brass);color:var(--paper)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
 /* Japanese line breaks are decided by markup, not CSS:
    each meaning chunk is a .nb (nowrap) span; breaks happen only between chunks.
    Never combine word-break:keep-all with overflow-wrap:anywhere (splits words). */
 .nb{display:inline-block;white-space:nowrap}
 .seg{display:block}
-::selection{background:var(--tomato);color:var(--cream)}
-.serif{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;letter-spacing:-.02em}
+.en{font-family:"Kanit",sans-serif;font-weight:800;letter-spacing:.02em}
+.wrap{max-width:1024px;margin:0 auto;padding:0 32px}
 
-.flag{background:var(--ink);color:var(--cream);font-size:13px;padding:.55rem 3rem}
-.wrap{max-width:64rem;margin:0 auto;padding:0 3rem}
+.flag{background:var(--navy);color:var(--paper);font-size:13px}
+.flag .wrap{padding-top:8px;padding-bottom:8px}
 
 /* ---------- header ---------- */
-.top{
-  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
-  padding:1.4rem 0 0;font-size:13px;font-weight:700;letter-spacing:.06em;
-}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;font-size:13px;font-weight:700}
 .top .by{font-weight:500}
-.top .idx{
-  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  text-transform:uppercase;letter-spacing:.02em;
-}
+.top .idx{font-family:"Kanit",sans-serif;font-weight:600;letter-spacing:.08em}
 
-/* ---------- hero ---------- */
-.hero{padding:4.5rem 0 3rem;border-bottom:2px solid var(--ink)}
-.hero .eyebrow{
-  font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
-  font-size:1.4rem;letter-spacing:-.02em;margin-bottom:1rem;
-}
-.hero .eyebrow b{color:var(--tomato);font-weight:500}
-h1{
-  font-size:3.2rem;line-height:1.16;font-weight:900;letter-spacing:.01em;
-  margin-bottom:1.4rem;
-}
-h1 .en{
-  display:block;font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tomato);
-  margin-bottom:1rem;
-}
-.hero p{max-width:36rem;font-size:15px}
+/* ---------- hero = navy noren with total count ---------- */
+.hero{background:var(--navy);color:var(--paper);border-radius:0 0 48px 48px;padding:64px 0 48px}
+.hero-in{display:flex;align-items:flex-start;gap:32px}
+.hero .kicker{font-size:14px;color:var(--mist);letter-spacing:.16em}
+h1{font-size:48px;line-height:1.3;font-weight:900;margin:16px 0 24px}
+.hero p.lead{max-width:512px;font-size:15px;color:var(--mist)}
+.hero .total{margin-left:auto;text-align:right;flex:none}
+.hero .total .num{display:block;font-family:"Kanit",sans-serif;font-weight:800;font-size:64px;line-height:1;color:var(--brass)}
+.hero .total .unit{font-size:13px;color:var(--mist)}
 
-/* ---------- contents ---------- */
-.chapter{padding:3.2rem 0 2.6rem;border-bottom:1px solid var(--ink)}
-.chapter-head{display:flex;align-items:baseline;gap:1.6rem;margin-bottom:1.4rem}
-.chapter-head .no{
-  font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
-  font-size:3rem;line-height:1;color:var(--tomato);letter-spacing:-.02em;flex:none;
-}
-h2{font-size:1.4rem;font-weight:700;line-height:1.4}
+/* ---------- chapters as layered sheets ---------- */
+.chapter{border-radius:48px 48px 0 0;margin-top:-32px;position:relative;padding:64px 0 48px}
+.chapter.sheet{background:var(--paper)}
+.chapter.mist{background:var(--mist)}
+.chapter-head{display:flex;align-items:baseline;gap:24px;margin-bottom:16px}
+.chapter-head .no{font-family:"Kanit",sans-serif;font-weight:800;font-size:48px;line-height:1;color:var(--brass);flex:none}
+h2{font-size:24px;font-weight:900;line-height:1.4}
 .chapter-head .count{
-  margin-left:auto;font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;
+  margin-left:auto;font-family:"Kanit",sans-serif;font-weight:600;
+  font-size:14px;letter-spacing:.08em;white-space:nowrap;
 }
-.doc{padding:1.3rem 0;border-top:1px solid var(--line)}
-.doc:first-of-type{border-top:0}
-.doc h3{font-size:1.05rem;font-weight:700;line-height:1.55;margin-bottom:.45rem}
-.doc h3 a{text-decoration:none;border-bottom:.09em solid var(--tomato);padding-bottom:.06em}
-.doc h3 a:hover{color:var(--tomato)}
-.doc p{font-size:14.5px;max-width:38rem}
-.doc .meta{
-  display:flex;align-items:baseline;gap:1rem;margin-top:.55rem;
-  font-size:12.5px;
-}
-.doc .meta .dots{
-  flex:1;border-bottom:2px dotted var(--line);transform:translateY(-.3em);
-  min-width:2rem;
-}
-.doc .meta .fmt{
-  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
-  letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
-}
+.doc{padding:24px 0;border-top:1px solid var(--navy)}
+.doc:first-of-type{border-top:0;padding-top:8px}
+.doc h3{font-size:18px;font-weight:700;line-height:1.5;margin-bottom:8px}
+.doc h3 a{text-decoration:none;border-bottom:2px solid var(--brass);padding-bottom:2px}
+.doc h3 a:hover{color:var(--brass)}
+.doc p{font-size:14px;max-width:640px}
+.doc .meta{display:flex;align-items:baseline;gap:16px;margin-top:8px;font-size:12px}
+.doc .meta .dots{flex:1;border-bottom:2px dotted var(--navy);min-width:32px}
+.doc .meta .fmt{font-family:"Kanit",sans-serif;font-weight:600;letter-spacing:.04em;white-space:nowrap}
 .doc .meta .src{white-space:nowrap}
 
 /* ---------- footer ---------- */
-footer{
-  border-top:1px solid var(--line);margin-top:3rem;
-  padding:2.2rem 0 3rem;font-size:12px;
-  display:flex;flex-wrap:wrap;gap:.6rem 3rem;justify-content:space-between;
-}
+footer{padding:32px 0 48px;font-size:12px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
+footer .fname{font-weight:700}
 
-@media (max-width:991px){
-  .flag{padding:.55rem 1.5rem}
-  .wrap{padding:0 1.5rem}
-}
 @media (max-width:600px){
-  .wrap{padding:0 1.25rem}
-  .flag{padding:.55rem 1.25rem}
-  h1{font-size:2.2rem}
-  .hero{padding:3rem 0 2.4rem}
+  .wrap{padding:0 20px}
+  .hero{padding:48px 0 32px;border-radius:0 0 32px 32px}
+  .chapter{border-radius:32px 32px 0 0;padding:48px 0 32px}
+  h1{font-size:28px}
+  .hero .total .num{font-size:48px}
   .top{flex-wrap:wrap}
-  .chapter-head{gap:1rem}
-  .chapter-head .no{font-size:2.2rem}
+  .hero-in{flex-direction:column;gap:16px}
+  .hero .total{margin-left:0;text-align:left}
+  .chapter-head{gap:16px}
+  .chapter-head .no{font-size:36px}
   .chapter-head .count{display:none}
   .doc .meta .src{white-space:normal}
 }
 </style>
 </head>
 <body>
-<p class="flag"><span class="nb">自主制作サンプルです</span><span class="nb">会社名・人名・商品は架空のものです</span></p>
+<div class="flag"><div class="wrap"><span class="nb">自主制作サンプルです</span><span class="nb">会社名・人名・商品は架空のものです</span></div></div>
 
 <div class="wrap">
   <header class="top">
     <span class="by"><span class="nb">ココナラ出品者</span><span class="nb">「ハル｜よろずサポート屋」</span></span>
-    <span class="idx">Writing / Contents</span>
+    <span class="idx">WRITING / CONTENTS</span>
   </header>
+</div>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">Articles <b>&amp; documents</b></p>
-      <h1><span class="en">Writing works</span><span class="seg"><span class="nb">記事・文書サンプル</span></span></h1>
-      <p><span class="seg"><span class="nb">文書は9点です</span></span><span class="seg"><span class="nb">各文書はHTML（読みやすい表示）と</span></span><span class="seg"><span class="nb">Markdown（入稿用の原稿）の両方を置いています</span></span></p>
-    </section>
+<main>
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <p class="en kicker">WRITING WORKS</p>
+        <h1><span class="seg"><span class="nb">記事・文書サンプル</span></span></h1>
+        <p class="lead"><span class="seg"><span class="nb">文書は9点です</span></span><span class="seg"><span class="nb">各文書はHTML（読みやすい表示）と</span></span><span class="seg"><span class="nb">Markdown（入稿用の原稿）の両方を置いています</span></span></p>
+      </div>
+      <p class="total"><span class="num">09</span><span class="unit">文書の総数</span></p>
+    </div>
+  </section>
 
-    <section class="chapter">
+  <section class="chapter sheet">
+    <div class="wrap">
       <div class="chapter-head">
-        <span class="no" aria-hidden="true">No.1</span>
+        <span class="no" aria-hidden="true">01</span>
         <h2>IT解説記事</h2>
-        <span class="count">1 document</span>
+        <span class="count">1 DOCUMENT</span>
       </div>
       <article class="doc">
         <h3><a href="it-article/article.html">社員10人の会社が業務効率化ツールを選ぶときの5つの手順</a></h3>
         <p><span class="nb">特定の製品を勧めず、</span><span class="nb">どの製品にも使える選び方の手順を</span><span class="nb">書いた記事です</span></p>
         <p class="meta"><span class="src">原稿：it-article/article.md</span><span class="dots" aria-hidden="true"></span><span class="fmt">約3,000字</span></p>
       </article>
-    </section>
+    </div>
+  </section>
 
-    <section class="chapter">
+  <section class="chapter mist">
+    <div class="wrap">
       <div class="chapter-head">
-        <span class="no" aria-hidden="true">No.2</span>
+        <span class="no" aria-hidden="true">02</span>
         <h2>SEO記事</h2>
-        <span class="count">3 documents</span>
+        <span class="count">3 DOCUMENTS</span>
       </div>
       <article class="doc">
         <h3><a href="seo-article/intent-memo.html">検索意図の分析メモ</a></h3>
@@ -169,18 +152,20 @@ footer{
       <article class="doc">
         <h3><a href="seo-article/article.html">個人店のホームページを作り直す費用は？</a></h3>
         <p><span class="nb">費用の数値は出典に基づいています</span></p>
-        <p class="meta"><span class="src">出典：ココナラの公開ページ・2026年11月22日確認</span><span class="dots" aria-hidden="true"></span><span class="fmt">約2,500字</span></p>
+        <p class="meta"><span class="src">出典：ココナラの公開ページ・<span class="nb">2026年11月22日確認</span></span><span class="dots" aria-hidden="true"></span><span class="fmt">約2,500字</span></p>
       </article>
-    </section>
+    </div>
+  </section>
 
-    <section class="chapter">
+  <section class="chapter sheet">
+    <div class="wrap">
       <div class="chapter-head">
-        <span class="no" aria-hidden="true">No.3</span>
+        <span class="no" aria-hidden="true">03</span>
         <h2>商品紹介文・レビュー記事</h2>
-        <span class="count">2 documents</span>
+        <span class="count">2 DOCUMENTS</span>
       </div>
       <article class="doc">
-        <h3><a href="product-review/product.html">商品紹介文：電動コーヒーミル KOTO M-20</a></h3>
+        <h3><a href="product-review/product.html"><span class="nb">商品紹介文：電動コーヒーミル</span><span class="nb">KOTO M-20</span></a></h3>
         <p><span class="nb">ECサイトの商品ページ用です</span><span class="nb">紹介文・仕様表・注意事項を書いています</span><span class="nb">架空の商品です</span></p>
         <p class="meta"><span class="src">用途：商品ページ</span><span class="dots" aria-hidden="true"></span><span class="fmt">紹介文</span></p>
       </article>
@@ -189,13 +174,15 @@ footer{
         <p><span class="nb">良かった点・気になった点・</span><span class="nb">向いている人を書いています</span><span class="nb">架空の商品です</span></p>
         <p class="meta"><span class="src">用途：レビュー記事</span><span class="dots" aria-hidden="true"></span><span class="fmt">約1,000字</span></p>
       </article>
-    </section>
+    </div>
+  </section>
 
-    <section class="chapter">
+  <section class="chapter mist">
+    <div class="wrap">
       <div class="chapter-head">
-        <span class="no" aria-hidden="true">No.4</span>
+        <span class="no" aria-hidden="true">04</span>
         <h2>ビジネス文書</h2>
-        <span class="count">3 documents</span>
+        <span class="count">3 DOCUMENTS</span>
       </div>
       <article class="doc">
         <h3><a href="business-docs/01-guide-mail.html">案内メール</a></h3>
@@ -212,13 +199,15 @@ footer{
         <p><span class="nb">ホームページリニューアルの打ち合わせです</span><span class="nb">決定事項・宿題・次回予定を書いています</span></p>
         <p class="meta"><span class="src">形式：議事録</span><span class="dots" aria-hidden="true"></span><span class="fmt">決定事項つき</span></p>
       </article>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <footer>
-    <span>ハル｜よろずサポート屋</span>
+<footer>
+  <div class="wrap">
+    <span class="fname">ハル｜よろずサポート屋</span>
     <span><span class="nb">自主制作サンプルです</span><span class="nb">会社名・人名・商品は架空のものです</span></span>
-  </footer>
-</div>
+  </div>
+</footer>
 </body>
 </html>
