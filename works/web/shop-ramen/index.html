@@ -9,7 +9,196 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;800&family=Zen+Old+Mincho:wght@900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<style>
+/* らぁめん 雷紋堂（架空）v2 — 仕様は DESIGN.md
+   日本語の改行は意味の塊ごとの .nb マークアップで決める。
+   word-break: keep-all と overflow-wrap: anywhere の併記はしない。 */
+:root{
+  --ai:#133C78;      /* 丼の縁の雷紋の藍 */
+  --gold:#F2A524;    /* スープと麺の金色 */
+  --aka:#C8161D;     /* 価格の赤 */
+  --paper:#FFFFFF;   /* 食券の白 */
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:64px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--ai);color:var(--paper);
+  font-family:"M PLUS 1p","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  font-weight:500;font-size:16px;line-height:1.75;letter-spacing:.02em;
+  word-break:auto-phrase;line-break:strict;
+}
+h1,h2,h3,p,dl,dd,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.mincho{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900}
+
+.sample-flag{padding:4px 20px;background:var(--paper);color:var(--ai);font-size:12px;line-height:1.6}
+
+/* ヘッダー（藍の帯） */
+.topbar{
+  position:sticky;top:0;z-index:10;
+  display:flex;align-items:center;gap:32px;
+  padding:0 32px;background:var(--ai);color:var(--paper);
+  border-bottom:4px solid var(--gold);
+}
+.mark{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;font-size:24px;letter-spacing:.08em;text-decoration:none;padding:12px 0}
+.topbar-info{display:flex;gap:20px;font-size:14px;font-weight:800}
+.gnav{margin-left:auto;display:flex}
+.gnav a{padding:16px 20px;font-weight:800;font-size:16px;text-decoration:none;border-left:1px solid rgba(255,255,255,.25)}
+.gnav a:hover{background:var(--gold);color:var(--ai)}
+
+/* ヒーロー（藍地・ポスターとして全面に店名） */
+.hero{max-width:1120px;margin:0 auto;padding:48px 32px 32px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px 48px;align-items:end}
+.hero h1{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;line-height:.95;color:var(--gold)}
+.hero .pre{display:block;font-size:32px;letter-spacing:.3em;margin-bottom:12px}
+.hero .name{display:block;font-size:96px;letter-spacing:.02em}
+.hero-facts{border-top:4px solid var(--gold)}
+.hero-facts>div{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:baseline;padding:12px 0;border-bottom:2px solid rgba(255,255,255,.35)}
+.hero-facts dt{font-size:14px;font-weight:800;color:var(--gold)}
+.hero-facts dd{font-weight:800;font-size:20px;line-height:1.4}
+.hero-note{grid-column:1/-1;font-size:16px;font-weight:800;line-height:1.9}
+
+/* 主力の食券帯（bold move：価格が第二の主役） */
+.ticket-hero{
+  position:relative;background:var(--paper);color:var(--ai);
+  border-top:6px solid var(--gold);border-bottom:6px solid var(--gold);
+}
+.ticket-hero::before,.ticket-hero::after{
+  content:"";position:absolute;top:50%;width:32px;height:32px;border-radius:50%;
+  background:var(--ai);transform:translateY(-50%);
+}
+.ticket-hero::before{left:-16px}
+.ticket-hero::after{right:-16px}
+.ticket-hero-in{max-width:1120px;margin:0 auto;padding:24px 32px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 48px;align-items:center}
+.ticket-hero .t-name{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;font-size:40px;line-height:1.2;letter-spacing:.04em}
+.ticket-hero .t-desc{margin-top:8px;font-size:16px;line-height:1.8;border-top:2px dashed rgba(19,60,120,.4);padding-top:12px}
+.ticket-hero .t-price{color:var(--aka);font-weight:800;font-size:80px;line-height:1;letter-spacing:0;text-align:right}
+.ticket-hero .t-price small{font-size:32px;margin-left:4px}
+.ticket-hero .t-tag{font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--aka)}
+
+/* 雷紋の帯（丼の縁の文様） */
+.fret{
+  height:32px;background-color:var(--ai);
+  border-top:4px solid var(--gold);border-bottom:4px solid var(--gold);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cpath d='M1 20H20V2H3V16H16V6H7V12H12' fill='none' stroke='%23F2A524' stroke-width='2.6' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-size:22px 22px;background-repeat:repeat-x;background-position:0 center;
+}
+
+/* 写真 */
+.photo-bowl{display:block;width:100%;height:auto;aspect-ratio:1120/420;object-fit:cover;object-position:center 52%;filter:saturate(1.3)}
+.photo-kitchen{display:block;width:100%;height:100%;min-height:320px;object-fit:cover;filter:saturate(1.3);border:4px solid var(--ai)}
+
+/* セクション共通 */
+.menu,.order,.shop{padding:48px 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 32px;margin-bottom:32px}
+h2{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;font-size:40px;line-height:1.2;letter-spacing:.06em}
+.sec-head p{font-weight:800;font-size:14px;line-height:1.9}
+
+/* メニュー（金の地・食券の帯を積む） */
+.menu{background:var(--gold);color:var(--ai)}
+.tickets{display:grid;gap:12px}
+.ticket{
+  background:var(--paper);border:4px solid var(--ai);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 32px;align-items:center;
+  padding:20px 24px;
+}
+.ticket h3{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;font-size:24px;line-height:1.3;letter-spacing:.04em}
+.ticket .desc{font-size:14px;line-height:1.8}
+.ticket .price{color:var(--aka);font-weight:800;font-size:40px;line-height:1.1;text-align:right}
+.ticket .price small{font-size:20px;margin-left:2px}
+.ticket.xl{border-width:6px;padding:24px 32px}
+.ticket.xl h3{font-size:32px}
+.ticket.xl .price{font-size:48px}
+.ticket.xl .desc{font-size:16px}
+.sub{margin:48px 0 20px;font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;font-size:24px;letter-spacing:.06em}
+.tickets.small{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tickets.small .ticket{padding:12px 20px;border-width:3px}
+.tickets.small .nm{font-weight:800;font-size:16px;line-height:1.4}
+.tickets.small .price{font-size:32px}
+.note{margin-top:16px;font-size:12px;font-weight:800}
+
+/* 注文の流れ（白地） */
+.order{background:var(--paper);color:var(--ai)}
+.order-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:48px;align-items:stretch}
+.steps li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;align-items:start;padding:20px 0;border-top:2px solid var(--ai)}
+.steps li:last-child{border-bottom:2px solid var(--ai)}
+.steps .n{display:grid;place-items:center;width:64px;height:64px;background:var(--ai);color:var(--gold);font-weight:800;font-size:32px;line-height:1}
+.steps .st{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:900;font-size:24px;line-height:1.4;margin-bottom:4px}
+.steps .sd{font-size:14px;line-height:1.9}
+
+/* 店舗情報（藍地） */
+.shop{background:var(--ai);color:var(--paper)}
+.shop h2{color:var(--gold)}
+.info{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px;border-top:4px solid var(--gold)}
+.info>div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.3)}
+.info dt{font-weight:800;color:var(--gold);font-size:14px;padding-top:4px}
+.info dd{font-size:16px;line-height:1.8}
+
+/* フッター */
+.footer{background:var(--ai);color:var(--paper);padding:32px 0 48px;border-top:4px solid var(--gold)}
+.footer .mark{font-size:32px;padding:0}
+.disclaimer{margin-top:20px;font-size:12px;line-height:1.8;opacity:.8;max-width:832px}
+
+/* 入場モーション（ヒーローのみ） */
+@keyframes rise{from{transform:translateY(24px)}to{transform:none}}
+.hero h1,.hero-facts,.hero-note{animation:rise .7s ease-out both}
+.hero-facts{animation-delay:.12s}
+.hero-note{animation-delay:.24s}
+@media (prefers-reduced-motion: reduce){
+  .hero h1,.hero-facts,.hero-note{animation:none}
+}
+
+/* タブレット */
+@media (max-width:980px){
+  .topbar-info{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero .name{font-size:80px}
+  .order-grid{grid-template-columns:1fr;gap:32px}
+  .info{grid-template-columns:1fr}
+  .photo-kitchen{min-height:240px}
+}
+
+/* スマホ */
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .topbar{flex-wrap:wrap;gap:0;padding:0}
+  .topbar .mark{padding:12px 16px;font-size:20px}
+  .gnav{margin-left:0;width:100%;border-top:1px solid rgba(255,255,255,.25)}
+  .gnav a{flex:1;text-align:center;padding:12px 0;font-size:14px}
+  .gnav a:first-child{border-left:0}
+  .hero{padding:32px 16px 24px;gap:24px}
+  .hero .pre{font-size:20px}
+  .hero .name{font-size:64px}
+  .hero-facts dd{font-size:16px}
+  .ticket-hero-in{padding:20px 16px;grid-template-columns:1fr;gap:8px}
+  .ticket-hero .t-name{font-size:32px}
+  .ticket-hero .t-price{font-size:56px;text-align:left}
+  .ticket-hero .t-price small{font-size:24px}
+  .photo-bowl{aspect-ratio:4/3}
+  .menu,.order,.shop{padding:40px 0}
+  h2{font-size:32px}
+  .sec-head{margin-bottom:24px}
+  .ticket{padding:16px;grid-template-columns:1fr;gap:4px}
+  .ticket .price{font-size:32px;text-align:right}
+  .tickets.small .ticket{grid-template-columns:minmax(0,1fr) auto;gap:8px 16px}
+  .tickets.small .price{text-align:right}
+  .ticket.xl{padding:20px 16px}
+  .ticket.xl h3{font-size:24px}
+  .ticket.xl .price{font-size:40px}
+  .tickets.small{grid-template-columns:1fr}
+  .tickets.small .price{font-size:28px}
+  .sub{font-size:20px;margin:32px 0 16px}
+  .steps li{grid-template-columns:48px minmax(0,1fr);gap:12px}
+  .steps .n{width:48px;height:48px;font-size:24px}
+  .steps .st{font-size:20px}
+  .info>div{grid-template-columns:80px minmax(0,1fr)}
+}
+</style>
 </head>
 <body>
 
@@ -17,7 +206,7 @@
 
 <header class="topbar">
   <a class="mark" href="#top">雷紋堂</a>
-  <p class="topbar-info"><span class="nw">11:00〜15:00・18:00〜22:00</span><span class="nw">月曜定休</span></p>
+  <p class="topbar-info"><span class="nb">11:00〜15:00・18:00〜22:00</span><span class="nb">月曜定休</span></p>
   <nav class="gnav" aria-label="ページ内">
     <a href="#menu">メニュー</a>
     <a href="#order">注文の流れ</a>
@@ -30,52 +219,70 @@
 <section class="hero">
   <h1><span class="pre">らぁめん</span><span class="name">雷紋堂</span></h1>
   <dl class="hero-facts">
-    <div><dt>営業</dt><dd><span class="nw">11:00〜15:00</span><span class="nw">18:00〜22:00</span></dd></div>
+    <div><dt>営業</dt><dd><span class="nb">11:00〜15:00</span> <span class="nb">18:00〜22:00</span></dd></div>
     <div><dt>定休</dt><dd>月曜</dd></div>
-    <div><dt>駅から</dt><dd>東栄町駅<span class="nw">西口 徒歩2分</span></dd></div>
+    <div><dt>駅から</dt><dd><span class="nb">東栄町駅 西口</span> <span class="nb">徒歩2分</span></dd></div>
   </dl>
-  <p class="hero-note">醤油豚骨のラーメン店です。カウンター10席・食券制で営業しています。</p>
+  <p class="hero-note"><span class="seg">醤油豚骨のラーメン店です</span><span class="seg">カウンター10席・食券制で営業しています</span></p>
+</section>
+
+<section class="ticket-hero" aria-label="主力メニュー">
+  <div class="ticket-hero-in">
+    <div>
+      <p class="t-tag">食券 一番</p>
+      <h2 class="t-name">醤油らぁめん</h2>
+      <p class="t-desc"><span class="nb">豚骨・鶏ガラを12時間炊いたスープに</span><span class="nb">自家製の中太麺を合わせています</span></p>
+    </div>
+    <p class="t-price">900<small>円</small></p>
+  </div>
 </section>
 
 <div class="fret" aria-hidden="true"></div>
-<div class="photo photo-bowl" role="img" aria-label="チャーシュー・ねぎ・メンマをのせた醤油豚骨ラーメン"></div>
+<img class="photo-bowl" src="img/bowl.jpg" alt="チャーシュー・ねぎ・メンマをのせた醤油豚骨ラーメン" width="2200" height="1454">
 <div class="fret" aria-hidden="true"></div>
 
 <section class="menu" id="menu">
   <div class="wrap">
     <div class="sec-head">
       <h2>メニュー</h2>
-      <p>価格はすべて税込です。入口左の券売機で食券をお求めください。</p>
+      <p><span class="seg">価格はすべて税込です</span><span class="seg">入口左の券売機で食券をお求めください</span></p>
     </div>
 
-    <div class="tickets main">
+    <div class="tickets">
       <article class="ticket xl">
-        <h3>醤油らぁめん</h3>
+        <div>
+          <h3>醤油らぁめん</h3>
+          <p class="desc"><span class="nb">豚骨・鶏ガラを12時間炊いたスープに</span><span class="nb">自家製の中太麺を合わせています</span></p>
+        </div>
         <p class="price">900<small>円</small></p>
-        <p class="desc">豚骨・鶏ガラを12時間炊いたスープに<br>自家製の中太麺を合わせています</p>
       </article>
       <article class="ticket xl">
-        <h3>特製醤油らぁめん</h3>
+        <div>
+          <h3>特製醤油らぁめん</h3>
+          <p class="desc"><span class="nb">チャーシュー3枚・味玉・海苔5枚を</span><span class="nb">のせています</span></p>
+        </div>
         <p class="price">1,250<small>円</small></p>
-        <p class="desc">チャーシュー3枚・味玉・海苔5枚を<br>のせています</p>
       </article>
-    </div>
-
-    <div class="tickets mid">
       <article class="ticket">
-        <h3>塩らぁめん</h3>
+        <div>
+          <h3>塩らぁめん</h3>
+          <p class="desc"><span class="nb">鶏ガラのスープに</span><span class="nb">3種類の塩を合わせています</span></p>
+        </div>
         <p class="price">950<small>円</small></p>
-        <p class="desc">鶏ガラのスープに<br>3種類の塩を合わせています</p>
       </article>
       <article class="ticket">
-        <h3>つけ麺</h3>
+        <div>
+          <h3>つけ麺</h3>
+          <p class="desc"><span class="nb">麺は並200g・大300gから選べます</span><span class="nb">大盛りも同じ価格です</span></p>
+        </div>
         <p class="price">1,000<small>円</small></p>
-        <p class="desc">麺は並200g・大300gから選べます<br>大盛りも同じ価格です</p>
       </article>
       <article class="ticket">
-        <h3>チャーシュー丼</h3>
+        <div>
+          <h3>チャーシュー丼</h3>
+          <p class="desc"><span class="nb">ラーメンと同じチャーシューを</span><span class="nb">刻んでのせています</span></p>
+        </div>
         <p class="price">400<small>円</small></p>
-        <p class="desc">ラーメンと同じチャーシューを<br>刻んでのせています</p>
       </article>
     </div>
 
@@ -99,13 +306,13 @@
         <h2>注文の流れ</h2>
       </div>
       <ol class="steps">
-        <li><span class="n">1</span><p><b>券売機で食券を買う</b>入口左の券売機をご利用ください<br>現金・交通系ICが使えます</p></li>
-        <li><span class="n">2</span><p><b>席に着く</b>空いている席にお座りください<br>食券はカウンターの上に置いてください</p></li>
-        <li><span class="n">3</span><p><b>麺のかたさを伝える</b>かため・ふつう・やわらかめから<br>店員にお伝えください</p></li>
-        <li><span class="n">4</span><p><b>丼を戻す</b>食べ終わった丼は<br>カウンターの上段にお戻しください</p></li>
+        <li><span class="n">1</span><div><p class="st">券売機で食券を買う</p><p class="sd"><span class="seg">入口左の券売機をご利用ください</span><span class="seg">現金・交通系ICが使えます</span></p></div></li>
+        <li><span class="n">2</span><div><p class="st">席に着く</p><p class="sd"><span class="seg">空いている席にお座りください</span><span class="seg">食券はカウンターの上に置いてください</span></p></div></li>
+        <li><span class="n">3</span><div><p class="st">麺のかたさを伝える</p><p class="sd"><span class="seg">かため・ふつう・やわらかめから</span><span class="seg">店員にお伝えください</span></p></div></li>
+        <li><span class="n">4</span><div><p class="st">丼を戻す</p><p class="sd"><span class="seg">食べ終わった丼は</span><span class="seg">カウンターの上段にお戻しください</span></p></div></li>
       </ol>
     </div>
-    <div class="photo photo-kitchen" role="img" aria-label="丼を重ねた厨房のカウンター"></div>
+    <img class="photo-kitchen" src="img/kitchen.jpg" alt="丼を重ねた厨房のカウンター" width="2200" height="1235" loading="lazy">
   </div>
 </section>
 
@@ -116,11 +323,11 @@
     </div>
     <dl class="info">
       <div><dt>住所</dt><dd>かもめ市東栄町1-8-4 東栄ビル1階</dd></div>
-      <div><dt>アクセス</dt><dd>東栄町駅 西口から徒歩2分です<br>駅前ロータリーを右へ進み、2つ目の角の手前です</dd></div>
-      <div><dt>営業時間</dt><dd><span class="nw">11:00〜15:00</span><br><span class="nw">18:00〜22:00（ラストオーダー21:45）</span></dd></div>
+      <div><dt>アクセス</dt><dd>東栄町駅 西口から徒歩2分です。駅前ロータリーを右へ進み、2つ目の角の手前です。</dd></div>
+      <div><dt>営業時間</dt><dd><span class="nb">11:00〜15:00</span>・<span class="nb">18:00〜22:00（ラストオーダー21:45）</span></dd></div>
       <div><dt>定休日</dt><dd>月曜（祝日の場合は翌火曜）</dd></div>
       <div><dt>席数</dt><dd>カウンター10席</dd></div>
-      <div><dt>駐車場</dt><dd>ありません<br>近くのコインパーキングをご利用ください</dd></div>
+      <div><dt>駐車場</dt><dd>ありません。近くのコインパーキングをご利用ください。</dd></div>
       <div><dt>支払い</dt><dd>券売機で現金・交通系ICをご利用ください</dd></div>
       <div><dt>電話</dt><dd>000-0000-0000</dd></div>
     </dl>
@@ -129,7 +336,6 @@
 
 </main>
 
-<div class="fret" aria-hidden="true"></div>
 <footer class="footer">
   <div class="wrap">
     <p class="mark">雷紋堂</p>

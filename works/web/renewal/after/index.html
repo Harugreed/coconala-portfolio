@@ -4,16 +4,141 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>御菓子司 つきしろ｜自主制作サンプル（After）</title>
-<meta name="description" content="昭和28年創業の和菓子店（架空）のホームページを作り直した例。ココナラ出品用の自主制作サンプルです。">
+<meta name="description" content="昭和28年創業の和菓子店（架空）のホームページを作り直した例。営業時間・定休日・所在地とお品書きの価格を載せています（自主制作サンプル）。">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@500;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+:root{
+  --ground:#F4F5F1;
+  --ink:#1A1D1A;
+  --accent:#5A753E;
+  --paper:#FFFFFF;
+  --muted:#4C524A;
+  --line:rgba(26,29,26,.2);
+  --line-light:rgba(244,245,241,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  font-size:16px;line-height:1.8;letter-spacing:.04em;
+  background:var(--ground);color:var(--ink);
+  overflow-x:clip;
+}
+/* Japanese line breaks are decided by markup, not CSS:
+   each meaning chunk is a .nb (nowrap) span; breaks happen only between chunks. */
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+::selection{background:var(--accent);color:var(--paper)}
+h1,h2,h3{font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif}
+@keyframes rise{from{transform:translateY(16px)}to{transform:none}}
+.rise{animation:rise .9s cubic-bezier(.22,.61,.21,1) both}
+@media (prefers-reduced-motion: reduce){.rise{animation:none}}
+
+.sample-flag{background:var(--ink);color:var(--ground);font-size:12px;line-height:1.6;padding:8px 48px}
+.sample-flag a{color:var(--ground)}
+
+.head{background:var(--ink);color:var(--ground)}
+.head-in{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:32px;padding:16px 48px}
+.mark{display:flex;align-items:center;gap:16px;font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:700;font-size:20px;letter-spacing:.12em}
+.mark svg{width:32px;height:32px;flex:none}
+.gnav{display:flex;gap:32px}
+.gnav a{text-decoration:none;font-size:14px;letter-spacing:.12em;padding:4px 0;border-bottom:1px solid transparent}
+.gnav a:hover{border-bottom-color:var(--ground)}
+
+.hero-photo{height:384px;background:#101310 url(img/nerikiri.jpg) center 52% / cover no-repeat;border-top:8px solid var(--paper);border-bottom:8px solid var(--paper);outline:1px solid var(--line);outline-offset:0}
+.hero{position:relative;max-width:1280px;margin:0 auto;padding:64px 48px 96px}
+.v-text{position:absolute;top:64px;right:48px;writing-mode:vertical-rl;font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-size:20px;letter-spacing:.32em;color:var(--muted)}
+.hero .since{font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-size:16px;letter-spacing:.32em;color:var(--accent);margin-bottom:16px}
+.hero h1{font-weight:700;font-size:88px;line-height:1.15;letter-spacing:.1em}
+.hero-info{margin-top:48px;border-top:2px solid var(--ink);max-width:896px}
+.hero-info>div{display:grid;grid-template-columns:128px minmax(0,1fr);gap:24px;padding:16px 0;border-bottom:1px solid var(--line)}
+.hero-info dt{font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--accent)}
+.hero-info dd{font-size:16px}
+
+.sec{padding:128px 0}
+.sec-in{max-width:1152px;margin:0 auto;padding:0 48px}
+.sec-head{display:flex;align-items:baseline;gap:32px;border-bottom:2px solid var(--ink);padding-bottom:24px}
+.sec-head .no{display:grid;place-items:center;width:48px;height:48px;flex:none;background:var(--ink);color:var(--ground);font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-size:20px}
+.sec-head h2{font-weight:500;font-size:36px;letter-spacing:.18em;line-height:1.4}
+.sec-head .sub{margin-left:auto;font-size:14px;color:var(--muted)}
+
+.items{margin-top:64px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:96px;align-items:start}
+.item-list{list-style:none}
+.item-list>div{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:24px 0;border-bottom:1px solid var(--line)}
+.item-list dt{font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:500;font-size:24px;letter-spacing:.08em;line-height:1.5}
+.item-list dt small{display:block;font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;letter-spacing:.04em;color:var(--muted);margin-top:4px}
+.item-list dd{font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-size:24px;color:var(--accent);white-space:nowrap}
+.items-side{padding-top:192px}
+.items-side img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.note{margin-top:24px;padding-top:16px;border-top:1px dashed var(--accent);font-size:13px;color:var(--muted)}
+
+.order-sec{background:var(--ink);color:var(--ground)}
+.order-sec .sec-head{border-bottom-color:var(--ground)}
+.order-sec .sec-head .no{background:var(--ground);color:var(--ink)}
+.order-sec .sec-head .sub{color:var(--ground)}
+.order-list{list-style:none;margin-top:16px}
+.order-list>li{display:grid;grid-template-columns:128px minmax(0,1fr);gap:32px;padding:48px 0;border-bottom:1px solid var(--line-light)}
+.order-list .num{font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-size:64px;line-height:1;color:var(--accent)}
+.order-list h3{font-weight:500;font-size:24px;letter-spacing:.12em;margin-bottom:8px}
+.order-list p{font-size:16px}
+.tel{margin-top:48px;font-size:14px}
+.tel b{font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-size:28px;font-weight:700;letter-spacing:.08em;margin:0 16px;color:var(--ground)}
+
+.info{border-top:2px solid var(--ink);margin-top:64px}
+.info>div{display:grid;grid-template-columns:160px minmax(0,1fr);gap:24px;padding:16px 0;border-bottom:1px solid var(--line)}
+.info dt{font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:500;font-size:18px;letter-spacing:.1em}
+.info dd{font-size:16px}
+
+.foot{background:var(--ink);color:var(--ground);padding:96px 48px}
+.foot-in{max-width:1152px;margin:0 auto}
+.foot nav{margin-top:32px;display:flex;gap:32px;flex-wrap:wrap}
+.foot nav a{font-size:14px;letter-spacing:.08em}
+.disclaimer{margin-top:32px;max-width:832px;font-size:12px;line-height:1.9;color:var(--ground)}
+
+@media (max-width:1024px){
+  .items{gap:48px}
+  .items-side{padding-top:96px}
+}
+@media (max-width:768px){
+  .v-text{display:none}
+  .sample-flag{padding:8px 24px}
+  .head-in{padding:16px 24px}
+  .hero{padding:48px 24px 64px}
+  .hero h1{font-size:48px}
+  .hero-photo{height:256px}
+  .sec{padding:96px 0}
+  .sec-in{padding:0 24px}
+  .sec-head{flex-wrap:wrap;gap:16px}
+  .sec-head .sub{margin-left:0}
+  .items{grid-template-columns:1fr;gap:48px;margin-top:48px}
+  .items-side{padding-top:0}
+  .order-list>li{grid-template-columns:1fr;gap:16px;padding:32px 0}
+  .order-list .num{font-size:48px}
+  .foot{padding:64px 24px}
+}
+@media (max-width:480px){
+  .head-in{flex-direction:column;align-items:flex-start;gap:8px}
+  .gnav{gap:24px}
+  .hero h1{font-size:36px;letter-spacing:.06em}
+  .hero-info>div{grid-template-columns:1fr;gap:4px}
+  .item-list dt{font-size:20px}
+  .item-list dd{font-size:20px}
+  .info>div{grid-template-columns:1fr;gap:4px}
+  .tel b{display:block;margin:4px 0}
+}
+</style>
 </head>
 <body>
 
-<p class="sample-flag">自主制作サンプル（After）です。店名・住所・電話番号・商品は架空のものです。</p>
+<p class="sample-flag"><span class="nb">自主制作サンプル（After）です</span><span class="nb">店名・住所・電話番号・商品は架空のものです</span>　<a href="../">提案セットの索引へ戻る</a></p>
 
 <header class="head">
   <div class="head-in">
@@ -23,60 +148,88 @@
 </header>
 
 <main>
-  <section class="top">
-    <div class="top-photo" role="img" aria-label="黒い漆の盆にのせた3種類の練り切り"></div>
-    <div class="top-body">
-      <h1>御菓子司 つきしろ</h1>
-      <p class="since">昭和28年創業</p>
-      <dl class="top-info">
-        <div><dt>営業時間</dt><dd>9:00〜18:00（日曜は17:00まで）</dd></div>
-        <div><dt>定休日</dt><dd>火曜</dd></div>
-        <div><dt>所在地</dt><dd>つきみ市本通り3-7 つきみ駅から徒歩3分</dd></div>
-      </dl>
-    </div>
+  <div class="hero-photo" role="img" aria-label="黒い漆の盆にのせた3種類の練り切り"></div>
+
+  <section class="hero rise">
+    <p class="since">昭和28年創業</p>
+    <p class="v-text" aria-hidden="true">昭和二十八年創業</p>
+    <h1><span class="nb">御菓子司</span> <span class="nb">つきしろ</span></h1>
+    <dl class="hero-info">
+      <div><dt>営業時間</dt><dd><span class="nb">9:00〜18:00</span><span class="nb">（日曜は17:00まで）</span></dd></div>
+      <div><dt>定休日</dt><dd>火曜</dd></div>
+      <div><dt>所在地</dt><dd><span class="nb">つきみ市本通り3-7</span> <span class="nb">つきみ駅から徒歩3分</span></dd></div>
+    </dl>
   </section>
 
   <section class="sec" id="items">
-    <div class="wrap">
-      <h2>お品書き</h2>
-      <p class="lead">価格はすべて税込です。</p>
+    <div class="sec-in">
+      <div class="sec-head">
+        <span class="no">01</span>
+        <h2>お品書き</h2>
+        <p class="sub">価格はすべて税込です</p>
+      </div>
       <div class="items">
         <dl class="item-list">
-          <div><dt>どら焼き<small>北海道産の小豆の粒あん</small></dt><dd>260円</dd></div>
-          <div><dt>豆大福<small>赤えんどう豆入りの羽二重餅</small></dt><dd>230円</dd></div>
-          <div><dt>本練り羊羹<small>一棹 450g・常温で60日保存できます</small></dt><dd>1,620円</dd></div>
-          <div><dt>つきしろ最中<small>6個入・あんは別添えで食べる直前に詰めます</small></dt><dd>1,350円</dd></div>
-          <div><dt>上生菓子<small>練り切り・きんとんなど、月ごとに4種類を作っています</small></dt><dd>330円</dd></div>
+          <div><dt>どら焼き<small><span class="nb">北海道産の小豆の粒あん</span></small></dt><dd>260円</dd></div>
+          <div><dt>豆大福<small><span class="nb">赤えんどう豆入りの羽二重餅</span></small></dt><dd>230円</dd></div>
+          <div><dt>本練り羊羹<small><span class="nb">一棹 450g</span><span class="nb">常温で60日保存できます</span></small></dt><dd>1,620円</dd></div>
+          <div><dt>つきしろ最中<small><span class="nb">6個入</span><span class="nb">あんは別添えで</span><span class="nb">食べる直前に詰めます</span></small></dt><dd>1,350円</dd></div>
+          <div><dt>上生菓子<small><span class="nb">練り切り・きんとんなど</span><span class="nb">月ごとに4種類を作っています</span></small></dt><dd>330円</dd></div>
         </dl>
-        <div class="items-photo" role="img" aria-label="木の盆にのせたお茶と和菓子"></div>
+        <div class="items-side">
+          <img src="img/tea.jpg" alt="木の盆にのせたお茶と和菓子" width="1800" height="1200" loading="lazy">
+          <p class="note">※<span class="nb">上生菓子のその月の種類は</span><span class="nb">店頭でご案内しています</span></p>
+        </div>
       </div>
-      <p class="note">※上生菓子のその月の種類は、店頭でご案内しています</p>
     </div>
   </section>
 
-  <section class="sec dark" id="order">
-    <div class="wrap two">
-      <h2>ご注文</h2>
-      <div>
-        <ol class="order">
-          <li><h3>店頭で買う</h3><p>9:00〜18:00（日曜は17:00まで）に店頭でお求めください<br>上生菓子は午後に売り切れることがあります</p></li>
-          <li><h3>電話で予約する</h3><p>受け取りの2日前までに、お電話でご予約ください<br>10個以上・熨斗（のし）付きの注文もお受けしています</p></li>
-          <li><h3>地方発送</h3><p>羊羹・最中は、全国へ発送しています<br>送料は1か所につき880円です</p></li>
-        </ol>
-        <p class="tel">ご予約・お問い合わせ <span>000-000-0000</span>（9:00〜18:00）</p>
+  <section class="sec order-sec" id="order">
+    <div class="sec-in">
+      <div class="sec-head">
+        <span class="no">02</span>
+        <h2>ご注文</h2>
+        <p class="sub"><span class="nb">店頭・電話予約・地方発送の</span><span class="nb">3つの買い方があります</span></p>
       </div>
+      <ol class="order-list">
+        <li>
+          <span class="num">01</span>
+          <div>
+            <h3>店頭で買う</h3>
+            <p><span class="seg"><span class="nb">9:00〜18:00</span><span class="nb">（日曜は17:00まで）に店頭でお求めください</span></span><span class="seg"><span class="nb">上生菓子は午後に</span><span class="nb">売り切れることがあります</span></span></p>
+          </div>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <div>
+            <h3>電話で予約する</h3>
+            <p><span class="seg"><span class="nb">受け取りの2日前までに</span><span class="nb">お電話でご予約ください</span></span><span class="seg"><span class="nb">10個以上・熨斗（のし）付きの注文も</span><span class="nb">お受けしています</span></span></p>
+          </div>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <div>
+            <h3>地方発送</h3>
+            <p><span class="seg"><span class="nb">羊羹・最中は</span><span class="nb">全国へ発送しています</span></span><span class="seg"><span class="nb">送料は1か所につき880円です</span></span></p>
+          </div>
+        </li>
+      </ol>
+      <p class="tel"><span class="nb">ご予約・お問い合わせ</span><b>000-000-0000</b><span class="nb">（9:00〜18:00）</span></p>
     </div>
   </section>
 
   <section class="sec" id="shop">
-    <div class="wrap two">
-      <h2>店舗情報</h2>
+    <div class="sec-in">
+      <div class="sec-head">
+        <span class="no">03</span>
+        <h2>店舗情報</h2>
+      </div>
       <dl class="info">
-        <div><dt>住所</dt><dd>〒000-0000 つきみ市本通り3-7</dd></div>
-        <div><dt>アクセス</dt><dd>つきみ駅 東口から徒歩3分です<br>本通り商店街を北へ進み、郵便局の向かいです</dd></div>
-        <div><dt>営業時間</dt><dd>9:00〜18:00（日曜は17:00まで）</dd></div>
+        <div><dt>住所</dt><dd>〒000-0000 <span class="nb">つきみ市本通り3-7</span></dd></div>
+        <div><dt>アクセス</dt><dd><span class="seg"><span class="nb">つきみ駅 東口から徒歩3分です</span></span><span class="seg"><span class="nb">本通り商店街を北へ進み</span><span class="nb">郵便局の向かいです</span></span></dd></div>
+        <div><dt>営業時間</dt><dd><span class="nb">9:00〜18:00</span><span class="nb">（日曜は17:00まで）</span></dd></div>
         <div><dt>定休日</dt><dd>火曜</dd></div>
-        <div><dt>駐車場</dt><dd>店の裏に2台分あります</dd></div>
+        <div><dt>駐車場</dt><dd><span class="nb">店の裏に2台分あります</span></dd></div>
         <div><dt>支払い</dt><dd>現金・クレジットカード・交通系IC</dd></div>
       </dl>
     </div>
@@ -84,8 +237,11 @@
 </main>
 
 <footer class="foot">
-  <p class="mark"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M26 9a12 12 0 1 0 0 22A10 10 0 0 1 26 9z" fill="currentColor"/></svg>御菓子司 つきしろ</p>
-  <p class="disclaimer">このページはココナラ出品者「ハル｜よろずサポート屋」の自主制作サンプルです。店名・住所・電話番号・商品は架空のもので、実在の店舗とは関係ありません。写真は Unsplash License に基づき使用しています（出典は ../credits.md）。</p>
+  <div class="foot-in">
+    <p class="mark"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M26 9a12 12 0 1 0 0 22A10 10 0 0 1 26 9z" fill="currentColor"/></svg>御菓子司 つきしろ</p>
+    <nav aria-label="提案セット"><a href="../">提案セットの索引</a><a href="../before/">Before を見る</a><a href="../proposal/">改善提案書を見る</a></nav>
+    <p class="disclaimer"><span class="nb">このページはココナラ出品者</span><span class="nb">「ハル｜よろずサポート屋」の自主制作サンプルです</span><span class="nb">店名・住所・電話番号・商品は架空のもので</span><span class="nb">実在の店舗とは関係ありません</span><span class="nb">写真は Unsplash License に基づき使用しています</span><span class="nb">（出典は ../credits.md）</span></p>
+  </div>
 </footer>
 
 </body>

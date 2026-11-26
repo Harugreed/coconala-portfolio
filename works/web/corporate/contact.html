@@ -26,10 +26,18 @@
 <main id="main">
 <div class="wrap page-title">
   <h1>お問い合わせ</h1>
-  <p>学習室の利用・講座や相談会への申込・寄付についてのお問い合わせを受け付けています。返信は3営業日以内にお送りします。</p>
+  <p><span class="nb">学習室の利用・講座や相談会への申込・</span><span class="nb">寄付についてのお問い合わせを受け付けています。</span><span class="nb">返信は3営業日以内にお送りします。</span></p>
 </div>
 
-<section class="section">
+<div class="wrap layout">
+<aside class="local-nav" aria-label="このページの目次">
+  <p class="ln-head">お問い合わせ</p>
+  <a href="#phone">電話でのお問い合わせ</a>
+  <a href="#form">フォームでのお問い合わせ</a>
+</aside>
+<div class="layout-main">
+
+<section class="section" id="phone">
   <div class="wrap">
     <h2 class="h2">電話でのお問い合わせ</h2>
     <table class="table">
@@ -39,7 +47,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="form">
   <div class="wrap">
     <h2 class="h2">フォームでのお問い合わせ</h2>
     <form class="form" onsubmit="return false" novalidate>
@@ -93,6 +101,9 @@
     </form>
   </div>
 </section>
+
+</div>
+</div>
 
 </main>
 <footer class="footer">

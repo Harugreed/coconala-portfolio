@@ -4,34 +4,164 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>リニューアル提案セット｜御菓子司 つきしろ（自主制作サンプル）</title>
+<meta name="description" content="老舗和菓子店（架空）のホームページを作り直す提案セットの索引です。改修前（Before）・改修後（After）・改善提案書の3点への入口です。">
 <meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root { --ink: #1A1D1A; --green: #5E7A42; --line: #CFD3CB; --ground: #F4F5F1; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--ground); color: var(--ink); font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif; font-size: 16px; line-height: 1.8; word-break: auto-phrase; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 48px 24px 80px; }
-  .flag { font-size: 13px; background: var(--ink); color: #fff; padding: 6px 24px; margin: 0; }
-  h1 { font-size: 28px; margin: 0 0 8px; }
-  p { margin: 0; }
-  .grid { margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-  .grid a { display: block; color: var(--ink); text-decoration: none; border-top: 4px solid var(--ink); padding-top: 12px; }
-  .grid a.after { border-top-color: var(--green); }
-  .grid img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; display: block; border: 1px solid var(--line); background: #fff; }
-  .grid b { display: block; font-size: 18px; margin-bottom: 8px; text-decoration: underline; text-underline-offset: 3px; }
-  .grid span { display: block; margin-top: 8px; font-size: 14px; }
-  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+:root{
+  --ground:#F4F5F1;
+  --ink:#1A1D1A;
+  --accent:#5A753E;
+  --paper:#FFFFFF;
+  --muted:#4C524A;
+  --line:rgba(26,29,26,.2);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  font-size:16px;line-height:1.8;letter-spacing:.04em;
+  background:var(--ground);color:var(--ink);
+  overflow-x:clip;
+}
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+::selection{background:var(--accent);color:var(--paper)}
+h1,h2{font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif}
+@keyframes rise{from{transform:translateY(16px)}to{transform:none}}
+.rise{animation:rise .9s cubic-bezier(.22,.61,.21,1) both}
+@media (prefers-reduced-motion: reduce){.rise{animation:none}}
+
+.flag{background:var(--ink);color:var(--ground);font-size:12px;line-height:1.6;padding:8px 48px}
+.wrap{max-width:1152px;margin:0 auto;padding:0 48px}
+
+.hero{padding:96px 0 64px}
+.hero .kicker{font-size:13px;font-weight:700;letter-spacing:.24em;color:var(--accent);margin-bottom:24px}
+.hero h1{font-weight:700;font-size:64px;line-height:1.25;letter-spacing:.06em}
+.hero .lead{margin-top:32px;max-width:768px;font-size:16px}
+.vs{margin-top:64px;display:grid;grid-template-columns:minmax(0,1fr) 112px minmax(0,1fr);align-items:center;gap:0}
+.vs figure{border:1px solid var(--line);background:var(--paper)}
+.vs img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.vs figcaption{display:flex;justify-content:space-between;gap:16px;padding:16px 24px;border-top:1px solid var(--line);font-size:13px}
+.vs figcaption b{font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-size:18px;letter-spacing:.08em}
+.vs .old figcaption b{color:#800000}
+.vs .new figcaption b{color:var(--accent)}
+.vs .arrow{text-align:center;font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-size:28px;color:var(--muted)}
+.vs .arrow .yrs{display:block;font-size:12px;letter-spacing:.08em;margin-top:8px}
+
+.entries{padding:64px 0 96px}
+.entries h2{font-weight:500;font-size:28px;letter-spacing:.14em;border-bottom:2px solid var(--ink);padding-bottom:24px}
+.entry-list{list-style:none}
+.entry-list>li{border-bottom:1px solid var(--line)}
+.entry-list a{display:grid;grid-template-columns:96px minmax(0,1fr) 224px;gap:32px;align-items:center;padding:32px 0;text-decoration:none}
+.entry-list a:hover .ttl{text-decoration:underline;text-underline-offset:4px}
+.entry-list .no{font-family:"Kaisei Opti","Hiragino Mincho ProN","Yu Mincho",serif;font-size:36px;color:var(--accent)}
+.entry-list .ttl{display:block;font-weight:700;font-size:20px;margin-bottom:8px}
+.entry-list .dsc{display:block;font-size:14px;color:var(--muted)}
+.entry-list img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border:1px solid var(--line)}
+
+.facts{padding:0 0 128px}
+.facts h2{font-weight:500;font-size:28px;letter-spacing:.14em;border-bottom:2px solid var(--ink);padding-bottom:24px}
+.fact-table{margin-top:16px}
+.fact-table>div{display:grid;grid-template-columns:192px minmax(0,1fr);gap:24px;padding:16px 0;border-bottom:1px solid var(--line)}
+.fact-table dt{font-weight:700;font-size:14px;letter-spacing:.08em}
+.fact-table dd{font-size:16px}
+
+footer{border-top:1px solid var(--line);padding:48px}
+.foot-in{max-width:1152px;margin:0 auto;display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+
+@media (max-width:768px){
+  .flag{padding:8px 24px}
+  .wrap{padding:0 24px}
+  .hero{padding:64px 0 48px}
+  .hero h1{font-size:36px}
+  .vs{grid-template-columns:1fr;gap:24px;margin-top:48px}
+  .vs .arrow{transform:none}
+  .vs .arrow .glyph{display:inline-block;transform:rotate(90deg)}
+  .vs .arrow .yrs{display:inline;margin-top:0;margin-left:8px}
+  .entry-list a{grid-template-columns:64px minmax(0,1fr);gap:24px}
+  .entry-list img{display:none}
+  .entry-list .no{font-size:28px}
+  footer{padding:32px 24px}
+}
+@media (max-width:480px){
+  .hero h1{font-size:28px}
+  .fact-table>div{grid-template-columns:1fr;gap:4px}
+}
 </style>
 </head>
 <body>
-<p class="flag">自主制作サンプルです。店名・内容は架空のものです。</p>
-<div class="wrap">
-  <h1>リニューアル提案セット：御菓子司 つきしろ</h1>
-  <p>2016年ごろに作られた想定の古いホームページ（Before）・同じ店の情報で作り直したページ（After）・改善提案書（A4・2ページ）の3点です。</p>
-  <div class="grid">
-    <a href="before/"><b>Before：現在のホームページ</b><img src="proposal/img/before-pc.jpg" alt="Before のPC表示"><span>幅800pxの表で組んだ古い作り。情報は2016年で止まっています。</span></a>
-    <a class="after" href="after/"><b>After：作り直したページ</b><img src="proposal/img/after-pc.jpg" alt="After のPC表示"><span>スマートフォン対応の1ページ構成。営業時間・場所・価格を先に載せています。</span></a>
-    <a href="proposal/"><b>改善提案書（A4・2ページ）</b><img src="proposal/img/proposal-thumb.jpg" alt="改善提案書の1ページ目"><span>問題点・改善内容・制作の流れ・料金。PDF版は proposal/proposal.pdf です。</span></a>
+
+<p class="flag"><span class="nb">自主制作サンプルです</span><span class="nb">店名・内容は架空のものです</span></p>
+
+<header class="hero rise">
+  <div class="wrap">
+    <p class="kicker">RENEWAL PROPOSAL SET</p>
+    <h1><span class="seg">リニューアル提案セット</span><span class="seg">御菓子司 つきしろ</span></h1>
+    <p class="lead"><span class="seg"><span class="nb">2016年ごろに作られた想定の</span><span class="nb">古いホームページと</span></span><span class="seg"><span class="nb">同じ店の情報で作り直したページと</span></span><span class="seg"><span class="nb">改善提案書（A4・2ページ）の3点です</span></span></p>
+    <div class="vs">
+      <figure class="old">
+        <a href="before/"><img src="proposal/img/before-pc.jpg" alt="Before のPC表示" width="1280" height="800"></a>
+        <figcaption><b>Before</b><span><span class="nb">幅800pxの表組み</span><span class="nb">情報は2016年で停止</span></span></figcaption>
+      </figure>
+      <p class="arrow" aria-hidden="true"><span class="glyph">→</span><span class="yrs">2016 → 2026</span></p>
+      <figure class="new">
+        <a href="after/"><img src="proposal/img/after-pc.jpg" alt="After のPC表示" width="1280" height="800"></a>
+        <figcaption><b>After</b><span><span class="nb">スマートフォン対応の1ページ</span><span class="nb">営業情報を先に掲載</span></span></figcaption>
+      </figure>
+    </div>
   </div>
-</div>
+</header>
+
+<main class="wrap">
+  <section class="entries">
+    <h2>3点への入口</h2>
+    <ol class="entry-list">
+      <li>
+        <a href="before/">
+          <span class="no">01</span>
+          <span><span class="ttl"><span class="nb">Before：</span><span class="nb">現在のホームページ</span></span><span class="dsc"><span class="seg"><span class="nb">幅800pxの表で組んだ古い作りです</span></span><span class="seg"><span class="nb">新着情報と価格表は2016年のままです</span></span></span></span>
+          <img src="proposal/img/before-pc.jpg" alt="Before のPC表示" width="1280" height="800" loading="lazy">
+        </a>
+      </li>
+      <li>
+        <a href="after/">
+          <span class="no">02</span>
+          <span><span class="ttl"><span class="nb">After：</span><span class="nb">作り直したページ</span></span><span class="dsc"><span class="seg"><span class="nb">スマートフォン対応の1ページ構成です</span></span><span class="seg"><span class="nb">営業時間・場所・価格を先に載せています</span></span></span></span>
+          <img src="proposal/img/after-pc.jpg" alt="After のPC表示" width="1280" height="800" loading="lazy">
+        </a>
+      </li>
+      <li>
+        <a href="proposal/">
+          <span class="no">03</span>
+          <span><span class="ttl"><span class="nb">改善提案書</span><span class="nb">（A4・2ページ）</span></span><span class="dsc"><span class="seg"><span class="nb">問題点7項目・改善内容・制作の流れ・料金です</span></span><span class="seg"><span class="nb">PDF版は proposal/proposal.pdf です</span></span></span></span>
+          <img src="proposal/img/proposal-thumb.jpg" alt="改善提案書の1ページ目" width="794" height="562" loading="lazy">
+        </a>
+      </li>
+    </ol>
+  </section>
+
+  <section class="facts">
+    <h2>セットの内容</h2>
+    <dl class="fact-table">
+      <div><dt>題材</dt><dd><span class="nb">昭和28年創業の和菓子店（架空）</span><span class="nb">御菓子司 つきしろ</span></dd></div>
+      <div><dt>Before の想定</dt><dd><span class="nb">2016年ごろに作られたホームページ</span><span class="nb">表組み・情報の古さ・動かないリンクを再現しています</span></dd></div>
+      <div><dt>After の構成</dt><dd><span class="nb">お品書き・ご注文・店舗情報の1ページ</span><span class="nb">スマートフォンの幅に合わせて組み直しています</span></dd></div>
+      <div><dt>提案書</dt><dd><span class="nb">A4・2ページ</span><span class="nb">合計54,800円（税込）・制作期間は約2週間です</span></dd></div>
+    </dl>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span><span class="nb">ココナラ出品者「ハル｜よろずサポート屋」の</span><span class="nb">自主制作サンプルです</span></span>
+    <span><span class="nb">写真の出典は credits.md に記録しています</span></span>
+  </div>
+</footer>
+
 </body>
 </html>

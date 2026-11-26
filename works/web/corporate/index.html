@@ -10,6 +10,43 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/common.css">
+<style>
+/* トップページ固有（冒頭・写真・数字の帯）— 仕様は DESIGN.md */
+:root{
+  --paper:#FFFFFF;
+  --lead:#2B3038;
+  --sun:#E8C53A;
+  --line:#D9DBDF;
+  --tint:#F4F5F6;
+}
+.top-hero{
+  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:40px;padding-top:40px;padding-bottom:40px;align-items:start;
+}
+.top-h1{font-size:36px;line-height:1.5;letter-spacing:.03em;margin-bottom:16px}
+.top-lead{font-size:18px;line-height:1.9}
+.top-photo{
+  display:block;width:100%;height:auto;aspect-ratio:1120/330;
+  object-fit:cover;object-position:center 38%;background:var(--tint);
+}
+.numbers{background:var(--sun);color:var(--lead)}
+.numbers-in{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  padding-top:40px;padding-bottom:40px;
+}
+.num .n{line-height:1.1}
+.num b{font-size:64px;font-weight:700;letter-spacing:.02em}
+.num .unit{font-size:28px;font-weight:700;margin-left:4px}
+.num .cap{font-size:16px;font-weight:700;margin-top:8px;line-height:1.6}
+.num .sub{font-size:14px;margin-top:4px}
+@media (max-width:760px){
+  .top-hero{grid-template-columns:1fr;gap:24px;padding-top:24px;padding-bottom:24px}
+  .top-h1{font-size:28px}
+  .top-photo{aspect-ratio:16/9}
+  .numbers-in{grid-template-columns:repeat(2,1fr);padding-top:24px;padding-bottom:24px}
+  .num b{font-size:48px}
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
@@ -24,18 +61,33 @@
 </header>
 
 <main id="main">
-<div class="top-photo" role="img" aria-label="黄色い机で学習する小学生"></div>
-
-<div class="wrap top-lead">
+<div class="wrap top-hero">
   <div>
-    <h1 class="top-h1">放課後の無料学習室を、さくら台市内の3か所で開いています。</h1>
-    <p>対象は市内在住・在学の小学4年生〜中学3年生です。<br>学習ボランティアが宿題・定期テストの勉強を一緒に進めています。</p>
+    <h1 class="top-h1"><span class="nb">放課後の無料学習室を</span><span class="nb">さくら台市内の3か所で</span><span class="nb">開いています</span></h1>
+    <p class="top-lead"><span class="nb">対象は市内在住・在学の</span><span class="nb">小学4年生〜中学3年生です。</span><span class="nb">学習ボランティアが</span><span class="nb">宿題・定期テストの勉強を</span><span class="nb">一緒に進めています</span></p>
+    <ul class="quick">
+      <li><a href="business.html#room"><b>学習室の場所と日程</b><span>本町・南町・西が丘の3か所</span></a></li>
+      <li><a href="business.html#volunteer"><b>学習ボランティアになる</b><span>養成講座 全4回・受講料無料</span></a></li>
+      <li><a href="contact.html"><b>利用・寄付の相談</b><span>フォームまたは電話で受け付け</span></a></li>
+    </ul>
   </div>
-  <ul class="quick">
-    <li><a href="business.html#room"><b>学習室の場所と日程</b><span>本町・南町・西が丘の3か所</span></a></li>
-    <li><a href="business.html#volunteer"><b>学習ボランティアになる</b><span>養成講座 全4回・受講料無料</span></a></li>
-    <li><a href="contact.html"><b>利用・寄付の相談</b><span>フォームまたは電話で受け付け</span></a></li>
-  </ul>
+  <dl class="top-facts">
+    <div><dt>設立</dt><dd>2019年4月</dd></div>
+    <div><dt>所在地</dt><dd>さくら台市民センター3階</dd></div>
+    <div><dt>学習室</dt><dd>3か所</dd></div>
+    <div><dt>登録ボランティア</dt><dd>48人（2026年4月）</dd></div>
+  </dl>
+</div>
+
+<img class="top-photo" src="img/study.jpg" alt="黄色い机で学習する小学生" width="2200" height="1240">
+
+<div class="numbers" aria-label="団体の数字">
+  <div class="wrap numbers-in">
+    <div class="num"><p class="n"><b>3</b><span class="unit">か所</span></p><p class="cap">学習室</p><p class="sub">本町・南町・西が丘</p></div>
+    <div class="num"><p class="n"><b>48</b><span class="unit">人</span></p><p class="cap">登録ボランティア</p><p class="sub">2026年4月時点</p></div>
+    <div class="num"><p class="n"><b>20</b><span class="unit">人</span></p><p class="cap">各学習室の定員</p><p class="sub">利用は無料です</p></div>
+    <div class="num"><p class="n"><b>4</b><span class="unit">回</span></p><p class="cap">進路相談会</p><p class="sub">保護者向け・年4回</p></div>
+  </div>
 </div>
 
 <section class="section">
@@ -75,18 +127,10 @@
 </section>
 
 <section class="section">
-  <div class="wrap top-about">
-    <div>
-      <h2 class="h2">団体について</h2>
-      <p class="prose">2016年に市内の元教員・大学生の有志で始めた学習会を母体に、2019年に一般社団法人として設立しました。市の委託事業・会費・寄付で運営しています。</p>
-      <a class="more" href="about.html">団体概要</a>
-    </div>
-    <dl class="top-facts">
-      <div><dt>設立</dt><dd>2019年4月</dd></div>
-      <div><dt>所在地</dt><dd>さくら台市民センター3階</dd></div>
-      <div><dt>学習室</dt><dd>3か所</dd></div>
-      <div><dt>登録ボランティア</dt><dd>48人（2026年4月）</dd></div>
-    </dl>
+  <div class="wrap">
+    <h2 class="h2">団体について</h2>
+    <p class="prose">2016年に市内の元教員・大学生の有志で始めた学習会を母体に、2019年に一般社団法人として設立しました。市の委託事業・会費・寄付で運営しています。</p>
+    <a class="more" href="about.html">団体概要</a>
   </div>
 </section>
 

@@ -26,10 +26,20 @@
 <main id="main">
 <div class="wrap page-title">
   <h1>お知らせ</h1>
-  <p>見出しを押すと本文が開きます。種類で絞り込めます。</p>
+  <p><span class="nb">見出しを押すと本文が開きます。</span><span class="nb">種類で絞り込めます。</span></p>
 </div>
 
-<section class="section">
+<div class="wrap layout">
+<aside class="local-nav" aria-label="関連ページ">
+  <p class="ln-head">お知らせ</p>
+  <a href="#list">お知らせ一覧（このページ）</a>
+  <a href="business.html">事業内容</a>
+  <a href="about.html">団体概要</a>
+  <a href="contact.html">お問い合わせ</a>
+</aside>
+<div class="layout-main">
+
+<section class="section" id="list">
   <div class="wrap">
     <div class="filter" role="group" aria-label="種類で絞り込む">
       <button type="button" data-cat="all" aria-pressed="true">すべて</button>
@@ -41,6 +51,9 @@
     <noscript><p>お知らせの表示には JavaScript が必要です。</p></noscript>
   </div>
 </section>
+
+</div>
+</div>
 
 </main>
 <footer class="footer">
