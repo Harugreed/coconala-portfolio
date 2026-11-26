@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HIKARI FILMS｜ショート動画制作スタジオ（ポートフォリオ用サンプル）</title>
-<meta name="description" content="15秒で指を止めるショート動画制作スタジオ HIKARI FILMS のサービス紹介LP（ポートフォリオ用サンプル）。">
+<meta name="description" content="東京のショート動画制作スタジオ HIKARI FILMS のサービス紹介ページです。リール・Shorts・TikTok向け動画の企画、撮影、編集を行います（ポートフォリオ用サンプル）。">
 <script>setTimeout(function(){document.documentElement.classList.add('ready')},3500);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,15 +33,15 @@ body{
   overflow-x:clip;
   transition:background-color .7s var(--ease);
 }
-html.is-dark body{background:var(--ink)}
 img{display:block;max-width:none}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
+.cta .lead,.team-sub,.works-note,.steps .sd,.price-list .desc,.cta-note{word-break:keep-all;overflow-wrap:anywhere}
 ::selection{background:var(--tomato);color:var(--cream)}
 
 /* ---------- reveal scaffolding ---------- */
 html:not(.ready) [data-reveal]{visibility:hidden}
-.line{display:block;overflow:hidden;padding-bottom:.07em;margin-bottom:-.07em}
+.line{display:block;overflow:hidden;padding-top:.12em;padding-bottom:.16em;margin-top:-.12em;margin-bottom:-.16em}
 .ch{display:inline-block;white-space:pre;will-change:transform}
 .w{display:inline-block;white-space:nowrap}
 .serif{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;letter-spacing:-.02em;text-transform:none}
@@ -63,11 +63,17 @@ html:not(.ready) [data-reveal]{visibility:hidden}
   display:flex;justify-content:space-between;align-items:flex-start;
   padding:1.25rem 3rem;pointer-events:none;
 }
+.nav::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(250,243,228,.94) 0%,rgba(250,243,228,.82) 52%,rgba(250,243,228,.45) 78%,rgba(250,243,228,0) 100%);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
 .nav>*{pointer-events:auto}
 .logo{
   font-family:"Yellowtail",cursive;font-size:2.4rem;line-height:1;
   color:var(--tomato);transform:rotate(-8deg);transform-origin:left center;
   margin-top:.3rem;
+  text-shadow:0 0 10px rgba(250,243,228,.95),0 0 22px rgba(250,243,228,.9),0 1px 2px rgba(250,243,228,.9);
 }
 .nav-pill{
   position:absolute;left:50%;top:1.25rem;transform:translateX(-50%);
@@ -110,7 +116,7 @@ html:not(.ready) [data-reveal]{visibility:hidden}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
 .hero-veil{
   position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(250,243,228,.42) 0%,rgba(250,243,228,.66) 46%,rgba(250,243,228,.94) 82%,var(--cream) 100%);
+  background:linear-gradient(180deg,rgba(250,243,228,.78) 0%,rgba(250,243,228,.86) 42%,rgba(250,243,228,.96) 78%,var(--cream) 100%);
 }
 .hero-card{
   position:absolute;left:50%;top:50%;width:16rem;aspect-ratio:1;z-index:1;
@@ -123,17 +129,23 @@ html:not(.ready) [data-reveal]{visibility:hidden}
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;gap:1.6rem;padding:0 1.5rem;margin-top:-2rem;
 }
+.hero-content::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 64% 56% at 50% 46%,rgba(250,243,228,.6) 0%,rgba(250,243,228,.28) 55%,rgba(250,243,228,0) 72%);
+}
 .hero-eyebrow{
   font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
   font-size:1.5rem;letter-spacing:-.02em;color:var(--ink);
+  text-shadow:0 1px 10px rgba(250,243,228,.9),0 0 20px rgba(250,243,228,.8);
 }
 .hero-eyebrow b{color:var(--tomato);font-weight:500}
 h1{
   font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
   font-size:8.2rem;line-height:.86;letter-spacing:-.02em;text-transform:uppercase;
+  text-shadow:0 2px 20px rgba(250,243,228,.7),0 0 34px rgba(250,243,228,.55);
 }
 h1 .serif{font-size:.94em}
-.hero-sub{max-width:34rem;font-size:16px;font-weight:500;word-break:keep-all;overflow-wrap:anywhere}
+.hero-sub{max-width:34rem;font-size:16px;font-weight:500;word-break:keep-all;overflow-wrap:anywhere;text-shadow:0 1px 10px rgba(250,243,228,.9),0 0 18px rgba(250,243,228,.75)}
 .hero-link{
   display:inline-flex;align-items:center;gap:.6em;
   font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
@@ -230,55 +242,49 @@ h2{
 @media (max-width:600px){h2{font-size:3.6rem}.slide .ttl{font-size:2rem}}
 
 /* ---------- team ---------- */
-.team{position:relative;height:340vh;color:var(--ink);transition:color .7s var(--ease)}
-html.is-dark .team{color:var(--cream)}
-.team-sticky{
-  position:sticky;top:0;height:100vh;z-index:1;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;gap:1.3rem;padding:0 1.5rem;
-}
-.team-sticky h2{font-size:6rem}
-.team-sub{max-width:26rem;font-size:15px}
+.team{background:var(--ink);color:var(--cream);padding:8rem 3rem}
+.team-inner{max-width:76rem;margin:0 auto;text-align:center}
+.team-inner h2{font-size:6rem}
+.team-sub{max-width:30rem;margin:0 auto;font-size:15px}
 .team-stamp{
   font-family:"Yellowtail",cursive;font-size:2rem;color:var(--tomato);
-  transform:rotate(-8deg);
+  transform:rotate(-8deg);margin-bottom:.6rem;
 }
-.team-photos{position:absolute;inset:0;z-index:2;pointer-events:none}
-.team-photo{position:absolute;aspect-ratio:4/5;background:#E9DCC6}
-.team-photo img{width:100%;height:100%;object-fit:cover}
-.sticker{
-  position:absolute;left:50%;bottom:-.85rem;transform:translateX(-50%) rotate(var(--sr,-4deg));
-  font-weight:900;font-size:1.9rem;line-height:1;color:var(--tomato);white-space:nowrap;
-  -webkit-text-stroke:.14rem var(--cream);paint-order:stroke fill;
+.team-members{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;
+  margin-top:4rem;text-align:left;
 }
+.member-ph{aspect-ratio:4/5;overflow:hidden;background:#2A2320}
+.member-ph img{width:100%;height:100%;max-width:100%;object-fit:cover}
+.member figcaption{display:flex;align-items:center;gap:.8rem;margin-top:1rem;flex-wrap:wrap}
+.member-name{
+  background:var(--cream);color:var(--ink);border-radius:999px;
+  font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:15px;line-height:1.4;
+  padding:.35em 1em;white-space:nowrap;
+}
+.member-role{font-size:13px;color:rgba(250,243,228,.78)}
+.team-bts{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem}
+.bts{position:relative;aspect-ratio:16/10;overflow:hidden;background:#2A2320}
+.bts img{width:100%;height:100%;max-width:100%;object-fit:cover}
 .tag{
   position:absolute;left:.6rem;bottom:.6rem;background:var(--cream);color:var(--ink);
-  font-family:"Archivo",sans-serif;font-weight:700;font-stretch:72%;
-  font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:.28em .55em;
+  font-family:"Noto Sans JP",sans-serif;font-weight:700;
+  font-size:12px;padding:.3em .7em;
 }
-.p1{left:2.5vw;top:3%;width:14rem;transform:rotate(-4deg)}
-.p2{right:3vw;top:5%;width:13rem;transform:rotate(3deg)}
-.p3{left:20vw;top:23%;width:11rem;transform:rotate(5deg)}
-.p4{right:21vw;top:27%;width:12rem;transform:rotate(-5deg)}
-.p5{left:3vw;top:45%;width:13rem;transform:rotate(-3deg)}
-.p6{right:2.5vw;top:49%;width:14rem;transform:rotate(4deg)}
-.p7{left:21vw;top:67%;width:11.5rem;transform:rotate(6deg)}
-.p8{right:20vw;top:71%;width:13rem;transform:rotate(-4deg)}
-@media (max-width:991px){.team{height:280vh}.team-sticky h2{font-size:4.4rem}}
+@media (max-width:991px){
+  .team{padding:6rem 1.5rem}
+  .team-inner h2{font-size:4.4rem}
+  .team-members{gap:1.25rem}
+}
 @media (max-width:600px){
-  .team-sticky h2{font-size:3.2rem}
-  .team-photo{width:8rem !important}
-  .p1{left:-1rem;top:2%}.p2{right:-1rem;top:11%}
-  .p3{left:3.5rem;top:24%}.p4{right:3.5rem;top:36%}
-  .p5{left:-1rem;top:48%}.p6{right:-1rem;top:60%}
-  .p7{left:3.5rem;top:72%}.p8{right:3.5rem;top:85%}
-  .sticker{font-size:1.15rem;-webkit-text-stroke:.09rem var(--cream)}
-  .tag{display:none}
+  .team-inner h2{font-size:3.2rem}
+  .team-members{grid-template-columns:1fr;max-width:17rem;margin-left:auto;margin-right:auto}
+  .team-bts{grid-template-columns:1fr}
 }
 
 /* ---------- cta ---------- */
 .cta{padding:8rem 3rem 7rem;max-width:76rem;margin:0 auto}
-.cta h2{font-size:4.6rem;margin-bottom:1.2rem}
+.cta h2{font-size:4.4rem;line-height:1.18;margin-bottom:1.2rem}
 .cta .lead{max-width:36rem;margin-bottom:4rem}
 .price-list{border-top:1px solid var(--ink)}
 .price-list li{
@@ -314,7 +320,7 @@ html.is-dark .team{color:var(--cream)}
 .cta-note{margin-top:1rem;font-size:13px}
 @media (max-width:600px){
   .cta{padding:5rem 1.25rem 4.5rem}
-  .cta h2{font-size:2.7rem}
+  .cta h2{font-size:2.6rem;line-height:1.2}
   .price-list .amt{font-size:1.5rem}
   .steps li{gap:1.1rem}
 }
@@ -335,10 +341,6 @@ footer .flogo{font-family:"Yellowtail",cursive;font-size:1.5rem;color:var(--toma
   .works-pin{height:auto}
   .stack{position:relative;display:flex;flex-direction:column;gap:1.5rem}
   .slide{position:relative;left:auto;top:auto;translate:none;width:min(100%,44rem);margin:0 auto}
-  .team{height:auto;padding:6rem 0}
-  .team-sticky{position:relative;height:auto}
-  .team-photos{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));gap:2rem;padding:3rem 1.5rem 0}
-  .team-photo{position:relative;left:auto;right:auto;top:auto;width:auto;transform:none}
 }
 </style>
 </head>
@@ -369,12 +371,12 @@ footer .flogo{font-family:"Yellowtail",cursive;font-size:1.5rem;color:var(--toma
       <img src="images/work-watch.jpg" alt="">
     </div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Short-form film studio <b>— Tokyo</b></p>
+      <p class="hero-eyebrow">Short-form film studio <b>in Tokyo</b></p>
       <h1 data-reveal="chars" data-weight-hover>
         <span class="line">Short films,</span>
         <span class="line">big <em class="serif">stories.</em></span>
       </h1>
-      <p class="hero-sub">15秒で指を止める。HIKARI FILMSは、SNSのための短尺動画を企画から撮影、編集まで一貫して手がける小さな制作スタジオです。</p>
+      <p class="hero-sub">東京の小さな動画制作スタジオです。リール・Shorts・TikTok向けの短い動画を、企画、撮影、編集、テロップ入れ、書き出しまで3名で行います。</p>
       <a class="hero-link" href="#works">制作実績を見る
         <span class="arr"><svg viewBox="0 0 14 13" fill="none" aria-hidden="true"><path d="M12.94 5.7 9.95 8 6.9 10.37l.84 1.86V0H5.19v12.23l.85-1.86L3 8 0 5.7v3.35l6.47 4.95 6.47-4.95V5.7Z" fill="currentColor" transform="translate(0,-0.5)"/></svg></span>
       </a>
@@ -405,34 +407,34 @@ footer .flogo{font-family:"Yellowtail",cursive;font-size:1.5rem;color:var(--toma
   <section class="works" id="works">
     <div class="works-pin">
       <div class="works-left">
-        <p class="eyebrow">Made to be watched twice.<br>編集デスクから届いたばかりの仕事です。</p>
+        <p class="eyebrow">Selected projects</p>
         <h2 data-reveal="chars" data-weight-hover>
           <span class="line">Latest</span>
           <span class="line"><em class="serif">works</em></span>
         </h2>
-        <p class="works-note">スクロールすると、実績が1本ずつめくれていきます。食品、旅行、美容、プロダクト。ジャンルが違っても、最初の1秒の作り方は同じです。</p>
+        <p class="works-note">スクロールで1本ずつ切り替わります。ベーカリー・旅行・コスメ・プロダクト・飲食の5本を載せています。</p>
       </div>
       <div class="works-stage">
         <div class="stack" id="stack">
           <a class="slide" href="#contact" data-cursor style="z-index:5">
             <figure class="frame" style="background:#EF4A23"><div class="ph"><img src="images/work-bakery.jpg" alt="焼きたてのクロワッサン" width="1200" height="800"></div></figure>
-            <figcaption><span class="cat">ベーカリー・商品紹介</span><span class="ttl">Bake the morning</span></figcaption>
+            <figcaption><span class="cat">ベーカリー・商品紹介</span><span class="ttl">Croissants</span></figcaption>
           </a>
           <a class="slide" href="#contact" data-cursor style="z-index:4">
             <figure class="frame" style="background:#8FC6E8"><div class="ph"><img src="images/work-surf.jpg" alt="波に乗るサーファー" width="1200" height="800"></div></figure>
-            <figcaption><span class="cat">旅行・ツーリズム</span><span class="ttl">Deep end days</span></figcaption>
+            <figcaption><span class="cat">旅行・ツーリズム</span><span class="ttl">Surfing</span></figcaption>
           </a>
           <a class="slide" href="#contact" data-cursor style="z-index:3">
             <figure class="frame" style="background:#FFD46E"><div class="ph"><img src="images/work-cosme.jpg" alt="コスメのフラットレイ" width="1200" height="800"></div></figure>
-            <figcaption><span class="cat">美容・コスメ</span><span class="ttl">Color me in</span></figcaption>
+            <figcaption><span class="cat">美容・コスメ</span><span class="ttl">Cosmetics</span></figcaption>
           </a>
           <a class="slide" href="#contact" data-cursor style="z-index:2">
             <figure class="frame" style="background:#B9C48A"><div class="ph"><img src="images/work-watch.jpg" alt="腕時計のプロダクトショット" width="1200" height="800"></div></figure>
-            <figcaption><span class="cat">プロダクト・EC</span><span class="ttl">Keep the time</span></figcaption>
+            <figcaption><span class="cat">プロダクト・EC</span><span class="ttl">Watches</span></figcaption>
           </a>
           <a class="slide" href="#contact" data-cursor style="z-index:1">
             <figure class="frame" style="background:#F6A9C2"><div class="ph"><img src="images/work-cafe.jpg" alt="灯りのともるレストラン店内" width="1200" height="800"></div></figure>
-            <figcaption><span class="cat">飲食・店舗紹介</span><span class="ttl">Night bites</span></figcaption>
+            <figcaption><span class="cat">飲食・店舗紹介</span><span class="ttl">Cafe night</span></figcaption>
           </a>
         </div>
         <div class="badge" aria-hidden="true">
@@ -454,24 +456,32 @@ footer .flogo{font-family:"Yellowtail",cursive;font-size:1.5rem;color:var(--toma
 
   <!-- ============ TEAM ============ -->
   <section class="team" id="studio">
-    <div class="team-sticky">
+    <div class="team-inner">
       <p class="team-stamp" aria-hidden="true">Hikari</p>
-      <p class="eyebrow">The people behind the frames</p>
+      <p class="eyebrow">Studio members</p>
       <h2 data-reveal="chars" data-weight-hover>
         <span class="line">Meet the</span>
         <span class="line"><em class="serif">makers</em></span>
       </h2>
-      <p class="team-sub">8人の作り手、1つのグループチャット。コーヒーが冷める前に、撮って、切って、動かします。</p>
-    </div>
-    <div class="team-photos" aria-hidden="true">
-      <figure class="team-photo p1" data-speed="1"><img src="images/team-1.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:-7deg">アオイ</figcaption></figure>
-      <figure class="team-photo p2" data-speed="0.7" style="transform:rotate(3deg)"><img src="images/team-2.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:5deg">ケンジ</figcaption></figure>
-      <figure class="team-photo p3" data-speed="1.3" style="transform:rotate(5deg)"><img src="images/bts-1.jpg" alt="" loading="lazy"><figcaption class="tag">On set</figcaption></figure>
-      <figure class="team-photo p4" data-speed="0.85" style="transform:rotate(-5deg)"><img src="images/team-3.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:-5deg">ミラ</figcaption></figure>
-      <figure class="team-photo p5" data-speed="1.15" style="transform:rotate(-3deg)"><img src="images/team-4.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:4deg">ソウタ</figcaption></figure>
-      <figure class="team-photo p6" data-speed="0.65" style="transform:rotate(4deg)"><img src="images/team-5.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:-6deg">ハナ</figcaption></figure>
-      <figure class="team-photo p7" data-speed="1.25" style="transform:rotate(6deg)"><img src="images/bts-2.jpg" alt="" loading="lazy"><figcaption class="tag">Edit room</figcaption></figure>
-      <figure class="team-photo p8" data-speed="0.95" style="transform:rotate(-4deg)"><img src="images/team-6.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:-4deg">レン</figcaption></figure>
+      <p class="team-sub">メンバーは3名です。打ち合わせをした担当が、そのまま撮影と編集を行います。</p>
+      <div class="team-members">
+        <figure class="member">
+          <div class="member-ph"><img src="images/team-1.jpg" alt="撮影担当アオイのポートレート" loading="lazy" width="800" height="1000"></div>
+          <figcaption><span class="member-name">アオイ</span><span class="member-role">撮影担当</span></figcaption>
+        </figure>
+        <figure class="member">
+          <div class="member-ph"><img src="images/team-2.jpg" alt="編集担当ケンジのポートレート" loading="lazy" width="800" height="1000"></div>
+          <figcaption><span class="member-name">ケンジ</span><span class="member-role">編集担当</span></figcaption>
+        </figure>
+        <figure class="member">
+          <div class="member-ph"><img src="images/team-3.jpg" alt="企画担当ミラのポートレート" loading="lazy" width="800" height="1000"></div>
+          <figcaption><span class="member-name">ミラ</span><span class="member-role">企画担当</span></figcaption>
+        </figure>
+      </div>
+      <div class="team-bts">
+        <figure class="bts"><img src="images/bts-1.jpg" alt="撮影現場でカメラを構える様子" loading="lazy" width="1200" height="750"><figcaption class="tag">撮影現場</figcaption></figure>
+        <figure class="bts"><img src="images/bts-2.jpg" alt="編集室でモニターに向かう様子" loading="lazy" width="1200" height="750"><figcaption class="tag">編集室</figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -479,17 +489,17 @@ footer .flogo{font-family:"Yellowtail",cursive;font-size:1.5rem;color:var(--toma
   <section class="cta" id="contact">
     <p class="eyebrow">Price &amp; flow</p>
     <h2 data-reveal="chars">
-      <span class="line">まず、15秒の</span>
-      <span class="line">企画案から。</span>
+      <span class="line">料金の目安と</span>
+      <span class="line">進め方</span>
     </h2>
-    <p class="lead">相談は無料です。商品やサービスの資料をいただければ、48時間以内に企画案とお見積りをお返しします。料金はすべて税別、サンプル内の設定です。</p>
+    <p class="lead">相談は無料です。商品やサービスの資料をお送りください。48時間以内に企画案と見積もりを返信します。料金は税別です。このページの料金はサンプル用の設定です。</p>
     <ul class="price-list">
       <li>
         <span class="name">ショート動画 1本<span class="desc">企画・撮影・編集・テロップ・書き出しまで</span></span>
         <span class="amt">¥88,000<small>〜</small></span>
       </li>
       <li>
-        <span class="name">月4本プラン<span class="desc">毎月のSNS運用に合わせた継続制作</span></span>
+        <span class="name">月4本プラン<span class="desc">月1回の撮影で4本分を撮り、週1本ずつ納品します</span></span>
         <span class="amt">¥298,000<small>〜 / 月</small></span>
       </li>
       <li>
@@ -498,18 +508,18 @@ footer .flogo{font-family:"Yellowtail",cursive;font-size:1.5rem;color:var(--toma
       </li>
     </ul>
     <ul class="steps">
-      <li><span class="no">01</span><div><p class="st">ヒアリング</p><p class="sd">売りたいもの、届けたい相手、使える素材を確認します（オンライン可）。</p></div></li>
-      <li><span class="no">02</span><div><p class="st">企画・絵コンテ</p><p class="sd">最初の1秒の絵から決めます。修正はこの段階でまとめて反映します。</p></div></li>
-      <li><span class="no">03</span><div><p class="st">撮影・編集・納品</p><p class="sd">撮影から最短5営業日で初稿。縦型・横型の両形式で書き出します。</p></div></li>
+      <li><span class="no">01</span><div><p class="st">ヒアリング</p><p class="sd">何を売る動画か、誰に見せるか、手元にある写真や動画の素材を確認します。ビデオ通話でも対応します。</p></div></li>
+      <li><span class="no">02</span><div><p class="st">企画・絵コンテ</p><p class="sd">冒頭のカットから順に絵コンテを作ります。直しは撮影前にこの段階でまとめます。</p></div></li>
+      <li><span class="no">03</span><div><p class="st">撮影・編集・納品</p><p class="sd">撮影後、最短5営業日で初稿をお送りします。納品は縦型と横型の2形式です。</p></div></li>
     </ul>
     <a class="cta-btn" href="mailto:hello@hikari-films.example">制作を相談する</a>
-    <p class="cta-note">※返信は2営業日以内。連絡先はサンプル用のダミーアドレスです。</p>
+    <p class="cta-note">※返信は2営業日以内です。このメールアドレスはサンプル用のダミーです。</p>
   </section>
 </main>
 
 <footer>
   <span class="flogo">Hikari</span>
-  <span>© 2026 HIKARI FILMS — 本ページはポートフォリオ用の架空サンプルです。登場する人物・料金・実績は実在しません。</span>
+  <span>© 2026 HIKARI FILMS｜本ページはポートフォリオ用の架空サンプルです。登場する人物・料金・実績は実在しません。</span>
   <span>Photos: Unsplash / Design reference: MotionSites “Video Studio”</span>
 </footer>
 
@@ -694,16 +704,7 @@ footer .flogo{font-family:"Yellowtail",cursive;font-size:1.5rem;color:var(--toma
     });
   }
 
-  /* ---- marquee flips with scroll direction ---- */
-  var mq = document.getElementById("mqTrack");
-  if(mq && !reduced){
-    ScrollTrigger.create({
-      trigger: document.body, start: "top top", end: "bottom bottom",
-      onUpdate: function(self){
-        mq.style.animationDirection = self.direction === 1 ? "normal" : "reverse";
-      }
-    });
-  }
+  /* ---- marquee: constant one-direction CSS loop, no scroll-direction flip ---- */
 
   /* ---- works: pinned 3D stack ---- */
   var slides = gsap.utils.toArray(".slide");
@@ -754,21 +755,7 @@ footer .flogo{font-family:"Yellowtail",cursive;font-size:1.5rem;color:var(--toma
     }, { passive: true });
   }
 
-  /* ---- team: dark theme switch + parallax ---- */
-  ScrollTrigger.create({
-    trigger: ".team", start: "top 55%", end: "bottom 45%",
-    toggleClass: { targets: "html", className: "is-dark" }
-  });
-  if(!reduced){
-    gsap.utils.toArray(".team-photo").forEach(function(ph){
-      var speed = parseFloat(ph.dataset.speed || "1");
-      var dist = 170 * speed;
-      gsap.fromTo(ph, { y: dist }, {
-        y: -dist, ease: "none",
-        scrollTrigger: { trigger: ".team", start: "top bottom", end: "bottom top", scrub: true }
-      });
-    });
-  }
+  /* ---- team: static flow layout, photos never overlap text ---- */
 })();
 </script>
 </body>
