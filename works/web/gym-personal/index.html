@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja" data-type="place">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="page-type" content="place">
+<meta name="site-kind" content="other">
+<meta name="page-kind" content="place">
+<title>パーソナルジムAOI｜40代から70代の女性専用パーソナルジム</title>
+<meta name="description" content="40代から70代の女性専用のパーソナルジムです。完全予約制、1回50分、女性トレーナーが担当します。体験レッスン3,000円。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#FFFFFF;
+  --pale:#EBF1F7;
+  --rule:#C9D6E4;
+  --ink:#1B2A38;
+  --ink-soft:#43586C;
+  --blue:#0E4D92;
+  --blue-deep:#0A3869;
+  --max:1120px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+  font-size:16px;line-height:1.85;color:var(--ink);background:var(--ground);
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:var(--blue);}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px;}
+.serif{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+section{padding:96px 0;}
+h2{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-weight:600;font-size:31px;line-height:1.35;margin-bottom:32px;}
+.lead{max-width:640px;color:var(--ink-soft);}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:var(--ground);border-bottom:1px solid var(--rule);}
+.header-in{max-width:var(--max);margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.logo{text-decoration:none;color:var(--ink);line-height:1.25;}
+.logo .jp{font-family:"Noto Serif JP",serif;font-weight:700;font-size:20px;letter-spacing:.06em;}
+.logo .en{font-family:"Cormorant Garamond",serif;font-size:12px;letter-spacing:.32em;color:var(--blue);display:block;}
+nav.main-nav{display:flex;gap:32px;}
+nav.main-nav a{text-decoration:none;color:var(--ink);font-size:14px;font-weight:500;}
+nav.main-nav a:hover{color:var(--blue);text-decoration:underline;text-underline-offset:6px;}
+.tel-btn{background:var(--blue);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 20px;white-space:nowrap;}
+.tel-btn:hover{background:var(--blue-deep);}
+
+/* hero */
+.hero{position:relative;}
+.hero-photo{height:min(78vh,720px);overflow:hidden;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.hero-panel{background:var(--blue-deep);color:#fff;max-width:var(--max);margin:-96px auto 0;position:relative;padding:48px;}
+.hero-panel h1{font-family:"Noto Serif JP",serif;font-weight:600;font-size:39px;line-height:1.45;max-width:720px;}
+.hero-panel p{margin-top:16px;font-size:16px;color:#DCE8F4;max-width:640px;}
+.hero-panel .hero-cta{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+.btn-trial{background:#fff;color:var(--blue-deep);text-decoration:none;font-weight:700;padding:16px 32px;font-size:16px;}
+.btn-trial:hover{background:var(--pale);}
+.hero-price{font-size:14px;color:#DCE8F4;}
+.hero-price strong{font-size:20px;color:#fff;}
+@keyframes heroIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+.hero-panel{animation:heroIn .9s ease-out both;}
+
+/* facts strip */
+.facts{background:var(--pale);}
+.facts-in{max-width:var(--max);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);}
+.fact{padding:32px 24px;border-left:1px solid var(--rule);}
+.fact:first-child{border-left:none;padding-left:0;}
+.fact .num{font-family:"Noto Serif JP",serif;font-size:31px;font-weight:600;color:var(--blue-deep);line-height:1.2;}
+.fact .lbl{font-size:14px;color:var(--ink-soft);margin-top:8px;}
+
+/* program */
+.prog-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;}
+.prog-photos img{width:100%;height:260px;object-fit:cover;}
+.prog-row{display:grid;grid-template-columns:320px 1fr 200px;gap:24px;padding:32px 0;border-top:1px solid var(--rule);align-items:start;}
+.prog-row:last-child{border-bottom:1px solid var(--rule);}
+.prog-row h3{font-family:"Noto Serif JP",serif;font-size:25px;font-weight:600;line-height:1.4;}
+.prog-row p{color:var(--ink-soft);}
+.prog-meta{font-size:14px;color:var(--ink-soft);border-left:1px solid var(--rule);padding-left:24px;}
+.prog-meta dt{font-weight:700;color:var(--ink);}
+.prog-meta dd{margin:0 0 8px;}
+
+/* price — bold move */
+.price-sec{background:var(--pale);}
+.price-grid{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start;}
+.price-hero{border-top:2px solid var(--blue-deep);padding-top:32px;}
+.price-hero .plan-name{font-size:16px;font-weight:700;}
+.price-big{font-family:"Noto Serif JP",serif;font-weight:700;font-size:104px;line-height:1.05;color:var(--blue-deep);letter-spacing:.01em;}
+.price-big .yen{font-size:39px;vertical-align:top;}
+.price-big .tax{font-size:16px;font-family:"Noto Sans JP",sans-serif;font-weight:500;color:var(--ink-soft);letter-spacing:0;}
+.price-note{color:var(--ink-soft);margin-top:16px;max-width:520px;}
+table.price-table{width:100%;border-collapse:collapse;margin-top:48px;background:var(--ground);}
+table.price-table th,table.price-table td{border-top:1px solid var(--rule);padding:16px 20px;text-align:left;font-size:16px;}
+table.price-table tr:last-child th,table.price-table tr:last-child td{border-bottom:1px solid var(--rule);}
+table.price-table th{font-weight:500;width:55%;}
+table.price-table td{font-weight:700;text-align:right;font-size:20px;}
+table.price-table td small{font-size:12px;font-weight:400;color:var(--ink-soft);}
+.price-photo img{width:100%;height:480px;object-fit:cover;}
+.trial-box{margin-top:48px;background:var(--ground);border-top:2px solid var(--blue-deep);padding:32px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;}
+.trial-box .t-name{font-family:"Noto Serif JP",serif;font-size:25px;font-weight:600;}
+.trial-box .t-price{font-family:"Noto Serif JP",serif;font-size:49px;font-weight:700;color:var(--blue-deep);line-height:1.1;}
+.trial-box .t-price small{font-size:14px;font-family:"Noto Sans JP",sans-serif;font-weight:500;color:var(--ink-soft);}
+.trial-box p{color:var(--ink-soft);max-width:520px;}
+
+/* flow */
+.flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.flow-step{border-top:2px solid var(--blue);padding-top:24px;}
+.flow-step .step-num{font-family:"Noto Serif JP",serif;font-size:39px;font-weight:600;color:var(--blue);line-height:1;}
+.flow-step h3{font-size:16px;font-weight:700;margin:16px 0 8px;}
+.flow-step p{font-size:14px;color:var(--ink-soft);}
+
+/* trainer */
+.trainer-sec{background:var(--ground);}
+.trainer-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.trainer-grid img{width:100%;height:440px;object-fit:cover;}
+.trainer-name{font-family:"Noto Serif JP",serif;font-size:25px;font-weight:600;margin-bottom:16px;}
+.trainer-name span{font-size:14px;font-family:"Noto Sans JP",sans-serif;font-weight:400;color:var(--ink-soft);margin-left:12px;}
+dl.fact-list{margin-top:32px;}
+dl.fact-list div{display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--rule);padding:12px 0;}
+dl.fact-list dt{font-weight:700;font-size:14px;}
+dl.fact-list dd{margin:0;color:var(--ink-soft);}
+
+/* access */
+.access-sec{background:var(--pale);}
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.access-grid img{width:100%;height:400px;object-fit:cover;}
+.band-photo{height:320px;overflow:hidden;}
+.band-photo img{width:100%;height:100%;object-fit:cover;object-position:center 60%;}
+
+/* cta + footer */
+.cta-band{background:var(--blue-deep);color:#fff;padding:64px 0;}
+.cta-in{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;}
+.cta-band h2{color:#fff;margin-bottom:8px;}
+.cta-band p{color:#DCE8F4;}
+.cta-tel{font-family:"Noto Serif JP",serif;font-size:39px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;}
+footer{padding:48px 0;font-size:12px;color:var(--ink-soft);}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+
+@media (max-width:1024px){
+  .price-big{font-size:80px;}
+  .facts-in{grid-template-columns:repeat(2,1fr);}
+  .fact:nth-child(3){border-left:none;padding-left:0;}
+}
+@media (max-width:768px){
+  section{padding:64px 0;}
+  nav.main-nav{display:none;}
+  .header-in{height:64px;}
+  .logo .jp{font-size:16px;white-space:nowrap;}
+  .logo .en{font-size:10px;}
+  .tel-btn{padding:10px 14px;}
+  .hero-photo{height:52vh;}
+  .hero-panel{margin:-48px 16px 0;padding:32px 24px;}
+  .hero-panel h1{font-size:28px;}
+  .prog-photos{grid-template-columns:1fr;}
+  .prog-photos img{height:240px;}
+  .prog-row{grid-template-columns:1fr;gap:12px;}
+  .prog-meta{border-left:none;padding-left:0;display:grid;grid-template-columns:auto 1fr;column-gap:16px;}
+  .price-grid{grid-template-columns:1fr;}
+  .price-photo{display:none;}
+  .price-big{font-size:64px;}
+  .flow-grid{grid-template-columns:1fr 1fr;gap:24px;}
+  .trainer-grid,.access-grid{grid-template-columns:1fr;}
+  .trainer-grid img{height:300px;}
+  .access-grid img{height:260px;}
+  .cta-tel{font-size:31px;}
+  h2{font-size:25px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-panel{animation:none;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <a class="logo" href="#top">
+      <span class="jp">パーソナルジム AOI</span>
+      <span class="en">PERSONAL GYM AOI</span>
+    </a>
+    <nav class="main-nav" aria-label="メインメニュー">
+      <a href="#about">ジムについて</a>
+      <a href="#program">プログラム</a>
+      <a href="#price">料金</a>
+      <a href="#flow">体験レッスン</a>
+      <a href="#access">アクセス</a>
+    </nav>
+    <a class="tel-btn" href="tel:0300000000">電話で予約する</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero">
+    <div class="hero-photo">
+      <img src="images/hero.jpg" alt="窓際の明るいスタジオでトレーニングをする女性" fetchpriority="high">
+    </div>
+    <div class="hero-panel">
+      <h1>40代から70代の女性のための、女性専用パーソナルジムです</h1>
+      <p>完全予約制で、1回50分のトレーニングを女性トレーナーが担当します。<br>運動経験のない方も、ご自身の体力に合わせて進めていただけます。</p>
+      <div class="hero-cta">
+        <a class="btn-trial" href="#flow">体験レッスンの流れを見る</a>
+        <span class="hero-price">体験レッスン 50分 <strong>3,000円</strong>（税込）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="facts" id="about">
+    <div class="facts-in">
+      <div class="fact">
+        <div class="num">40〜70代</div>
+        <div class="lbl">対象は女性のみです</div>
+      </div>
+      <div class="fact">
+        <div class="num">50分</div>
+        <div class="lbl">1回のトレーニング時間です</div>
+      </div>
+      <div class="fact">
+        <div class="num">完全予約制</div>
+        <div class="lbl">同時に指導する会員は1名です</div>
+      </div>
+      <div class="fact">
+        <div class="num">徒歩4分</div>
+        <div class="lbl">最寄り駅からの所要時間です</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="program">
+    <div class="wrap">
+      <h2>プログラム</h2>
+      <p class="lead">初回のカウンセリングで体力と目的を確認し、下記の内容を組み合わせて実施します。負荷は毎回の体調に合わせて調整します。</p>
+      <div class="prog-photos" style="margin-top:48px;">
+        <img src="images/training1.jpg" alt="マットの上で体幹トレーニングをする女性たち" loading="lazy">
+        <img src="images/training2.jpg" alt="トレーニングマシンを使う女性" loading="lazy">
+        <img src="images/stretch.jpg" alt="スタジオでダンベルを持つ女性たち" loading="lazy">
+      </div>
+      <div class="prog-row">
+        <h3>筋力トレーニング</h3>
+        <p>ダンベルとトレーニングマシンを使い、脚・背中・腕の大きな筋肉を動かします。重さは扱える範囲から始め、回数と負荷を少しずつ増やします。</p>
+        <dl class="prog-meta">
+          <dt>時間</dt><dd>30分</dd>
+          <dt>対象</dt><dd>筋力をつけたい方・体力を維持したい方</dd>
+        </dl>
+      </div>
+      <div class="prog-row">
+        <h3>姿勢とコンディショニング</h3>
+        <p>肩と股関節の可動域を確認し、ストレッチと体幹の運動で姿勢を整えます。筋力トレーニングの前後に組み合わせて実施します。</p>
+        <dl class="prog-meta">
+          <dt>時間</dt><dd>10分</dd>
+          <dt>対象</dt><dd>肩こり・腰の張りが気になる方</dd>
+        </dl>
+      </div>
+      <div class="prog-row">
+        <h3>マシンピラティス</h3>
+        <p>リフォーマーを使い、呼吸に合わせて体幹と骨盤まわりを動かします。関節への負担が小さいため、運動を再開する方の初回にも適しています。</p>
+        <dl class="prog-meta">
+          <dt>時間</dt><dd>10分</dd>
+          <dt>対象</dt><dd>姿勢を整えたい方・運動が久しぶりの方</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="price-sec" id="price">
+    <div class="wrap">
+      <h2>料金</h2>
+      <div class="price-grid">
+        <div>
+          <div class="price-hero">
+            <div class="plan-name">月4回プラン（週1回）</div>
+            <div class="price-big"><span class="yen">¥</span>39,600 <span class="tax">税込</span></div>
+            <p class="price-note">料金にはトレーニング指導・レンタルウェア・タオル・シューズ預かりが含まれます。コースの途中解約による違約金はありません。</p>
+          </div>
+          <table class="price-table">
+            <tr><th>入会金</th><td>11,000円 <small>税込</small></td></tr>
+            <tr><th>月2回プラン（1回50分）</th><td>22,000円 <small>税込</small></td></tr>
+            <tr><th>月4回プラン（1回50分）</th><td>39,600円 <small>税込</small></td></tr>
+            <tr><th>月8回プラン（1回50分）</th><td>72,600円 <small>税込</small></td></tr>
+            <tr><th>都度利用（1回50分）</th><td>11,000円 <small>税込</small></td></tr>
+          </table>
+        </div>
+        <div class="price-photo">
+          <img src="images/training3.jpg" alt="ダンベルとトレーニングチューブ" loading="lazy">
+        </div>
+      </div>
+      <div class="trial-box" id="trial">
+        <div>
+          <div class="t-name">体験レッスン</div>
+          <p>カウンセリング20分とトレーニング30分を実施します。ウェアとタオルは無料でお貸ししますので、室内シューズだけご持参ください。</p>
+        </div>
+        <div class="t-price">3,000円 <small>50分・税込</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow">
+    <div class="wrap">
+      <h2>体験レッスンの流れ</h2>
+      <div class="flow-grid">
+        <div class="flow-step">
+          <div class="step-num">1</div>
+          <h3>ご予約</h3>
+          <p>お電話で希望日時をお知らせください。空き枠をご案内します。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">2</div>
+          <h3>カウンセリング</h3>
+          <p>体調と目的、運動経験をお聞きします。血圧の測定も行います。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">3</div>
+          <h3>トレーニング</h3>
+          <p>体力に合わせた内容で30分実施します。途中の休憩も取っていただけます。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">4</div>
+          <h3>料金のご案内</h3>
+          <p>プランと料金をご説明します。その場で入会を決めていただく必要はありません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trainer-sec">
+    <div class="wrap">
+      <h2>トレーナー</h2>
+      <div class="trainer-grid">
+        <img src="images/trainer.jpg" alt="バーベルでトレーニングをする女性トレーナー" loading="lazy">
+        <div>
+          <div class="trainer-name">青井 美咲<span>代表トレーナー</span></div>
+          <p style="color:var(--ink-soft);">大手フィットネスクラブで10年間指導し、独立後に当ジムを開業しました。40代以上の女性の指導を専門とし、体力に不安のある方の初回指導を多く担当しています。</p>
+          <dl class="fact-list">
+            <div><dt>指導歴</dt><dd>12年</dd></div>
+            <div><dt>資格</dt><dd>健康運動指導士・NSCA認定パーソナルトレーナー</dd></div>
+            <div><dt>担当</dt><dd>全てのレッスンを担当します</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band-photo">
+    <img src="images/yoga.jpg" alt="ストレッチをする女性のシルエット" loading="lazy">
+  </div>
+
+  <section class="access-sec" id="access">
+    <div class="wrap">
+      <h2>アクセス</h2>
+      <div class="access-grid">
+        <dl class="fact-list" style="margin-top:0;">
+          <div><dt>住所</dt><dd>〇〇市中央区青葉町2丁目（サンプル住所）</dd></div>
+          <div><dt>アクセス</dt><dd>〇〇駅北口から徒歩4分です。駅前の信号を渡り、青い看板のあるビルの2階へお越しください。</dd></div>
+          <div><dt>営業時間</dt><dd>9:00〜20:00（最終受付19:00）</dd></div>
+          <div><dt>定休日</dt><dd>日曜日・祝日</dd></div>
+          <div><dt>駐車場</dt><dd>専用駐車場はありません。近隣のコインパーキングをご利用ください。</dd></div>
+          <div><dt>設備</dt><dd>更衣室・パウダールーム・シャワー室を備えています。</dd></div>
+        </dl>
+        <img src="images/group.jpg" alt="スタジオでストレッチをする女性" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="cta-in">
+      <div>
+        <h2>体験レッスンのご予約</h2>
+        <p>受付時間 9:00〜20:00（日曜日・祝日を除く）</p>
+      </div>
+      <a class="cta-tel" href="tel:0300000000">03-0000-0000</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>パーソナルジム AOI（制作サンプルです。店舗情報と電話番号は仮のものです）</div>
+    <div>写真: Unsplash（ライセンスフリー実写）</div>
+  </div>
+</footer>
+
+</body>
+</html>
