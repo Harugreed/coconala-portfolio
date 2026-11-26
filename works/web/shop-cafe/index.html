@@ -9,6 +9,42 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Design tokens (mirror of style.css :root) — colours picked from img/roaster.jpg:
+   ground = roaster stainless, ink = roasted beans, accent = roaster side-panel green. */
+:root{
+  --ground:#EDF0EB;
+  --ink:#23201C;
+  --accent:#1F5C46;
+  --muted:#4A4640;
+}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  font-size:15px;
+  line-height:1.9;
+  margin:0;
+  padding:0;
+}
+.mincho{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif}
+h1{font-size:64px;line-height:1.2;margin:0;padding:0}
+h2{font-size:32px;line-height:1.5;margin:0;padding:0}
+h3{font-size:20px;line-height:1.5;margin:0;padding:0}
+.price{font-size:20px;color:var(--accent)}
+.note{font-size:12px;color:var(--muted)}
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+@media (max-width:768px){
+  h1{font-size:40px}
+  h2{font-size:24px}
+  body{font-size:14px}
+}
+@media (max-width:600px){
+  h3{font-size:16px}
+  .price{font-size:16px}
+}
+</style>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,7 +62,7 @@
   </symbol>
 </svg>
 
-<p class="sample-flag">自主制作サンプルです。店名・住所・電話番号・メニューは架空のものです。</p>
+<p class="sample-flag"><span class="nb">自主制作サンプルです</span><span class="nb">店名・住所・電話番号・メニューは架空のものです</span></p>
 
 <header class="site-header">
   <a class="brand" href="#top">
@@ -44,75 +80,77 @@
 
 <main id="top">
 
-<section class="intro">
-  <div class="intro-grain" aria-hidden="true"><svg><use href="#seal"/></svg></div>
-  <h1 class="shop-name">白杢珈琲</h1>
-  <div class="intro-body">
-    <svg class="intro-seal" aria-hidden="true"><use href="#seal"/></svg>
+<section class="hero">
+  <div class="wrap">
+    <h1 class="shop-name mincho">白杢珈琲</h1>
+    <p class="hero-facts"><span class="nb">焙煎所兼カフェ</span><span class="nb">みどり野市若葉台2-14-3</span><span class="nb">8:00〜17:00</span></p>
+  </div>
+  <figure class="hero-photo">
+    <img src="img/roaster.jpg" alt="焙煎機から煎った豆を冷却槽へ落としているところ" width="2200" height="1467">
+  </figure>
+  <div class="wrap hero-lower">
     <dl class="ledger">
-      <div><dt>営業時間</dt><dd><span class="nw">8:00〜17:00</span><small>ラストオーダー 16:30</small></dd></div>
+      <div><dt>営業時間</dt><dd><span class="nb">8:00〜17:00</span><small>ラストオーダー 16:30</small></dd></div>
       <div><dt>定休日</dt><dd>火曜・第3水曜</dd></div>
-      <div><dt>所在地</dt><dd><span class="nw">みどり野市若葉台2-14-3</span><small>若葉台駅 南口から徒歩6分</small></dd></div>
+      <div><dt>所在地</dt><dd><span class="nb">みどり野市若葉台2-14-3</span><small>若葉台駅 南口から徒歩6分</small></dd></div>
       <div><dt>駐車場</dt><dd>3台<small>店の東側</small></dd></div>
     </dl>
-    <p class="intro-text">店内の5kg焙煎機で月・木・土に焙煎しています。<br>焙煎した豆でドリップコーヒーを淹れ、焼き菓子は奥の厨房で毎朝焼いています。</p>
+    <p class="intro-text"><span class="seg"><span class="nb">店内の5kg焙煎機で</span><span class="nb">月・木・土に焙煎しています</span></span><span class="seg"><span class="nb">焙煎した豆でドリップコーヒーを淹れています</span></span><span class="seg"><span class="nb">焼き菓子は奥の厨房で毎朝焼いています</span></span></p>
   </div>
 </section>
 
-<div class="band band-roaster" role="img" aria-label="焙煎機から煎った豆を冷却槽へ落としているところ"></div>
-
 <section class="menu" id="menu">
   <div class="wrap">
-    <h2>メニュー</h2>
-    <p class="lead">価格はすべて税込です。店内・持ち帰りとも同じ価格です。</p>
+    <h2 class="mincho">メニュー</h2>
+    <p class="lead"><span class="nb">価格はすべて税込です</span><span class="nb">店内・持ち帰りとも同じ価格です</span></p>
 
     <div class="menu-cols">
       <div class="menu-col">
-        <h3>コーヒー</h3>
+        <h3 class="mincho">コーヒー</h3>
         <ul class="items">
           <li>
-            <p class="row"><span class="nm">本日のドリップ</span><span class="pr">520円</span></p>
-            <p class="ds">浅煎り・深煎りからお選びください<br>豆の産地はレジ横の黒板に書いています</p>
+            <p class="row"><span class="nm">本日のドリップ</span><span class="pr price mincho">520円</span></p>
+            <p class="ds"><span class="seg"><span class="nb">浅煎り・深煎りからお選びください</span></span><span class="seg"><span class="nb">豆の産地はレジ横の黒板に書いています</span></span></p>
           </li>
           <li>
-            <p class="row"><span class="nm">カフェラテ</span><span class="pr">600円</span></p>
-            <p class="ds">深煎りのエスプレッソに<br>63℃に温めた牛乳を合わせています</p>
-            <p class="nt">※オーツミルク変更+60円</p>
+            <p class="row"><span class="nm">カフェラテ</span><span class="pr price mincho">600円</span></p>
+            <p class="ds"><span class="seg"><span class="nb">深煎りのエスプレッソに</span></span><span class="seg"><span class="nb">63℃に温めた牛乳を合わせています</span></span></p>
+            <p class="nt note">※オーツミルク変更+60円</p>
           </li>
           <li>
-            <p class="row"><span class="nm">アイスラテ</span><span class="pr">620円</span></p>
-            <p class="ds">エスプレッソを2杯分使っています</p>
+            <p class="row"><span class="nm">アイスラテ</span><span class="pr price mincho">620円</span></p>
+            <p class="ds"><span class="seg"><span class="nb">エスプレッソを2杯分使っています</span></span></p>
           </li>
           <li>
-            <p class="row"><span class="nm">エスプレッソ</span><span class="pr">450円</span></p>
-            <p class="ds">18gの粉から30mlを抽出しています</p>
+            <p class="row"><span class="nm">エスプレッソ</span><span class="pr price mincho">450円</span></p>
+            <p class="ds"><span class="seg"><span class="nb">18gの粉から30mlを抽出しています</span></span></p>
           </li>
           <li>
-            <p class="row"><span class="nm">カフェオレ</span><span class="pr">580円</span></p>
-            <p class="ds">中深煎りのドリップに<br>同じ量の牛乳を合わせています</p>
+            <p class="row"><span class="nm">カフェオレ</span><span class="pr price mincho">580円</span></p>
+            <p class="ds"><span class="seg"><span class="nb">中深煎りのドリップに</span></span><span class="seg"><span class="nb">同じ量の牛乳を合わせています</span></span></p>
           </li>
         </ul>
       </div>
       <div class="menu-col">
-        <h3>焼き菓子</h3>
+        <h3 class="mincho">焼き菓子</h3>
         <ul class="items">
           <li>
-            <p class="row"><span class="nm">焦がしバターのフィナンシェ</span><span class="pr">320円</span></p>
-            <p class="ds">色づくまで加熱したバターを使っています<br>アーモンド粉は皮付きです</p>
+            <p class="row"><span class="nm">焦がしバターのフィナンシェ</span><span class="pr price mincho">320円</span></p>
+            <p class="ds"><span class="seg"><span class="nb">色づくまで加熱したバターを使っています</span></span><span class="seg"><span class="nb">アーモンド粉は皮付きです</span></span></p>
           </li>
           <li>
-            <p class="row"><span class="nm">ブルーベリーのスコーン</span><span class="pr">380円</span></p>
-            <p class="ds">11:00に焼き上がります</p>
-            <p class="nt">※売り切れ次第終了</p>
+            <p class="row"><span class="nm">ブルーベリーのスコーン</span><span class="pr price mincho">380円</span></p>
+            <p class="ds"><span class="seg"><span class="nb">11:00に焼き上がります</span></span></p>
+            <p class="nt note">※売り切れ次第終了</p>
           </li>
           <li>
-            <p class="row"><span class="nm">ベイクドチーズケーキ</span><span class="pr">480円</span></p>
-            <p class="ds">クリームチーズ・サワークリームを使っています</p>
+            <p class="row"><span class="nm">ベイクドチーズケーキ</span><span class="pr price mincho">480円</span></p>
+            <p class="ds"><span class="seg"><span class="nb">クリームチーズ・サワークリームを使っています</span></span></p>
           </li>
           <li>
-            <p class="row"><span class="nm">キャロットケーキ</span><span class="pr">520円</span></p>
-            <p class="ds">くるみ・シナモン入りの生地に<br>クリームチーズを重ねています</p>
-            <p class="nt">※1日8切れまで</p>
+            <p class="row"><span class="nm">キャロットケーキ</span><span class="pr price mincho">520円</span></p>
+            <p class="ds"><span class="seg"><span class="nb">くるみ・シナモン入りの生地に</span></span><span class="seg"><span class="nb">クリームチーズを重ねています</span></span></p>
+            <p class="nt note">※1日8切れまで</p>
           </li>
         </ul>
         <p class="set"><span class="nm">焼き菓子セット</span><span>ドリンク同時注文で50円引き</span></p>
@@ -123,36 +161,38 @@
 
 <section class="beans" id="beans">
   <div class="wrap beans-grid">
-    <div class="beans-photo" role="img" aria-label="窓際のテーブルに置いたドリッパー・ケトル・コーヒー豆"></div>
     <div class="beans-body">
-      <h2>豆の販売</h2>
-      <p class="lead">店頭で豆のまま、またはペーパードリップ用に挽いてお渡ししています。</p>
+      <h2 class="mincho">豆の販売</h2>
+      <p class="lead"><span class="seg"><span class="nb">店頭で豆のまま</span><span class="nb">またはペーパードリップ用に挽いて</span><span class="nb">お渡ししています</span></span></p>
       <table>
         <thead><tr><th scope="col">銘柄</th><th scope="col">焙煎度</th><th scope="col" class="r">100g</th><th scope="col" class="r">200g</th></tr></thead>
         <tbody>
-          <tr><th scope="row">若葉ブレンド</th><td>中深煎り</td><td class="r">980円</td><td class="r">1,860円</td></tr>
-          <tr><th scope="row">エチオピア ゲデオ</th><td>浅煎り</td><td class="r">1,280円</td><td class="r">2,440円</td></tr>
-          <tr><th scope="row">コロンビア ウィラ</th><td>中煎り</td><td class="r">1,180円</td><td class="r">2,240円</td></tr>
-          <tr><th scope="row">インドネシア マンデリン</th><td>深煎り</td><td class="r">1,080円</td><td class="r">2,060円</td></tr>
+          <tr><th scope="row">若葉ブレンド</th><td>中深煎り</td><td class="r price mincho">980円</td><td class="r price mincho">1,860円</td></tr>
+          <tr><th scope="row">エチオピア ゲデオ</th><td>浅煎り</td><td class="r price mincho">1,280円</td><td class="r price mincho">2,440円</td></tr>
+          <tr><th scope="row">コロンビア ウィラ</th><td>中煎り</td><td class="r price mincho">1,180円</td><td class="r price mincho">2,240円</td></tr>
+          <tr><th scope="row">インドネシア マンデリン</th><td>深煎り</td><td class="r price mincho">1,080円</td><td class="r price mincho">2,060円</td></tr>
         </tbody>
       </table>
-      <p class="nt">※焙煎日は月・木・土です。焙煎から14日以内の豆をお渡ししています。</p>
+      <p class="nt note"><span class="nb">※焙煎日は月・木・土です</span><span class="nb">焙煎から14日以内の豆をお渡ししています</span></p>
     </div>
+    <figure class="beans-photo">
+      <img src="img/table.jpg" alt="窓際のテーブルに置いたドリッパー・ケトル・コーヒー豆" width="2200" height="1467" loading="lazy">
+    </figure>
   </div>
 </section>
 
 <section class="space" id="space">
   <div class="wrap">
-    <h2>店内</h2>
+    <h2 class="mincho">店内</h2>
     <dl class="spec">
-      <div><dt>席数</dt><dd>18席です。カウンター6席・テーブル12席に分かれています。</dd></div>
-      <div><dt>屋外席</dt><dd>4席です。ペット連れの方は屋外席をご利用ください。</dd></div>
-      <div><dt>電源</dt><dd>カウンター6席にあります。</dd></div>
-      <div><dt>Wi-Fi</dt><dd>パスワードはレジ横の掲示をご確認ください。</dd></div>
-      <div><dt>利用時間</dt><dd>混雑時は90分までのご利用をお願いしています。</dd></div>
-      <div><dt>禁煙</dt><dd>屋外席を含めて全席禁煙です。</dd></div>
-      <div><dt>ベビーカー</dt><dd>テーブル席にそのまま入れます。</dd></div>
-      <div><dt>支払い</dt><dd>現金・クレジットカード・交通系IC・QRコード決済に対応しています。</dd></div>
+      <div><dt>席数</dt><dd><span class="seg"><span class="nb">18席です</span></span><span class="seg"><span class="nb">カウンター6席・テーブル12席に分かれています</span></span></dd></div>
+      <div><dt>屋外席</dt><dd><span class="seg"><span class="nb">4席です</span></span><span class="seg"><span class="nb">ペット連れの方は屋外席をご利用ください</span></span></dd></div>
+      <div><dt>電源</dt><dd><span class="nb">カウンター6席にあります</span></dd></div>
+      <div><dt>Wi-Fi</dt><dd><span class="nb">パスワードはレジ横の掲示をご確認ください</span></dd></div>
+      <div><dt>利用時間</dt><dd><span class="nb">混雑時は90分までのご利用をお願いしています</span></dd></div>
+      <div><dt>禁煙</dt><dd><span class="nb">屋外席を含めて全席禁煙です</span></dd></div>
+      <div><dt>ベビーカー</dt><dd><span class="nb">テーブル席にそのまま入れます</span></dd></div>
+      <div><dt>支払い</dt><dd><span class="nb">現金・クレジットカード・交通系IC・QRコード決済に</span><span class="nb">対応しています</span></dd></div>
     </dl>
   </div>
 </section>
@@ -160,36 +200,36 @@
 <section class="access" id="access">
   <div class="wrap access-grid">
     <div class="access-map">
-      <h2>アクセス・営業案内</h2>
+      <h2 class="mincho">アクセス・営業案内</h2>
       <svg class="map" viewBox="0 0 560 360" role="img" aria-label="若葉台駅南口から店までの略地図">
-        <rect width="560" height="360" fill="#D7DBD8"/>
-        <path d="M0 236H560" stroke="#E4E7E5" stroke-width="22"/>
-        <path d="M330 0V360" stroke="#E4E7E5" stroke-width="14"/>
-        <path d="M70 0 150 360" stroke="#E4E7E5" stroke-width="9"/>
-        <path d="M0 84H560" stroke="#2B211B" stroke-width="3"/>
-        <path d="M0 84H560" stroke="#E4E7E5" stroke-width="1.4" stroke-dasharray="12 12"/>
-        <rect x="44" y="60" width="124" height="48" fill="#2B211B"/>
-        <text x="106" y="90" fill="#E4E7E5" font-size="15" text-anchor="middle">若葉台駅</text>
-        <text x="122" y="136" fill="#2B211B" font-size="12">南口</text>
-        <path d="M112 146 128 236H330V300H384" fill="none" stroke="#2C6670" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="112" cy="146" r="5" fill="#2C6670"/>
+        <rect width="560" height="360" fill="#DDE3DC"/>
+        <path d="M0 236H560" stroke="#EDF0EB" stroke-width="22"/>
+        <path d="M330 0V360" stroke="#EDF0EB" stroke-width="14"/>
+        <path d="M70 0 150 360" stroke="#EDF0EB" stroke-width="9"/>
+        <path d="M0 84H560" stroke="#23201C" stroke-width="3"/>
+        <path d="M0 84H560" stroke="#EDF0EB" stroke-width="1.4" stroke-dasharray="12 12"/>
+        <rect x="44" y="60" width="124" height="48" fill="#23201C"/>
+        <text x="106" y="90" fill="#EDF0EB" font-size="15" text-anchor="middle">若葉台駅</text>
+        <text x="122" y="136" fill="#23201C" font-size="12">南口</text>
+        <path d="M112 146 128 236H330V300H384" fill="none" stroke="#1F5C46" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="112" cy="146" r="5" fill="#1F5C46"/>
         <g transform="translate(384 274)">
-          <rect width="112" height="52" fill="#2C6670"/>
-          <text x="56" y="32" fill="#E4E7E5" font-size="15" text-anchor="middle">白杢珈琲</text>
+          <rect width="112" height="52" fill="#1F5C46"/>
+          <text x="56" y="32" fill="#EDF0EB" font-size="15" text-anchor="middle">白杢珈琲</text>
         </g>
-        <text x="200" y="226" fill="#2B211B" font-size="12">若葉通り</text>
-        <rect x="256" y="160" width="56" height="40" fill="none" stroke="#2B211B" stroke-opacity=".45"/>
-        <text x="284" y="185" fill="#2B211B" font-size="11" text-anchor="middle">郵便局</text>
-        <text x="342" y="28" fill="#2B211B" font-size="12">けやき通り</text>
-        <text x="500" y="345" fill="#2B211B" font-size="11" text-anchor="end">P 3台</text>
+        <text x="200" y="226" fill="#23201C" font-size="12">若葉通り</text>
+        <rect x="256" y="160" width="56" height="40" fill="none" stroke="#23201C" stroke-opacity=".45"/>
+        <text x="284" y="185" fill="#23201C" font-size="11" text-anchor="middle">郵便局</text>
+        <text x="342" y="28" fill="#23201C" font-size="12">けやき通り</text>
+        <text x="500" y="345" fill="#23201C" font-size="11" text-anchor="end">P 3台</text>
       </svg>
     </div>
     <div class="access-body">
       <dl class="spec spec-1col">
         <div><dt>住所</dt><dd>〒000-0000 みどり野市若葉台2-14-3</dd></div>
-        <div><dt>電車</dt><dd>若葉台駅 南口から徒歩6分です<br>若葉通りを東へ進み、郵便局の先の角を右へお曲がりください</dd></div>
-        <div><dt>車</dt><dd>店の東側に3台分の駐車場があります<br>満車の場合は若葉台駅南口の市営駐車場をご利用ください</dd></div>
-        <div><dt>営業時間</dt><dd><span class="nw">8:00〜17:00（ラストオーダー16:30）</span></dd></div>
+        <div><dt>電車</dt><dd><span class="seg"><span class="nb">若葉台駅 南口から徒歩6分です</span></span><span class="seg"><span class="nb">若葉通りを東へ進み</span><span class="nb">郵便局の先の角を右へお曲がりください</span></span></dd></div>
+        <div><dt>車</dt><dd><span class="seg"><span class="nb">店の東側の駐車場をご利用ください</span></span><span class="seg"><span class="nb">駐車場は3台分です</span></span><span class="seg"><span class="nb">満車の場合は若葉台駅南口の</span><span class="nb">市営駐車場をご利用ください</span></span></dd></div>
+        <div><dt>営業時間</dt><dd><span class="nb">8:00〜17:00（ラストオーダー16:30）</span></dd></div>
         <div><dt>定休日</dt><dd>火曜・第3水曜・年末年始</dd></div>
         <div><dt>電話</dt><dd>000-0000-0000</dd></div>
       </dl>
@@ -206,8 +246,8 @@
 <footer class="site-footer">
   <div class="wrap foot-grid">
     <a class="brand" href="#top"><svg class="seal" aria-hidden="true"><use href="#seal"/></svg><span>白杢珈琲</span></a>
-    <p>みどり野市若葉台2-14-3<br><span class="nw">8:00〜17:00</span>・火曜・第3水曜休み</p>
-    <p class="disclaimer">このページはココナラ出品者「ハル｜よろずサポート屋」の自主制作サンプルです。店名・住所・電話番号・メニューは架空のもので、実在の店舗とは関係ありません。写真は Unsplash License に基づき使用しています（出典は credits.md）。</p>
+    <p>みどり野市若葉台2-14-3<br><span class="nb">8:00〜17:00</span>・火曜・第3水曜休み</p>
+    <p class="disclaimer">このページはココナラ出品者「ハル｜よろずサポート屋」の自主制作サンプルです。店名・住所・<span class="nb">電話番号</span>・メニューは架空のもので、実在の店舗とは関係ありません。写真は Unsplash License に基づき使用しています（出典は credits.md）。</p>
   </div>
 </footer>
 

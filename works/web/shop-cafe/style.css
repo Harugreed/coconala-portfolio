@@ -1,15 +1,17 @@
-/* 白杢珈琲（架空）第2版 — 仕様は DESIGN.md */
+/* 白杢珈琲（架空）第3版 — 仕様は DESIGN.md
+   配色は img/roaster.jpg から：地=ステンレス / 主色=煎った豆 / 差し色=焙煎機の側面パネルの深緑 */
 :root {
-  --ground: #E4E7E5;              /* 焙煎機のステンレス */
-  --ground-2: #D7DBD8;            /* 地を一段暗く（区切り用） */
-  --roast: #2B211B;               /* 煎った豆 */
-  --roast-70: rgba(43, 33, 27, .72);
-  --roast-25: rgba(43, 33, 27, .25);
-  --roast-12: rgba(43, 33, 27, .12);
-  --green: #2C6670;               /* 焙煎機の本体塗装 */
+  --ground: #EDF0EB;
+  --ground-2: #DDE3DC;
+  --ink: #23201C;
+  --ink-70: rgba(35, 32, 28, .72);
+  --ink-25: rgba(35, 32, 28, .25);
+  --ink-12: rgba(35, 32, 28, .12);
+  --accent: #1F5C46;
+  --muted: #4A4640;
   --mincho: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
   --gothic: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 40px; --s5: 64px; --s6: 104px; --s7: 144px;
+  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s5: 48px; --s6: 64px; --s7: 96px; --s8: 128px;
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 72px; }
@@ -17,27 +19,29 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-t
 body {
   margin: 0;
   background: var(--ground);
-  color: var(--roast);
+  color: var(--ink);
   font-family: var(--gothic);
   font-size: 15px;
-  line-height: 2;
+  line-height: 1.9;
   letter-spacing: .04em;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  word-break: auto-phrase;
   line-break: strict;
 }
-h1, h2, h3, p, dl, dd, ul, table { margin: 0; }
+h1, h2, h3, p, dl, dd, ul, table, figure { margin: 0; }
 ul { padding: 0; list-style: none; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
-.nw { white-space: nowrap; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.nb { display: inline-block; white-space: nowrap; }
+.seg { display: block; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--s4); }
+.mincho { font-family: var(--mincho); }
 
 .sample-flag {
-  padding: 6px var(--s2);
-  background: var(--roast); color: var(--ground);
+  padding: 8px var(--s2);
+  background: var(--ink); color: var(--ground);
   font-size: 12px; line-height: 1.7; letter-spacing: .06em;
 }
 
@@ -46,160 +50,152 @@ a { color: inherit; }
   position: sticky; top: 0; z-index: 10;
   display: flex; align-items: center; justify-content: space-between;
   height: 64px; padding: 0 var(--s4);
-  background: rgba(228, 231, 229, .92);
+  background: rgba(237, 240, 235, .92);
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--roast-12);
+  border-bottom: 1px solid var(--ink-12);
 }
-.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--mincho); font-weight: 700; font-size: 18px; letter-spacing: .16em; }
-.seal { width: 30px; height: 30px; color: var(--roast); }
+.brand { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: var(--mincho); font-weight: 700; font-size: 16px; letter-spacing: .16em; }
+.seal { width: 32px; height: 32px; color: var(--ink); }
 .gnav { display: flex; gap: var(--s4); }
 .gnav a { text-decoration: none; font-size: 14px; letter-spacing: .1em; padding: 4px 0; border-bottom: 1px solid transparent; }
-.gnav a:hover { border-bottom-color: var(--roast); }
+.gnav a:hover { border-bottom-color: var(--ink); }
 .nav-toggle { display: none; }
 
-/* トップ */
-.intro {
-  position: relative; z-index: 0;
-  max-width: 1120px; margin: 0 auto;
-  padding: var(--s6) var(--s4) var(--s6);
-  display: grid; grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--s5);
-}
-main { overflow-x: clip; }
-.intro-grain {
-  position: absolute; z-index: -1;
-  right: -180px; top: -120px; width: 720px; height: 720px;
-  color: var(--roast); opacity: .06; pointer-events: none;
-}
-.intro-grain svg { width: 100%; height: 100%; }
+/* ヒーロー：店名（横書き特大）→ 全幅の焙煎写真 → 案内表 */
+.hero { padding-top: var(--s7); }
 .shop-name {
-  grid-column: 2; grid-row: 1;
-  writing-mode: vertical-rl;
-  font-family: var(--mincho); font-weight: 700;
-  font-size: 104px; line-height: 1; letter-spacing: .14em;
-  margin-right: -.06em;
+  font-family: var(--mincho);
+  font-weight: 700;
+  font-size: 64px; line-height: 1.2; letter-spacing: .18em;
 }
-.intro-body { grid-column: 1; grid-row: 1; align-self: end; max-width: 680px; }
-.intro-seal { width: 72px; height: 72px; color: var(--roast); display: block; margin-bottom: var(--s5); }
-.ledger { border-top: 2px solid var(--roast); }
+.mincho { font-family: var(--mincho); }
+.hero-facts {
+  margin-top: var(--s3);
+  display: flex; flex-wrap: wrap; gap: 8px var(--s4);
+  font-size: 14px; color: var(--muted); letter-spacing: .08em;
+}
+.hero-photo { margin-top: var(--s6); }
+.hero-photo img { width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover; object-position: center 46%; }
+.hero-lower {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--s6); align-items: end;
+  padding-top: var(--s6); padding-bottom: var(--s7);
+}
+.ledger { border-top: 2px solid var(--ink); }
 .ledger > div {
   display: grid; grid-template-columns: 7em minmax(0, 1fr); align-items: baseline;
-  padding: 18px 0; border-bottom: 1px solid var(--roast-25);
+  padding: 16px 0; border-bottom: 1px solid var(--ink-25);
 }
-.ledger dt { font-size: 13px; color: var(--roast-70); letter-spacing: .12em; }
+.ledger dt { font-size: 13px; color: var(--ink-70); letter-spacing: .12em; }
 .ledger dd { font-family: var(--mincho); font-weight: 500; font-size: 20px; line-height: 1.6; letter-spacing: .06em; }
-.ledger small { font-family: var(--gothic); font-size: 13px; color: var(--roast-70); margin-left: 1.2em; letter-spacing: .04em; white-space: nowrap; }
-.intro-text { margin-top: var(--s4); font-size: 14.5px; }
-
-/* 写真の帯 */
-.band { width: 100%; background: var(--ground-2) center / cover no-repeat; }
-.band-roaster { aspect-ratio: 3.2 / 1; background-image: url(img/roaster.jpg); background-position: center 46%; max-height: 460px; }
+.ledger small { font-family: var(--gothic); font-size: 13px; color: var(--ink-70); margin-left: 1.2em; letter-spacing: .04em; white-space: nowrap; }
+.intro-text { font-size: 14px; line-height: 2; }
 
 /* セクション共通 */
 section.menu, section.beans, section.space, section.access { padding: var(--s7) 0; }
-h2 { font-family: var(--mincho); font-weight: 500; font-size: 30px; line-height: 1.5; letter-spacing: .1em; }
-.lead { margin-top: var(--s2); font-size: 14px; color: var(--roast-70); }
+h2 { font-family: var(--mincho); font-weight: 500; font-size: 32px; line-height: 1.5; letter-spacing: .1em; }
+.lead { margin-top: var(--s2); font-size: 14px; color: var(--ink-70); }
 
 /* メニュー */
 .menu-cols { margin-top: var(--s5); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s6); }
-.menu-col h3 { font-family: var(--mincho); font-weight: 500; font-size: 19px; letter-spacing: .12em; padding-bottom: var(--s2); border-bottom: 2px solid var(--roast); }
-.items li { padding: var(--s3) 0; border-bottom: 1px solid var(--roast-25); }
-.row, .set { display: flex; align-items: baseline; gap: 12px; }
-.row::after { content: ""; flex: 1; order: 1; border-bottom: 1px dotted var(--roast-25); transform: translateY(-5px); min-width: 24px; }
+.menu-col h3 { font-family: var(--mincho); font-weight: 500; font-size: 20px; letter-spacing: .12em; padding-bottom: var(--s2); border-bottom: 2px solid var(--ink); }
+.items li { padding: var(--s3) 0; border-bottom: 1px solid var(--ink-25); }
+.row, .set { display: flex; align-items: baseline; gap: 8px; }
+.row::after { content: ""; flex: 1; order: 1; border-bottom: 1px dotted var(--ink-25); transform: translateY(-4px); min-width: 24px; }
 .nm { font-weight: 500; font-size: 16px; letter-spacing: .06em; line-height: 1.7; }
-.pr { order: 2; font-family: var(--mincho); font-weight: 500; font-size: 20px; color: var(--green); white-space: nowrap; letter-spacing: .04em; }
-.ds { margin-top: 6px; font-size: 13.5px; line-height: 1.95; }
-.nt { margin-top: 4px; font-size: 12.5px; color: var(--roast-70); line-height: 1.9; }
-.set { justify-content: space-between; margin-top: var(--s3); padding: var(--s2) 0; border-bottom: 2px solid var(--roast); font-size: 13.5px; }
+.pr { order: 2; font-weight: 500; font-size: 20px; color: var(--accent); white-space: nowrap; letter-spacing: .04em; }
+.ds { margin-top: 8px; font-size: 13px; line-height: 1.9; }
+.nt { margin-top: 4px; font-size: 12px; color: var(--ink-70); line-height: 1.9; }
+.set { justify-content: space-between; margin-top: var(--s3); padding: var(--s2) 0; border-bottom: 2px solid var(--ink); font-size: 13px; }
 
 /* 豆の販売 */
 .beans { background: var(--ground-2); }
-.beans-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s5); align-items: center; }
-.beans-photo { aspect-ratio: 3 / 2; background: url(img/table.jpg) center 58% / cover no-repeat; }
+.beans-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--s6); align-items: center; }
+.beans-photo img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; object-position: center 58%; }
 .beans table { width: 100%; margin-top: var(--s4); border-collapse: collapse; font-size: 14px; }
-.beans thead th { font-size: 12px; font-weight: 400; color: var(--roast-70); text-align: left; padding: 0 0 10px; border-bottom: 2px solid var(--roast); letter-spacing: .1em; }
+.beans thead th { font-size: 12px; font-weight: 400; color: var(--ink-70); text-align: left; padding: 0 0 8px; border-bottom: 2px solid var(--ink); letter-spacing: .1em; }
 .beans tbody th { font-weight: 500; text-align: left; }
-.beans tbody th, .beans td { padding: 14px 8px 14px 0; border-bottom: 1px solid var(--roast-25); }
-.beans td.r { font-family: var(--mincho); font-size: 16px; color: var(--green); }
+.beans tbody th, .beans td { padding: 16px 8px 16px 0; border-bottom: 1px solid var(--ink-25); }
+.beans td.r { font-size: 16px; color: var(--accent); }
 .beans .r { text-align: right; padding-right: 0; white-space: nowrap; }
 .beans .nt { margin-top: var(--s2); }
 
 /* 店内・アクセスの表 */
 .spec { margin-top: var(--s5); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s5); }
-.spec > div { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: var(--s2); padding: 18px 0; border-top: 1px solid var(--roast-25); }
+.spec > div { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: var(--s2); padding: 16px 0; border-top: 1px solid var(--ink-25); }
 .spec dt { font-family: var(--mincho); font-weight: 500; font-size: 15px; letter-spacing: .08em; }
-.spec dd { font-size: 14px; line-height: 1.95; }
+.spec dd { font-size: 14px; line-height: 1.9; }
 .spec-1col { grid-template-columns: 1fr; margin-top: 0; }
 
 /* アクセス */
 .access { background: var(--ground-2); }
 .access-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--s5); align-items: start; }
 .map { display: block; width: 100%; height: auto; margin-top: var(--s5); font-family: var(--gothic); }
-.access-body { padding-top: 112px; }
+.access-body { padding-top: 104px; }
 .week { width: 100%; margin-top: var(--s4); border-collapse: collapse; text-align: center; table-layout: fixed; }
-.week th { font-family: var(--mincho); font-weight: 500; font-size: 14px; padding: 8px 0; border-top: 2px solid var(--roast); border-bottom: 1px solid var(--roast-25); }
-.week td { font-size: 12.5px; padding: 12px 0; line-height: 1.5; border-bottom: 1px solid var(--roast-25); }
-.week td small { display: block; font-size: 10.5px; color: var(--green); }
-.week td.off { background: var(--roast); color: var(--ground); }
+.week th { font-family: var(--mincho); font-weight: 500; font-size: 14px; padding: 8px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink-25); }
+.week td { font-size: 12px; padding: 8px 0; line-height: 1.5; border-bottom: 1px solid var(--ink-25); }
+.week td small { display: block; font-size: 11px; color: var(--accent); }
+.week td.off { background: var(--ink); color: var(--ground); }
 
 /* フッター */
-.site-footer { background: var(--roast); color: var(--ground); padding: var(--s6) 0 var(--s5); }
+.site-footer { background: var(--ink); color: var(--ground); padding: var(--s6) 0 var(--s5); }
 .site-footer .seal { color: var(--ground); }
+.site-footer .brand { color: var(--ground); }
 .foot-grid { display: grid; grid-template-columns: auto 1fr; gap: var(--s3) var(--s5); align-items: start; }
-.foot-grid p { font-size: 13.5px; line-height: 1.9; }
-.foot-grid .disclaimer { grid-column: 1 / -1; margin-top: var(--s4); padding-top: var(--s3); border-top: 1px solid rgba(228, 231, 229, .2); font-size: 11.5px; opacity: .65; max-width: 48em; }
+.foot-grid p { font-size: 13px; line-height: 1.9; }
+.foot-grid .disclaimer { grid-column: 1 / -1; margin-top: var(--s4); padding-top: var(--s3); border-top: 1px solid rgba(237, 240, 235, .2); font-size: 12px; opacity: .65; max-width: 48em; }
 
 /* タブレット */
 @media (max-width: 960px) {
   .wrap { padding: 0 var(--s3); }
-  .intro { padding: var(--s5) var(--s3) var(--s5); gap: var(--s4); }
-  .shop-name { font-size: 80px; }
-  .menu-cols, .beans-grid, .access-grid { grid-template-columns: 1fr; gap: var(--s5); }
+  .hero-lower, .menu-cols, .beans-grid, .access-grid { grid-template-columns: 1fr; gap: var(--s5); }
   .access-body { padding-top: 0; }
   .spec { grid-template-columns: 1fr; }
+  .hero-photo img { aspect-ratio: 2 / 1; }
 }
 
 /* スマホ */
 @media (max-width: 640px) {
   body { font-size: 14px; }
-  .site-header { height: 56px; padding: 0 var(--s2) 0 20px; }
+  .site-header { height: 56px; padding: 0 var(--s2) 0 16px; }
   .brand { font-size: 16px; }
-  .seal { width: 26px; height: 26px; }
-  .nav-toggle { display: block; position: relative; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; }
-  .nav-toggle span:not(.sr) { position: absolute; left: 12px; width: 20px; height: 1.5px; background: var(--roast); transition: transform .25s; }
-  .nav-toggle span:nth-child(1) { top: 18px; }
-  .nav-toggle span:nth-child(2) { top: 25px; }
-  .nav-open .nav-toggle span:nth-child(1) { transform: translateY(3.5px) rotate(45deg); }
-  .nav-open .nav-toggle span:nth-child(2) { transform: translateY(-3.5px) rotate(-45deg); }
-  .gnav { position: fixed; top: 56px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 0 20px var(--s2); background: var(--ground); border-bottom: 2px solid var(--roast); display: none; }
+  .seal { width: 24px; height: 24px; }
+  .nav-toggle { display: block; position: relative; width: 48px; height: 48px; border: 0; background: none; cursor: pointer; }
+  .nav-toggle span:not(.sr) { position: absolute; left: 12px; width: 20px; height: 2px; background: var(--ink); transition: transform .25s; }
+  .nav-toggle span:nth-child(1) { top: 20px; }
+  .nav-toggle span:nth-child(2) { top: 28px; }
+  .nav-open .nav-toggle span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+  .nav-open .nav-toggle span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+  .gnav { position: fixed; top: 56px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 0 16px var(--s2); background: var(--ground); border-bottom: 2px solid var(--ink); display: none; }
   .nav-open .gnav { display: flex; }
-  .gnav a { padding: 14px 0; border-bottom: 1px solid var(--roast-12); font-size: 15px; }
-  .wrap { padding: 0 20px; }
-  .intro { padding: var(--s4) 20px var(--s5); gap: var(--s2); }
-  .intro-grain { width: 440px; height: 440px; right: -200px; top: -60px; }
-  .shop-name { font-size: 56px; letter-spacing: .1em; }
-  .intro-seal { width: 52px; height: 52px; margin-bottom: var(--s4); }
-  .ledger > div { grid-template-columns: 1fr; padding: 12px 0; }
+  .gnav a { padding: 16px 0; border-bottom: 1px solid var(--ink-12); font-size: 15px; }
+  .wrap { padding: 0 16px; }
+  .hero { padding-top: var(--s5); }
+  .shop-name { font-size: 40px; letter-spacing: .12em; }
+  .hero-photo { margin-top: var(--s4); }
+  .hero-photo img { aspect-ratio: 16 / 10; }
+  .hero-lower { padding-top: var(--s4); padding-bottom: var(--s6); }
+  .ledger > div { grid-template-columns: 1fr; padding: 8px 0; }
   .ledger dt { font-size: 12px; line-height: 1.6; }
-  .ledger dd { font-size: 17px; }
+  .ledger dd { font-size: 16px; }
   .ledger small { display: block; margin-left: 0; font-size: 12px; line-height: 1.7; white-space: normal; }
-  .band-roaster { aspect-ratio: 16 / 10; }
-  section.menu, section.beans, section.space, section.access { padding: 88px 0; }
-  h2 { font-size: 23px; }
+  section.menu, section.beans, section.space, section.access { padding: var(--s6) 0; }
+  h2 { font-size: 24px; }
   .menu-cols { margin-top: var(--s4); }
-  .menu-col h3 { font-size: 17px; }
+  .menu-col h3 { font-size: 16px; }
   .nm { font-size: 15px; }
-  .pr { font-size: 18px; }
-  .ds { font-size: 13px; }
+  .pr { font-size: 16px; }
   .beans table { font-size: 13px; }
   .beans thead th:nth-child(2), .beans tbody td:nth-child(2) { display: none; }
-  .beans td.r { font-size: 14.5px; }
+  .beans td.r { font-size: 14px; }
   .spec { margin-top: var(--s4); }
-  .spec > div { grid-template-columns: 5.5em minmax(0, 1fr); gap: 12px; padding: 14px 0; }
+  .spec > div { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
+  .access .spec > div { grid-template-columns: 5.5em minmax(0, 1fr); gap: 8px; }
   .spec dt { font-size: 14px; }
-  .spec dd { font-size: 13.5px; }
+  .spec dd { font-size: 13px; }
   .map { margin-top: var(--s4); }
-  .week td { font-size: 11.5px; }
+  .week td { font-size: 11px; }
   .site-footer { padding: var(--s5) 0 var(--s4); }
   .foot-grid { grid-template-columns: 1fr; }
 }
