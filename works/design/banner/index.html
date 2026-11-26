@@ -1,41 +1,255 @@
-<!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>バナー4サイズ・メニュー表：白杢珈琲｜自主制作サンプル</title><meta name="robots" content="noindex"><style>
-:root{--ink:#24262B;--sub:#5D626B;--line:#DCDFE4;--accent:#3D5A80;--paper:#FFFFFF;--bg:#F3F4F6}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:17px;line-height:2;word-break:auto-phrase;line-break:strict}
-.flag{margin:0;background:var(--ink);color:#fff;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;padding:6px 20px}
-article{max-width:760px;margin:40px auto 80px;background:var(--paper);padding:56px 64px}
-h1{font-size:28px;line-height:1.5;margin:0 0 24px}
-h2{font-size:21px;line-height:1.6;margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
-h3{font-size:18px;margin:32px 0 8px}
-p{margin:0 0 1em}
-blockquote{margin:0 0 32px;padding:12px 16px;background:var(--bg);border-left:4px solid var(--accent);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14px;line-height:1.8;color:var(--sub)}
-blockquote p{margin:0}
-ul,ol{margin:0 0 1em;padding-left:1.5em}
-table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14.5px;line-height:1.7}
-th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>バナー4サイズ・メニュー表：白杢珈琲｜自主制作サンプル</title>
+<meta name="description" content="架空のカフェ「白杢珈琲」の焼き菓子セットを告知するバナー4サイズと店頭用メニュー表の自主制作サンプルです。4サイズを実寸比で並べています。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wall:#2B211B;
+  --paper:#E4E7E5;
+  --teal:#2C6670;
+  --ink:#2B211B;
+  --accent:#2C6670;
+  --sheet:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+  font-size:17px;line-height:1.8;color:var(--ink);background:var(--paper);
+}
+img{display:block;max-width:100%}
+a{color:var(--accent)}
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+.mincho{font-family:"Shippori Mincho B1","Hiragino Mincho ProN",serif}
+.flag{
+  background:var(--wall);color:var(--paper);
+  font-size:12px;padding:8px 24px;letter-spacing:.04em;
+}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.back{display:inline-block;margin:24px 0 0;font-size:14px}
+
+/* ---------- header ---------- */
+header{padding:48px 0 64px}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--accent)}
+h1{
+  font-family:"Shippori Mincho B1",serif;font-weight:700;
+  font-size:40px;line-height:1.4;margin:16px 0 24px;
+}
+.lead{max-width:640px}
+.facts{
+  display:flex;flex-wrap:wrap;gap:16px 48px;margin-top:32px;
+  border-top:2px solid var(--ink);padding-top:24px;
+}
+.facts div{min-width:160px}
+.facts dt{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--accent)}
+.facts dd{font-family:"Shippori Mincho B1",serif;font-size:24px;font-weight:700;margin-top:4px}
+.facts dd small{font-size:14px;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500}
+
+/* ---------- wall ---------- */
+.wall{background:var(--wall);color:var(--paper);padding:96px 0}
+.wall h2{
+  font-family:"Shippori Mincho B1",serif;font-weight:700;
+  font-size:24px;line-height:1.5;margin-bottom:16px;
+}
+.wall .wall-lead{max-width:640px;color:var(--paper)}
+.slot{margin-top:64px;border-bottom:8px solid rgba(228,231,229,.22);padding-bottom:32px}
+.slot-head{
+  display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;
+  border-bottom:1px solid rgba(228,231,229,.35);padding-bottom:16px;margin-bottom:24px;
+}
+.dim{
+  font-family:"Shippori Mincho B1",serif;font-weight:700;
+  font-size:64px;line-height:1;color:var(--paper);
+}
+.dim small{font-size:24px}
+.slot-use{font-size:14px}
+.slot img{border:1px solid rgba(228,231,229,.35)}
+.w1200{width:100%}
+.w1080{width:90%}
+.w728{width:61%}
+.w300{width:25%;min-width:200px}
+
+/* ---------- menu ---------- */
+.menu{background:var(--sheet);padding:96px 0}
+.menu-grid{display:grid;grid-template-columns:520px 1fr;gap:64px;align-items:start}
+.menu h2{
+  font-family:"Shippori Mincho B1",serif;font-weight:700;
+  font-size:24px;line-height:1.5;margin-bottom:24px;
+}
+.menu figure img{width:100%;border:1px solid #C9CFCB}
+.menu-links{margin-top:32px;display:grid;gap:16px}
+.menu-links a{
+  display:block;border:1px solid var(--ink);color:var(--ink);text-decoration:none;
+  padding:16px 24px;font-weight:700;font-size:17px;
+}
+.menu-links a small{display:block;font-weight:400;font-size:14px;margin-top:4px}
+.menu-links a:hover{background:var(--paper)}
+
+/* ---------- policy / files ---------- */
+.policy{padding:96px 0 0}
+.policy h2,.files h2{
+  font-family:"Shippori Mincho B1",serif;font-weight:700;
+  font-size:24px;line-height:1.5;
+  border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:32px;
+}
+.policy ul{list-style:none;max-width:760px}
+.policy li{padding:16px 0;border-bottom:1px solid rgba(43,33,27,.25)}
+.files{padding:64px 0 96px}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.7}
+th,td{border-bottom:1px solid rgba(43,33,27,.25);padding:8px 16px 8px 0;text-align:left;vertical-align:top}
 thead th{border-bottom:2px solid var(--ink)}
-hr{border:0;border-top:1px dashed var(--line);margin:32px 0}
-a{color:var(--accent);word-break:break-all}
-figure{margin:16px 0 28px}figure img{width:100%;display:block;border:1px solid var(--line)}figcaption{font-family:sans-serif;font-size:13px;color:var(--sub);margin-top:6px}
-.back{display:block;max-width:760px;margin:24px auto 0;font-family:sans-serif;font-size:14px}
-@media(max-width:640px){article{margin:0;padding:32px 20px}body{font-size:16px}h1{font-size:23px}h2{font-size:19px}}
-</style></head>
-<body><p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」の文章サンプルです。</p>
-<a class="back" href="../../../index.html">← ポートフォリオ索引</a>
-<article>
-<h1>バナー4サイズ・メニュー表：白杢珈琲</h1>
-<blockquote><p>自主制作サンプル：架空のカフェ「白杢珈琲」の「平日14時〜16時の焼き菓子セット」（プレゼン資料サンプルの施策3）を告知するバナー・店頭のメニュー表です。写真は Unsplash License に基づき使用しています。</p></blockquote>
-<h2>ファイル</h2>
-<table><thead><tr><th>ファイル</th><th>サイズ</th><th>用途の例</th></tr></thead><tbody><tr><td>out/banner-1200x628.png</td><td>1200×628px</td><td>Facebook・X の投稿、Webの記事内</td></tr><tr><td>out/banner-1080x1080.png</td><td>1080×1080px</td><td>Instagram の投稿・広告</td></tr><tr><td>out/banner-728x90.png</td><td>728×90px</td><td>Webサイトの横長の広告枠</td></tr><tr><td>out/banner-300x250.png</td><td>300×250px</td><td>Webサイトのレクタングル広告枠</td></tr><tr><td>out/menu-a4.pdf ／ out/menu-a4.png</td><td>A4縦</td><td>店頭・テーブルに置くメニュー表（印刷用 PDF）</td></tr><tr><td>banners.html ／ menu.html</td><td>―</td><td>書き出し元のHTML。文字・価格を直して書き出し直せます</td></tr></tbody></table>
-<h2>作りの方針</h2>
-<ul><li>4サイズとも、載せる情報を「時間帯・セット名・値引き・店名」の4つに絞り、小さいサイズほど文字の数を減らしています</li><li>配色・書体・ロゴは店のホームページ（P01）と同じです</li><li>メニュー表は、ホームページと同じ価格・同じ言い切りの表記にしています</li></ul>
-<figure><img src="out/banner-1200x628.png" alt="バナー 1200×628"><figcaption>バナー 1200×628</figcaption></figure>
-<figure><img src="out/banner-728x90.png" alt="バナー 728×90"><figcaption>バナー 728×90</figcaption></figure>
-<h2>写真の出典</h2>
-<table><thead><tr><th>ファイル</th><th>配布元の画像URL</th></tr></thead><tbody><tr><td>img/bake.jpg</td><td><a href="https://images.unsplash.com/photo-1695016676286-32e1aee29825">https://images.unsplash.com/photo-1695016676286-32e1aee29825</a></td></tr><tr><td>img/table.jpg</td><td><a href="https://images.unsplash.com/photo-1552640895-d10bd57b2117">https://images.unsplash.com/photo-1552640895-d10bd57b2117</a></td></tr></tbody></table>
-<p>ライセンス：<a href="https://unsplash.com/license">https://unsplash.com/license</a></p>
-<h2>応募時の紹介文（3行）</h2>
-<p>架空のカフェのキャンペーンを告知するバナー4サイズ・店頭用メニュー表の自主制作サンプルです。<br>サイズごとに載せる情報の数を変え、728×90のような細い枠でも時間帯・内容・値引きが読める配置にしています。<br>メニュー表は印刷用のA4のPDFで納品し、店のホームページと配色・価格の表記をそろえています。</p>
-</article></body></html>
+td.num{font-family:"Shippori Mincho B1",serif;font-weight:700;white-space:nowrap}
+.src{font-size:14px;margin-top:16px}
+.intro{max-width:760px;margin-top:32px}
+footer{
+  border-top:1px solid rgba(43,33,27,.3);padding:32px 0 48px;font-size:12px;
+}
+@media (max-width:900px){
+  .menu-grid{grid-template-columns:1fr}
+  .dim{font-size:40px}
+  .dim small{font-size:17px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  h1{font-size:28px}
+  .wall,.menu{padding:64px 0}
+  .slot{margin-top:48px}
+  .w728{width:100%}
+  .w300{width:56%}
+  .facts{gap:16px 32px}
+}
+</style>
+</head>
+<body>
+<p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」のデザインサンプルです。</p>
+<main>
+<div class="wrap">
+  <a class="back" href="../../../index.html">← ポートフォリオ索引</a>
+
+  <header>
+    <p class="kicker">BANNER ＆ MENU｜自主制作サンプル</p>
+    <h1><span class="nb">バナー4サイズと</span><span class="nb">メニュー表</span><span class="seg">白杢珈琲</span></h1>
+    <p class="lead"><span class="seg"><span class="nb">架空のカフェ「白杢珈琲」の</span></span><span class="seg"><span class="nb">平日14時〜16時の焼き菓子セットを</span><span class="nb">告知するバナーと</span></span><span class="seg"><span class="nb">店頭に置くメニュー表です</span></span><span class="seg"><span class="nb">焼き菓子セットは</span><span class="nb">プレゼン資料サンプルの施策3です</span></span></p>
+    <dl class="facts">
+      <div><dt>バナー</dt><dd>4<small> サイズ</small></dd></div>
+      <div><dt>載せる情報</dt><dd>4<small> つに絞っています</small></dd></div>
+      <div><dt>メニュー表</dt><dd>A4<small> 縦・印刷用PDF</small></dd></div>
+    </dl>
+  </header>
+</div>
+
+<!-- ============ WALL ============ -->
+<section class="wall">
+  <div class="wrap">
+    <h2><span class="nb">4サイズを</span><span class="nb">実寸比で並べています</span></h2>
+    <p class="wall-lead"><span class="seg"><span class="nb">1200×628を100%として</span><span class="nb">他の3サイズを</span></span><span class="seg"><span class="nb">同じ比率で縮小しています</span></span><span class="seg"><span class="nb">小さいサイズほど</span><span class="nb">文字の数を減らしています</span></span></p>
+
+    <div class="slot">
+      <div class="slot-head">
+        <p class="dim">1200<small>×628</small></p>
+        <p class="slot-use">Facebook・X の投稿、Webの記事内</p>
+      </div>
+      <img class="w1200" src="out/banner-1200x628.png" alt="バナー 1200×628" width="1200" height="628">
+    </div>
+
+    <div class="slot">
+      <div class="slot-head">
+        <p class="dim">1080<small>×1080</small></p>
+        <p class="slot-use">Instagram の投稿・広告</p>
+      </div>
+      <img class="w1080" src="out/banner-1080x1080.png" alt="バナー 1080×1080" width="1080" height="1080" loading="lazy">
+    </div>
+
+    <div class="slot">
+      <div class="slot-head">
+        <p class="dim">728<small>×90</small></p>
+        <p class="slot-use">Webサイトの横長の広告枠</p>
+      </div>
+      <img class="w728" src="out/banner-728x90.png" alt="バナー 728×90" width="728" height="90" loading="lazy">
+    </div>
+
+    <div class="slot">
+      <div class="slot-head">
+        <p class="dim">300<small>×250</small></p>
+        <p class="slot-use">Webサイトのレクタングル広告枠</p>
+      </div>
+      <img class="w300" src="out/banner-300x250.png" alt="バナー 300×250" width="300" height="250" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section class="menu">
+  <div class="wrap menu-grid">
+    <figure>
+      <img src="out/menu-a4.png" alt="白杢珈琲のメニュー表 A4縦" width="952" height="1348" loading="lazy">
+    </figure>
+    <div>
+      <p class="kicker">MENU｜A4縦</p>
+      <h2><span class="nb">店頭に置く</span><span class="nb">メニュー表</span></h2>
+      <p><span class="seg"><span class="nb">コーヒー・焼き菓子・豆の販売・</span></span><span class="seg"><span class="nb">ソフトドリンクの価格を載せています</span></span><span class="seg"><span class="nb">下部に焼き菓子セットの帯を置いています</span></span></p>
+      <p style="margin-top:16px"><span class="seg"><span class="nb">価格はホームページと同じ表記にしています</span></span><span class="seg"><span class="nb">印刷用にA4のPDFで納品します</span></span></p>
+      <div class="menu-links">
+        <a href="out/menu-a4.pdf">メニュー表のPDFを開く<small>out/menu-a4.pdf（A4縦・印刷用）</small></a>
+        <a href="banners.html">バナーの書き出し元HTML<small>banners.html（文字と価格を直して書き出し直せます）</small></a>
+        <a href="menu.html">メニュー表の書き出し元HTML<small>menu.html（文字と価格を直して書き出し直せます）</small></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <!-- ============ POLICY ============ -->
+  <section class="policy">
+    <h2>作りの方針</h2>
+    <ul>
+      <li><span class="nb">4サイズとも、</span><span class="nb">載せる情報を</span><span class="nb">時間帯・セット名・値引き・店名の4つに絞り、</span><span class="nb">小さいサイズほど</span><span class="nb">文字の数を減らしています。</span></li>
+      <li><span class="nb">728×90のような細い枠でも、</span><span class="nb">時間帯・内容・値引きが</span><span class="nb">読める配置にしています。</span></li>
+      <li><span class="nb">配色・書体・ロゴは</span><span class="nb">店のホームページ（P01）と</span><span class="nb">同じです。</span></li>
+      <li><span class="nb">メニュー表は、</span><span class="nb">ホームページと同じ価格・</span><span class="nb">同じ言い切りの表記にしています。</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ FILES ============ -->
+  <section class="files">
+    <h2>ファイル</h2>
+    <table>
+      <thead><tr><th>ファイル</th><th>サイズ</th><th>用途の例</th></tr></thead>
+      <tbody>
+        <tr><td>out/banner-1200x628.png</td><td class="num">1200×628px</td><td>Facebook・X の投稿、Webの記事内</td></tr>
+        <tr><td>out/banner-1080x1080.png</td><td class="num">1080×1080px</td><td>Instagram の投稿・広告</td></tr>
+        <tr><td>out/banner-728x90.png</td><td class="num">728×90px</td><td>Webサイトの横長の広告枠</td></tr>
+        <tr><td>out/banner-300x250.png</td><td class="num">300×250px</td><td>Webサイトのレクタングル広告枠</td></tr>
+        <tr><td>out/menu-a4.pdf ／ out/menu-a4.png</td><td class="num">A4縦</td><td>店頭・テーブルに置くメニュー表（印刷用 PDF）</td></tr>
+        <tr><td>banners.html ／ menu.html</td><td class="num">―</td><td>書き出し元のHTML。文字・価格を直して書き出し直せます</td></tr>
+      </tbody>
+    </table>
+    <h2 style="margin-top:64px">写真の出典</h2>
+    <table>
+      <thead><tr><th>ファイル</th><th>配布元の画像URL</th></tr></thead>
+      <tbody>
+        <tr><td>img/bake.jpg</td><td><a href="https://images.unsplash.com/photo-1695016676286-32e1aee29825">https://images.unsplash.com/photo-1695016676286-32e1aee29825</a></td></tr>
+        <tr><td>img/table.jpg</td><td><a href="https://images.unsplash.com/photo-1552640895-d10bd57b2117">https://images.unsplash.com/photo-1552640895-d10bd57b2117</a></td></tr>
+      </tbody>
+    </table>
+    <p class="src"><a href="https://unsplash.com/license">Unsplash License</a> に基づき使用しています。</p>
+    <div class="intro">
+      <h2 style="border:0;padding:0;margin-bottom:16px">応募時の紹介文</h2>
+      <p><span class="seg"><span class="nb">架空のカフェのキャンペーンを告知する</span></span><span class="seg"><span class="nb">バナー4サイズ・店頭用メニュー表の</span><span class="nb">自主制作サンプルです</span></span><span class="seg"><span class="nb">サイズごとに載せる情報の数を変え、</span></span><span class="seg"><span class="nb">728×90のような細い枠でも</span><span class="nb">時間帯・内容・値引きが</span><span class="nb">読める配置にしています</span></span><span class="seg"><span class="nb">メニュー表は印刷用のA4のPDFで納品し、</span></span><span class="seg"><span class="nb">店のホームページと</span><span class="nb">配色・価格の表記をそろえています</span></span></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>自主制作サンプル（架空の店）｜写真は Unsplash License に基づき使用しています。設計の調査記録は DESIGN.md にあります。Design seed: MotionSites “Book Shelf”</p>
+  </footer>
+</div>
+</main>
+</body>
+</html>
