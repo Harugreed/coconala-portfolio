@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パーソナルジム まるみ｜40代から70代の女性専用パーソナルジム（制作サンプル）</title>
+<meta name="description" content="40代から70代の女性専用のパーソナルジム「まるみ」。完全予約制、1回50分、女性トレーナーが担当します。体験レッスン3,000円。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F6F5;
+  --ink:#35332E;
+  --muted:#6E675C;
+  --tan:#D1BAA8;
+  --accent:#86592F;
+  --line:#E3DCCF;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Zen Kaku Gothic New",sans-serif;
+  font-weight:400;
+  font-size:16px;
+  line-height:1.9;
+  letter-spacing:.04em;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:var(--ink);}
+.nb{white-space:nowrap;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+.label{
+  font-size:12px;
+  letter-spacing:.32em;
+  color:var(--accent);
+  font-weight:700;
+}
+h2{
+  font-weight:700;
+  font-size:28px;
+  line-height:1.5;
+  letter-spacing:.08em;
+  margin:16px 0 48px;
+}
+section{padding:112px 0;}
+.dummy-note{margin-top:24px;font-size:11px;line-height:1.9;color:var(--muted);}
+
+/* ---------- loader ---------- */
+.loader{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  transition:opacity .8s ease,visibility .8s ease;
+  animation:loaderSafety .8s ease 4.5s forwards;
+}
+.loader.is-done{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+@keyframes loaderSafety{
+  to{opacity:0;visibility:hidden;}
+}
+.loader-mark{
+  position:relative;
+  width:176px;
+  height:176px;
+}
+.loader-arc{
+  position:absolute;
+  inset:0;
+  transform:rotate(-90deg);
+}
+.loader-arc .arc-track{stroke:var(--tan);}
+.loader-arc .arc-draw{
+  stroke:var(--accent);
+  stroke-dasharray:502.65;
+  stroke-dashoffset:502.65;
+  animation:arcDraw 1.5s ease .1s forwards;
+}
+@keyframes arcDraw{
+  to{stroke-dashoffset:0;}
+}
+.loader-logo{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  animation:logoIn 1s ease both;
+}
+@keyframes logoIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+.loader-logo .logo-jp{
+  font-family:"Zen Maru Gothic",sans-serif;
+  font-weight:700;
+  font-size:28px;
+  letter-spacing:.12em;
+  line-height:1.3;
+}
+.loader-logo .logo-en{
+  font-size:11px;
+  letter-spacing:.32em;
+  color:var(--muted);
+  font-weight:500;
+  margin-top:4px;
+}
+.loader-note{
+  margin-top:24px;
+  font-size:11px;
+  letter-spacing:.16em;
+  color:var(--muted);
+}
+
+/* ---------- header ---------- */
+.site-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 32px;
+}
+.site-header .logo{
+  text-decoration:none;
+  line-height:1.3;
+}
+.site-header .logo .jp{
+  font-family:"Zen Maru Gothic",sans-serif;
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:.12em;
+  display:block;
+}
+.site-header .logo .en{
+  font-size:11px;
+  letter-spacing:.32em;
+  color:var(--muted);
+  font-weight:500;
+  display:block;
+}
+.site-header nav{display:flex;gap:32px;align-items:center;}
+.site-header nav a{
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:.12em;
+  font-weight:500;
+}
+.site-header nav a:hover{color:var(--accent);}
+.site-header nav a.nav-reserve{
+  background:var(--accent);
+  color:#FFFFFF;
+  padding:8px 20px;
+  border-radius:999px;
+}
+.site-header nav a.nav-reserve:hover{background:var(--ink);}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  overflow:hidden;
+  height:min(66.7vw,calc(100vh - 92px));
+  min-height:400px;
+  background:var(--ink);
+}
+.hero img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.hero-shade{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(53,51,46,.55) 0%,rgba(53,51,46,0) 52%);
+}
+.hero-mark{
+  position:absolute;
+  left:48px;
+  bottom:48px;
+  z-index:2;
+  color:#FFFFFF;
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .9s ease .15s,transform .9s ease .15s;
+  animation:markIn .9s ease 2.05s both;
+}
+@keyframes markIn{
+  from{opacity:0;transform:translateY(16px);}
+  to{opacity:1;transform:none;}
+}
+body.is-loaded .hero-mark{opacity:1;transform:none;}
+.hero-badge{
+  display:inline-block;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.16em;
+  padding:4px 16px;
+  border-radius:999px;
+  margin-bottom:16px;
+}
+.hero-mark h1{
+  font-family:"Zen Maru Gothic",sans-serif;
+  font-weight:900;
+  font-size:clamp(56px,12vw,148px);
+  line-height:1.1;
+  letter-spacing:.06em;
+}
+.hero-mark p{
+  font-size:14px;
+  letter-spacing:.12em;
+  font-weight:500;
+  margin-top:16px;
+}
+.hero-cta{
+  display:inline-block;
+  background:#FFFFFF;
+  color:var(--ink);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.12em;
+  padding:12px 32px;
+  border-radius:999px;
+  margin-top:24px;
+}
+.hero-cta:hover{background:var(--tan);}
+
+/* ---------- facts ---------- */
+.facts{
+  border-bottom:1px solid var(--line);
+}
+.facts dl{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.facts div{
+  padding:32px 24px;
+  border-left:1px solid var(--line);
+}
+.facts div:first-child{border-left:none;padding-left:0;}
+.facts dt{
+  font-size:12px;
+  letter-spacing:.16em;
+  color:var(--muted);
+  font-weight:500;
+  margin-top:8px;
+}
+.facts dd{
+  font-family:"Zen Maru Gothic",sans-serif;
+  font-weight:700;
+  font-size:28px;
+  line-height:1.3;
+  color:var(--accent);
+  font-variant-numeric:tabular-nums lining-nums;
+}
+
+/* ---------- about ---------- */
+.about-text{
+  max-width:720px;
+  margin:0 auto;
+}
+.about-text p{margin-bottom:32px;}
+.about-text p:last-child{margin-bottom:0;}
+.about-photo{
+  margin-top:64px;
+}
+.about-photo img{
+  width:100%;
+  height:auto;
+}
+
+/* ---------- program ---------- */
+.program-lead{
+  max-width:720px;
+  margin-bottom:64px;
+}
+.pillar{
+  display:grid;
+  grid-template-columns:88px 300px 1fr;
+  gap:32px;
+  align-items:start;
+  padding:40px 0;
+  border-top:1px solid var(--line);
+}
+.pillar:last-child{border-bottom:1px solid var(--line);}
+.pillar-num{
+  font-family:"Zen Maru Gothic",sans-serif;
+  font-weight:700;
+  font-size:40px;
+  line-height:1.1;
+  color:var(--accent);
+  font-variant-numeric:tabular-nums lining-nums;
+}
+.pillar img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+}
+.pillar-body h3{
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.08em;
+  margin-bottom:12px;
+}
+.pillar-body p{
+  font-size:14px;
+  line-height:1.9;
+  color:var(--ink);
+}
+
+/* ---------- price ---------- */
+.price-table{
+  width:100%;
+  border-collapse:collapse;
+  border-top:2px solid var(--ink);
+}
+.price-table th,.price-table td{
+  padding:24px 16px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+  font-weight:400;
+  font-size:14px;
+}
+.price-table thead th{
+  font-size:11px;
+  letter-spacing:.24em;
+  color:var(--muted);
+  font-weight:500;
+  padding:16px;
+}
+.price-table .plan-name{
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:.06em;
+  white-space:nowrap;
+}
+.price-table .price{
+  font-size:20px;
+  font-weight:700;
+  font-variant-numeric:tabular-nums lining-nums;
+  letter-spacing:.04em;
+  text-align:right;
+  white-space:nowrap;
+}
+.price-table th:last-child{text-align:right;}
+.price-notes{margin-top:32px;font-size:13px;line-height:2.0;color:var(--muted);}
+.price-notes p{margin:0;}
+.trial{
+  margin-top:48px;
+  background:var(--tan);
+  padding:32px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:32px;
+}
+.trial .t-name{
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.08em;
+  margin-bottom:8px;
+}
+.trial p{font-size:14px;max-width:560px;}
+.trial .t-price{
+  font-family:"Zen Maru Gothic",sans-serif;
+  font-weight:700;
+  font-size:40px;
+  line-height:1.1;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+.trial .t-price small{
+  font-family:"Zen Kaku Gothic New",sans-serif;
+  font-size:13px;
+  font-weight:500;
+  display:block;
+  text-align:right;
+  margin-top:4px;
+}
+
+/* ---------- trainer ---------- */
+.trainer-inner{
+  display:grid;
+  grid-template-columns:5fr 6fr;
+  gap:64px;
+  align-items:start;
+}
+.trainer-inner img{
+  width:100%;
+  aspect-ratio:3/2;
+  object-fit:cover;
+  object-position:center 18%;
+}
+.trainer-name{
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.12em;
+  margin-bottom:24px;
+}
+.trainer-name span{
+  font-size:13px;
+  font-weight:500;
+  color:var(--muted);
+  margin-left:16px;
+  letter-spacing:.08em;
+}
+.trainer-text p{margin-bottom:24px;}
+.fact-list{
+  border-top:1px solid var(--line);
+  margin-top:8px;
+}
+.fact-list div{
+  display:grid;
+  grid-template-columns:96px 1fr;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+.fact-list dt{font-weight:700;}
+.fact-list dd{margin:0;}
+
+/* ---------- access ---------- */
+.access-inner{
+  display:grid;
+  grid-template-columns:6fr 5fr;
+  gap:64px;
+  align-items:start;
+}
+.access-table{
+  width:100%;
+  border-collapse:collapse;
+  border-top:1px solid var(--line);
+}
+.access-table th,.access-table td{
+  padding:16px 16px 16px 0;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+  font-weight:400;
+  font-size:14px;
+}
+.access-table th{
+  width:96px;
+  font-size:11px;
+  letter-spacing:.24em;
+  color:var(--muted);
+  font-weight:500;
+  white-space:nowrap;
+  padding-top:20px;
+}
+.access-inner img{
+  width:100%;
+  aspect-ratio:3/2;
+  object-fit:cover;
+  object-position:center 30%;
+}
+
+/* ---------- reserve ---------- */
+.reserve{border-top:1px solid var(--line);}
+.reserve p{max-width:640px;margin-bottom:40px;}
+.reserve-row{
+  display:flex;
+  align-items:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+.reserve-tel{
+  font-family:"Zen Maru Gothic",sans-serif;
+  font-weight:700;
+  font-size:28px;
+  letter-spacing:.08em;
+  text-decoration:none;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+.reserve-link{
+  display:inline-block;
+  background:var(--accent);
+  color:#FFFFFF;
+  text-decoration:none;
+  padding:16px 40px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+.reserve-link:hover{background:var(--ink);}
+
+/* ---------- footer ---------- */
+footer{
+  padding:64px 0;
+  border-top:1px solid var(--line);
+}
+.footer-name{
+  font-family:"Zen Maru Gothic",sans-serif;
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:.12em;
+  margin-bottom:16px;
+}
+footer p{font-size:12px;line-height:2.0;color:var(--muted);}
+footer .note{margin-top:24px;}
+
+/* ---------- responsive ---------- */
+@media (max-width:834px){
+  section{padding:80px 0;}
+  .site-header nav a:not(.nav-reserve){display:none;}
+  .hero-mark{left:32px;bottom:32px;}
+  .facts dl{grid-template-columns:repeat(2,1fr);}
+  .facts div{padding:24px 16px;}
+  .facts div:nth-child(3){border-left:none;padding-left:0;}
+  .pillar{
+    grid-template-columns:56px 1fr;
+    grid-template-areas:"num body" "photo photo";
+    row-gap:20px;
+  }
+  .pillar-num{grid-area:num;font-size:28px;}
+  .pillar img{grid-area:photo;}
+  .pillar-body{grid-area:body;}
+  .trainer-inner,.access-inner{grid-template-columns:1fr;gap:48px;}
+  .trial{flex-direction:column;align-items:flex-start;}
+  .trial .t-price small{text-align:left;}
+}
+@media (max-width:560px){
+  section{padding:64px 0;}
+  h2{margin-bottom:40px;}
+  .wrap{padding:0 24px;}
+  .site-header{padding:16px 24px;}
+  .hero-mark{left:24px;bottom:24px;right:24px;}
+  .hero-mark p{font-size:13px;}
+  .price-table thead{display:none;}
+  .price-table,.price-table tbody,.price-table tr,.price-table td{display:block;}
+  .price-table tr{padding:20px 0;border-bottom:1px solid var(--line);}
+  .price-table td{border-bottom:none;padding:4px 0;}
+  .price-table td::before{
+    content:attr(data-label);
+    display:inline-block;
+    min-width:72px;
+    font-size:11px;
+    letter-spacing:.16em;
+    color:var(--muted);
+    font-weight:500;
+  }
+  .price-table .plan-name{font-size:16px;}
+  .price-table .plan-name::before{content:none;}
+  .price-table .price{text-align:left;}
+  .trial{padding:24px;}
+  .reserve-tel{font-size:24px;}
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .loader{display:none;}
+  .hero-mark{opacity:1;transform:none;transition:none;animation:none;}
+  .loader-arc .arc-draw,.loader-logo{animation:none;}
+  .loader-arc .arc-draw{stroke-dashoffset:0;}
+}
+</style>
+</head>
+<body>
+
+<!-- loader: arc draws around the dummy logo -->
+<div class="loader" id="loader" role="presentation">
+  <div class="loader-mark">
+    <svg class="loader-arc" width="176" height="176" viewBox="0 0 176 176" aria-hidden="true">
+      <circle class="arc-track" cx="88" cy="88" r="80" fill="none" stroke-width="2"></circle>
+      <circle class="arc-draw" cx="88" cy="88" r="80" fill="none" stroke-width="2"></circle>
+    </svg>
+    <div class="loader-logo">
+      <p class="logo-jp">まるみ</p>
+      <p class="logo-en">PERSONAL GYM</p>
+    </div>
+  </div>
+  <p class="loader-note">ロゴは仮のものです</p>
+</div>
+
+<header class="site-header">
+  <a class="logo" href="#">
+    <span class="jp">まるみ</span>
+    <span class="en">PERSONAL GYM MARUMI</span>
+  </a>
+  <nav>
+    <a href="#about">ジムについて</a>
+    <a href="#program">プログラム</a>
+    <a href="#price">料金</a>
+    <a href="#trainer">トレーナー</a>
+    <a href="#access">アクセス</a>
+    <a class="nav-reserve" href="#reserve">体験レッスン</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- hero: big photo with the giant wordmark -->
+  <div class="hero">
+    <img src="images/hero.jpg" alt="明るい室内で微笑みながら運動する女性" width="1600" height="1067" fetchpriority="high">
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-mark">
+      <span class="hero-badge">40代から70代の女性専用</span>
+      <h1>まるみ</h1>
+      <p><span class="nb">完全予約制</span>／<span class="nb">1回50分</span>／<span class="nb">女性トレーナーが担当します</span></p>
+      <a class="hero-cta" href="#reserve">体験レッスンを予約する</a>
+    </div>
+  </div>
+
+  <!-- facts -->
+  <div class="facts">
+    <div class="wrap">
+      <dl>
+        <div>
+          <dd>40〜70代</dd>
+          <dt>対象は女性のみです</dt>
+        </div>
+        <div>
+          <dd>50分</dd>
+          <dt>1回のレッスン時間です</dt>
+        </div>
+        <div>
+          <dd>1名</dd>
+          <dt><span class="nb">同時に指導する会員は</span><span class="nb">1名です</span></dt>
+        </div>
+        <div>
+          <dd>3,000円</dd>
+          <dt>体験レッスンの料金です</dt>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- about -->
+  <section id="about">
+    <div class="wrap">
+      <p class="label">ABOUT</p>
+      <h2>ジムについて</h2>
+      <div class="about-text">
+        <p>
+          <span class="nb">まるみは、</span><span class="nb">40代から70代の女性を対象にした</span><span class="nb">女性専用のパーソナルジムです。</span><span class="nb">完全予約制で、</span><span class="nb">同時に指導する会員は1名です。</span>
+        </p>
+        <p>
+          <span class="nb">レッスンは1回50分です。</span><span class="nb">初回はカウンセリングと</span><span class="nb">姿勢の確認から始め、</span><span class="nb">体力に合わせて</span><span class="nb">負荷を調整しています。</span>
+        </p>
+        <p>
+          <span class="nb">ウェアとタオルは</span><span class="nb">無料でお貸ししています。</span><span class="nb">更衣室とシャワー室を</span><span class="nb">備えています。</span>
+        </p>
+      </div>
+      <div class="about-photo">
+        <img src="images/about.jpg" alt="明るいスタジオでストレッチをする女性" width="1260" height="840" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- program -->
+  <section id="program">
+    <div class="wrap">
+      <p class="label">PROGRAM</p>
+      <h2>プログラム</h2>
+      <p class="program-lead">
+        <span class="nb">通い方は5つの流れで進めます。</span><span class="nb">初回のカウンセリングで</span><span class="nb">体力と目的を確認し、</span><span class="nb">毎回の体調に合わせて</span><span class="nb">内容を調整します。</span>
+      </p>
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <img src="images/prog1.jpg" alt="マットの上でトレーナーと話す女性" loading="lazy">
+        <div class="pillar-body">
+          <h3>初回カウンセリング</h3>
+          <p>
+            <span class="nb">体調と目的、</span><span class="nb">運動経験をお聞きします。</span><span class="nb">血圧を測定し、</span><span class="nb">無理のない目標を</span><span class="nb">一緒に決めます。</span>
+          </p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <img src="images/prog2.jpg" alt="トレーナーが会員の姿勢を確認する様子" loading="lazy">
+        <div class="pillar-body">
+          <h3>姿勢と体力の確認</h3>
+          <p>
+            <span class="nb">肩と股関節の動き、</span><span class="nb">脚の筋力を確認します。</span><span class="nb">結果をもとに、</span><span class="nb">運動の種類と負荷の目安を</span><span class="nb">決めます。</span>
+          </p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <img src="images/prog3.jpg" alt="スタジオで腕のストレッチをする女性" loading="lazy">
+        <div class="pillar-body">
+          <h3>マンツーマン指導</h3>
+          <p>
+            <span class="nb">トレーナーが隣で</span><span class="nb">動きを確認しながら、</span><span class="nb">1回50分のトレーニングを</span><span class="nb">行います。</span><span class="nb">負荷は毎回の体調に合わせて</span><span class="nb">調整します。</span>
+          </p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <img src="images/prog4.jpg" alt="ツナと卵のサラダボウル" loading="lazy">
+        <div class="pillar-body">
+          <h3>食事の相談</h3>
+          <p>
+            <span class="nb">普段の食事の内容をお聞きし、</span><span class="nb">たんぱく質の取り方を中心に、</span><span class="nb">続けやすい範囲で</span><span class="nb">提案します。</span>
+          </p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">05</div>
+        <img src="images/prog5.jpg" alt="床の上でストレッチをする女性" loading="lazy">
+        <div class="pillar-body">
+          <h3>自宅でのケア</h3>
+          <p>
+            <span class="nb">自宅でできるストレッチを</span><span class="nb">紙の資料でお渡しします。</span><span class="nb">次回のレッスンで動きを確認し、</span><span class="nb">内容を見直します。</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- price -->
+  <section id="price">
+    <div class="wrap">
+      <p class="label">PRICE</p>
+      <h2>料金</h2>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>プラン</th>
+            <th>内容</th>
+            <th>料金</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="plan-name">入会金</td>
+            <td data-label="内容">初回のみ</td>
+            <td class="price" data-label="料金">11,000円</td>
+          </tr>
+          <tr>
+            <td class="plan-name">月2回プラン</td>
+            <td data-label="内容">1回50分・マンツーマン指導</td>
+            <td class="price" data-label="料金">22,000円</td>
+          </tr>
+          <tr>
+            <td class="plan-name">月4回プラン</td>
+            <td data-label="内容">1回50分・マンツーマン指導</td>
+            <td class="price" data-label="料金">39,600円</td>
+          </tr>
+          <tr>
+            <td class="plan-name">月8回プラン</td>
+            <td data-label="内容">1回50分・マンツーマン指導</td>
+            <td class="price" data-label="料金">72,600円</td>
+          </tr>
+          <tr>
+            <td class="plan-name">都度利用</td>
+            <td data-label="内容">1回50分・マンツーマン指導</td>
+            <td class="price" data-label="料金">11,000円</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="price-notes">
+        <p>※料金はダミーの一例です</p>
+        <p>※料金は税込表示です</p>
+        <p>※料金にはトレーニング指導とレンタルウェア、タオルが含まれます</p>
+        <p>※コースの途中解約による違約金はありません</p>
+      </div>
+      <div class="trial">
+        <div>
+          <p class="t-name">体験レッスン</p>
+          <p>
+            <span class="nb">カウンセリング20分と</span><span class="nb">トレーニング30分を実施します。</span><span class="nb">ウェアとタオルは無料でお貸ししますので、</span><span class="nb">室内シューズだけご持参ください。</span>
+          </p>
+        </div>
+        <div class="t-price">3,000円<small>50分・税込</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- trainer -->
+  <section id="trainer">
+    <div class="wrap">
+      <p class="label">TRAINER</p>
+      <h2>トレーナー</h2>
+      <div class="trainer-inner">
+        <img src="images/trainer.jpg" alt="微笑む女性トレーナー" loading="lazy">
+        <div class="trainer-text">
+          <p class="trainer-name">田中 さくら<span>代表トレーナー</span></p>
+          <p>
+            <span class="nb">大手フィットネスクラブで</span><span class="nb">8年間指導し、</span><span class="nb">独立後に当ジムを開業しました。</span><span class="nb">40代以上の女性の指導を</span><span class="nb">担当しています。</span>
+          </p>
+          <p>
+            <span class="nb">膝や腰に不安のある方の</span><span class="nb">初回指導も担当します。</span><span class="nb">全てのレッスンを</span><span class="nb">同じトレーナーが担当します。</span>
+          </p>
+          <dl class="fact-list">
+            <div><dt>指導歴</dt><dd>10年</dd></div>
+            <div><dt>資格</dt><dd>健康運動指導士</dd></div>
+            <div><dt>担当</dt><dd>全てのレッスンを担当します</dd></div>
+          </dl>
+          <p class="dummy-note">※トレーナーの名前と経歴はダミーです</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- access -->
+  <section id="access">
+    <div class="wrap">
+      <p class="label">ACCESS</p>
+      <h2>アクセス</h2>
+      <div class="access-inner">
+        <div>
+          <table class="access-table">
+            <tbody>
+              <tr>
+                <th>住所</th>
+                <td>〇〇市○○町1-2-3</td>
+              </tr>
+              <tr>
+                <th>電話</th>
+                <td>03-0000-0000</td>
+              </tr>
+              <tr>
+                <th>営業時間</th>
+                <td>9:00〜20:00（最終受付19:00）</td>
+              </tr>
+              <tr>
+                <th>定休日</th>
+                <td>日曜日・祝日</td>
+              </tr>
+              <tr>
+                <th>駐車場</th>
+                <td><span class="nb">専用駐車場はありません。</span><span class="nb">近隣のコインパーキングを</span><span class="nb">ご利用ください。</span></td>
+              </tr>
+              <tr>
+                <th>最寄り駅</th>
+                <td>○○駅から徒歩5分</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="dummy-note">※住所はダミーです</p>
+        </div>
+        <img src="images/access.jpg" alt="スタジオの内観。マットとボルスターが並ぶ室内" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- reserve -->
+  <section class="reserve" id="reserve">
+    <div class="wrap">
+      <p class="label">TRIAL</p>
+      <h2>体験レッスンのご予約</h2>
+      <p>
+        <span class="nb">体験レッスンのご予約は</span><span class="nb">お電話と予約ページから</span><span class="nb">承っています。</span><span class="nb">受付時間は9:00〜20:00、</span><span class="nb">日曜日と祝日を除きます。</span>
+      </p>
+      <div class="reserve-row">
+        <a class="reserve-tel" href="tel:0300000000">03-0000-0000</a>
+        <a class="reserve-link" href="#">予約ページへ</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="footer-name">パーソナルジム まるみ</p>
+    <p><span class="nb">〇〇市○○町1-2-3</span>／<span class="nb">9:00〜20:00</span>／<span class="nb">日曜日・祝日 定休</span></p>
+    <p class="note"><span class="nb">このページは制作サンプルです。</span><span class="nb">店名、住所、電話番号、料金、経歴など、</span><span class="nb">掲載している情報はすべてダミーです。</span><span class="nb">予約リンクは省略しています。</span><br><span class="nb">写真：Pexelsのフリー素材を</span><span class="nb">使用しています。</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var loader = document.getElementById('loader');
+  var done = false;
+  function dismiss(){
+    if(done) return;
+    done = true;
+    document.body.classList.add('is-loaded');
+    loader.classList.add('is-done');
+    setTimeout(function(){ loader.style.display = 'none'; }, 900);
+  }
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.body.classList.add('is-loaded');
+    loader.style.display = 'none';
+    return;
+  }
+  setTimeout(dismiss, 1900);
+  loader.addEventListener('click', dismiss);
+})();
+</script>
+
+</body>
+</html>
