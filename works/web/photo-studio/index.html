@@ -7,7 +7,7 @@
 <meta name="description" content="新潟県柏崎市の古民家写真スタジオ「穂波写真室」。家族写真、七五三、成人式、ウェディング撮影に対応しています。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#FAF5EA;
@@ -27,7 +27,7 @@ body{
   font-weight:300;
   font-size:15px;
   line-height:1.9;
-  letter-spacing:.04em;
+  letter-spacing:.05em;
   -webkit-font-smoothing:antialiased;
 }
 img{display:block;max-width:100%;}
@@ -35,27 +35,27 @@ a{color:var(--ink);}
 .nb{white-space:nowrap;}
 .wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
 .label{
-  font-size:11px;
-  letter-spacing:.32em;
+  font-size:12px;
+  letter-spacing:.42em;
   color:var(--muted);
   font-weight:500;
 }
 .label::before{
   content:"";
   display:inline-block;
-  width:24px;
+  width:32px;
   height:1px;
   background:var(--amber);
   vertical-align:middle;
-  margin-right:16px;
+  margin-right:20px;
 }
 h2{
   font-family:"Shippori Mincho",serif;
   font-weight:600;
-  font-size:20px;
-  line-height:1.6;
-  letter-spacing:.14em;
-  margin:16px 0 56px;
+  font-size:clamp(24px,2.6vw,28px);
+  line-height:1.5;
+  letter-spacing:.16em;
+  margin:20px 0 64px;
 }
 section{padding:128px 0;}
 
@@ -68,16 +68,16 @@ section{padding:128px 0;}
 }
 .site-header .logo{
   font-family:"Shippori Mincho",serif;
-  font-size:16px;
+  font-size:17px;
   font-weight:600;
-  letter-spacing:.24em;
+  letter-spacing:.28em;
   text-decoration:none;
 }
 .site-header nav{display:flex;gap:32px;}
 .site-header nav a{
   text-decoration:none;
   font-size:12px;
-  letter-spacing:.16em;
+  letter-spacing:.2em;
   font-weight:400;
   color:var(--muted);
 }
@@ -118,10 +118,10 @@ section{padding:128px 0;}
   z-index:2;
   writing-mode:vertical-rl;
   font-family:"Shippori Mincho",serif;
-  font-weight:600;
+  font-weight:700;
   font-size:clamp(64px, 10vw, 112px);
   line-height:1.15;
-  letter-spacing:.12em;
+  letter-spacing:.1em;
   color:var(--bg);
   text-shadow:0 2px 24px rgba(43,32,22,.45);
   animation:heroIn 1.6s ease-out .2s both;
@@ -135,7 +135,7 @@ section{padding:128px 0;}
   padding:16px 24px;
   font-size:13px;
   line-height:1.9;
-  letter-spacing:.16em;
+  letter-spacing:.18em;
   font-weight:400;
 }
 .hero-place .sub{color:var(--muted);}
@@ -213,7 +213,7 @@ section{padding:128px 0;}
 }
 .facts dt{
   font-size:11px;
-  letter-spacing:.28em;
+  letter-spacing:.3em;
   color:var(--muted);
   font-weight:500;
   margin-bottom:8px;
@@ -227,7 +227,7 @@ section{padding:128px 0;}
   border-top:1px solid var(--ink);
 }
 .plan-table th,.plan-table td{
-  padding:24px 16px;
+  padding:32px 16px;
   border-bottom:1px solid var(--line);
   text-align:left;
   vertical-align:top;
@@ -235,20 +235,24 @@ section{padding:128px 0;}
 }
 .plan-table thead th{
   font-size:11px;
-  letter-spacing:.24em;
+  letter-spacing:.3em;
   color:var(--muted);
   font-weight:500;
   padding:16px;
 }
 .plan-table .plan-name{
-  font-size:16px;
-  font-weight:500;
-  letter-spacing:.08em;
+  font-family:"Shippori Mincho",serif;
+  font-size:17px;
+  font-weight:600;
+  letter-spacing:.1em;
   white-space:nowrap;
 }
 .plan-table .price{
-  font-size:15px;
-  font-weight:500;
+  font-family:"Shippori Mincho",serif;
+  font-size:20px;
+  font-weight:600;
+  font-variant-numeric:tabular-nums lining-nums;
+  letter-spacing:.05em;
   text-align:right;
   white-space:nowrap;
 }
@@ -284,9 +288,9 @@ section{padding:128px 0;}
 .profile-inner img{width:100%;height:auto;}
 .profile-name{
   font-family:"Shippori Mincho",serif;
-  font-size:16px;
+  font-size:18px;
   font-weight:600;
-  letter-spacing:.12em;
+  letter-spacing:.16em;
   margin-bottom:32px;
 }
 .profile-text p{margin-bottom:32px;}
@@ -320,7 +324,7 @@ section{padding:128px 0;}
 .access-table th{
   width:112px;
   font-size:11px;
-  letter-spacing:.24em;
+  letter-spacing:.3em;
   color:var(--muted);
   font-weight:500;
   white-space:nowrap;
@@ -337,7 +341,7 @@ section{padding:128px 0;}
   border:1px solid var(--ink);
   padding:16px 48px;
   font-size:13px;
-  letter-spacing:.16em;
+  letter-spacing:.22em;
   font-weight:400;
   transition:background .3s ease,color .3s ease;
 }
@@ -361,13 +365,17 @@ footer{
   font-weight:400;
 }
 .footer-index a span{
+  font-family:"Shippori Mincho",serif;
+  font-size:13px;
+  font-weight:600;
+  font-variant-numeric:tabular-nums lining-nums;
   color:var(--amber);
   margin-left:8px;
-  letter-spacing:.08em;
+  letter-spacing:.04em;
 }
 .footer-name{
   font-family:"Shippori Mincho",serif;
-  font-size:16px;
+  font-size:18px;
   font-weight:600;
   letter-spacing:.24em;
   margin-bottom:24px;
@@ -391,7 +399,7 @@ footer .note{margin-top:32px;}
 }
 @media (max-width:560px){
   section{padding:80px 0;}
-  h2{font-size:18px;margin-bottom:40px;}
+  h2{font-size:22px;margin-bottom:48px;}
   .wrap{padding:0 24px;}
   .site-header{padding:20px 24px;}
   .hero{padding:0;}
@@ -422,9 +430,9 @@ footer .note{margin-top:32px;}
     color:var(--muted);
     font-weight:500;
   }
-  .plan-table .plan-name{font-size:16px;}
+  .plan-table .plan-name{font-size:17px;}
   .plan-table .plan-name::before{content:none;}
-  .plan-table .price{text-align:left;font-size:15px;}
+  .plan-table .price{text-align:left;font-size:19px;}
   .facts div{padding:24px 16px 0 0;}
 }
 </style>
