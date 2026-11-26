@@ -1,38 +1,155 @@
-<!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>リスト作成サンプル（形式見本）｜自主制作サンプル</title><meta name="robots" content="noindex"><style>
-:root{--ink:#24262B;--sub:#5D626B;--line:#DCDFE4;--accent:#3D5A80;--paper:#FFFFFF;--bg:#F3F4F6}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:17px;line-height:2;word-break:auto-phrase;line-break:strict}
-.flag{margin:0;background:var(--ink);color:#fff;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;padding:6px 20px}
-article{max-width:760px;margin:40px auto 80px;background:var(--paper);padding:56px 64px}
-h1{font-size:28px;line-height:1.5;margin:0 0 24px}
-h2{font-size:21px;line-height:1.6;margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
-h3{font-size:18px;margin:32px 0 8px}
-p{margin:0 0 1em}
-blockquote{margin:0 0 32px;padding:12px 16px;background:var(--bg);border-left:4px solid var(--accent);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14px;line-height:1.8;color:var(--sub)}
-blockquote p{margin:0}
-ul,ol{margin:0 0 1em;padding-left:1.5em}
-table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14.5px;line-height:1.7}
-th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-thead th{border-bottom:2px solid var(--ink)}
-hr{border:0;border-top:1px dashed var(--line);margin:32px 0}
-a{color:var(--accent);word-break:break-all}
-figure{margin:16px 0 28px}figure img{width:100%;display:block;border:1px solid var(--line)}figcaption{font-family:sans-serif;font-size:13px;color:var(--sub);margin-top:6px}
-.back{display:block;max-width:760px;margin:24px auto 0;font-family:sans-serif;font-size:14px}
-@media(max-width:640px){article{margin:0;padding:32px 20px}body{font-size:16px}h1{font-size:23px}h2{font-size:19px}}
-</style></head>
-<body><p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」の文章サンプルです。</p>
-<a class="back" href="../index.html">← 一覧に戻る</a>
-<article>
-<h1>リスト作成サンプル（形式見本）</h1>
-<blockquote><p>自主制作サンプル：形式を見せるための架空データです。会社名・URL・連絡先・アカウントはすべて架空で、URL・メールは実在しない予約済みの .example ドメインを使っています。実在の個人情報は含みません。</p></blockquote>
-<h2>ファイル</h2>
-<table><thead><tr><th>ファイル</th><th>内容</th></tr></thead><tbody><tr><td>sales_list.xlsx ／ sales_list.csv</td><td>営業リスト（50行）：会社名・業種・住所・URL・電話番号・メール・問い合わせフォームの有無・スマホ対応・備考・対応状況</td></tr><tr><td>influencer_list.xlsx ／ influencer_list.csv</td><td>SNSインフルエンサーリスト（30行）：アカウント・SNS・ジャンル・フォロワー数・規模・投稿数・平均エンゲージメント率・活動地域・依頼の受付</td></tr><tr><td>make_lists.py</td><td>見本データを作ったスクリプト</td></tr></tbody></table>
-<h2>Excel 版の作り</h2>
-<ul><li>見出し行・左端の列を固定し、すべての列で絞り込みができます</li><li>営業リストの「対応状況」は、未連絡・資料送付済み・返信あり・商談予定・見送り から選ぶ入力規則を設定しています</li><li>CSV 版は Excel で文字化けしないよう UTF-8（BOM付き）で保存しています</li></ul>
-<h2>実案件で作る場合の進め方</h2>
-<ol><li>対象（地域・業種・フォロワー数の範囲など）・必要な列を決めます</li><li>公開されている情報（各社のホームページ・公式アカウントのプロフィール）だけから集めます</li><li>営業メールを禁止している会社・個人のアカウント（企業でない方）の連絡先は載せません</li><li>集めた日付を記録し、古くなった情報を見分けられるようにします</li></ol>
-<h2>応募時の紹介文（3行）</h2>
-<p>営業リストとSNSインフルエンサーリストの形式見本（自主制作サンプル・架空データ）です。<br>絞り込み・見出しの固定・対応状況の入力規則を設定したExcel・文字化けしないCSVの両方で納品します。<br>公開されている情報だけから集め、営業を禁止している連絡先は載せない方針で作成します。</p>
-</article></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>リスト作成サンプル（形式見本）｜ハル｜よろずサポート屋</title>
+<meta name="description" content="営業リスト50行とSNSインフルエンサーリスト30行の形式見本です。絞り込みと入力規則を設定したExcelと、文字化けしないCSVの両方を公開しています。すべて架空データです。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FCFCFA;--ink:#1F2937;--accent:#1D4ED8;--line:#D8D8D2;--wash:#F1F1EC}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans JP",sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.8}
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+a{color:var(--accent)}
+.flag{background:var(--ink);color:#fff;font-size:13px;padding:8px 24px}
+header.top{max-width:72rem;margin:0 auto;padding:24px 24px 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+header.top a{font-size:14px;text-decoration:none}
+header.top .en{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+main{max-width:72rem;margin:0 auto;padding:0 24px}
+.hero{padding:48px 0 32px}
+h1{font-size:2.4rem;line-height:1.3;font-weight:900;margin-bottom:16px}
+.hero p.lead{max-width:42rem;font-size:15px}
+.facts{display:flex;flex-wrap:wrap;margin-top:32px;border-top:1px solid var(--line);border-bottom:3px solid var(--ink)}
+.facts div{flex:1 1 12rem;padding:16px 16px 16px 0}
+.facts .num{font-family:"JetBrains Mono",monospace;font-size:1.6rem;font-weight:700;color:var(--accent);display:block;line-height:1.3}
+.facts .lbl{font-size:13px;display:block}
+section.shelf{padding:48px 0 32px;border-bottom:3px solid var(--ink)}
+h2{font-size:1.6rem;line-height:1.4;font-weight:900;margin-bottom:8px}
+h2 .no{font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:1rem;display:block;letter-spacing:.08em;margin-bottom:8px}
+.sec-lead{font-size:15px;max-width:44rem;margin-bottom:24px}
+.specwrap{overflow-x:auto;border:1px solid var(--line)}
+table.spec{border-collapse:collapse;font-size:13px;line-height:1.6;min-width:56rem;width:100%}
+table.spec th,table.spec td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:8px; text-align:left;vertical-align:top;white-space:nowrap}
+table.spec thead th{background:var(--ink);color:#fff;font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700}
+table.spec td.rn,table.spec th.rn{font-family:"JetBrains Mono",monospace;color:var(--accent);text-align:right;width:3rem}
+table.spec tbody tr:nth-child(even){background:var(--wash)}
+.excerpt-note{font-size:13px;margin-top:8px}
+table.files{width:100%;border-collapse:collapse;font-size:14px;line-height:1.7;margin-top:8px}
+table.files th,table.files td{border-bottom:1px solid var(--line);padding:8px 16px 8px 0;text-align:left;vertical-align:top}
+table.files thead th{border-bottom:2px solid var(--ink);font-size:13px}
+table.files td:first-child{font-family:"JetBrains Mono",monospace;font-size:13px}
+table.files a{text-decoration:none;border-bottom:1px solid var(--accent)}
+section.plain{padding:48px 0;border-bottom:1px solid var(--line)}
+ul.notes{list-style:none}
+ul.notes li{font-size:14px;padding:8px 0 8px 16px;border-left:2px solid var(--accent);margin-bottom:8px}
+ol.steps{list-style:none;counter-reset:st}
+ol.steps li{counter-increment:st;display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px}
+ol.steps li::before{content:counter(st,decimal-leading-zero);font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--accent);flex:none}
+.intro{background:var(--wash);padding:32px;margin:48px 0}
+.intro p{font-size:15px}
+footer{max-width:72rem;margin:0 auto;padding:32px 24px 48px;font-size:13px;display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
+@media(max-width:768px){h1{font-size:1.9rem}section.shelf,section.plain{padding:32px 0}
+table.files tr{display:block;padding:8px 0;border-bottom:1px solid var(--line)}
+table.files td{display:block;border-bottom:0;padding:4px 0}
+table.files thead{display:none}}
+</style>
+</head>
+<body>
+<p class="flag">自主制作サンプルです。会社名・URL・連絡先・アカウントはすべて架空で、URL・メールは実在しない .example ドメインを使っています。実在の個人情報は含みません。</p>
+<header class="top">
+<a href="../index.html">← 一覧に戻る</a>
+<span class="en">List specimen</span>
+</header>
+<main>
+<div class="hero">
+<h1><span class="nb">リスト作成サンプル</span><span class="nb">（形式見本）</span></h1>
+<p class="lead"><span class="seg"><span class="nb">営業リストと</span><span class="nb">SNSインフルエンサーリストの</span></span><span class="seg"><span class="nb">形式を見せるための見本です</span></span><span class="seg"><span class="nb">下の表は同梱ファイルの</span><span class="nb">先頭5行の抜粋です</span></span></p>
+<div class="facts">
+<div><span class="num">50行・10列</span><span class="lbl"><span class="nb">営業リスト</span><span class="nb">対応状況の入力規則つき</span></span></div>
+<div><span class="num">30行・11列</span><span class="lbl"><span class="nb">インフルエンサーリスト</span><span class="nb">規模の区分つき</span></span></div>
+<div><span class="num">XLSX＋CSV</span><span class="lbl"><span class="nb">CSVはUTF-8</span><span class="nb">（BOM付き）</span></span></div>
+</div>
+</div>
+
+<section class="shelf" aria-labelledby="sales">
+<h2 id="sales"><span class="no">SHELF 01 / SALES LIST</span>営業リスト抜粋</h2>
+<p class="sec-lead"><span class="nb">列は会社名・業種・住所・URL・</span><span class="nb">電話番号・メール・</span><span class="nb">問い合わせフォームの有無・スマホ対応・</span><span class="nb">備考・対応状況の10列です。</span></p>
+<div class="specwrap">
+<table class="spec">
+<thead><tr><th class="rn" scope="col">No.</th><th scope="col">会社名・店名</th><th scope="col">業種</th><th scope="col">住所</th><th scope="col">URL</th><th scope="col">電話番号</th><th scope="col">問い合わせフォーム</th><th scope="col">スマホ対応</th><th scope="col">備考（サイトの状態）</th><th scope="col">対応状況</th></tr></thead>
+<tbody>
+<tr><td class="rn">S001</td><td>つきみ食堂</td><td>飲食店</td><td>福岡県福岡市博多区博多駅前4-20-1</td><td>https://www.tsukimi-shokudo.example/</td><td>092-000-0001</td><td>あり</td><td>未対応</td><td>スマートフォン表示に未対応</td><td>未連絡</td></tr>
+<tr><td class="rn">S002</td><td>さくらヘアサロン</td><td>美容室</td><td>広島県広島市中区八丁堀4-16-4</td><td>https://www.sakura-hair.example/</td><td>082-000-0002</td><td>なし</td><td>対応</td><td>お知らせが1年以上更新なし</td><td>商談予定</td></tr>
+<tr><td class="rn">S003</td><td>しらかわ整体院</td><td>整体院</td><td>宮城県仙台市青葉区中央5-16-5</td><td>https://www.shirakawa-seitai.example/</td><td>022-000-0003</td><td>あり</td><td>対応</td><td>特記事項なし</td><td>見送り</td></tr>
+<tr><td class="rn">S004</td><td>こもれび工務店</td><td>工務店</td><td>広島県広島市中区八丁堀5-8-11</td><td>https://www.komorebi-koumuten.example/</td><td>082-000-0004</td><td>なし</td><td>対応</td><td>予約ページが外部サービスのみ</td><td>商談予定</td></tr>
+<tr><td class="rn">S005</td><td>あかね学習塾</td><td>学習塾</td><td>福岡県福岡市博多区博多駅前5-13-5</td><td>https://www.akane-juku.example/</td><td>092-000-0005</td><td>なし</td><td>対応</td><td>Instagramの更新が月1回以下</td><td>商談予定</td></tr>
+</tbody>
+</table>
+</div>
+<p class="excerpt-note">全50行は下のファイルに収めています。メール列は表の幅の都合で抜粋表から省いています。</p>
+</section>
+
+<section class="shelf" aria-labelledby="inf">
+<h2 id="inf"><span class="no">SHELF 02 / INFLUENCER LIST</span>SNSインフルエンサーリスト抜粋</h2>
+<p class="sec-lead"><span class="nb">列はアカウント・SNS・ジャンル・</span><span class="nb">フォロワー数・規模・投稿数・</span><span class="nb">平均エンゲージメント率・活動地域・</span><span class="nb">依頼の受付・備考の11列です。</span></p>
+<div class="specwrap">
+<table class="spec">
+<thead><tr><th class="rn" scope="col">No.</th><th scope="col">アカウント</th><th scope="col">SNS</th><th scope="col">ジャンル</th><th scope="col">フォロワー数</th><th scope="col">規模</th><th scope="col">投稿数</th><th scope="col">平均エンゲージメント率（%）</th><th scope="col">活動地域</th><th scope="col">依頼の受付</th></tr></thead>
+<tbody>
+<tr><td class="rn">I001</td><td>@sample_asahi_01</td><td>Instagram</td><td>カフェ巡り</td><td>20921</td><td>マイクロ（1万〜5万）</td><td>490</td><td>5.5</td><td>宮城県</td><td>プロフィールのメールで受付</td></tr>
+<tr><td class="rn">I002</td><td>@sample_shirakawa_02</td><td>Instagram</td><td>パン</td><td>107649</td><td>ミドル（5万以上）</td><td>1716</td><td>5.6</td><td>福岡県</td><td>プロフィールのメールで受付</td></tr>
+<tr><td class="rn">I003</td><td>@sample_suzuran_03</td><td>Instagram</td><td>料理・レシピ</td><td>76809</td><td>ミドル（5万以上）</td><td>1196</td><td>2.1</td><td>広島県</td><td>プロフィールのメールで受付</td></tr>
+<tr><td class="rn">I004</td><td>@sample_hoshino_04</td><td>Instagram</td><td>ネイル</td><td>8000</td><td>ナノ（1万未満）</td><td>1614</td><td>5.7</td><td>大阪府</td><td>プロフィールのメールで受付</td></tr>
+<tr><td class="rn">I005</td><td>@sample_tsubasa_05</td><td>Instagram</td><td>ヘアアレンジ</td><td>29224</td><td>マイクロ（1万〜5万）</td><td>1708</td><td>6.1</td><td>愛知県</td><td>プロフィールのメールで受付</td></tr>
+</tbody>
+</table>
+</div>
+<p class="excerpt-note">全30行は下のファイルに収めています。備考列は抜粋表から省いています。</p>
+</section>
+
+<section class="plain" aria-labelledby="files">
+<h2 id="files"><span class="no">FILES</span>ファイル</h2>
+<table class="files">
+<thead><tr><th scope="col">ファイル</th><th scope="col">内容</th></tr></thead>
+<tbody>
+<tr><td><a href="sales_list.xlsx">sales_list.xlsx</a> ／ <a href="sales_list.csv">sales_list.csv</a></td><td>営業リスト（50行）：会社名・業種・住所・URL・電話番号・メール・問い合わせフォームの有無・スマホ対応・備考・対応状況</td></tr>
+<tr><td><a href="influencer_list.xlsx">influencer_list.xlsx</a> ／ <a href="influencer_list.csv">influencer_list.csv</a></td><td>SNSインフルエンサーリスト（30行）：アカウント・SNS・ジャンル・フォロワー数・規模・投稿数・平均エンゲージメント率・活動地域・依頼の受付</td></tr>
+<tr><td><a href="make_lists.py">make_lists.py</a></td><td>見本データを作ったスクリプト</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="plain" aria-labelledby="excel">
+<h2 id="excel"><span class="no">EXCEL</span>Excel 版の作り</h2>
+<ul class="notes">
+<li>見出し行・左端の列を固定し、すべての列で絞り込みができます。</li>
+<li>営業リストの「対応状況」は未連絡・資料送付済み・返信あり・商談予定・見送り から選ぶ入力規則を設定しています。</li>
+<li>CSV 版は Excel で文字化けしないよう UTF-8（BOM付き）で保存しています。</li>
+</ul>
+</section>
+
+<section class="plain" aria-labelledby="flow">
+<h2 id="flow"><span class="no">FLOW</span>実案件で作る場合の進め方</h2>
+<ol class="steps">
+<li><span>対象（地域・業種・フォロワー数の範囲など）と必要な列を決めます</span></li>
+<li><span>公開されている情報（各社のホームページ・公式アカウントのプロフィール）だけから集めます</span></li>
+<li><span>営業メールを禁止している会社と、個人のアカウント（企業でない方）の連絡先は載せません</span></li>
+<li><span>集めた日付を記録し、古くなった情報を見分けられるようにします</span></li>
+</ol>
+</section>
+
+<div class="intro">
+<p><span class="seg">営業リストとSNSインフルエンサーリストの形式見本（自主制作サンプル・架空データ）です</span><span class="seg">絞り込み・見出しの固定・対応状況の入力規則を設定したExcelと、文字化けしないCSVの両方で納品します</span><span class="seg">公開されている情報だけから集め、営業を禁止している連絡先は載せない方針で作成します</span></p>
+</div>
+</main>
+<footer>
+<span>ハル｜よろずサポート屋｜自主制作サンプル</span>
+<a href="../index.html">← 一覧に戻る</a>
+</footer>
+</body>
+</html>

@@ -1,42 +1,152 @@
-<!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>公開商品ページの収集デモ（スクレイピング実演セット）｜自主制作サンプル</title><meta name="robots" content="noindex"><style>
-:root{--ink:#24262B;--sub:#5D626B;--line:#DCDFE4;--accent:#3D5A80;--paper:#FFFFFF;--bg:#F3F4F6}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:17px;line-height:2;word-break:auto-phrase;line-break:strict}
-.flag{margin:0;background:var(--ink);color:#fff;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;padding:6px 20px}
-article{max-width:760px;margin:40px auto 80px;background:var(--paper);padding:56px 64px}
-h1{font-size:28px;line-height:1.5;margin:0 0 24px}
-h2{font-size:21px;line-height:1.6;margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
-h3{font-size:18px;margin:32px 0 8px}
-p{margin:0 0 1em}
-blockquote{margin:0 0 32px;padding:12px 16px;background:var(--bg);border-left:4px solid var(--accent);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14px;line-height:1.8;color:var(--sub)}
-blockquote p{margin:0}
-ul,ol{margin:0 0 1em;padding-left:1.5em}
-table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14.5px;line-height:1.7}
-th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-thead th{border-bottom:2px solid var(--ink)}
-hr{border:0;border-top:1px dashed var(--line);margin:32px 0}
-a{color:var(--accent);word-break:break-all}
-figure{margin:16px 0 28px}figure img{width:100%;display:block;border:1px solid var(--line)}figcaption{font-family:sans-serif;font-size:13px;color:var(--sub);margin-top:6px}
-.back{display:block;max-width:760px;margin:24px auto 0;font-family:sans-serif;font-size:14px}
-@media(max-width:640px){article{margin:0;padding:32px 20px}body{font-size:16px}h1{font-size:23px}h2{font-size:19px}}
-</style></head>
-<body><p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」の文章サンプルです。</p>
-<a class="back" href="../index.html">← 一覧に戻る</a>
-<article>
-<h1>公開商品ページの収集デモ（スクレイピング実演セット）</h1>
-<blockquote><p>自主制作サンプル：スクレイピング練習用に公開されているサンドボックスのECサイト（books.toscrape.com）を題材にしています。サイトの価格・評価はサイト側でランダムに付けられた値で、実在の商品情報ではありません。</p></blockquote>
-<h2>成果物</h2>
-<table><thead><tr><th>ファイル</th><th>内容</th></tr></thead><tbody><tr><td>output/books_100.xlsx</td><td>収集結果のExcel（商品名・価格・評価・在庫数・分類・商品コード・URL、100行）と取得条件のシート</td></tr><tr><td>scrape.py</td><td>収集スクリプト（Python 3.10以上・openpyxl）</td></tr><tr><td>run-log.txt</td><td>実行したときのログ（100件・137秒）</td></tr><tr><td>screenshots/run.png</td><td>実行画面のキャプチャ</td></tr><tr><td>screenshots/excel.png</td><td>Excelの表示を再現したプレビュー画像（1〜18行目）</td></tr></tbody></table>
-<figure><img src="screenshots/run.png" alt="実行画面（100件を137秒で取得）"><figcaption>実行画面（100件を137秒で取得）</figcaption></figure>
-<figure><img src="screenshots/excel.png" alt="収集結果のExcel（商品一覧シート）"><figcaption>収集結果のExcel（商品一覧シート）</figcaption></figure>
-<h2>処理の流れ</h2>
-<ol><li>robots.txt を読み、取得が禁止されたページがないか確認します</li><li>商品一覧のページを1ページ目から順に読み、商品名・価格・評価・詳細ページのURLを取り出します</li><li>商品ごとに詳細ページを開き、分類・在庫数・商品コードを取り出します</li><li>指定の件数（100件）に達したら止め、Excelに保存します</li><li>Excelには見出しの固定・絞り込み・価格の書式・URLのリンクを設定し、取得条件を別のシートに残します</li></ol>
-<h2>実案件での条件の決め方</h2>
-<table><thead><tr><th>項目</th><th>このデモ</th><th>実案件で決めること</th></tr></thead><tbody><tr><td>対象</td><td>books.toscrape.com の商品一覧・詳細ページ</td><td>対象サイトのURL・取得してよいページの範囲</td></tr><tr><td>取得する項目</td><td>商品名・価格・評価・在庫数・分類・商品コード・URL</td><td>必要な項目・表の列の順番</td></tr><tr><td>頻度</td><td>1回</td><td>1回のみ／毎週月曜の朝など。定期実行は Windows のタスクスケジューラで設定できます</td></tr><tr><td>件数・時間</td><td>100件・約2分20秒</td><td>件数から所要時間を見積もります（1件あたり約1.4秒）</td></tr><tr><td>納品形式</td><td>Excel（.xlsx）</td><td>Excel・CSV・Googleスプレッドシート</td></tr></tbody></table>
-<h2>注意点</h2>
-<ul><li>対象サイトの利用規約・robots.txt を確認し、収集が禁止されているサイトでは行いません</li><li>ログインが必要なページ・会員限定の情報・認証を回避する処理は扱いません</li><li>1リクエストごとに1秒の間隔をあけ、サーバーに負荷をかけないようにしています（0.5秒未満は設定できない作り）</li><li>個人情報（氏名・メールアドレス・電話番号など）は収集しません</li><li>サイトの作りが変わると取り出せなくなるため、定期実行する場合は取得件数を毎回ログで確認します</li></ul>
-<h2>応募時の紹介文（3行）</h2>
-<p>ECサイトの公開商品ページから、商品名・価格・在庫数などを集めてExcelにまとめる収集スクリプトの自主制作サンプルです。<br>robots.txt の確認・1秒の取得間隔・失敗時の再試行を組み込み、ログインが必要な情報は扱わない範囲で作っています。<br>100件を約2分20秒で取得し、絞り込みとリンクを設定したExcelで納品します。</p>
-</article></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公開商品ページの収集デモ（スクレイピング実演）｜ハル｜よろずサポート屋</title>
+<meta name="description" content="練習用サンドボックスのECサイトから商品100件を137秒で取得したスクレイピングの自主制作サンプルです。実行ログ・スクリプト・成果物Excelをそろえて公開しています。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ground:#101418;--ink:#E6EAF0;--accent:#E8A317;--line:#2E363E;--panel:#171D23}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans JP",sans-serif;background:var(--ground);color:var(--ink);font-size:16px;line-height:1.8}
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+a{color:var(--accent)}
+.flag{background:#000;color:#fff;font-size:13px;padding:8px 24px;border-bottom:1px solid var(--line)}
+header.top{max-width:68rem;margin:0 auto;padding:24px 24px 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+header.top a{font-size:14px;text-decoration:none}
+header.top .en{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+main{max-width:68rem;margin:0 auto;padding:0 24px}
+.hero{padding:48px 0 32px;border-bottom:2px solid var(--ink)}
+h1{font-size:2.5rem;line-height:1.3;font-weight:900;margin-bottom:16px}
+.hero p.lead{max-width:42rem;font-size:15px}
+.facts{display:flex;flex-wrap:wrap;margin-top:32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts div{flex:1 1 12rem;padding:16px 16px 16px 0}
+.facts .num{font-family:"JetBrains Mono",monospace;font-size:3.2rem;font-weight:700;color:var(--accent);display:block;line-height:1.2}
+.facts .lbl{font-size:13px;display:block}
+section{padding:48px 0;border-bottom:1px solid var(--line)}
+h2{font-size:1.6rem;line-height:1.4;font-weight:900;margin-bottom:8px}
+h2 .no{font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:1rem;display:block;letter-spacing:.08em;margin-bottom:8px}
+.sec-lead{font-size:15px;max-width:44rem;margin-bottom:24px}
+.log{background:var(--panel);border:1px solid var(--line);padding:24px;font-family:"JetBrains Mono",monospace;font-size:13px;line-height:1.7;overflow-x:auto}
+.log p{white-space:nowrap}
+.log .t{color:var(--accent)}
+.log .done{font-weight:700}
+figure{margin:24px 0 0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.7}
+th,td{border-bottom:1px solid var(--line);padding:8px 16px 8px 0;text-align:left;vertical-align:top}
+thead th{border-bottom:2px solid var(--ink);font-size:13px}
+table.files td:first-child{font-family:"JetBrains Mono",monospace;font-size:13px}
+table.files a{text-decoration:none;border-bottom:1px solid var(--accent)}
+ol.runlog{list-style:none}
+ol.runlog li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px}
+ol.runlog .st{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--accent);flex:none}
+ul.notes{list-style:none}
+ul.notes li{font-size:14px;padding:8px 0 8px 16px;border-left:2px solid var(--accent);margin-bottom:8px}
+.intro{border:1px solid var(--line);background:var(--panel);padding:32px;margin:48px 0}
+.intro p{font-size:15px}
+footer{max-width:68rem;margin:0 auto;padding:32px 24px 48px;font-size:13px;display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
+@media(max-width:768px){h1{font-size:1.9rem}.facts .num{font-size:2.4rem}section{padding:32px 0}.log{padding:16px}}
+</style>
+</head>
+<body>
+<p class="flag">自主制作サンプルです。スクレイピング練習用に公開されているサンドボックスのECサイト（books.toscrape.com）を題材にしています。価格・評価はサイト側でランダムに付けられた値です。</p>
+<header class="top">
+<a href="../index.html">← 一覧に戻る</a>
+<span class="en">Scraping run / ledger</span>
+</header>
+<main>
+<div class="hero">
+<h1><span class="nb">公開商品ページの</span><span class="nb">収集デモ</span></h1>
+<p class="lead"><span class="seg"><span class="nb">商品一覧と詳細ページから</span></span><span class="seg"><span class="nb">商品名・価格・評価・在庫数・分類・</span></span><span class="seg"><span class="nb">商品コード・URLを取得し</span></span><span class="seg"><span class="nb">Excelに保存した実行の記録です</span></span></p>
+<div class="facts">
+<div><span class="num">100</span><span class="lbl"><span class="nb">取得件数（件）</span><span class="nb">一覧5ページ分</span></span></div>
+<div><span class="num">137</span><span class="lbl"><span class="nb">所要時間（秒）</span><span class="nb">約2分20秒</span></span></div>
+<div><span class="num">1.0</span><span class="lbl"><span class="nb">取得間隔（秒）</span><span class="nb">1件あたり約1.4秒</span></span></div>
+</div>
+</div>
+
+<section aria-labelledby="log">
+<h2 id="log"><span class="no">RUN LOG</span>実行ログ（抜粋）</h2>
+<p class="sec-lead"><span class="nb">同梱の run-log.txt から</span><span class="nb">開始・各ページの先頭・完了の行を</span><span class="nb">抜粋しています。</span><span class="nb">時刻と件数はログのままです。</span></p>
+<div class="log" role="img" aria-label="実行ログの抜粋。13時30分05秒に開始し、13時32分22秒に100件の保存が完了しています">
+<p><span class="t">[13:30:05]</span> 開始：対象 https://books.toscrape.com/ ／ 件数 100 ／ 間隔 1.0秒</p>
+<p><span class="t">[13:30:06]</span> 一覧 1ページ目を取得：https://books.toscrape.com/</p>
+<p><span class="t">[13:30:08]</span> &nbsp;&nbsp;&nbsp;1/100&nbsp; £ 51.77&nbsp; A Light in the Attic</p>
+<p><span class="t">[13:30:30]</span> 一覧 2ページ目を取得：https://books.toscrape.com/catalogue/page-2.html</p>
+<p><span class="t">[13:30:32]</span> &nbsp;&nbsp;21/100&nbsp; £ 12.84&nbsp; In Her Wake</p>
+<p><span class="t">[13:30:56]</span> 一覧 3ページ目を取得：https://books.toscrape.com/catalogue/page-3.html</p>
+<p><span class="t">[13:31:23]</span> 一覧 4ページ目を取得：https://books.toscrape.com/catalogue/page-4.html</p>
+<p><span class="t">[13:31:49]</span> 一覧 5ページ目を取得：https://books.toscrape.com/catalogue/page-5.html</p>
+<p><span class="t">[13:32:21]</span> &nbsp;100/100&nbsp; £ 22.00&nbsp; In the Country We Love: My Family Divided</p>
+<p class="done"><span class="t">[13:32:22]</span> 完了：100件を保存しました → output/books_100.xlsx（137秒）</p>
+</div>
+<figure><img src="screenshots/run.png" alt="実行画面（100件を137秒で取得）" width="1100" height="604" loading="lazy"></figure>
+</section>
+
+<section aria-labelledby="out">
+<h2 id="out"><span class="no">OUTPUT</span>成果物</h2>
+<table class="files">
+<thead><tr><th scope="col">ファイル</th><th scope="col">内容</th></tr></thead>
+<tbody>
+<tr><td><a href="output/books_100.xlsx">output/books_100.xlsx</a></td><td>収集結果のExcel（商品名・価格・評価・在庫数・分類・商品コード・URL、100行）と取得条件のシート</td></tr>
+<tr><td><a href="scrape.py">scrape.py</a></td><td>収集スクリプト（Python 3.10以上・openpyxl）</td></tr>
+<tr><td><a href="run-log.txt">run-log.txt</a></td><td>実行したときのログ（100件・137秒）</td></tr>
+<tr><td><a href="screenshots/run.png">screenshots/run.png</a></td><td>実行画面のキャプチャ</td></tr>
+<tr><td><a href="screenshots/excel.png">screenshots/excel.png</a></td><td>Excelの表示を再現したプレビュー画像（1〜18行目）</td></tr>
+</tbody>
+</table>
+<figure><img src="screenshots/excel.png" alt="収集結果のExcel（商品一覧シート）" width="1300" height="560" loading="lazy"></figure>
+</section>
+
+<section aria-labelledby="flow">
+<h2 id="flow"><span class="no">FLOW</span>処理の流れ</h2>
+<ol class="runlog">
+<li><span class="st">STEP 1</span><span>robots.txt を読み、取得が禁止されたページがないか確認します</span></li>
+<li><span class="st">STEP 2</span><span>商品一覧のページを1ページ目から順に読み、商品名・価格・評価・詳細ページのURLを取り出します</span></li>
+<li><span class="st">STEP 3</span><span>商品ごとに詳細ページを開き、分類・在庫数・商品コードを取り出します</span></li>
+<li><span class="st">STEP 4</span><span>指定の件数（100件）に達したら止め、Excelに保存します</span></li>
+<li><span class="st">STEP 5</span><span>Excelには見出しの固定・絞り込み・価格の書式・URLのリンクを設定し、取得条件を別のシートに残します</span></li>
+</ol>
+</section>
+
+<section aria-labelledby="cond">
+<h2 id="cond"><span class="no">CONDITIONS</span>実案件での条件の決め方</h2>
+<table>
+<thead><tr><th scope="col">項目</th><th scope="col">このデモ</th><th scope="col">実案件で決めること</th></tr></thead>
+<tbody>
+<tr><td>対象</td><td>books.toscrape.com の商品一覧・詳細ページ</td><td>対象サイトのURL・取得してよいページの範囲</td></tr>
+<tr><td>取得する項目</td><td>商品名・価格・評価・在庫数・分類・商品コード・URL</td><td>必要な項目・表の列の順番</td></tr>
+<tr><td>頻度</td><td>1回</td><td>1回のみ／毎週月曜の朝など。定期実行は Windows のタスクスケジューラで設定できます</td></tr>
+<tr><td>件数・時間</td><td>100件・約2分20秒</td><td>件数から所要時間を見積もります（1件あたり約1.4秒）</td></tr>
+<tr><td>納品形式</td><td>Excel（.xlsx）</td><td>Excel・CSV・Googleスプレッドシート</td></tr>
+</tbody>
+</table>
+</section>
+
+<section aria-labelledby="note">
+<h2 id="note"><span class="no">NOTES</span>注意点</h2>
+<ul class="notes">
+<li>対象サイトの利用規約・robots.txt を確認し、収集が禁止されているサイトでは行いません。</li>
+<li>ログインが必要なページ・会員限定の情報・認証を回避する処理は扱いません。</li>
+<li>1リクエストごとに1秒の間隔をあけ、サーバーに負荷をかけないようにしています（0.5秒未満は設定できない作り）。</li>
+<li>個人情報（氏名・メールアドレス・電話番号など）は収集しません。</li>
+<li>サイトの作りが変わると取り出せなくなるため、定期実行する場合は取得件数を毎回ログで確認します。</li>
+</ul>
+</section>
+
+<div class="intro">
+<p><span class="seg">ECサイトの公開商品ページから、商品名・価格・在庫数などを集めてExcelにまとめる収集スクリプトの自主制作サンプルです</span><span class="seg">robots.txt の確認・1秒の取得間隔・失敗時の再試行を組み込み、ログインが必要な情報は扱わない範囲で作っています</span><span class="seg">100件を約2分20秒で取得し、絞り込みとリンクを設定したExcelで納品します</span></p>
+</div>
+</main>
+<footer>
+<span>ハル｜よろずサポート屋｜自主制作サンプル</span>
+<a href="../index.html">← 一覧に戻る</a>
+</footer>
+</body>
+</html>

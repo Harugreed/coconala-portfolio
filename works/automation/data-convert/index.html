@@ -1,44 +1,160 @@
-<!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>データ変換・Excel自動化サンプル｜自主制作サンプル</title><meta name="robots" content="noindex"><style>
-:root{--ink:#24262B;--sub:#5D626B;--line:#DCDFE4;--accent:#3D5A80;--paper:#FFFFFF;--bg:#F3F4F6}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:17px;line-height:2;word-break:auto-phrase;line-break:strict}
-.flag{margin:0;background:var(--ink);color:#fff;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;padding:6px 20px}
-article{max-width:760px;margin:40px auto 80px;background:var(--paper);padding:56px 64px}
-h1{font-size:28px;line-height:1.5;margin:0 0 24px}
-h2{font-size:21px;line-height:1.6;margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
-h3{font-size:18px;margin:32px 0 8px}
-p{margin:0 0 1em}
-blockquote{margin:0 0 32px;padding:12px 16px;background:var(--bg);border-left:4px solid var(--accent);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14px;line-height:1.8;color:var(--sub)}
-blockquote p{margin:0}
-ul,ol{margin:0 0 1em;padding-left:1.5em}
-table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14.5px;line-height:1.7}
-th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-thead th{border-bottom:2px solid var(--ink)}
-hr{border:0;border-top:1px dashed var(--line);margin:32px 0}
-a{color:var(--accent);word-break:break-all}
-figure{margin:16px 0 28px}figure img{width:100%;display:block;border:1px solid var(--line)}figcaption{font-family:sans-serif;font-size:13px;color:var(--sub);margin-top:6px}
-.back{display:block;max-width:760px;margin:24px auto 0;font-family:sans-serif;font-size:14px}
-@media(max-width:640px){article{margin:0;padding:32px 20px}body{font-size:16px}h1{font-size:23px}h2{font-size:19px}}
-</style></head>
-<body><p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」の文章サンプルです。</p>
-<a class="back" href="../index.html">← 一覧に戻る</a>
-<article>
-<h1>データ変換・Excel自動化サンプル</h1>
-<blockquote><p>自主制作サンプル：取引先・顧客・商品・金額はすべて架空のデータです。案件ごとに取り出せるよう、3つのフォルダに分けています。</p></blockquote>
-<h2>1. CSV → PDF 変換（出荷伝票）　csv-to-pdf/</h2>
-<table><thead><tr><th>ファイル</th><th>内容</th></tr></thead><tbody><tr><td>input/orders.csv</td><td>入力：受注データ（16行・伝票10件。同じ伝票番号の行は明細としてまとめます）</td></tr><tr><td>csv_to_pdf.py</td><td>変換スクリプト（Python 3.10以上。追加ライブラリ不要、PDF化に Chrome または Edge を使用）</td></tr><tr><td>output/shipping_slips.pdf</td><td>出力：A4 1枚に2伝票ずつ並べた出荷伝票（5ページ）</td></tr></tbody></table>
-<ul><li>宛先に法人格を含む場合は「御中」、個人は「様」を自動で付けます。CSVの「敬称」列で個別に指定もできます</li><li>必要な列が欠けている場合は、どの列がないかを表示して止まります</li></ul>
-<figure><img src="csv-to-pdf/screenshots/pdf-page1.png" alt="出荷伝票 PDF の1ページ目"><figcaption>出荷伝票 PDF の1ページ目</figcaption></figure>
-<h2>2. 請求書自動生成ブック　excel-invoice/</h2>
-<table><thead><tr><th>ファイル</th><th>内容</th></tr></thead><tbody><tr><td>invoice_book.xlsx</td><td>請求書ブック（「請求書」「明細（入力）」「取引先」の3シート、マクロなし）</td></tr><tr><td>make_invoice_book.py</td><td>ブックを作り直すスクリプト（openpyxl）</td></tr><tr><td>output_invoice_C001_2026-10.pdf</td><td>出力例：取引先C001・2026年10月分を PDF にしたもの</td></tr></tbody></table>
-<ul><li>「明細（入力）」に取引を入力し、「請求書」シートの黄色のセルで取引先コードと請求月を選ぶと、該当する明細・税率別の小計・消費税・合計が数式で表示されます</li><li>消費税は税率（10%・8%）ごとに合計してから計算し、1円未満を切り捨てています</li><li>Excel で開いて、取引先・月を切り替えたときの計算結果を確認済みです（C001の10月分 78,882円、C002の10月分 37,128円。手計算と一致）</li></ul>
-<figure><img src="excel-invoice/screenshots/invoice-pdf.png" alt="請求書の出力例（PDF）"><figcaption>請求書の出力例（PDF）</figcaption></figure>
-<h2>3. データ整形の Before／After　data-cleaning/</h2>
-<table><thead><tr><th>ファイル</th><th>内容</th></tr></thead><tbody><tr><td>before_customers.csv</td><td>Before：表記がばらばらな顧客リスト（15行）</td></tr><tr><td>clean_data.py</td><td>整形スクリプト（openpyxl）</td></tr><tr><td>after_customers.xlsx</td><td>After：整形後（13行）・変更ログ（60件）・要確認（5件）の3シート</td></tr></tbody></table>
-<table><thead><tr><th>項目</th><th>Before の例</th><th>After</th></tr></thead><tbody><tr><td>電話番号</td><td>０９０１２３４０００２ ／ (03)1234-0003 ／ 06 1234 0004</td><td>090-1234-0002 ／ 03-1234-0003 ／ 06-1234-0004</td></tr><tr><td>郵便番号</td><td>〒812-0000 ／ 1000000</td><td>812-0000 ／ 100-0000</td></tr><tr><td>フリガナ</td><td>やまだ はなこ ／ ｻﾄｳ ｹﾝｲﾁ</td><td>ヤマダ　ハナコ ／ サトウ　ケンイチ</td></tr><tr><td>登録日</td><td>令和8年3月1日 ／ R8.3.12 ／ 2026.6.18</td><td>2026-03-01 ／ 2026-03-12 ／ 2026-06-18</td></tr><tr><td>購入金額</td><td>¥12,000 ／ 8500円 ／ ２３０００</td><td>12000 ／ 8500 ／ 23000（数値）</td></tr><tr><td>重複</td><td>電話番号が同じ2組</td><td>登録日が新しい行を残し、削除した行を変更ログに記録</td></tr></tbody></table>
-<p>直せない値（桁の足りない電話番号・存在しない日付・年のない日付・ローマ字のフリガナなど）は勝手に推測せず、「要確認」シートに理由と一緒に出します。</p>
-<h2>応募時の紹介文（3行）</h2>
-<p>CSVから出荷伝票のPDFを作る変換、請求書を数式で自動作成するExcelブック、表記ゆれを整えるデータ整形の自主制作サンプルです。<br>入力ファイル・スクリプト・出力ファイルをそろえ、変更ログと要確認の一覧で何を直したかを確認できるようにしています。<br>Excelのブックはマクロを使わず、取引先と月を選ぶだけで請求書が切り替わる作りです。</p>
-</article></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>データ変換・Excel自動化サンプル｜ハル｜よろずサポート屋</title>
+<meta name="description" content="CSVから出荷伝票PDFを作る変換、請求書を数式で自動作成するExcelブック、表記ゆれを整えるデータ整形の自主制作サンプルです。入力・スクリプト・出力をそろえて公開しています。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFFFFF;--ink:#1A2E22;--accent:#217346;--line:#C9D4CC;--wash:#EEF3EF}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans JP",sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.8}
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+.mono{font-family:"JetBrains Mono",monospace}
+a{color:var(--accent)}
+.flag{background:var(--ink);color:#fff;font-size:13px;padding:8px 24px}
+header.top{max-width:68rem;margin:0 auto;padding:24px 24px 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+header.top a{font-size:14px;text-decoration:none}
+header.top .en{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+main{max-width:68rem;margin:0 auto;padding:0 24px}
+.hero{padding:48px 0 32px;border-bottom:2px solid var(--ink)}
+h1{font-size:2.6rem;line-height:1.3;font-weight:900;margin-bottom:16px}
+.hero p.lead{max-width:40rem;font-size:15px}
+.facts{display:flex;flex-wrap:wrap;gap:0;margin-top:32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts div{flex:1 1 12rem;padding:16px 16px 16px 0}
+.facts .num{font-family:"JetBrains Mono",monospace;font-size:1.6rem;font-weight:700;color:var(--accent);display:block;line-height:1.3}
+.facts .lbl{font-size:13px;display:block}
+section{padding:48px 0;border-bottom:1px solid var(--line)}
+h2{font-size:1.7rem;line-height:1.4;font-weight:900;margin-bottom:8px}
+h2 .no{font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:1rem;display:block;letter-spacing:.08em;margin-bottom:8px}
+.sec-lead{font-size:15px;max-width:42rem;margin-bottom:24px}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.7}
+th,td{border-bottom:1px solid var(--line);padding:8px 16px 8px 0;text-align:left;vertical-align:top}
+thead th{border-bottom:2px solid var(--ink);font-size:13px}
+.diff td.before{color:#5A6B5E}
+.diff td.arrow{color:var(--accent);font-family:"JetBrains Mono",monospace;width:2.5rem;padding-left:0;padding-right:0}
+.diff td.after{font-weight:700}
+.diff td.item{font-weight:700;white-space:nowrap}
+.files td:first-child{font-family:"JetBrains Mono",monospace;font-size:13px}
+.files a{text-decoration:none;border-bottom:1px solid var(--accent)}
+ul.notes{list-style:none;margin-top:16px}
+ul.notes li{font-size:14px;padding:8px 0 8px 16px;border-left:2px solid var(--accent);margin-bottom:8px}
+figure{margin:24px 0 0;background:var(--paper);box-shadow:8px 8px 0 var(--wash),16px 16px 0 #DFE8E0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.intro{background:var(--wash);padding:32px;margin:48px 0}
+.intro p{font-size:15px}
+footer{max-width:68rem;margin:0 auto;padding:32px 24px 48px;font-size:13px;display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between}
+@media(max-width:768px){h1{font-size:2rem}.split{grid-template-columns:1fr}section{padding:32px 0}
+.diff thead{display:none}
+.diff tr{display:block;padding:8px 0;border-bottom:1px solid var(--line)}
+.diff td{display:block;border-bottom:0;padding:4px 0}
+.diff td.item{font-size:15px}
+.diff td.before::before{content:"Before：";font-size:12px;color:var(--accent);font-weight:700}
+.diff td.after::before{content:"After：";font-size:12px;color:var(--accent);font-weight:700}
+.diff td.arrow{display:none}
+.files tr{display:block;padding:8px 0;border-bottom:1px solid var(--line)}
+.files td{display:block;border-bottom:0;padding:4px 0}
+.files thead{display:none}}
+</style>
+</head>
+<body>
+<p class="flag">自主制作サンプルです。取引先・顧客・商品・金額はすべて架空のデータです。</p>
+<header class="top">
+<a href="../index.html">← 一覧に戻る</a>
+<span class="en">Data conversion / Excel automation</span>
+</header>
+<main>
+<div class="hero">
+<h1><span class="nb">データ変換・</span><span class="nb">Excel自動化サンプル</span></h1>
+<p class="lead"><span class="seg"><span class="nb">CSVから出荷伝票のPDFを作る変換と</span></span><span class="seg"><span class="nb">請求書を数式で自動作成するExcelブックと</span></span><span class="seg"><span class="nb">表記ゆれを整えるデータ整形の3組です</span></span><span class="seg"><span class="nb">入力ファイル・スクリプト・出力ファイルを</span><span class="nb">そろえています</span></span></p>
+<div class="facts">
+<div><span class="num">16行 → 10件</span><span class="lbl"><span class="nb">受注CSVから</span><span class="nb">出荷伝票10件</span></span></div>
+<div><span class="num">3シート</span><span class="lbl"><span class="nb">請求書ブック</span><span class="nb">マクロなし・数式のみ</span></span></div>
+<div><span class="num">15行 → 13行</span><span class="lbl"><span class="nb">顧客リスト整形</span><span class="nb">変更ログ60件・要確認5件</span></span></div>
+</div>
+</div>
+
+<section aria-labelledby="clean">
+<h2 id="clean"><span class="no">01 / DATA CLEANING</span><span class="nb">データ整形の</span><span class="nb">Before／After</span></h2>
+<p class="sec-lead"><span class="nb">表記がばらばらな顧客リスト15行を</span><span class="nb">整形しています。</span><span class="nb">直せない値は勝手に推測せず</span><span class="nb">「要確認」シートに理由と一緒に出します。</span></p>
+<table class="diff">
+<thead><tr><th scope="col">項目</th><th scope="col">Before の例</th><th scope="col" aria-label="変換"></th><th scope="col">After</th></tr></thead>
+<tbody>
+<tr><td class="item">電話番号</td><td class="before">０９０１２３４０００２ ／ (03)1234-0003 ／ 06 1234 0004</td><td class="arrow">→</td><td class="after">090-1234-0002 ／ 03-1234-0003 ／ 06-1234-0004</td></tr>
+<tr><td class="item">郵便番号</td><td class="before">〒812-0000 ／ 1000000</td><td class="arrow">→</td><td class="after">812-0000 ／ 100-0000</td></tr>
+<tr><td class="item">フリガナ</td><td class="before">やまだ はなこ ／ ｻﾄｳ ｹﾝｲﾁ</td><td class="arrow">→</td><td class="after">ヤマダ　ハナコ ／ サトウ　ケンイチ</td></tr>
+<tr><td class="item">登録日</td><td class="before">令和8年3月1日 ／ R8.3.12 ／ 2026.6.18</td><td class="arrow">→</td><td class="after">2026-03-01 ／ 2026-03-12 ／ 2026-06-18</td></tr>
+<tr><td class="item">購入金額</td><td class="before">¥12,000 ／ 8500円 ／ ２３０００</td><td class="arrow">→</td><td class="after">12000 ／ 8500 ／ 23000（数値）</td></tr>
+<tr><td class="item">重複</td><td class="before">電話番号が同じ2組</td><td class="arrow">→</td><td class="after">登録日が新しい行を残し、削除した行を変更ログに記録</td></tr>
+</tbody>
+</table>
+<table class="files" style="margin-top:24px">
+<thead><tr><th scope="col">ファイル</th><th scope="col">内容</th></tr></thead>
+<tbody>
+<tr><td><a href="data-cleaning/before_customers.csv">data-cleaning/before_customers.csv</a></td><td>Before：表記がばらばらな顧客リスト（15行）</td></tr>
+<tr><td><a href="data-cleaning/clean_data.py">data-cleaning/clean_data.py</a></td><td>整形スクリプト（openpyxl）</td></tr>
+<tr><td><a href="data-cleaning/after_customers.xlsx">data-cleaning/after_customers.xlsx</a></td><td>After：整形後（13行）・変更ログ（60件）・要確認（5件）の3シート</td></tr>
+</tbody>
+</table>
+</section>
+
+<section aria-labelledby="csvpdf">
+<h2 id="csvpdf"><span class="no">02 / CSV TO PDF</span><span class="nb">CSV → PDF 変換</span><span class="nb">（出荷伝票）</span></h2>
+<p class="sec-lead"><span class="nb">受注データのCSVを読み</span><span class="nb">同じ伝票番号の行を明細としてまとめて</span><span class="nb">出荷伝票のPDFを作ります。</span></p>
+<div class="split">
+<div>
+<table class="files">
+<thead><tr><th scope="col">ファイル</th><th scope="col">内容</th></tr></thead>
+<tbody>
+<tr><td><a href="csv-to-pdf/input/orders.csv">csv-to-pdf/input/orders.csv</a></td><td>入力：受注データ（16行・伝票10件）</td></tr>
+<tr><td><a href="csv-to-pdf/csv_to_pdf.py">csv-to-pdf/csv_to_pdf.py</a></td><td>変換スクリプト（Python 3.10以上。追加ライブラリ不要、PDF化に Chrome または Edge を使用）</td></tr>
+<tr><td><a href="csv-to-pdf/output/shipping_slips.pdf">csv-to-pdf/output/shipping_slips.pdf</a></td><td>出力：A4 1枚に2伝票ずつ並べた出荷伝票（5ページ）</td></tr>
+</tbody>
+</table>
+<ul class="notes">
+<li>宛先に法人格を含む場合は「御中」、個人は「様」を自動で付けます。CSVの「敬称」列で個別に指定もできます。</li>
+<li>必要な列が欠けている場合は、どの列がないかを表示して止まります。</li>
+</ul>
+</div>
+<figure><img src="csv-to-pdf/screenshots/pdf-page1.png" alt="出荷伝票 PDF の1ページ目" width="794" height="1123" loading="lazy"></figure>
+</div>
+</section>
+
+<section aria-labelledby="invoice">
+<h2 id="invoice"><span class="no">03 / EXCEL INVOICE</span><span class="nb">請求書</span><span class="nb">自動生成ブック</span></h2>
+<p class="sec-lead"><span class="nb">「明細（入力）」に取引を入力し</span><span class="nb">「請求書」シートの黄色のセルで</span><span class="nb">取引先コードと請求月を選ぶと</span><span class="nb">該当する明細と合計が数式で表示されます。</span></p>
+<div class="split">
+<div>
+<table class="files">
+<thead><tr><th scope="col">ファイル</th><th scope="col">内容</th></tr></thead>
+<tbody>
+<tr><td><a href="excel-invoice/invoice_book.xlsx">excel-invoice/invoice_book.xlsx</a></td><td>請求書ブック（「請求書」「明細（入力）」「取引先」の3シート、マクロなし）</td></tr>
+<tr><td><a href="excel-invoice/make_invoice_book.py">excel-invoice/make_invoice_book.py</a></td><td>ブックを作り直すスクリプト（openpyxl）</td></tr>
+<tr><td><a href="excel-invoice/output_invoice_C001_2026-10.pdf">excel-invoice/output_invoice_C001_2026-10.pdf</a></td><td>出力例：取引先C001・2026年10月分を PDF にしたもの</td></tr>
+</tbody>
+</table>
+<ul class="notes">
+<li>消費税は税率（10%・8%）ごとに合計してから計算し、1円未満を切り捨てています。</li>
+<li>Excel で開いて計算結果を確認済みです。C001の10月分は <span class="mono">78,882円</span>、C002の10月分は <span class="mono">37,128円</span> で、手計算と一致しています。</li>
+</ul>
+</div>
+<figure><img src="excel-invoice/screenshots/invoice-pdf.png" alt="請求書の出力例（PDF）" width="774" height="1095" loading="lazy"></figure>
+</div>
+</section>
+
+<div class="intro">
+<p><span class="seg">CSVから出荷伝票のPDFを作る変換、請求書を数式で自動作成するExcelブック、表記ゆれを整えるデータ整形の自主制作サンプルです</span><span class="seg">入力ファイル・スクリプト・出力ファイルをそろえ、変更ログと要確認の一覧で何を直したかを確認できるようにしています</span><span class="seg">Excelのブックはマクロを使わず、取引先と月を選ぶだけで請求書が切り替わる作りです</span></p>
+</div>
+</main>
+<footer>
+<span>ハル｜よろずサポート屋｜自主制作サンプル</span>
+<a href="../index.html">← 一覧に戻る</a>
+</footer>
+</body>
+</html>
