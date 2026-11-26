@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>すみか不動産｜○○市の不動産会社（制作サンプル）</title>
+<meta name="description" content="○○市の不動産会社「すみか不動産」。売買仲介、賃貸仲介・管理、買取・売却相談、相続・空き家の相談に対応しています。">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;700;900&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEE9E7;
+  --surface:#FFFFFF;
+  --ink:#2B2320;
+  --muted:#6B5847;
+  --accent:#71563A;
+  --deep:#542F1C;
+  --line:#DCD2C4;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Zen Kaku Gothic New",sans-serif;
+  font-weight:300;
+  font-size:15px;
+  line-height:1.9;
+  letter-spacing:.05em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;}
+a{color:var(--ink);text-decoration:none;}
+.nb{white-space:nowrap;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
+.label{
+  font-size:12px;
+  letter-spacing:.42em;
+  color:var(--muted);
+  font-weight:500;
+}
+.label::before{
+  content:"";
+  display:inline-block;
+  width:8px;
+  height:8px;
+  background:var(--accent);
+  vertical-align:middle;
+  margin-right:16px;
+}
+h2{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:700;
+  font-size:clamp(24px,2.6vw,30px);
+  line-height:1.5;
+  letter-spacing:.12em;
+  margin:20px 0 64px;
+}
+section{padding:128px 0;}
+.dummy-note{font-size:11px;color:var(--muted);letter-spacing:.08em;margin-top:16px;}
+.serif{font-family:"Zen Old Mincho",serif;}
+
+/* ---------- loader ---------- */
+.loader{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  transition:opacity .8s ease,visibility .8s ease;
+  animation:loaderSafety .8s ease 4.5s forwards;
+}
+.loader.is-done{opacity:0;visibility:hidden;pointer-events:none;}
+@keyframes loaderSafety{to{opacity:0;visibility:hidden;}}
+.loader-frame{
+  border:1px solid var(--accent);
+  padding:48px 64px;
+  text-align:center;
+  animation:frameIn 1.2s ease both;
+}
+@keyframes frameIn{from{opacity:0;transform:scale(.98);}to{opacity:1;transform:scale(1);}}
+.loader-frame .logo-en{font-size:11px;letter-spacing:.42em;color:var(--muted);font-weight:500;margin-bottom:16px;}
+.loader-frame .logo-note{font-size:13px;letter-spacing:.24em;font-weight:400;}
+.loader-name{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:.28em;
+  margin-top:32px;
+}
+.loader-bar{width:120px;height:2px;background:var(--line);margin-top:32px;overflow:hidden;}
+.loader-bar span{display:block;height:100%;background:var(--accent);transform-origin:left;animation:barGrow 1.6s ease .2s both;}
+@keyframes barGrow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+
+/* ---------- header ---------- */
+header{
+  position:absolute;
+  top:0;left:0;right:0;
+  z-index:10;
+}
+.header-in{
+  max-width:1280px;margin:0 auto;padding:28px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:.24em;
+}
+nav{display:flex;gap:36px;}
+nav a{font-size:13px;letter-spacing:.14em;font-weight:400;}
+.header-btn{
+  font-size:13px;letter-spacing:.14em;font-weight:400;
+  border:1px solid var(--ink);
+  padding:12px 24px;
+}
+
+/* ---------- hero ---------- */
+.hero{padding:176px 0 0;text-align:center;}
+.hero h1{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:900;
+  font-size:clamp(38px,6.2vw,80px);
+  line-height:1.35;
+  letter-spacing:.06em;
+}
+.hero h1 .line{display:block;}
+.hero-sub{margin-top:40px;font-size:15px;letter-spacing:.1em;}
+.hero-band{
+  margin-top:72px;
+  display:flex;
+  gap:12px;
+  padding:0 12px;
+}
+.hero-band figure{
+  flex:1 1 0;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border-radius:8px;
+}
+.hero-band img{width:100%;height:100%;object-fit:cover;}
+.js .hero h1 .line,
+.js .hero-sub,
+.js .hero-band figure{
+  opacity:0;
+  transform:translateY(28px);
+}
+body.is-in .hero h1 .line{opacity:1;transform:none;transition:opacity 1s ease,transform 1s cubic-bezier(.22,.61,.21,1);}
+body.is-in .hero h1 .line.d2{transition-delay:.14s;}
+body.is-in .hero-sub{opacity:1;transform:none;transition:opacity 1s ease .3s,transform 1s cubic-bezier(.22,.61,.21,1) .3s;}
+body.is-in .hero-band figure{opacity:1;transform:none;transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.22,.61,.21,1);}
+body.is-in .hero-band figure:nth-child(1){transition-delay:.4s;}
+body.is-in .hero-band figure:nth-child(2){transition-delay:.5s;}
+body.is-in .hero-band figure:nth-child(3){transition-delay:.6s;}
+body.is-in .hero-band figure:nth-child(4){transition-delay:.7s;}
+body.is-in .hero-band figure:nth-child(5){transition-delay:.8s;}
+
+/* ---------- philosophy ---------- */
+.philosophy-in{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.philosophy-photo{aspect-ratio:4/3;overflow:hidden;}
+.philosophy-photo img{width:100%;height:100%;object-fit:cover;}
+.philosophy-quote{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:700;
+  font-size:clamp(22px,2.4vw,28px);
+  line-height:1.7;
+  letter-spacing:.1em;
+  margin-bottom:40px;
+}
+.philosophy-quote .line{display:block;}
+.philosophy-body p{margin-bottom:24px;}
+.ceo-name{
+  margin-top:40px;
+  font-family:"Zen Old Mincho",serif;
+  font-size:17px;
+  letter-spacing:.14em;
+}
+.ceo-name small{
+  font-family:"Zen Kaku Gothic New",sans-serif;
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.14em;
+  margin-right:16px;
+}
+
+/* ---------- business ---------- */
+.biz-list{border-top:1px solid var(--line);}
+.biz-row{
+  display:grid;
+  grid-template-columns:120px 260px 1fr;
+  gap:32px;
+  align-items:baseline;
+  padding:40px 0;
+  border-bottom:1px solid var(--line);
+}
+.biz-num{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:700;
+  font-size:32px;
+  color:var(--accent);
+  font-variant-numeric:tabular-nums;
+}
+.biz-title{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:.1em;
+}
+.biz-desc .line{display:block;}
+
+/* ---------- results ---------- */
+.results{background:var(--surface);}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:48px;
+  text-align:center;
+  margin-bottom:24px;
+}
+.stat-num{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:900;
+  font-size:clamp(56px,7.5vw,96px);
+  line-height:1.1;
+  color:var(--deep);
+  font-variant-numeric:tabular-nums;
+}
+.stat-num .unit{font-size:.32em;font-weight:700;margin-left:8px;letter-spacing:.1em;}
+.stat-label{margin-top:12px;font-size:13px;letter-spacing:.24em;color:var(--muted);font-weight:400;}
+.js .stat{opacity:0;transform:translateY(24px);}
+.js .stat.is-in{opacity:1;transform:none;transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.21,1);}
+.prop-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px 40px;
+  margin-top:80px;
+}
+.prop-photo{aspect-ratio:4/3;overflow:hidden;position:relative;}
+.prop-photo img{width:100%;height:100%;object-fit:cover;}
+.prop-tag{
+  position:absolute;
+  top:16px;left:16px;
+  background:var(--deep);
+  color:#fff;
+  font-size:12px;
+  letter-spacing:.24em;
+  padding:8px 16px;
+  font-weight:400;
+}
+.prop-body{padding-top:20px;}
+.prop-name{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:700;
+  font-size:17px;
+  letter-spacing:.1em;
+}
+.prop-spec{font-size:13px;color:var(--muted);margin-top:4px;letter-spacing:.08em;}
+.prop-price{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:700;
+  font-size:22px;
+  color:var(--deep);
+  font-variant-numeric:tabular-nums;
+  margin-top:8px;
+}
+
+/* ---------- news ---------- */
+.news-list{border-top:1px solid var(--line);}
+.news-row{
+  display:grid;
+  grid-template-columns:120px 110px 1fr;
+  gap:32px;
+  align-items:baseline;
+  padding:28px 0;
+  border-bottom:1px solid var(--line);
+}
+.news-date{font-variant-numeric:tabular-nums;font-size:14px;letter-spacing:.08em;}
+.news-cat{
+  font-size:11px;
+  letter-spacing:.2em;
+  border:1px solid var(--accent);
+  color:var(--deep);
+  text-align:center;
+  padding:4px 0;
+  font-weight:400;
+}
+.news-text{font-size:14px;}
+
+/* ---------- company ---------- */
+.company{background:var(--surface);}
+.company-table{width:100%;border-collapse:collapse;}
+.company-table th,
+.company-table td{
+  border-bottom:1px solid var(--line);
+  padding:24px 16px;
+  text-align:left;
+  vertical-align:top;
+}
+.company-table th{
+  width:200px;
+  font-weight:500;
+  font-size:13px;
+  letter-spacing:.2em;
+  color:var(--muted);
+}
+.company-table td{font-size:15px;}
+
+/* ---------- contact ---------- */
+.contact-in{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
+.qr-frame{
+  border:1px solid var(--accent);
+  aspect-ratio:1/1;
+  max-width:280px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-top:32px;
+  text-align:center;
+  padding:24px;
+}
+.qr-frame .qr-en{font-size:11px;letter-spacing:.42em;color:var(--muted);font-weight:500;}
+.qr-frame .qr-note{font-size:13px;letter-spacing:.16em;}
+.contact-tel{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:900;
+  font-size:clamp(30px,3.6vw,44px);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.04em;
+  margin:24px 0 8px;
+}
+.contact-btn{
+  display:inline-block;
+  margin-top:32px;
+  border:1px solid var(--ink);
+  padding:16px 40px;
+  font-size:14px;
+  letter-spacing:.16em;
+  font-weight:400;
+}
+.contact-block h3{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:.12em;
+  margin-bottom:16px;
+}
+.contact-block .line{display:block;}
+
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--line);
+  padding:72px 0 56px;
+}
+.footer-logo{
+  font-family:"Zen Old Mincho",serif;
+  font-weight:700;
+  font-size:22px;
+  letter-spacing:.24em;
+  margin-bottom:24px;
+}
+.footer-addr{font-size:13px;color:var(--muted);letter-spacing:.08em;}
+.footer-note{
+  margin-top:40px;
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.9;
+  letter-spacing:.06em;
+  border-top:1px solid var(--line);
+  padding-top:32px;
+}
+.footer-copy{margin-top:24px;font-size:11px;color:var(--muted);letter-spacing:.1em;}
+
+/* ---------- responsive ---------- */
+@media (max-width:834px){
+  section{padding:96px 0;}
+  nav{display:none;}
+  .hero{padding-top:144px;}
+  .hero-band{overflow-x:auto;scrollbar-width:none;padding:0 16px;}
+  .hero-band::-webkit-scrollbar{display:none;}
+  .hero-band figure{flex:0 0 62vw;}
+  .philosophy-in{grid-template-columns:1fr;gap:48px;}
+  .biz-row{grid-template-columns:72px 1fr;gap:8px 24px;}
+  .biz-desc{grid-column:2;}
+  .stats{gap:24px;}
+  .prop-grid{grid-template-columns:1fr;gap:40px;}
+  .news-row{grid-template-columns:104px 96px 1fr;gap:20px;}
+  .contact-in{grid-template-columns:1fr;gap:56px;}
+  .company-table th{width:128px;}
+}
+@media (max-width:560px){
+  section{padding:80px 0;}
+  .wrap{padding:0 20px;}
+  .header-in{padding:20px;}
+  .hero h1{font-size:clamp(30px,9.4vw,38px);}
+  .news-row{grid-template-columns:1fr;gap:6px;}
+  .stat-num{font-size:42px;}
+  .stat-label{letter-spacing:.12em;}
+  .news-cat{width:96px;}
+  .company-table th,.company-table td{display:block;width:100%;padding:8px 0;}
+  .company-table th{border-bottom:none;padding-top:20px;}
+  .company-table td{padding-bottom:20px;}
+  .loader-frame{padding:40px 32px;}
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .loader{display:none;}
+  .js .hero h1 .line,.js .hero-sub,.js .hero-band figure,.js .stat{
+    opacity:1;transform:none;transition:none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-frame">
+    <div class="logo-en">LOGO</div>
+    <div class="logo-note">ロゴをここに入れます</div>
+  </div>
+  <div class="loader-name">すみか不動産</div>
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<header>
+  <div class="header-in">
+    <div class="logo">すみか不動産</div>
+    <nav>
+      <a href="#philosophy">企業理念・代表挨拶</a>
+      <a href="#business">事業内容</a>
+      <a href="#results">成約実績</a>
+      <a href="#news">お知らせ</a>
+      <a href="#company">会社概要</a>
+    </nav>
+    <a class="header-btn" href="#contact">お問い合わせ</a>
+  </div>
+</header>
+
+<main>
+<!-- hero -->
+<div class="hero">
+  <h1>
+    <span class="line"><span class="nb">○○市の不動産を</span></span>
+    <span class="line d2"><span class="nb">誠実に</span></span>
+  </h1>
+  <p class="hero-sub"><span class="nb">売買・賃貸・買取のご相談を</span><span class="nb">地域に根ざして承っています</span></p>
+  <div class="hero-band">
+    <figure><img src="images/hero-1.jpg" alt=""></figure>
+    <figure><img src="images/hero-2.jpg" alt=""></figure>
+    <figure><img src="images/hero-3.jpg" alt=""></figure>
+    <figure><img src="images/hero-4.jpg" alt=""></figure>
+    <figure><img src="images/hero-5.jpg" alt=""></figure>
+  </div>
+</div>
+
+<!-- philosophy -->
+<section id="philosophy">
+  <div class="wrap">
+    <div class="label">PHILOSOPHY</div>
+    <h2>企業理念・代表挨拶</h2>
+    <div class="philosophy-in">
+      <div class="philosophy-photo"><img src="images/ceo.jpg" alt="" loading="lazy"></div>
+      <div>
+        <p class="philosophy-quote">
+          <span class="line">「<span class="nb">住まいの相談に</span></span>
+          <span class="line"><span class="nb">誠実に向き合います</span>」</span>
+        </p>
+        <div class="philosophy-body">
+          <p>すみか不動産は、○○市で開業した不動産会社です。売却・購入・賃貸のご相談を、地域の事情を踏まえて一つひとつ対応しています。</p>
+          <p>物件の紹介だけでなく、価格の査定や相続のご相談まで、住まいに関わるご相談をまとめて承っています。</p>
+        </div>
+        <p class="ceo-name"><small>代表取締役</small>山田 太郎</p>
+        <p class="dummy-note">※代表者名はダミーです</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- business -->
+<section id="business" style="padding-top:0;">
+  <div class="wrap">
+    <div class="label">BUSINESS</div>
+    <h2>事業内容</h2>
+    <div class="biz-list">
+      <div class="biz-row">
+        <div class="biz-num">01</div>
+        <div class="biz-title">売買仲介</div>
+        <p class="biz-desc">
+          <span class="line"><span class="nb">戸建て・マンション・土地の</span></span>
+          <span class="line"><span class="nb">売却と購入を仲介しています</span></span>
+        </p>
+      </div>
+      <div class="biz-row">
+        <div class="biz-num">02</div>
+        <div class="biz-title">賃貸仲介・管理</div>
+        <p class="biz-desc">
+          <span class="line"><span class="nb">賃貸物件の紹介</span></span>
+          <span class="line"><span class="nb">オーナー向けの管理業務を行っています</span></span>
+        </p>
+      </div>
+      <div class="biz-row">
+        <div class="biz-num">03</div>
+        <div class="biz-title">買取・売却相談</div>
+        <p class="biz-desc">
+          <span class="line"><span class="nb">売却価格の査定と買取の相談を</span></span>
+          <span class="line"><span class="nb">無料で承っています</span></span>
+        </p>
+      </div>
+      <div class="biz-row">
+        <div class="biz-num">04</div>
+        <div class="biz-title">相続・空き家の相談</div>
+        <p class="biz-desc">
+          <span class="line"><span class="nb">相続した不動産と空き家の</span></span>
+          <span class="line"><span class="nb">売却・活用の相談に応じています</span></span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- results -->
+<section id="results" class="results">
+  <div class="wrap">
+    <div class="label">RESULTS</div>
+    <h2>成約実績</h2>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num"><span class="count" data-count="128">128</span><span class="unit">件</span></div>
+        <div class="stat-label">成約件数</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="count" data-count="342">342</span><span class="unit">件</span></div>
+        <div class="stat-label">取扱物件数</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="count" data-count="516">516</span><span class="unit">件</span></div>
+        <div class="stat-label">ご相談件数</div>
+      </div>
+    </div>
+    <p class="dummy-note">※実績の数値はダミーの一例です</p>
+
+    <div class="prop-grid">
+      <article class="prop">
+        <div class="prop-photo">
+          <img src="images/prop-1.jpg" alt="" loading="lazy">
+          <span class="prop-tag">成約済</span>
+        </div>
+        <div class="prop-body">
+          <p class="prop-name">○○市○○町 戸建て</p>
+          <p class="prop-spec">4LDK・土地165.2㎡・建物108.4㎡</p>
+          <p class="prop-price">4,280万円</p>
+        </div>
+      </article>
+      <article class="prop">
+        <div class="prop-photo">
+          <img src="images/hero-5.jpg" alt="" loading="lazy">
+          <span class="prop-tag">成約済</span>
+        </div>
+        <div class="prop-body">
+          <p class="prop-name">○○市中央 マンション</p>
+          <p class="prop-spec">3LDK・専有面積72.6㎡</p>
+          <p class="prop-price">3,150万円</p>
+        </div>
+      </article>
+      <article class="prop">
+        <div class="prop-photo">
+          <img src="images/prop-3.jpg" alt="" loading="lazy">
+          <span class="prop-tag">成約済</span>
+        </div>
+        <div class="prop-body">
+          <p class="prop-name">○○市○○町 戸建て</p>
+          <p class="prop-spec">3LDK・土地132.8㎡・建物96.2㎡</p>
+          <p class="prop-price">3,680万円</p>
+        </div>
+      </article>
+      <article class="prop">
+        <div class="prop-photo">
+          <img src="images/hero-4.jpg" alt="" loading="lazy">
+          <span class="prop-tag">成約済</span>
+        </div>
+        <div class="prop-body">
+          <p class="prop-name">○○市郊外 戸建て</p>
+          <p class="prop-spec">4LDK・土地210.5㎡・建物121.7㎡</p>
+          <p class="prop-price">5,480万円</p>
+        </div>
+      </article>
+    </div>
+    <p class="dummy-note">※物件情報はダミーです</p>
+  </div>
+</section>
+
+<!-- news -->
+<section id="news">
+  <div class="wrap">
+    <div class="label">NEWS</div>
+    <h2>お知らせ</h2>
+    <div class="news-list">
+      <div class="news-row">
+        <div class="news-date">2026.11.20</div>
+        <div class="news-cat">お知らせ</div>
+        <p class="news-text">ホームページを公開しました</p>
+      </div>
+      <div class="news-row">
+        <div class="news-date">2026.11.10</div>
+        <div class="news-cat">成約実績</div>
+        <p class="news-text">○○市○○町の戸建ての成約実績を追加しました</p>
+      </div>
+      <div class="news-row">
+        <div class="news-date">2026.10.26</div>
+        <div class="news-cat">お知らせ</div>
+        <p class="news-text">公式LINEを開設しました</p>
+      </div>
+    </div>
+    <p class="dummy-note">※お知らせの日付と内容はダミーです</p>
+  </div>
+</section>
+
+<!-- company -->
+<section id="company" class="company" style="padding-top:0;">
+  <div class="wrap">
+    <div class="label">COMPANY</div>
+    <h2>会社概要</h2>
+    <table class="company-table">
+      <tr><th>社名</th><td>すみか不動産株式会社</td></tr>
+      <tr><th>所在地</th><td>〒000-0000 ○○県○○市○○町1-2-3</td></tr>
+      <tr><th>代表者</th><td>代表取締役 山田 太郎</td></tr>
+      <tr><th>設立</th><td>2026年4月</td></tr>
+      <tr><th>電話番号</th><td>000-0000-0000</td></tr>
+      <tr><th>営業時間</th><td>9:00〜18:00</td></tr>
+      <tr><th>定休日</th><td>水曜日</td></tr>
+      <tr><th>免許番号</th><td>宅地建物取引業 ○○県知事（1）第00000号</td></tr>
+    </table>
+    <p class="dummy-note">※会社概要はダミーです</p>
+  </div>
+</section>
+
+<!-- contact -->
+<section id="contact" style="padding-top:0;">
+  <div class="wrap">
+    <div class="label">CONTACT</div>
+    <h2>公式LINE・お問い合わせ</h2>
+    <div class="contact-in">
+      <div class="contact-block">
+        <h3>公式LINE</h3>
+        <p>
+          <span class="line"><span class="nb">物件の相談は</span></span>
+          <span class="line"><span class="nb">公式LINEでも承っています</span></span>
+        </p>
+        <div class="qr-frame">
+          <div class="qr-en">QR CODE</div>
+          <div class="qr-note">QRコードをここに配置します</div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <h3>お問い合わせ</h3>
+        <p>
+          <span class="line"><span class="nb">お電話での相談を承っています</span></span>
+          <span class="line"><span class="nb">営業時間 9:00〜18:00（定休日 水曜日）</span></span>
+        </p>
+        <p class="contact-tel">000-0000-0000</p>
+        <a class="contact-btn" href="#contact">お問い合わせフォーム</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-logo">すみか不動産</div>
+    <p class="footer-addr">〒000-0000 ○○県○○市○○町1-2-3／電話 000-0000-0000／営業時間 9:00〜18:00／定休日 水曜日</p>
+    <p class="footer-note">このページは制作サンプルです。社名、住所、電話番号、物件情報、実績数値など、掲載している情報はすべてダミーです。お問い合わせと公式LINEのリンクは省略しています。</p>
+    <p class="footer-copy">© すみか不動産株式会社（制作サンプル）</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var loader=document.getElementById('loader');
+  var done=false;
+  function finish(){
+    if(done)return;
+    done=true;
+    if(loader)loader.classList.add('is-done');
+    document.body.classList.add('is-in');
+  }
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    finish();
+  }else{
+    setTimeout(finish,1900);
+    if(loader)loader.addEventListener('click',finish);
+  }
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stats=document.querySelectorAll('.stat');
+  function countUp(el,target){
+    if(reduce){el.textContent=target;return;}
+    var start=null,dur=1400;
+    function step(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      var eased=1-Math.pow(1-p,3);
+      el.textContent=Math.round(target*eased);
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window){
+    if(!reduce){
+      stats.forEach(function(s){
+        var c=s.querySelector('.count');
+        if(c)c.textContent='0';
+      });
+    }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var s=e.target;
+          s.classList.add('is-in');
+          var c=s.querySelector('.count');
+          if(c)countUp(c,parseInt(c.getAttribute('data-count'),10));
+          io.unobserve(s);
+        }
+      });
+    },{threshold:.35});
+    stats.forEach(function(s){io.observe(s);});
+  }else{
+    stats.forEach(function(s){
+      s.classList.add('is-in');
+      var c=s.querySelector('.count');
+      if(c)c.textContent=c.getAttribute('data-count');
+    });
+  }
+})();
+</script>
+</body>
+</html>
