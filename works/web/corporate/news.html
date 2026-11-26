@@ -10,6 +10,32 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/common.css">
+<style>
+/* 改修：公文書の精度を保ちながら余白を広げ、見出しに静かな主役の瞬間を作る */
+:root{--paper:#FFFFFF;--lead:#2B3038;--sun:#E8C53A;--line:#D9DBDF;--tint:#F4F5F6}
+
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.rv-pre .ch{transform:translateY(135%)}
+.rv-in .ch{transform:translateY(0);transition:transform .9s cubic-bezier(.65,.05,0,1)}
+.w{display:inline-block;white-space:nowrap}
+
+.page-title{position:relative;overflow:hidden;padding:64px 0 40px}
+.page-title::before{content:"NEWS";position:absolute;right:0;top:12px;font-size:9vw;line-height:1;font-weight:700;letter-spacing:.04em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(43,48,56,.16);pointer-events:none;user-select:none}
+.page-title h1{font-size:40px;position:relative}
+.page-title p{position:relative}
+.layout{gap:64px;padding-bottom:96px}
+.layout .section{padding:48px 0 72px}
+.h2{padding-bottom:20px;margin-bottom:32px}
+.filter{margin-bottom:40px;gap:16px}
+#news-all .year{font-size:28px;margin:64px 0 16px;letter-spacing:.04em}
+@media (max-width:760px){
+  .page-title{padding:48px 0 32px}
+  .page-title h1{font-size:28px}
+  .layout .section{padding:40px 0 56px}
+  
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
@@ -25,7 +51,7 @@
 <nav class="crumbs wrap" aria-label="現在の位置"><ol><li><a href="index.html">トップ</a></li><li aria-current="page">お知らせ</li></ol></nav>
 <main id="main">
 <div class="wrap page-title">
-  <h1>お知らせ</h1>
+  <h1 data-reveal="chars">お知らせ</h1>
   <p><span class="nb">見出しを押すと本文が開きます。</span><span class="nb">種類で絞り込めます。</span></p>
 </div>
 
@@ -70,5 +96,59 @@
 </footer>
 <script src="assets/news-data.js"></script>
 <script src="assets/common.js"></script>
+
+<script>
+(function(){
+  "use strict";
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if(!("IntersectionObserver" in window)) return;
+  function splitChars(el){
+    var chars=[];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag=document.createDocumentFragment(), word=null;
+          n.textContent.split("").forEach(function(c){
+            var s=document.createElement("span"); s.className="ch"; s.textContent=c; chars.push(s);
+            if(c===" "||c==="　"){ word=null; frag.appendChild(s); }
+            else{ if(!word){ word=document.createElement("span"); word.className="w"; frag.appendChild(word); } word.appendChild(s); }
+          });
+          node.replaceChild(frag,n);
+        } else if(n.nodeType===1 && n.tagName!=="BR"){ walk(n); }
+      });
+    }
+    el.querySelectorAll(".line").forEach(function(l){ walk(l); });
+    return chars;
+  }
+  function ensureLine(el){
+    if(el.querySelector(".line")) return;
+    var line=document.createElement("span"); line.className="line";
+    while(el.firstChild) line.appendChild(el.firstChild);
+    el.appendChild(line);
+  }
+  var wide = window.innerWidth>=761;
+  var targets=[];
+  document.querySelectorAll("[data-reveal='chars']").forEach(function(el){
+    if(el.tagName==="H1" && !wide) return;
+    ensureLine(el);
+    var chars=splitChars(el);
+    chars.forEach(function(ch,i){ ch.style.transitionDelay=(i*22)+"ms"; });
+    el.classList.add("rv-pre");
+    targets.push(el);
+  });
+  void document.body.offsetWidth;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      io.unobserve(e.target);
+      var el=e.target;
+      el.classList.add("rv-in");
+      setTimeout(function(){ el.classList.remove("rv-pre","rv-in"); el.querySelectorAll(".ch").forEach(function(ch){ ch.style.transitionDelay=""; }); }, 2400);
+    });
+  },{threshold:.4});
+  targets.forEach(function(t){ io.observe(t); });
+})();
+</script>
+
 </body>
 </html>
