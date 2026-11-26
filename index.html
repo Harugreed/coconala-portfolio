@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ハル｜よろずサポート屋 ポートフォリオ</title>
 <meta name="description" content="ココナラ出品者「ハル｜よろずサポート屋」の自主制作サンプル集。Web制作・動画編集・記事作成・自動化・SNS・資料デザイン。">
+<script>setTimeout(function(){document.documentElement.classList.add('ready')},3500);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600;800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
@@ -14,6 +15,7 @@
   --navy:#1F3A5F;
   --brass:#B7791F;
   --mist:#DCE3EA;
+  --ease:cubic-bezier(.65,.05,0,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
@@ -36,48 +38,106 @@ ul{list-style:none}
 .en{font-family:"Kanit",sans-serif;font-weight:800;letter-spacing:.02em}
 .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
 
+/* ---------- headline reveal scaffolding (benchmark: lp-video-studio) ---------- */
+html:not(.ready) [data-reveal]{visibility:hidden}
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
+
 /* ---------- header ---------- */
-.head{background:var(--paper)}
+.head{background:var(--paper);position:relative;z-index:5}
 .head-in{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:16px 0}
 .brand{font-size:18px;font-weight:900;text-decoration:none;white-space:nowrap}
-.brand i{display:inline-block;width:12px;height:12px;background:var(--brass);margin-right:8px}
+.brand i{display:inline-block;width:12px;height:12px;background:var(--brass);margin-right:8px;transition:transform .5s var(--ease)}
+.brand:hover i{transform:rotate(45deg)}
 .nav{display:flex;gap:24px;font-size:14px;font-weight:700}
-.nav a{text-decoration:none}
+.nav a{text-decoration:none;position:relative}
+.nav a::after{
+  content:"";position:absolute;left:0;bottom:-2px;width:100%;height:2px;
+  background:var(--brass);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s var(--ease);
+}
 .nav a:hover{color:var(--brass)}
+.nav a:hover::after{transform:scaleX(1)}
 
-/* ---------- hero = shopfront noren ---------- */
-.hero{background:var(--navy);color:var(--paper);border-radius:0 0 48px 48px;padding:64px 0 48px}
-.hero-kicker{font-size:14px;color:var(--mist);letter-spacing:.16em}
-.hero h1{font-size:80px;line-height:1.2;font-weight:900;margin:16px 0 24px}
-.hero h1 .en{font-size:64px;color:var(--brass)}
-.hero-lead{max-width:640px;font-size:16px;color:var(--mist)}
-.toc{margin-top:48px;border-top:2px solid var(--paper)}
+/* ---------- hero = shopfront signboard ---------- */
+.hero{background:var(--navy);color:var(--paper);border-radius:0 0 48px 48px;padding:72px 0 40px;position:relative;overflow:hidden}
+.hero-ghost{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:0;
+  font-family:"Kanit",sans-serif;font-weight:800;line-height:1;letter-spacing:.01em;
+  font-size:21vw;white-space:nowrap;pointer-events:none;user-select:none;
+  color:rgba(220,227,234,.05);-webkit-text-stroke:1.5px rgba(220,227,234,.22);
+}
+.hero-in{position:relative;z-index:1}
+.hero-kicker{display:flex;align-items:center;gap:16px;font-size:14px;color:var(--mist);letter-spacing:.16em}
+.hero-kicker::before{content:"";width:48px;height:2px;background:var(--brass);flex:none}
+.hero h1{font-size:min(6.4vw,80px);line-height:1.18;font-weight:900;margin:24px 0 28px}
+.hero h1 .en{font-size:.72em;color:var(--brass)}
+.hero-lead{max-width:680px;font-size:16px;color:var(--mist)}
+.hero-badge{
+  position:absolute;right:8px;top:308px;width:136px;height:136px;z-index:2;pointer-events:none;
+  animation:spin 16s linear infinite;
+}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.toc{margin-top:56px;border-top:2px solid var(--paper)}
 .toc a{
-  display:flex;align-items:baseline;gap:32px;
-  padding:16px 8px;border-bottom:1px solid var(--mist);
+  display:flex;align-items:baseline;gap:32px;position:relative;
+  padding:20px 8px;border-bottom:1px solid var(--mist);
   text-decoration:none;transition:color .2s ease;
 }
+.toc a::before{
+  content:"";position:absolute;inset:0;background:rgba(246,247,244,.07);
+  transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);
+}
 .toc a:hover{color:var(--brass)}
-.toc .no{font-size:48px;line-height:1;min-width:96px;color:var(--brass)}
-.toc .cat-name{font-size:28px;font-weight:900}
-.toc .cat-sub{font-size:14px;margin-left:auto;text-align:right;color:var(--mist)}
+.toc a:hover::before{transform:scaleX(1)}
+.toc .no{font-size:48px;line-height:1;min-width:96px;color:var(--brass);position:relative;transition:transform .45s var(--ease)}
+.toc a:hover .no{transform:translateX(8px)}
+.toc .cat-name{font-size:28px;font-weight:900;position:relative}
+.toc .cat-sub{font-size:14px;margin-left:auto;text-align:right;color:var(--mist);position:relative}
 
-/* ---------- marquee strip (seed: MotionSites Jack portfolio) ---------- */
-.marquee{overflow:hidden;padding:32px 0 8px;background:var(--paper)}
-.marquee-track{display:flex;gap:16px;width:max-content;animation:marquee 48s linear infinite}
-.marquee-track img{width:280px;height:176px;object-fit:cover}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ---------- hero shelf = shopfront display ---------- */
+.shelf{margin-top:64px;padding-bottom:20px;border-bottom:4px solid var(--brass);position:relative;z-index:1}
+.shelf-track{display:flex;gap:24px;align-items:flex-end;justify-content:center}
+.shelf-item{display:block;flex:none;position:relative;transition:transform .5s var(--ease)}
+.shelf-item img{width:100%;height:100%;object-fit:cover}
+.shelf-item:hover{transform:rotate(0deg) translateY(-6px) !important}
+.shelf-item.s1{width:384px;height:248px;transform:rotate(-2deg);box-shadow:12px 12px 0 rgba(183,121,31,.85);z-index:1}
+.shelf-item.s2{width:448px;height:296px;box-shadow:12px 12px 0 rgba(220,227,234,.35);z-index:2}
+.shelf-item.s3{width:320px;height:224px;transform:rotate(2deg);box-shadow:12px 12px 0 rgba(183,121,31,.85);z-index:1}
+
+/* ---------- brass marquee band ---------- */
+.band-wrap{overflow:clip;margin:40px 0 16px}
+.band{
+  background:var(--brass);color:var(--navy);overflow:hidden;
+  transform:rotate(-1.3deg) scale(1.03);padding:8px 0;
+  position:relative;z-index:1;
+}
+.band-track{display:flex;width:max-content;animation:bandmove 24s linear infinite}
+.band-group{
+  display:flex;align-items:center;gap:40px;padding-right:40px;
+  font-family:"Kanit",sans-serif;font-weight:800;font-size:20px;
+  text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;line-height:1.4;
+}
+.band-group svg{width:14px;height:14px;flex:none}
+@keyframes bandmove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ---------- section common: layered sheets ---------- */
-section.cat{padding:64px 0 48px;border-radius:48px 48px 0 0;margin-top:-32px;position:relative}
+section.cat{padding:72px 0 56px;border-radius:48px 48px 0 0;margin-top:-32px;position:relative}
 section.sheet{background:var(--paper)}
 section.navy{background:var(--navy);color:var(--paper)}
 section.mist{background:var(--mist)}
-.cat-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;padding-bottom:16px;border-bottom:2px solid currentColor}
-.cat-head .no{font-size:48px;line-height:1;color:var(--brass)}
-.cat-head h2{font-size:36px;font-weight:900;line-height:1.3}
-.cat-head .en-sub{font-size:14px;letter-spacing:.16em}
-.cat-head p{font-size:14px;margin-left:auto}
+.cat-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;padding-bottom:16px;border-bottom:2px solid currentColor;position:relative}
+.cat-head .ghost{
+  position:absolute;right:0;top:-44px;z-index:0;pointer-events:none;user-select:none;
+  font-family:"Kanit",sans-serif;font-weight:800;line-height:1;letter-spacing:.01em;
+  font-size:9.5vw;white-space:nowrap;
+  color:transparent;-webkit-text-stroke:1.5px currentColor;opacity:.2;
+}
+.cat-head .no{font-size:48px;line-height:1;color:var(--brass);position:relative}
+.cat-head h2{font-size:36px;font-weight:900;line-height:1.3;position:relative}
+.cat-head .en-sub{font-size:14px;letter-spacing:.16em;position:relative}
+.cat-head p{font-size:14px;margin-left:auto;position:relative}
 .badge{
   display:inline-block;font-size:12px;font-weight:700;line-height:1.6;
   background:var(--brass);color:var(--paper);padding:0 8px;margin-right:8px;vertical-align:2px;white-space:nowrap;
@@ -90,43 +150,62 @@ section.mist{background:var(--mist)}
 .work .links{margin-top:8px;font-size:14px;display:flex;flex-wrap:wrap;gap:4px 24px}
 .work .links a{font-weight:700}
 .work img{width:100%;height:auto}
+a.thumb{display:block;overflow:hidden}
+a.thumb img{transition:transform .8s var(--ease)}
+a.thumb:hover img{transform:scale(1.03)}
 
 /* ---------- web: featured + alternating rows ---------- */
-.feat{padding:32px 0;border-bottom:1px solid var(--navy)}
-.feat .feat-body{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:24px;align-items:start}
-.feat h3{font-size:24px}
-.rows .work{display:grid;gap:32px;padding:32px 0;border-bottom:1px solid var(--navy);align-items:start}
+.feat{padding:40px 0 48px;border-bottom:1px solid var(--navy)}
+.feat .thumb img{height:min(40vw,496px);object-fit:cover}
+.feat-card{
+  position:relative;z-index:1;background:var(--paper);
+  border-top:4px solid var(--brass);box-shadow:16px 16px 0 var(--mist);
+  margin:-72px 0 0 48px;max-width:736px;padding:24px 32px 16px;
+  display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;align-items:start;
+}
+.feat-card h3{font-size:24px}
+.rows .work{display:grid;gap:32px;padding:40px 0;border-bottom:1px solid var(--navy);align-items:start}
 .rows .work:nth-child(odd){grid-template-columns:5fr 7fr}
 .rows .work:nth-child(even){grid-template-columns:7fr 5fr}
-.rows .work:nth-child(even) .thumb{order:2}
+.rows .work:nth-child(even) .thumb{order:2;margin-top:32px}
 
 /* ---------- video: navy layer ---------- */
-.navy .work{display:grid;grid-template-columns:8fr 4fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--mist);align-items:start}
+.navy .work{display:grid;grid-template-columns:8fr 4fr;gap:32px;padding:40px 0;border-bottom:1px solid var(--mist);align-items:start}
 .navy .work:last-child{border-bottom:none}
+.navy .work:nth-child(odd) .thumb{box-shadow:-16px 16px 0 rgba(183,121,31,.5)}
+.navy .work:nth-child(even) .thumb{box-shadow:16px 16px 0 rgba(183,121,31,.5)}
 
 /* ---------- writing: text-led ---------- */
-.writing-grid{display:grid;grid-template-columns:8fr 4fr;gap:48px;padding:32px 0;align-items:start}
+.writing-grid{display:grid;grid-template-columns:8fr 4fr;gap:48px;padding:40px 0;align-items:start}
 .writing-grid h3{font-size:24px}
+.writing-grid .thumb{box-shadow:14px 14px 0 var(--mist)}
 .doc-list{margin-top:24px;border-top:1px solid var(--navy)}
-.doc-list li{display:flex;justify-content:space-between;gap:24px;padding:8px 0;border-bottom:1px solid var(--mist);font-size:15px}
-.doc-list b{font-family:"Kanit",sans-serif;font-weight:600;white-space:nowrap}
+.doc-list li{display:flex;justify-content:space-between;gap:24px;padding:8px 8px;border-bottom:1px solid var(--mist);font-size:15px;transition:background-color .3s ease}
+.doc-list li:hover{background:var(--mist)}
+.doc-list b{font-family:"Kanit",sans-serif;font-weight:600;font-size:20px;white-space:nowrap}
 
 /* ---------- automation: ledger on mist ---------- */
-.ledger .work{display:grid;grid-template-columns:64px 240px minmax(0,1fr);gap:32px;padding:24px 0;border-bottom:1px solid var(--navy);align-items:start}
-.ledger .idx{font-size:36px;line-height:1.2;color:var(--brass);white-space:nowrap}
+.ledger .work{display:grid;grid-template-columns:64px 240px minmax(0,1fr);gap:32px;padding:32px 0;border-bottom:1px solid var(--navy);align-items:start;transition:background-color .3s ease}
+.ledger .work:hover{background:rgba(246,247,244,.6)}
+.ledger .idx{font-size:36px;line-height:1.2;color:var(--brass);white-space:nowrap;transition:transform .45s var(--ease)}
+.ledger .work:hover .idx{transform:translateX(6px)}
 
 /* ---------- design: asymmetric ---------- */
-.design-grid{display:grid;grid-template-columns:7fr 5fr;gap:48px;padding-top:32px}
-.design-grid .work{padding-bottom:32px;border-bottom:1px solid var(--navy)}
+.design-grid{display:grid;grid-template-columns:7fr 5fr;gap:48px;padding-top:40px}
+.design-grid .work{padding-bottom:40px;border-bottom:1px solid var(--navy)}
 .design-grid .col2{padding-top:48px}
 .design-grid .col2 .work{margin-bottom:48px}
 .design-grid .col2 .work:last-child{margin-bottom:0}
+.design-grid .tilt{transform:rotate(-1.6deg);transition:transform .5s var(--ease)}
+.design-grid .tilt:hover{transform:rotate(0deg)}
 
 /* ---------- profile: navy closing layer ---------- */
-.profile{padding:64px 0;border-radius:48px 48px 0 0;margin-top:-32px;position:relative;background:var(--navy);color:var(--paper)}
+.profile{padding:72px 0 64px;border-radius:48px 48px 0 0;margin-top:-32px;position:relative;background:var(--navy);color:var(--paper)}
 .price-list{border-bottom:1px solid var(--mist)}
 .price-list li{display:flex;justify-content:space-between;align-items:baseline;gap:32px;padding:16px 0;border-bottom:1px solid var(--mist)}
 .price-list li:last-child{border-bottom:none}
+.price-list li:first-child{padding:28px 0}
+.price-list li:first-child .amt{font-size:min(6.5vw,64px)}
 .price-list .amt{font-family:"Kanit",sans-serif;font-weight:800;font-size:28px;white-space:nowrap;color:var(--brass)}
 .price-list .amt small{font-family:"Zen Kaku Gothic New",sans-serif;font-size:14px;font-weight:500;color:var(--paper)}
 .pcols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
@@ -135,41 +214,68 @@ section.mist{background:var(--mist)}
 .pnote{margin-top:24px;font-size:13px;color:var(--mist)}
 
 /* ---------- footer ---------- */
-footer{padding:32px 0 48px;font-size:13px;background:var(--paper)}
+footer{padding:40px 0 48px;font-size:13px;background:var(--paper);overflow:hidden}
+footer .fmark{
+  font-family:"Kanit",sans-serif;font-weight:800;line-height:.95;letter-spacing:.01em;
+  font-size:11.5vw;white-space:nowrap;user-select:none;
+  color:transparent;-webkit-text-stroke:1.5px rgba(31,58,95,.38);
+  margin-bottom:24px;
+}
 footer .flogo{font-size:20px;color:var(--brass);margin-bottom:8px}
 
 @media (max-width:900px){
   .nav{display:none}
+  .hero-badge{width:104px;height:104px;top:auto;bottom:28px;right:20px}
+  .shelf-track{gap:16px}
+  .shelf-item.s1{width:31%;height:168px}
+  .shelf-item.s2{width:38%;height:200px}
+  .shelf-item.s3{width:27%;height:152px}
   .toc .no{font-size:36px;min-width:72px}
-  .feat .feat-body,.navy .work,.writing-grid,.design-grid,.pcols{grid-template-columns:1fr}
+  .feat-card{grid-template-columns:1fr;margin:-56px 0 0 24px;padding:24px 24px 16px}
+  .feat .thumb img{height:320px}
+  .navy .work,.writing-grid,.design-grid,.pcols{grid-template-columns:1fr}
+  .rows .work:nth-child(even) .thumb{margin-top:0}
   .design-grid .col2{padding-top:0}
   .ledger .work{grid-template-columns:56px minmax(0,1fr)}
   .ledger .idx{font-size:28px}
   .ledger .thumb{display:none}
+  .cat-head .ghost{top:-28px}
 }
 @media (max-width:600px){
   .wrap{padding:0 20px}
   .hero{padding:48px 0 32px;border-radius:0 0 32px 32px}
   .hero h1{font-size:40px}
-  .hero h1 .en{font-size:32px}
+  .hero-badge{width:84px;height:84px;bottom:auto;top:64px;right:12px}
+  .shelf{margin-top:40px}
+  .shelf-track{gap:8px}
+  .shelf-item.s1{height:104px;box-shadow:7px 7px 0 rgba(183,121,31,.85)}
+  .shelf-item.s2{height:128px;box-shadow:7px 7px 0 rgba(220,227,234,.35)}
+  .shelf-item.s3{height:96px;box-shadow:7px 7px 0 rgba(183,121,31,.85)}
+  .band-wrap{margin:28px 0 8px}
+  .band-group{font-size:16px;gap:28px;padding-right:28px}
   section.cat,.profile{border-radius:32px 32px 0 0}
   .toc a{gap:16px;flex-wrap:wrap}
   .toc .no{font-size:28px;min-width:56px}
   .toc .cat-name{font-size:24px}
   .toc .cat-sub{margin-left:0;text-align:left;width:100%}
-  section.cat{padding:48px 0 32px}
+  section.cat{padding:56px 0 40px}
   .cat-head .no{font-size:36px}
   .cat-head h2{font-size:28px}
   .cat-head p{margin-left:0;width:100%}
+  .cat-head .ghost{top:-18px}
+  .feat-card{margin:-40px 12px 0;padding:20px 20px 12px;box-shadow:10px 10px 0 var(--mist)}
+  .feat .thumb img{height:224px}
   .rows .work,.rows .work:nth-child(odd),.rows .work:nth-child(even){grid-template-columns:1fr}
   .rows .work:nth-child(even) .thumb{order:0}
+  .price-list li{gap:16px}
   .price-list .amt{font-size:24px}
-  .marquee-track img{width:200px;height:124px}
+  .price-list li:first-child .amt{font-size:36px}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .marquee-track{animation:none}
-  .toc a{transition:none}
+  .band-track{animation:none}
+  .hero-badge{animation:none}
+  .toc a,.toc .no,.nav a::after,.brand i,.shelf-item,.ledger .work,.ledger .idx,.design-grid .tilt,a.thumb img,.doc-list li{transition:none}
 }
 </style>
 </head>
@@ -186,12 +292,23 @@ footer .flogo{font-size:20px;color:var(--brass);margin-bottom:8px}
 
 <main id="top">
 
-<!-- ============ HERO = SHOPFRONT NOREN ============ -->
+<!-- ============ HERO = SHOPFRONT SIGNBOARD ============ -->
 <section class="hero">
-  <div class="wrap">
+  <div class="hero-ghost en" aria-hidden="true">YOROZU</div>
+  <div class="wrap hero-in">
     <p class="en hero-kicker">YOROZU SUPPORT / PORTFOLIO</p>
-    <h1><span class="seg"><span class="nb">ハル｜</span><span class="nb">よろず</span><span class="nb">サポート屋</span></span><span class="seg"><span class="nb"><span class="en">Samples</span></span> <span class="nb">自主制作</span><span class="nb">サンプル集</span></span></h1>
+    <h1 data-reveal="chars"><span class="seg line"><span class="nb">ハル｜</span><span class="nb">よろず</span><span class="nb">サポート屋</span></span><span class="seg line"><span class="nb"><span class="en">Samples</span></span> <span class="nb">自主制作</span><span class="nb">サンプル集</span></span></h1>
     <p class="hero-lead"><span class="nb">ココナラ出品者「ハル｜よろずサポート屋」の</span><span class="nb">ポートフォリオです。</span><span class="nb">掲載している作品はすべて自主制作のサンプルで、</span><span class="nb">店名・会社名・人名・数値は架空のものです。</span><span class="nb">実在のお客様の制作実績ではありません</span></p>
+    <div class="hero-badge" aria-hidden="true">
+      <svg viewBox="0 0 200 200" width="100%" height="100%">
+        <circle cx="100" cy="100" r="98" fill="#B7791F"/>
+        <defs><path id="badgecirc" d="M100,100 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0"/></defs>
+        <text fill="#F6F7F4" font-family="Kanit, sans-serif" font-weight="800" font-size="20" letter-spacing="3.5">
+          <textPath href="#badgecirc" textLength="436" lengthAdjust="spacing">YOROZU SUPPORT ・ PORTFOLIO ・</textPath>
+        </text>
+        <rect x="82" y="82" width="36" height="36" fill="#F6F7F4" transform="rotate(45 100 100)"/>
+      </svg>
+    </div>
     <nav class="toc" aria-label="カテゴリ目次">
       <a href="#web"><span class="en no">07</span><span class="cat-name">Web制作</span><span class="cat-sub"><span class="seg">店舗HP・団体の公式サイト</span><span class="seg">LP・リニューアル提案</span></span></a>
       <a href="#video"><span class="en no">05</span><span class="cat-name">動画編集</span><span class="cat-sub"><span class="seg">本編・比較動画・ショート3本</span><span class="seg">テロップ・図解入り</span></span></a>
@@ -199,39 +316,46 @@ footer .flogo{font-size:20px;color:var(--brass);margin-bottom:8px}
       <a href="#automation"><span class="en no">05</span><span class="cat-name">自動化・データ</span><span class="cat-sub"><span class="seg">スクレイピング・CSV変換</span><span class="seg">Excel自動化・リスト作成</span></span></a>
       <a href="#design"><span class="en no">04</span><span class="cat-name">SNS・資料・デザイン</span><span class="cat-sub"><span class="seg">Instagram投稿・プレゼン資料</span><span class="seg">バナー・UI／UX提案</span></span></a>
     </nav>
+    <div class="shelf" aria-label="注目サンプル">
+      <div class="shelf-track">
+        <a class="shelf-item s1" href="works/web/shop-cafe/"><img src="assets/thumbs/cafe.jpg" alt="カフェのHPのトップ画面" width="1200" height="750"></a>
+        <a class="shelf-item s2" href="works/video/telop/"><img src="assets/thumbs/telop.jpg" alt="テロップ入り動画の1場面" width="900" height="564"></a>
+        <a class="shelf-item s3" href="works/sns/instagram-set/"><img src="assets/thumbs/instagram.jpg" alt="Instagram投稿画像6枚" width="900" height="564"></a>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ============ MARQUEE = SHOPFRONT DISPLAY ============ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <img src="assets/thumbs/cafe.jpg" alt="" width="280" height="176">
-    <img src="assets/thumbs/ramen.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/salon.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/telop.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/reels.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/writing.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/scraping.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/instagram.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/cafe.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/ramen.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/salon.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/telop.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/reels.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/writing.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/scraping.jpg" alt="" width="280" height="176" loading="lazy">
-    <img src="assets/thumbs/instagram.jpg" alt="" width="280" height="176" loading="lazy">
+<!-- ============ BRASS MARQUEE BAND ============ -->
+<div class="band-wrap">
+<div class="band" aria-hidden="true">
+  <div class="band-track">
+    <div class="band-group">
+      <span>Web</span><svg viewBox="0 0 24 24" fill="#1F3A5F" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+      <span>Video</span><svg viewBox="0 0 24 24" fill="#1F3A5F" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+      <span>Writing</span><svg viewBox="0 0 24 24" fill="#1F3A5F" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+      <span>Automation</span><svg viewBox="0 0 24 24" fill="#1F3A5F" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+      <span>Design</span><svg viewBox="0 0 24 24" fill="#1F3A5F" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+    </div>
+    <div class="band-group">
+      <span>Web</span><svg viewBox="0 0 24 24" fill="#1F3A5F" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+      <span>Video</span><svg viewBox="0 0 24 24" fill="#1F3A5F" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+      <span>Writing</span><svg viewBox="0 0 24 24" fill="#1F3A5F" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+      <span>Automation</span><svg viewBox="0 0 24 24" fill="#1F3A5F" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+      <span>Design</span><svg viewBox="0 0 24 24" fill="#1F3A5F" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+    </div>
   </div>
+</div>
 </div>
 
 <!-- ============ WEB ============ -->
 <section class="cat sheet" id="web">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">01</span><h2>Web制作</h2><span class="en en-sub">WEB</span><p>店舗HP・団体の公式サイト・LP・リニューアル提案</p></div>
+    <div class="cat-head"><span class="ghost en" aria-hidden="true">WEB</span><span class="en no">01</span><h2 data-reveal="chars">Web制作</h2><span class="en en-sub">WEB</span><p>店舗HP・団体の公式サイト・LP・リニューアル提案</p></div>
 
     <article class="work feat">
       <a class="thumb" href="works/web/shop-cafe/"><img src="assets/thumbs/cafe.jpg" alt="カフェのHPのトップ画面" width="1200" height="750"></a>
-      <div class="feat-body">
+      <div class="feat-card">
         <h3><span class="badge">自主制作サンプル</span><a href="works/web/shop-cafe/">カフェの店舗HP<span class="nb">「白杢珈琲」</span></a></h3>
         <div>
           <p class="sum"><span class="nb">焙煎機の写真から拾った3色で配色し、</span><span class="nb">店名を明朝の縦書きにした1ページHPです</span><span class="nb">営業時間・定休日・所在地を</span><span class="nb">最初の画面に置いています</span></p>
@@ -297,7 +421,7 @@ footer .flogo{font-size:20px;color:var(--brass);margin-bottom:8px}
 <!-- ============ VIDEO ============ -->
 <section class="cat navy" id="video">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">02</span><h2>動画編集</h2><span class="en en-sub">VIDEO</span><p><span class="nb">テロップ・図解入りの解説動画・</span><span class="nb">縦型ショート・サムネイル</span></p></div>
+    <div class="cat-head"><span class="ghost en" aria-hidden="true">VIDEO</span><span class="en no">02</span><h2 data-reveal="chars">動画編集</h2><span class="en en-sub">VIDEO</span><p><span class="nb">テロップ・図解入りの解説動画・</span><span class="nb">縦型ショート・サムネイル</span></p></div>
     <article class="work">
       <a class="thumb" href="works/video/telop/"><img src="assets/thumbs/telop.jpg" alt="テロップ入り動画の1場面" loading="lazy" width="900" height="564"></a>
       <div>
@@ -321,7 +445,7 @@ footer .flogo{font-size:20px;color:var(--brass);margin-bottom:8px}
 <!-- ============ WRITING ============ -->
 <section class="cat sheet" id="writing">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">03</span><h2>記事・文書</h2><span class="en en-sub">WRITING</span><p>IT解説・SEO記事・商品紹介・ビジネス文書</p></div>
+    <div class="cat-head"><span class="ghost en" aria-hidden="true">WORDS</span><span class="en no">03</span><h2 data-reveal="chars">記事・文書</h2><span class="en en-sub">WRITING</span><p>IT解説・SEO記事・商品紹介・ビジネス文書</p></div>
     <div class="writing-grid">
       <article class="work">
         <h3><span class="badge">自主制作サンプル</span><a href="works/writing/">記事・文書サンプル一式</a></h3>
@@ -342,7 +466,7 @@ footer .flogo{font-size:20px;color:var(--brass);margin-bottom:8px}
 <!-- ============ AUTOMATION ============ -->
 <section class="cat mist" id="automation">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">04</span><h2>自動化・データ</h2><span class="en en-sub">AUTOMATION</span><p>スクレイピング・CSV変換・Excel自動化・リスト作成</p></div>
+    <div class="cat-head"><span class="ghost en" aria-hidden="true">AUTO</span><span class="en no">04</span><h2 data-reveal="chars">自動化・データ</h2><span class="en en-sub">AUTOMATION</span><p>スクレイピング・CSV変換・Excel自動化・リスト作成</p></div>
     <div class="ledger">
       <article class="work">
         <span class="en idx">A-1</span>
@@ -378,11 +502,11 @@ footer .flogo{font-size:20px;color:var(--brass);margin-bottom:8px}
 <!-- ============ DESIGN ============ -->
 <section class="cat sheet" id="design">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">05</span><h2>SNS・資料・デザイン</h2><span class="en en-sub">DESIGN</span><p>Instagram投稿・プレゼン資料・バナー・UI／UX提案</p></div>
+    <div class="cat-head"><span class="ghost en" aria-hidden="true">DESIGN</span><span class="en no">05</span><h2 data-reveal="chars">SNS・資料・デザイン</h2><span class="en en-sub">DESIGN</span><p>Instagram投稿・プレゼン資料・バナー・UI／UX提案</p></div>
     <div class="design-grid">
       <div class="col1">
         <article class="work">
-          <a class="thumb" href="works/sns/instagram-set/"><img src="assets/thumbs/instagram.jpg" alt="Instagram投稿画像6枚" loading="lazy" width="900" height="564"></a>
+          <a class="thumb tilt" href="works/sns/instagram-set/"><img src="assets/thumbs/instagram.jpg" alt="Instagram投稿画像6枚" loading="lazy" width="900" height="564"></a>
           <h3 style="margin-top:16px"><span class="badge">自主制作サンプル</span><a href="works/sns/instagram-set/">Instagram投稿セット</a></h3>
           <p class="sum"><span class="nb">投稿画像6枚・キャプション・</span><span class="nb">1週間分の投稿カレンダーです。</span><span class="nb">店のHPと配色・書体をそろえています</span></p>
           <p class="tech"><span class="nb">画像 1080×1080・</span><span class="nb">Excelのカレンダー</span></p>
@@ -417,9 +541,9 @@ footer .flogo{font-size:20px;color:var(--brass);margin-bottom:8px}
 <!-- ============ PROFILE ============ -->
 <section class="profile" id="profile">
   <div class="wrap">
-    <div class="cat-head"><span class="en no">06</span><h2>対応業務・料金・納期</h2><span class="en en-sub">PRICE</span></div>
+    <div class="cat-head"><span class="ghost en" aria-hidden="true">PRICE</span><span class="en no">06</span><h2 data-reveal="chars">対応業務・料金・納期</h2><span class="en en-sub">PRICE</span></div>
     <ul class="price-list">
-      <li><span>ホームページ制作（1ページ）</span><span class="amt">¥29,800</span></li>
+      <li><span><span class="nb">ホームページ制作</span><span class="nb">（1ページ）</span></span><span class="amt">¥29,800</span></li>
       <li><span>動画編集</span><span class="amt"><small>お見積もり</small></span></li>
       <li><span>記事・文書</span><span class="amt"><small>お見積もり</small></span></li>
       <li><span>自動化・データ</span><span class="amt"><small>お見積もり</small></span></li>
@@ -452,9 +576,115 @@ footer .flogo{font-size:20px;color:var(--brass);margin-bottom:8px}
 
 <footer>
   <div class="wrap">
+    <p class="fmark en" aria-hidden="true">YOROZU SUPPORT</p>
     <p class="en flogo">YOROZU SUPPORT</p>
     <p><span class="nb">このサイトに掲載している作品は</span><span class="nb">すべて自主制作のサンプルです。</span><span class="nb">店名・会社名・団体名・人名・価格・数値は架空のもので</span><span class="nb">実在の店舗・企業とは関係ありません。</span><span class="nb">写真は Unsplash、素材映像・音楽は</span><span class="nb">Mixkit のライセンスに基づき</span><span class="nb">使用しています</span><span class="nb">（出典は各作品の credits.md）</span></p>
   </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.documentElement.classList.add("ready");
+
+  /* ---- split headline text into chars (benchmark pattern) ---- */
+  function splitChars(el){
+    var chars = [];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType === 3){
+          var frag = document.createDocumentFragment();
+          var word = null;
+          n.textContent.split("").forEach(function(c){
+            var s = document.createElement("span");
+            s.className = "ch";
+            s.textContent = c;
+            chars.push(s);
+            if(c === " " || c === "　"){
+              word = null;
+              frag.appendChild(s);
+            } else {
+              if(!word){
+                word = document.createElement("span");
+                word.className = "w";
+                frag.appendChild(word);
+              }
+              word.appendChild(s);
+            }
+          });
+          node.replaceChild(frag, n);
+        } else if(n.nodeType === 1 && n.tagName !== "BR"){
+          walk(n);
+        }
+      });
+    }
+    el.querySelectorAll(".line").forEach(function(line){ walk(line); });
+    return chars;
+  }
+  function ensureLine(el){
+    if(el.querySelector(".line")) return;
+    var line = document.createElement("span");
+    line.className = "line";
+    while(el.firstChild) line.appendChild(el.firstChild);
+    el.appendChild(line);
+  }
+
+  var wide = window.innerWidth >= 601;
+  var revealChars = {};
+  document.querySelectorAll("[data-reveal='chars']").forEach(function(el, i){
+    if(el.tagName === "H1" && !wide) return; /* keep .nb wrapping on small screens */
+    ensureLine(el);
+    revealChars[i] = splitChars(el);
+    el.dataset.revealIdx = i;
+  });
+
+  if(typeof gsap === "undefined" || reduced){
+    return; /* everything stays visible thanks to .ready */
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- hero entrance: h1 chars rise, then lead / toc / shelf stagger ---- */
+  var h1 = document.querySelector("h1");
+  if(h1 && revealChars[h1.dataset.revealIdx]){
+    gsap.fromTo(revealChars[h1.dataset.revealIdx],
+      { yPercent: 135 },
+      { yPercent: 0, duration: 1, ease: "expo.out", stagger: 0.02, delay: 0.25 });
+  }
+  gsap.fromTo(".hero-kicker, .hero-lead",
+    { y: 24, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 0.9, ease: "expo.out", stagger: 0.12, delay: 0.55 });
+  gsap.fromTo(".toc a",
+    { y: 20, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 0.8, ease: "expo.out", stagger: 0.07, delay: 0.85 });
+  gsap.fromTo(".shelf-item",
+    { y: 36, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 0.9, ease: "expo.out", stagger: 0.1, delay: 1.1, clearProps: "transform,opacity,visibility" });
+
+  /* ---- section headlines: char reveal once on scroll ---- */
+  document.querySelectorAll("section:not(.hero) [data-reveal='chars']").forEach(function(el){
+    var chars = revealChars[el.dataset.revealIdx];
+    if(!chars) return;
+    gsap.fromTo(chars, { yPercent: 135 }, {
+      yPercent: 0, duration: 0.9, ease: "expo.out", stagger: 0.025,
+      scrollTrigger: { trigger: el, start: "top 88%", once: true }
+    });
+  });
+
+  /* ---- ghosts: restrained scroll drift ---- */
+  gsap.to(".hero-ghost", {
+    yPercent: 24, ease: "none",
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.4 }
+  });
+  document.querySelectorAll(".cat-head .ghost").forEach(function(g){
+    gsap.fromTo(g, { x: 0 }, {
+      x: -40, ease: "none",
+      scrollTrigger: { trigger: g.parentElement, start: "top bottom", end: "bottom top", scrub: 0.4 }
+    });
+  });
+})();
+</script>
 </body>
 </html>
