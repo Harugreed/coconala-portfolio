@@ -1,9 +1,186 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>YouTubeテロップ編集サンプル｜自主制作サンプル</title><meta name="robots" content="noindex"><style>*{box-sizing:border-box}body{margin:0;background:#101318;color:#E8EAEE;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;line-height:1.8;word-break:auto-phrase}
-.flag{margin:0;background:#FFD43B;color:#111;font-size:13px;padding:6px 20px}main{max-width:1100px;margin:0 auto;padding:40px 20px 80px}
-h1{font-size:28px;margin:0 0 8px}h2{font-size:20px;margin:48px 0 12px;padding-bottom:6px;border-bottom:2px solid #FFD43B}
-p{margin:0 0 12px;color:#C4C9D2}a{color:#FFD43B}video{display:block;width:100%;background:#000;border-radius:6px}
-.reels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.reels figure{margin:0}.reels figcaption{font-size:14px;margin-top:6px;color:#C4C9D2}
-.thumbs img{width:100%;display:block;border-radius:6px}ul{padding-left:1.2em}@media(max-width:700px){.reels{grid-template-columns:1fr}}</style></head><body><p class="flag">自主制作サンプルです。店名・価格は架空です。素材映像・音楽：Mixkit　音声合成：Irodori-TTS</p><main><p><a href="../index.html">← 動画サンプルの一覧</a></p><h1>YouTubeテロップ編集サンプル</h1><p>ビジネス解説風の動画（3分08秒）に、テロップ・図解・強調演出を付けました。</p>
-<h2>本編</h2><video src="telop-main.mp4" controls preload="metadata" poster="frames/main-055s.jpg"></video>
-<h2>Before／After（30秒）</h2><p>同じ映像・同じ音声で、自動字幕のままの表示（左）とデザイン済みテロップ（右）を並べています。</p><video src="before-after.mp4" controls preload="metadata" poster="frames/before-after-12s.jpg"></video>
-<h2>資料</h2><ul><li><a href="spec.html">テロップの仕様表</a></li><li><a href="manual.html">テロップ再現マニュアル</a></li><li><a href="credits.html">素材・音声・書体の出典</a></li></ul></main></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouTubeテロップ編集サンプル｜自主制作サンプル</title>
+<meta name="description" content="ビジネス解説風の動画3分08秒にテロップ、図解、強調演出を付けた自主制作サンプルです。章のタイムライン、比較動画、仕様表へのリンクを載せています。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF2F6;
+  --ink:#14213D;
+  --sun:#FFD43B;
+  --white:#FFFFFF;
+  --soft:#44506A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:"M PLUS 1p","Hiragino Kaku Gothic ProN",sans-serif;
+  font-size:16px;line-height:1.8;
+}
+img{display:block;max-width:100%}
+video{display:block;width:100%;background:var(--ink)}
+a{color:var(--ink)}
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+.tc{font-family:ui-monospace,"SF Mono",monospace;font-weight:700}
+.flag{background:var(--ink);color:var(--white);font-size:13px;padding:8px 16px}
+.flag b{color:var(--sun);font-weight:700}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.back{display:inline-block;margin:24px 0;font-size:13px}
+/* title band: same build as the film's 0:00 title card (navy ground, yellow line) */
+.titleband{background:var(--ink);color:var(--white);padding:48px 32px 40px;margin-bottom:32px}
+.titleband .kicker{font-size:13px;color:var(--sun);font-weight:700;margin-bottom:16px}
+h1{font-size:34px;line-height:1.5;font-weight:800;margin-bottom:16px}
+.titleband .theme{font-size:20px;font-weight:700;margin-bottom:24px}
+.titleband .rule{height:4px;background:var(--sun);width:160px}
+.stats{
+  display:flex;gap:48px;flex-wrap:wrap;
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  padding:16px 0;margin-bottom:32px;
+}
+.stat b{display:block;font-size:26px;line-height:1.3;font-weight:800}
+.stat span{font-size:13px;color:var(--soft)}
+.lead{max-width:760px;margin-bottom:32px}
+section{padding:64px 0 0}
+h2{font-size:34px;line-height:1.4;font-weight:800;margin-bottom:8px}
+h2 .tc{color:var(--ink);border-bottom:4px solid var(--sun)}
+.sec-note{color:var(--soft);margin-bottom:32px;max-width:760px}
+/* timeline: chapters as tracks on a time axis (seed: MotionSites "Video Editor") */
+.timeline{border-top:2px solid var(--ink)}
+.track{
+  display:grid;grid-template-columns:120px 1fr 320px;gap:32px;
+  padding:24px 0;border-bottom:1px solid var(--ink);align-items:start;
+}
+.track .tc{font-size:20px}
+.track h3{font-size:20px;line-height:1.5;font-weight:700;margin-bottom:8px}
+.track .how{color:var(--soft)}
+.track img{width:100%;height:auto}
+.track .still-empty{font-size:13px;color:var(--soft)}
+.rows{border-top:2px solid var(--ink)}
+.row{
+  display:grid;grid-template-columns:240px 1fr;gap:24px;
+  padding:12px 0;border-bottom:1px solid var(--ink);
+}
+.row .k{font-size:13px;font-weight:700}
+.steps{border-top:2px solid var(--ink)}
+.step{
+  display:grid;grid-template-columns:120px 1fr;gap:32px;
+  padding:24px 0;border-bottom:1px solid var(--ink);
+}
+.step .no{font-size:26px;font-weight:800}
+.step h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.step p{color:var(--soft)}
+.links{display:flex;gap:24px;flex-wrap:wrap;margin-top:8px}
+.links a{font-weight:700;border-bottom:2px solid var(--sun);text-decoration:none;padding-bottom:4px}
+footer{
+  margin-top:96px;border-top:1px solid var(--ink);
+  padding:32px 0 48px;font-size:13px;color:var(--soft);
+}
+@media (max-width:1024px){
+  .track{grid-template-columns:96px 1fr 240px;gap:24px}
+}
+@media (max-width:768px){
+  h1{font-size:26px}
+  h2{font-size:26px}
+  .titleband{padding:32px 16px}
+  .track{grid-template-columns:1fr;gap:8px}
+  .row{grid-template-columns:1fr;gap:4px}
+  .step{grid-template-columns:1fr;gap:8px}
+  .stats{gap:24px}
+  .wrap{padding:0 16px}
+}
+</style>
+</head>
+<body>
+<p class="flag"><b>自主制作サンプル</b>です。店名・価格は架空です。素材映像・音楽：Mixkit　音声合成：Irodori-TTS</p>
+<div class="wrap">
+<a class="back" href="../index.html">← 動画サンプルの一覧</a>
+
+<header>
+  <div class="titleband">
+    <p class="kicker">YouTubeテロップ編集</p>
+    <h1><span class="nb">YouTubeテロップ編集</span><span class="nb">サンプル</span></h1>
+    <p class="theme"><span class="nb">本編の題名は</span><span class="nb">「Googleマップで</span><span class="nb">見つけてもらう3つの準備」です</span></p>
+    <div class="rule" aria-hidden="true"></div>
+  </div>
+  <div class="stats">
+    <p class="stat"><b>3分08秒</b><span>本編の長さ</span></p>
+    <p class="stat"><b>1280×720</b><span>画面サイズ</span></p>
+    <p class="stat"><b>約22MB</b><span>本編のファイル容量</span></p>
+    <p class="stat"><b>9章</b><span>本編の構成</span></p>
+    <p class="stat"><b>30秒</b><span>Before／After比較動画</span></p>
+  </div>
+  <p class="lead"><span class="seg"><span class="nb">ビジネス解説風の動画に、</span></span><span class="seg"><span class="nb">テロップと図解、強調演出を付けました</span></span><span class="seg"><span class="nb">句読点での改行と強調語の色、</span><span class="nb">章の見出しを仕様表で決めてから</span></span><span class="seg"><span class="nb">全編に当てています</span></span></p>
+</header>
+
+<main>
+<section aria-label="本編" style="padding-top:32px">
+  <h2><span class="tc">00:00</span> 本編</h2>
+  <p class="sec-note"><span class="nb">再生すると音が出ます。</span><span class="nb">ナレーションは音声合成です。</span></p>
+  <video src="telop-main.mp4" controls preload="metadata" poster="frames/main-055s.jpg"></video>
+</section>
+
+<section aria-label="章のタイムライン">
+  <h2>章のタイムライン</h2>
+  <p class="sec-note"><span class="nb">本編9章の見せ方です。</span><span class="nb">場面写真は本編から切り出した画像です。</span></p>
+  <div class="timeline">
+    <div class="track"><p class="tc">0:00</p><div><h3>タイトル</h3><p class="how"><span class="nb">紺地に題名を置き</span><span class="nb">黄色の線が伸びる</span></p></div><img src="frames/main-002s.jpg" alt="本編0分02秒のタイトル画面" width="1280" height="720" loading="lazy"></div>
+    <div class="track"><p class="tc">0:04</p><div><h3>導入</h3><p class="how"><span class="nb">素材映像（地図を検索する手元）に</span><span class="nb">テロップを重ねる</span></p></div><p class="still-empty">場面写真なし</p></div>
+    <div class="track"><p class="tc">0:25</p><div><h3>見つけた人がすること</h3><p class="how"><span class="nb">図解で3つの手順が順に現れ</span><span class="nb">「別の店へ」の分かれ道を示す</span></p></div><img src="frames/main-030s.jpg" alt="本編0分30秒の図解場面" width="1280" height="720" loading="lazy"></div>
+    <div class="track"><p class="tc">0:51</p><div><h3>準備1 基本情報</h3><p class="how"><span class="nb">素材映像に</span><span class="nb">図解のチェックリストを重ねる</span></p></div><img src="frames/main-055s.jpg" alt="本編0分55秒の基本情報の場面" width="1280" height="720" loading="lazy"></div>
+    <div class="track"><p class="tc">1:25</p><div><h3>準備2 写真</h3><p class="how"><span class="nb">素材映像と図解で示す</span><span class="nb">4種類の写真と</span><span class="nb">合計20枚の数字が数え上がる</span></p></div><img src="frames/main-106s.jpg" alt="本編1分46秒の写真の場面" width="1280" height="720" loading="lazy"></div>
+    <div class="track"><p class="tc">1:58</p><div><h3>準備3 投稿と返信</h3><p class="how"><span class="nb">素材映像に</span><span class="nb">テロップを重ねる</span></p></div><img src="frames/main-120s.jpg" alt="本編2分00秒の投稿と返信の場面" width="1280" height="720" loading="lazy"></div>
+    <div class="track"><p class="tc">2:24</p><div><h3>数字の確かめ方</h3><p class="how"><span class="nb">図解で</span><span class="nb">3つの数字の棒グラフが伸びる</span></p></div><img src="frames/main-150s.jpg" alt="本編2分30秒の棒グラフの場面" width="1280" height="720" loading="lazy"></div>
+    <div class="track"><p class="tc">2:43</p><div><h3>まとめ</h3><p class="how"><span class="nb">図解で</span><span class="nb">3つの準備を順に表示する</span></p></div><img src="frames/main-172s.jpg" alt="本編2分52秒のまとめの場面" width="1280" height="720" loading="lazy"></div>
+    <div class="track"><p class="tc">3:03</p><div><h3>終わり</h3><p class="how"><span class="nb">次の一歩の一文と</span><span class="nb">出典を表示する</span></p></div><p class="still-empty">場面写真なし</p></div>
+  </div>
+</section>
+
+<section aria-label="Before After">
+  <h2>Before／After（30秒）</h2>
+  <p class="sec-note"><span class="nb">同じ映像と音声で、</span><span class="nb">自動字幕のままの表示（左）と</span><span class="nb">デザイン済みテロップ（右）を</span><span class="nb">並べています。</span></p>
+  <video src="before-after.mp4" controls preload="metadata" poster="frames/before-after-12s.jpg"></video>
+</section>
+
+<section aria-label="テロップ仕様の要点">
+  <h2>テロップ仕様の要点</h2>
+  <p class="sec-note"><span class="nb">仕様表（spec.html）からの抜粋です。</span><span class="nb">値は Remotion のコードと同じです。</span></p>
+  <div class="rows">
+    <div class="row"><p class="k">本文テロップの書体</p><p>M PLUS 1p ExtraBold・46px（1280×720の画面に対して）</p></div>
+    <div class="row"><p class="k">1行と行数</p><p>1行は全角20字まで、1画面は2行まで。3行以上になる文は2行ずつのページに分けて切り替える</p></div>
+    <div class="row"><p class="k">色と縁取り</p><p>文字は #FFFFFF、強調語は #FFD43B、縁取りは #14213D の9px。文末の「。」は表示しない</p></div>
+    <div class="row"><p class="k">位置と出かた</p><p>画面の下から54px・左右中央。4フレームで下から10px動きながら現れ、読み終わってから0.25秒後に消える</p></div>
+    <div class="row"><p class="k">章の見出し</p><p>左上に置く。地は #14213D、文字は #FFFFFF、左の帯は #FFD43B（幅10px）。章が変わったときだけ左から滑り込む</p></div>
+    <div class="row"><p class="k">図解の場面</p><p>地は #EEF2F6、文字と図形は #14213D、強調は #FFD43B。要素ごとにばねで現れ、本文テロップと重ならない範囲に収める</p></div>
+    <div class="row"><p class="k">音</p><p>ナレーションは Irodori-TTS で文ごとに合成する。BGMは Mixkit「Motivating Mornings」を音量7%で繰り返し、効果音は章の切り替わりだけに使う</p></div>
+  </div>
+</section>
+
+<section aria-label="制作の手順">
+  <h2>制作の手順</h2>
+  <div class="steps">
+    <div class="step"><p class="no">1</p><div><h3>台本を書く</h3><p>台本を文ごとに書き、強調語を [[ ]] で囲みます。</p></div></div>
+    <div class="step"><p class="no">2</p><div><h3>音声を合成し、時刻表を作る</h3><p>文ごとにナレーションを合成し、時刻表（timing.json）を作ります。</p></div></div>
+    <div class="step"><p class="no">3</p><div><h3>Remotion で配置する</h3><p>時刻表に合わせて、テロップ・素材映像・図解・効果音を配置します。</p></div></div>
+    <div class="step"><p class="no">4</p><div><h3>書き出して確認する</h3><p>1280×720・H.264 で書き出し、代表的な場面の画像でテロップのはみ出しと重なりを確認します。</p></div></div>
+  </div>
+</section>
+
+<section aria-label="資料">
+  <h2>資料</h2>
+  <p class="links"><a href="spec.html">テロップの仕様表</a><a href="manual.html">テロップ再現マニュアル</a><a href="credits.html">素材・音声・書体の出典</a></p>
+</section>
+</main>
+
+<footer>
+  <p><span class="nb">自主制作サンプルです。</span><span class="nb">参考動画のテロップを再現する手順は</span><span class="nb">マニュアルにまとめています。</span></p>
+</footer>
+</div>
+</body>
+</html>

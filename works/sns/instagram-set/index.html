@@ -1,41 +1,206 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Instagram投稿セット：白杢珈琲｜自主制作サンプル</title><meta name="robots" content="noindex"><style>
-:root{--ink:#24262B;--sub:#5D626B;--line:#DCDFE4;--accent:#3D5A80;--paper:#FFFFFF;--bg:#F3F4F6}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;font-size:17px;line-height:2;word-break:auto-phrase;line-break:strict}
-.flag{margin:0;background:var(--ink);color:#fff;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:13px;padding:6px 20px}
-article{max-width:760px;margin:40px auto 80px;background:var(--paper);padding:56px 64px}
-h1{font-size:28px;line-height:1.5;margin:0 0 24px}
-h2{font-size:21px;line-height:1.6;margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--ink)}
-h3{font-size:18px;margin:32px 0 8px}
-p{margin:0 0 1em}
-blockquote{margin:0 0 32px;padding:12px 16px;background:var(--bg);border-left:4px solid var(--accent);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14px;line-height:1.8;color:var(--sub)}
-blockquote p{margin:0}
-ul,ol{margin:0 0 1em;padding-left:1.5em}
-table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:14.5px;line-height:1.7}
-th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-thead th{border-bottom:2px solid var(--ink)}
-hr{border:0;border-top:1px dashed var(--line);margin:32px 0}
-a{color:var(--accent);word-break:break-all}
-figure{margin:16px 0 28px}figure img{width:100%;display:block;border:1px solid var(--line)}figcaption{font-family:sans-serif;font-size:13px;color:var(--sub);margin-top:6px}
-.back{display:block;max-width:760px;margin:24px auto 0;font-family:sans-serif;font-size:14px}
-@media(max-width:640px){article{margin:0;padding:32px 20px}body{font-size:16px}h1{font-size:23px}h2{font-size:19px}}
-</style></head>
-<body><p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」の文章サンプルです。</p>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instagram投稿セット：白杢珈琲｜自主制作サンプル</title>
+<meta name="description" content="架空のカフェ白杢珈琲のInstagram投稿画像6枚、キャプション、1週間分の投稿カレンダーの自主制作サンプルです。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E4E7E5;
+  --ink:#2B211B;
+  --roaster:#2C6670;
+  --paper-light:#F4F6F5;
+  --ink-soft:#5A4A3E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+  font-size:16px;line-height:1.8;
+}
+img{display:block;max-width:100%}
+a{color:var(--roaster)}
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+.flag{
+  background:var(--ink);color:var(--paper-light);
+  font-size:13px;padding:8px 16px;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.back{display:inline-block;margin:24px 0 0;font-size:13px}
+/* profile summary (Mobbin "Instagram iOS Account Profile" structure: summary on top, grid below) */
+.profile{padding:48px 0 32px;border-bottom:2px solid var(--ink)}
+.profile-kicker{font-size:13px;color:var(--roaster);font-weight:700;margin-bottom:16px}
+h1{
+  font-family:"Shippori Mincho B1","Hiragino Mincho ProN",serif;
+  font-size:44px;line-height:1.4;font-weight:700;margin-bottom:24px;
+}
+.profile-stats{
+  display:flex;gap:48px;flex-wrap:wrap;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:16px 0;margin-bottom:24px;
+}
+.stat b{
+  display:block;font-family:"Shippori Mincho B1",serif;
+  font-size:26px;line-height:1.3;font-weight:700;
+}
+.stat span{font-size:13px;color:var(--ink-soft)}
+.profile-note{max-width:720px}
+section{padding:64px 0 0}
+h2{
+  font-family:"Shippori Mincho B1",serif;
+  font-size:34px;line-height:1.4;font-weight:700;margin-bottom:8px;
+}
+.sec-note{color:var(--ink-soft);margin-bottom:32px;max-width:720px}
+/* feed grid: no gaps, like a profile grid */
+.feed{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.feed figure{margin:0}
+.feed img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.feed figcaption{
+  font-size:13px;padding:8px 0 16px;color:var(--ink-soft);
+  display:flex;justify-content:space-between;gap:16px;
+}
+.feed figcaption b{color:var(--ink);font-weight:700}
+/* ruled detail list */
+.rows{border-top:2px solid var(--ink)}
+.row{
+  display:grid;grid-template-columns:200px 200px 1fr;gap:24px;
+  padding:16px 0;border-bottom:1px solid var(--ink);
+}
+.row .file{font-size:13px;color:var(--roaster);font-weight:700}
+.row .name{font-weight:700}
+.row .policy{color:var(--ink-soft)}
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.photos img{width:100%;height:auto}
+.links{display:flex;gap:24px;flex-wrap:wrap;margin-top:8px}
+.links a{
+  font-weight:700;border-bottom:2px solid var(--roaster);
+  text-decoration:none;padding-bottom:4px;
+}
+table{width:100%;border-collapse:collapse;font-size:16px}
+th,td{border-bottom:1px solid var(--ink);padding:12px 8px;text-align:left;vertical-align:top}
+thead th{border-bottom:2px solid var(--ink);font-size:13px;color:var(--roaster)}
+.intro-lines{
+  font-family:"Shippori Mincho B1",serif;font-size:20px;line-height:2;
+  border-top:2px solid var(--ink);padding-top:32px;
+}
+footer{
+  margin-top:96px;border-top:1px solid var(--ink);
+  padding:32px 0 48px;font-size:13px;color:var(--ink-soft);
+}
+@media (max-width:1024px){
+  .row{grid-template-columns:160px 160px 1fr}
+}
+@media (max-width:768px){
+  h1{font-size:34px}
+  h2{font-size:26px}
+  .feed{grid-template-columns:repeat(2,1fr)}
+  .feed figcaption{flex-direction:column;gap:0}
+  .feed figcaption b{white-space:nowrap}
+  .feed figcaption span{white-space:nowrap}
+  .row{grid-template-columns:1fr;gap:4px}
+  .photos{grid-template-columns:1fr}
+  .profile-stats{gap:24px}
+  .wrap{padding:0 16px}
+  table{font-size:13px}
+}
+</style>
+</head>
+<body>
+<p class="flag">自主制作サンプルです。ココナラ出品者「ハル｜よろずサポート屋」のSNS投稿サンプルです。</p>
+<div class="wrap">
 <a class="back" href="../../../index.html">← ポートフォリオ索引</a>
-<article>
-<h1>Instagram投稿セット：白杢珈琲</h1>
-<blockquote><p>自主制作サンプル：架空のカフェ「白杢珈琲」（Web制作サンプル P01 と同じ店）の投稿画像6枚・キャプション・1週間分の投稿カレンダーです。写真は Unsplash License に基づき使用しています。</p></blockquote>
-<h2>投稿画像（1080×1080px・6枚）</h2>
-<figure><img src="posts/grid.png" alt="投稿画像6枚の一覧"><figcaption>投稿画像6枚の一覧</figcaption></figure>
-<table><thead><tr><th>ファイル</th><th>内容</th><th>作りの方針</th></tr></thead><tbody><tr><td>posts/post-01.png</td><td>焙煎日（月・木・土）</td><td>写真の下に、毎週変わらない情報を大きく置く</td></tr><tr><td>posts/post-02.png</td><td>今週の豆</td><td>銘柄・焙煎度・産地・精製・価格を表にする</td></tr><tr><td>posts/post-03.png</td><td>焼き菓子</td><td>写真を全面に使い、品名・価格・焼き上がり時刻だけを載せる</td></tr><tr><td>posts/post-04.png</td><td>1杯の淹れ方</td><td>保存される投稿として、分量を4手順で示す</td></tr><tr><td>posts/post-05.png</td><td>店内</td><td>席数・電源のある席・利用時間を数字で示す</td></tr><tr><td>posts/post-06.png</td><td>営業案内</td><td>営業時間・定休日・アクセスを1枚にまとめる</td></tr></tbody></table>
-<ul><li>配色・書体は店のホームページ（P01）と同じにしています（ステンレス #E4E7E5・焦げ茶 #2B211B・焙煎機の緑 #2C6670、Shippori Mincho B1・Zen Kaku Gothic New）</li><li>画像は `posts/posts.html` から書き出しています。文字や価格を変える場合は HTML を直して書き出し直します</li></ul>
-<h2>キャプション</h2>
-<p>`captions.md` に6投稿分を載せています。1投稿の文は事実だけにし、ハッシュタグは5個までにしています。</p>
-<h2>1週間分の投稿カレンダー（2026年11月30日〜12月6日）</h2>
-<p>`calendar.xlsx`（「投稿カレンダー」「方針」の2シート）</p>
-<table><thead><tr><th>日付</th><th>時刻</th><th>種類</th><th>投稿</th></tr></thead><tbody><tr><td>11/30（月）</td><td>7:30</td><td>フィード</td><td>post-01 焙煎日</td></tr><tr><td>11/30（月）</td><td>15:00</td><td>ストーリーズ</td><td>焙煎したての豆</td></tr><tr><td>12/1（火）</td><td>12:00</td><td>フィード（予約投稿）</td><td>post-02 今週の豆</td></tr><tr><td>12/2（水）</td><td>10:30</td><td>フィード</td><td>post-03 焼き菓子</td></tr><tr><td>12/2（水）</td><td>11:05</td><td>ストーリーズ</td><td>焼き上がり（15秒の動画）</td></tr><tr><td>12/3（木）</td><td>19:00</td><td>フィード</td><td>post-04 1杯の淹れ方</td></tr><tr><td>12/4（金）</td><td>12:00</td><td>フィード</td><td>post-05 店内</td></tr><tr><td>12/5（土）</td><td>8:00</td><td>フィード</td><td>post-06 営業案内</td></tr><tr><td>12/6（日）</td><td>9:00</td><td>ストーリーズ</td><td>今週の投稿をハイライトに追加</td></tr></tbody></table>
-<h2>応募時の紹介文（3行）</h2>
-<p>架空のカフェのInstagram投稿画像6枚・キャプション・1週間分の投稿カレンダーの自主制作サンプルです。<br>店のホームページと配色・書体をそろえ、価格・時刻・席数などの具体的な情報を1枚ずつ大きく載せています。<br>カレンダーには投稿の時刻・種類・素材を決めてあり、定休日は予約投稿で回す運用まで書いています。</p>
-</article></body></html>
+
+<header class="profile">
+  <p class="profile-kicker">Instagram投稿セット</p>
+  <h1><span class="nb">Instagram投稿セット</span><span class="nb">白杢珈琲</span></h1>
+  <div class="profile-stats">
+    <p class="stat"><b>6枚</b><span>投稿画像</span></p>
+    <p class="stat"><b>1080×1080px</b><span>画像サイズ</span></p>
+    <p class="stat"><b>6投稿分</b><span>キャプション</span></p>
+    <p class="stat"><b>1週間分</b><span>投稿カレンダー</span></p>
+  </div>
+  <p class="profile-note"><span class="seg"><span class="nb">架空のカフェ「白杢珈琲」の</span><span class="nb">投稿画像6枚とキャプション、</span></span><span class="seg"><span class="nb">1週間分の投稿カレンダーのセットです</span></span><span class="seg"><span class="nb">配色と書体は</span><span class="nb">店のホームページ（P01）と</span><span class="nb">そろえています</span></span></p>
+</header>
+
+<main>
+<section aria-label="投稿画像6枚">
+  <h2>投稿画像</h2>
+  <p class="sec-note"><span class="nb">プロフィール画面の一覧と同じ並びで</span><span class="nb">6枚を置いています。</span><span class="nb">写真は Unsplash License に基づき</span><span class="nb">使用しています。</span></p>
+  <div class="feed">
+    <figure><img src="posts/post-01.png" alt="投稿画像1 焙煎日の案内" width="1080" height="1080"><figcaption><b>post-01</b><span>焙煎日（月・木・土）</span></figcaption></figure>
+    <figure><img src="posts/post-02.png" alt="投稿画像2 今週の豆の紹介" width="1080" height="1080" loading="lazy"><figcaption><b>post-02</b><span>今週の豆</span></figcaption></figure>
+    <figure><img src="posts/post-03.png" alt="投稿画像3 焼き菓子の紹介" width="1080" height="1080" loading="lazy"><figcaption><b>post-03</b><span>焼き菓子</span></figcaption></figure>
+    <figure><img src="posts/post-04.png" alt="投稿画像4 1杯の淹れ方の手順" width="1080" height="1080" loading="lazy"><figcaption><b>post-04</b><span>1杯の淹れ方</span></figcaption></figure>
+    <figure><img src="posts/post-05.png" alt="投稿画像5 店内の案内" width="1080" height="1080" loading="lazy"><figcaption><b>post-05</b><span>店内</span></figcaption></figure>
+    <figure><img src="posts/post-06.png" alt="投稿画像6 営業案内" width="1080" height="1080" loading="lazy"><figcaption><b>post-06</b><span>営業案内</span></figcaption></figure>
+  </div>
+  <p class="links"><a href="posts/grid.png">6枚の一覧画像を見る</a><a href="posts/posts.html">書き出し元のHTMLを見る</a></p>
+</section>
+
+<section aria-label="投稿の中身">
+  <h2>投稿の中身</h2>
+  <p class="sec-note"><span class="nb">1枚ごとに載せる情報を決め、</span><span class="nb">作り方をそろえています。</span></p>
+  <div class="rows">
+    <div class="row"><p class="file">posts/post-01.png</p><p class="name">焙煎日（月・木・土）</p><p class="policy"><span class="nb">写真の下に</span><span class="nb">毎週変わらない情報を</span><span class="nb">大きく置く</span></p></div>
+    <div class="row"><p class="file">posts/post-02.png</p><p class="name">今週の豆</p><p class="policy"><span class="nb">銘柄・焙煎度・産地・精製・価格を</span><span class="nb">表にする</span></p></div>
+    <div class="row"><p class="file">posts/post-03.png</p><p class="name">焼き菓子</p><p class="policy"><span class="nb">写真を全面に使い</span><span class="nb">品名・価格・焼き上がり時刻</span><span class="nb">だけを載せる</span></p></div>
+    <div class="row"><p class="file">posts/post-04.png</p><p class="name">1杯の淹れ方</p><p class="policy"><span class="nb">保存される投稿として</span><span class="nb">分量を4手順で示す</span></p></div>
+    <div class="row"><p class="file">posts/post-05.png</p><p class="name">店内</p><p class="policy"><span class="nb">席数・電源のある席・利用時間を</span><span class="nb">数字で示す</span></p></div>
+    <div class="row"><p class="file">posts/post-06.png</p><p class="name">営業案内</p><p class="policy"><span class="nb">営業時間・定休日・アクセスを</span><span class="nb">1枚にまとめる</span></p></div>
+  </div>
+  <p style="margin-top:24px"><span class="nb">配色と書体は</span><span class="nb">店のホームページ（P01）と</span><span class="nb">同じにしています</span><span class="nb">（ステンレス #E4E7E5・</span><span class="nb">焦げ茶 #2B211B・</span><span class="nb">焙煎機の緑 #2C6670、</span><span class="nb">Shippori Mincho B1・</span><span class="nb">Zen Kaku Gothic New）。</span><span class="nb">画像は posts/posts.html から</span><span class="nb">書き出しています。</span><span class="nb">文字や価格を変える場合は</span><span class="nb">HTMLを直して書き出し直します。</span></p>
+</section>
+
+<section aria-label="素材写真">
+  <h2>素材写真</h2>
+  <p class="sec-note"><span class="nb">投稿画像に使っている実写真です。</span><span class="nb">出典は credits.md にまとめています。</span></p>
+  <div class="photos">
+    <img src="img/roaster.jpg" alt="店内の焙煎機" width="2200" height="1467" loading="lazy">
+    <img src="img/bake.jpg" alt="焼き菓子" width="1400" height="933" loading="lazy">
+  </div>
+</section>
+
+<section aria-label="キャプション">
+  <h2>キャプション</h2>
+  <p><span class="nb">6投稿分を captions.md に</span><span class="nb">載せています。</span><span class="nb">1投稿の文は事実だけにし、</span><span class="nb">ハッシュタグは5個までにしています。</span></p>
+  <p class="links"><a href="captions.md">captions.md を見る</a><a href="captions.html">キャプションのページを見る</a></p>
+</section>
+
+<section aria-label="投稿カレンダー">
+  <h2>1週間分の投稿カレンダー</h2>
+  <p class="sec-note"><span class="nb">2026年11月30日から12月6日までの予定です。</span><span class="nb">ファイルは calendar.xlsx</span><span class="nb">（「投稿カレンダー」「方針」の2シート）です。</span></p>
+  <table>
+    <thead><tr><th>日付</th><th>時刻</th><th>種類</th><th>投稿</th></tr></thead>
+    <tbody>
+      <tr><td>11/30（月）</td><td>7:30</td><td>フィード</td><td>post-01 焙煎日</td></tr>
+      <tr><td>11/30（月）</td><td>15:00</td><td>ストーリーズ</td><td>焙煎したての豆</td></tr>
+      <tr><td>12/1（火）</td><td>12:00</td><td>フィード（予約投稿）</td><td>post-02 今週の豆</td></tr>
+      <tr><td>12/2（水）</td><td>10:30</td><td>フィード</td><td>post-03 焼き菓子</td></tr>
+      <tr><td>12/2（水）</td><td>11:05</td><td>ストーリーズ</td><td>焼き上がり（15秒の動画）</td></tr>
+      <tr><td>12/3（木）</td><td>19:00</td><td>フィード</td><td>post-04 1杯の淹れ方</td></tr>
+      <tr><td>12/4（金）</td><td>12:00</td><td>フィード</td><td>post-05 店内</td></tr>
+      <tr><td>12/5（土）</td><td>8:00</td><td>フィード</td><td>post-06 営業案内</td></tr>
+      <tr><td>12/6（日）</td><td>9:00</td><td>ストーリーズ</td><td>今週の投稿をハイライトに追加</td></tr>
+    </tbody>
+  </table>
+  <p class="links"><a href="calendar.xlsx">calendar.xlsx を開く</a></p>
+</section>
+
+<section aria-label="紹介文">
+  <h2>応募時の紹介文</h2>
+  <p class="intro-lines"><span class="seg"><span class="nb">架空のカフェのInstagram投稿画像6枚と</span><span class="nb">キャプション、</span></span><span class="seg"><span class="nb">1週間分の投稿カレンダーの</span><span class="nb">自主制作サンプルです</span></span><span class="seg"><span class="nb">店のホームページと配色・書体をそろえ、</span></span><span class="seg"><span class="nb">価格・時刻・席数などの具体的な情報を</span><span class="nb">1枚ずつ大きく載せています</span></span><span class="seg"><span class="nb">カレンダーには投稿の時刻・種類・素材を決めてあり、</span></span><span class="seg"><span class="nb">定休日は予約投稿で回す運用まで書いています</span></span></p>
+</section>
+</main>
+
+<footer>
+  <p><span class="nb">自主制作サンプルです。</span><span class="nb">店名・価格は架空です。</span><span class="nb">写真の出典は</span><a href="credits.md">credits.md</a><span class="nb">をご覧ください。</span></p>
+</footer>
+</div>
+</body>
+</html>

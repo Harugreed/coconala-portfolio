@@ -1,11 +1,224 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>縦型ショート動画3本｜自主制作サンプル</title><meta name="robots" content="noindex"><style>*{box-sizing:border-box}body{margin:0;background:#101318;color:#E8EAEE;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;line-height:1.8;word-break:auto-phrase}
-.flag{margin:0;background:#FFD43B;color:#111;font-size:13px;padding:6px 20px}main{max-width:1100px;margin:0 auto;padding:40px 20px 80px}
-h1{font-size:28px;margin:0 0 8px}h2{font-size:20px;margin:48px 0 12px;padding-bottom:6px;border-bottom:2px solid #FFD43B}
-p{margin:0 0 12px;color:#C4C9D2}a{color:#FFD43B}video{display:block;width:100%;background:#000;border-radius:6px}
-.reels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.reels figure{margin:0}.reels figcaption{font-size:14px;margin-top:6px;color:#C4C9D2}
-.thumbs img{width:100%;display:block;border-radius:6px}ul{padding-left:1.2em}@media(max-width:700px){.reels{grid-template-columns:1fr}}</style></head><body><p class="flag">自主制作サンプルです。店名・価格は架空です。素材映像・音楽：Mixkit　音声合成：Irodori-TTS</p><main><p><a href="../index.html">← 動画サンプルの一覧</a></p><h1>縦型ショート動画3本</h1><p>スタイルごとに書体・テロップの形・カットの間隔を変えています。</p>
-<div class="reels"><figure><video src="reel-gourmet.mp4" controls preload="metadata" poster="frames/reel-gourmet-9s.jpg"></video><figcaption>グルメ紹介（20秒）</figcaption></figure>
-<figure><video src="reel-biz.mp4" controls preload="metadata" poster="frames/reel-biz-12s.jpg"></video><figcaption>ビジネスノウハウ（30秒）</figcaption></figure>
-<figure><video src="reel-quiz.mp4" controls preload="metadata" poster="frames/reel-quiz-12s.jpg"></video><figcaption>エンタメ・クイズ（22秒）</figcaption></figure></div>
-<h2>サムネイル（1本につき2案）</h2><div class="thumbs"><img src="../thumbnail/out/thumbs-all.png" alt="サムネイル6枚"></div>
-<h2>資料</h2><ul><li><a href="spec.html">3本のテロップとカットの仕様</a></li><li><a href="../telop/credits.html">素材・音声・書体の出典</a></li></ul></main></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>縦型ショート動画3本｜自主制作サンプル</title>
+<meta name="description" content="グルメ紹介、ビジネスノウハウ、クイズの3スタイルで作った縦型ショート動画3本とサムネイル6枚の自主制作サンプルです。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFDF4;
+  --cream:#FFF2C6;
+  --ink:#1E1E1E;
+  --verm:#FF6B3D;
+  --soft:#5C5648;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+  font-size:16px;line-height:1.8;
+}
+img{display:block;max-width:100%}
+video{display:block;width:100%;background:var(--ink)}
+a{color:var(--ink)}
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+.flag{background:var(--verm);color:var(--bg);font-size:13px;padding:8px 16px;font-weight:700}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.back{display:inline-block;margin:24px 0 0;font-size:13px}
+header{padding:48px 0 0}
+.kicker{font-size:13px;font-weight:700;color:var(--verm);margin-bottom:16px}
+h1{
+  font-family:"Zen Maru Gothic",sans-serif;font-weight:900;
+  font-size:44px;line-height:1.35;margin-bottom:24px;
+}
+.stats{
+  display:flex;gap:48px;flex-wrap:wrap;background:var(--cream);
+  padding:24px 32px;margin-bottom:32px;
+}
+.stat b{display:block;font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:26px;line-height:1.3}
+.stat span{font-size:13px;color:var(--soft)}
+.lead{max-width:720px;margin-bottom:48px}
+/* rail: three phones in a row (seed: MotionSites "Boutique Rail") */
+.rail{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+  border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);
+  padding:32px 0;
+}
+.rail figure{margin:0}
+.rail video{aspect-ratio:9/16;object-fit:cover}
+.rail figcaption{padding-top:16px}
+.rail .no{
+  font-family:"Zen Maru Gothic",sans-serif;font-weight:900;
+  font-size:34px;line-height:1;color:var(--verm);display:block;margin-bottom:8px;
+}
+.rail .name{font-weight:700;font-size:20px;display:block}
+.rail .meta{font-size:13px;color:var(--soft);display:block}
+section{padding:64px 0 0}
+h2{
+  font-family:"Zen Maru Gothic",sans-serif;font-weight:900;
+  font-size:34px;line-height:1.4;margin-bottom:8px;
+}
+.sec-note{color:var(--soft);margin-bottom:32px;max-width:720px}
+.spec-block{border-top:2px solid var(--ink);padding:32px 0}
+.spec-block h3{
+  font-family:"Zen Maru Gothic",sans-serif;font-weight:900;
+  font-size:26px;line-height:1.4;margin-bottom:16px;
+}
+.spec-block h3 .no{color:var(--verm);margin-right:16px}
+.rows{border-top:1px solid var(--ink)}
+.row{
+  display:grid;grid-template-columns:200px 1fr;gap:24px;
+  padding:12px 0;border-bottom:1px solid var(--ink);
+}
+.row .k{font-size:13px;font-weight:700;color:var(--verm)}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.strip img{width:100%;height:auto}
+.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.thumbs figure{margin:0}
+.thumbs img{width:100%;height:auto}
+.thumbs figcaption{font-size:13px;color:var(--soft);padding-top:8px}
+.links{display:flex;gap:24px;flex-wrap:wrap;margin-top:8px}
+.links a{font-weight:700;border-bottom:2px solid var(--verm);text-decoration:none;padding-bottom:4px}
+footer{
+  margin-top:96px;border-top:1px solid var(--ink);
+  padding:32px 0 48px;font-size:13px;color:var(--soft);
+}
+@media (max-width:1024px){
+  .thumbs{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:768px){
+  h1{font-size:34px}
+  h2{font-size:26px}
+  .rail{grid-template-columns:1fr;max-width:400px}
+  .row{grid-template-columns:1fr;gap:4px}
+  .thumbs{grid-template-columns:repeat(2,1fr)}
+  .stats{gap:24px;padding:24px 16px}
+  .wrap{padding:0 16px}
+}
+</style>
+</head>
+<body>
+<p class="flag">自主制作サンプルです。店名・価格は架空です。素材映像・音楽：Mixkit　音声合成：Irodori-TTS</p>
+<div class="wrap">
+<a class="back" href="../index.html">← 動画サンプルの一覧</a>
+
+<header>
+  <p class="kicker">縦型ショート動画</p>
+  <h1><span class="nb">縦型ショート動画</span><span class="nb">3本</span></h1>
+  <div class="stats">
+    <p class="stat"><b>3本</b><span>動画の本数</span></p>
+    <p class="stat"><b>1080×1920</b><span>画面サイズ</span></p>
+    <p class="stat"><b>30fps</b><span>フレームレート</span></p>
+    <p class="stat"><b>20秒・30秒・22秒</b><span>グルメ／ビジネス／クイズ</span></p>
+    <p class="stat"><b>6枚</b><span>サムネイル（1本につき2案）</span></p>
+  </div>
+  <p class="lead"><span class="seg"><span class="nb">スタイルごとに書体とテロップの形、</span></span><span class="seg"><span class="nb">カットの間隔を変えています</span></span><span class="seg"><span class="nb">文字はアプリの操作ボタンと</span><span class="nb">重ならない位置に置いています</span></span></p>
+</header>
+
+<main>
+<div class="rail" aria-label="縦型ショート動画3本">
+  <figure>
+    <video src="reel-gourmet.mp4" controls preload="metadata" poster="frames/reel-gourmet-9s.jpg"></video>
+    <figcaption><span class="no">01</span><span class="name">グルメ紹介</span><span class="meta">20秒・白杢珈琲の紹介</span></figcaption>
+  </figure>
+  <figure>
+    <video src="reel-biz.mp4" controls preload="metadata" poster="frames/reel-biz-12s.jpg"></video>
+    <figcaption><span class="no">02</span><span class="name">ビジネスノウハウ</span><span class="meta">30秒・ナレーション付き</span></figcaption>
+  </figure>
+  <figure>
+    <video src="reel-quiz.mp4" controls preload="metadata" poster="frames/reel-quiz-12s.jpg"></video>
+    <figcaption><span class="no">03</span><span class="name">エンタメ・クイズ</span><span class="meta">22秒・3択クイズ</span></figcaption>
+  </figure>
+</div>
+
+<section aria-label="本ごとの仕様">
+  <h2>本ごとの仕様</h2>
+  <p class="sec-note"><span class="nb">3本とも Remotion で作っています。</span><span class="nb">詳しい仕様は spec.html にまとめています。</span></p>
+
+  <div class="spec-block">
+    <h3><span class="no">01</span>グルメ紹介（20秒）</h3>
+    <div class="rows">
+      <div class="row"><p class="k">目的</p><p>店の雰囲気・価格・営業時間を一気に見せる</p></div>
+      <div class="row"><p class="k">音声</p><p>ナレーションなし・BGM（Mixkit「Sicilian Cafe」）</p></div>
+      <div class="row"><p class="k">カット</p><p>約2.8秒ごとに7カット。動画と写真を交互にし、各カットで1.05倍から1.15倍に寄る</p></div>
+      <div class="row"><p class="k">書体</p><p>Zen Maru Gothic Black（丸ゴシック）</p></div>
+      <div class="row"><p class="k">テロップの形</p><p>白い角丸の札（66px）と価格の緑の札（84px）、補足の札（44px）を左下にまとめる</p></div>
+      <div class="row"><p class="k">動き</p><p>札がばねで大きくなりながら出る。カットごとに「ポン」の効果音を入れる</p></div>
+      <div class="row"><p class="k">安全域</p><p>下から420pxより上に文字を置く</p></div>
+    </div>
+    <div class="strip">
+      <img src="frames/reel-gourmet-1s.jpg" alt="グルメ編の場面 1秒時点" width="540" height="960" loading="lazy">
+      <img src="frames/reel-gourmet-9s.jpg" alt="グルメ編の場面 9秒時点" width="540" height="960" loading="lazy">
+      <img src="frames/reel-gourmet-18.6s.jpg" alt="グルメ編の場面 18.6秒時点" width="540" height="960" loading="lazy">
+    </div>
+  </div>
+
+  <div class="spec-block">
+    <h3><span class="no">02</span>ビジネスノウハウ（30秒）</h3>
+    <div class="rows">
+      <div class="row"><p class="k">目的</p><p>保存して見返してもらえる知識を1つ渡す</p></div>
+      <div class="row"><p class="k">音声</p><p>ナレーション（Irodori-TTS）・BGM小さめ</p></div>
+      <div class="row"><p class="k">カット</p><p>1文ごとに1カット（5カット）。背景はぼかした店の写真を32%の濃さで敷く</p></div>
+      <div class="row"><p class="k">書体</p><p>M PLUS 1p ExtraBold</p></div>
+      <div class="row"><p class="k">テロップの形</p><p>黒地に白の大きな文字（92px・1行9字）。強調語は黄色の地に黒文字で示し、文の中の行を順に出す</p></div>
+      <div class="row"><p class="k">動き</p><p>行ごとに下から上がる。画面上に進行バー（黄色）を置く</p></div>
+      <div class="row"><p class="k">安全域</p><p>文字は上から230pxから1500pxに収める</p></div>
+    </div>
+    <div class="strip">
+      <img src="frames/reel-biz-3s.jpg" alt="ビジネス編の場面 3秒時点" width="540" height="960" loading="lazy">
+      <img src="frames/reel-biz-12s.jpg" alt="ビジネス編の場面 12秒時点" width="540" height="960" loading="lazy">
+      <img src="frames/reel-biz-22s.jpg" alt="ビジネス編の場面 22秒時点" width="540" height="960" loading="lazy">
+    </div>
+  </div>
+
+  <div class="spec-block">
+    <h3><span class="no">03</span>エンタメ・クイズ（22秒）</h3>
+    <div class="rows">
+      <div class="row"><p class="k">目的</p><p>最後まで見てもらい、コメントを誘う</p></div>
+      <div class="row"><p class="k">音声</p><p>ナレーションなし・BGMと効果音（ポン・緊張音・正解音）</p></div>
+      <div class="row"><p class="k">カット</p><p>1カットのまま、出題・選択肢・3・2・1・正解・解説の5段階で画面の中身を変える</p></div>
+      <div class="row"><p class="k">書体</p><p>Dela Gothic One（見出し）・Zen Maru Gothic Black（解説）</p></div>
+      <div class="row"><p class="k">テロップの形</p><p>黒い吹き出しの問題文（76px）、白い札の選択肢（80px）。正解は緑の札に変わる</p></div>
+      <div class="row"><p class="k">動き</p><p>選択肢が右から順に入る。正解の瞬間に画面が左右に揺れる</p></div>
+      <div class="row"><p class="k">安全域</p><p>文字は上から170pxから1700pxに収める</p></div>
+    </div>
+    <div class="strip">
+      <img src="frames/reel-quiz-4s.jpg" alt="クイズ編の場面 4秒時点" width="540" height="960" loading="lazy">
+      <img src="frames/reel-quiz-12s.jpg" alt="クイズ編の場面 12秒時点" width="540" height="960" loading="lazy">
+      <img src="frames/reel-quiz-17s.jpg" alt="クイズ編の場面 17秒時点" width="540" height="960" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section aria-label="サムネイル">
+  <h2>サムネイル（1本につき2案）</h2>
+  <p class="sec-note"><span class="nb">動画と一緒に納品するサムネイルです。</span><span class="nb">6枚の一覧画像も用意しています。</span></p>
+  <div class="thumbs">
+    <figure><img src="../thumbnail/out/thumb-gourmet-a.png" alt="グルメ編サムネイル A案" width="1080" height="1920" loading="lazy"><figcaption>グルメ A案</figcaption></figure>
+    <figure><img src="../thumbnail/out/thumb-gourmet-b.png" alt="グルメ編サムネイル B案" width="1080" height="1920" loading="lazy"><figcaption>グルメ B案</figcaption></figure>
+    <figure><img src="../thumbnail/out/thumb-biz-a.png" alt="ビジネス編サムネイル A案" width="1080" height="1920" loading="lazy"><figcaption>ビジネス A案</figcaption></figure>
+    <figure><img src="../thumbnail/out/thumb-biz-b.png" alt="ビジネス編サムネイル B案" width="1080" height="1920" loading="lazy"><figcaption>ビジネス B案</figcaption></figure>
+    <figure><img src="../thumbnail/out/thumb-quiz-a.png" alt="クイズ編サムネイル A案" width="1080" height="1920" loading="lazy"><figcaption>クイズ A案</figcaption></figure>
+    <figure><img src="../thumbnail/out/thumb-quiz-b.png" alt="クイズ編サムネイル B案" width="1080" height="1920" loading="lazy"><figcaption>クイズ B案</figcaption></figure>
+  </div>
+  <p class="links"><a href="../thumbnail/out/thumbs-all.png">サムネイル6枚の一覧画像を見る</a></p>
+</section>
+
+<section aria-label="資料">
+  <h2>資料</h2>
+  <p class="links"><a href="spec.html">3本のテロップとカットの仕様</a><a href="../telop/credits.html">素材・音声・書体の出典</a></p>
+</section>
+</main>
+
+<footer>
+  <p><span class="nb">自主制作サンプルです。</span><span class="nb">店名・価格は架空のカフェ</span><span class="nb">「白杢珈琲」のものです。</span><span class="nb">制作に使った Remotion のコードは</span><span class="nb">telop の source にあります。</span></p>
+</footer>
+</div>
+</body>
+</html>
