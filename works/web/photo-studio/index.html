@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>穂波写真室｜柏崎市の古民家写真スタジオ（制作サンプル）</title>
+<meta name="description" content="新潟県柏崎市の古民家写真スタジオ「穂波写真室」。家族写真、七五三、成人式、ウェディング撮影に対応しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F4EC;
+  --ink:#43382B;
+  --accent-deep:#6E5F49;
+  --band:#EFE8DA;
+  --line:#DCD2BE;
+  --white:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+  font-weight:300;
+  font-size:15px;
+  line-height:2.0;
+  letter-spacing:.04em;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:var(--ink);}
+.nb{white-space:nowrap;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+.label{
+  font-size:12.5px;
+  letter-spacing:.32em;
+  color:var(--accent-deep);
+  font-weight:500;
+}
+h2{
+  font-family:"Shippori Mincho",serif;
+  font-weight:600;
+  font-size:28px;
+  line-height:1.5;
+  letter-spacing:.08em;
+  margin:16px 0 48px;
+}
+section{padding:144px 0;}
+
+/* ---------- header ---------- */
+.site-header{
+  position:absolute;
+  top:0;left:0;right:0;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:24px 32px;
+}
+.site-header .logo{
+  font-family:"Shippori Mincho",serif;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.16em;
+  color:var(--white);
+  text-decoration:none;
+  text-shadow:0 1px 12px rgba(43,35,25,.45);
+}
+.site-header nav{display:flex;gap:32px;}
+.site-header nav a{
+  color:var(--white);
+  text-decoration:none;
+  font-size:12.5px;
+  letter-spacing:.16em;
+  font-weight:400;
+  text-shadow:0 1px 12px rgba(43,35,25,.45);
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  height:100svh;
+  min-height:560px;
+  overflow:hidden;
+}
+.hero img{
+  width:100%;height:100%;
+  object-fit:cover;
+  animation:heroZoom 2.4s ease-out both;
+}
+@keyframes heroZoom{
+  from{transform:scale(1.06);}
+  to{transform:scale(1);}
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:46%;
+  background:linear-gradient(to top, rgba(43,35,25,.58), rgba(43,35,25,0));
+}
+.hero-text{
+  position:absolute;
+  left:32px;bottom:56px;
+  z-index:2;
+  color:var(--white);
+}
+.hero-text .label{color:var(--white);opacity:.85;}
+.hero-text h1{
+  font-family:"Shippori Mincho",serif;
+  font-weight:700;
+  font-size:clamp(46px, 8vw, 84px);
+  line-height:1.25;
+  letter-spacing:.12em;
+  margin:16px 0 24px;
+  text-shadow:0 2px 24px rgba(43,35,25,.35);
+}
+.hero-text .hero-sub{
+  font-size:16px;
+  line-height:2.1;
+  letter-spacing:.1em;
+  font-weight:400;
+}
+
+/* ---------- about ---------- */
+.about-text{max-width:640px;}
+.about-text p{margin-bottom:32px;}
+.about-text p:last-child{margin-bottom:0;}
+.about-photo{margin-top:80px;}
+.about-photo img{width:100%;height:auto;}
+.facts{
+  margin-top:80px;
+  border-top:1px solid var(--line);
+}
+.facts dl{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.facts div{
+  padding:32px 24px 8px 0;
+}
+.facts dt{
+  font-size:12.5px;
+  letter-spacing:.24em;
+  color:var(--accent-deep);
+  font-weight:500;
+  margin-bottom:8px;
+}
+.facts dd{font-size:15px;line-height:1.9;}
+
+/* ---------- plans ---------- */
+.plans{background:var(--band);}
+.plan-table{
+  width:100%;
+  border-collapse:collapse;
+  border-top:1px solid #94846C;
+}
+.plan-table th,.plan-table td{
+  padding:24px 16px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+  font-weight:300;
+}
+.plan-table thead th{
+  font-size:12.5px;
+  letter-spacing:.2em;
+  color:var(--accent-deep);
+  font-weight:500;
+  padding:16px;
+}
+.plan-table .plan-name{
+  font-family:"Shippori Mincho",serif;
+  font-size:18px;
+  font-weight:600;
+  letter-spacing:.08em;
+}
+.plan-table .price{
+  font-size:17px;
+  font-weight:500;
+  text-align:right;
+  white-space:nowrap;
+}
+.plan-table th:last-child{text-align:right;}
+.plan-notes{margin-top:32px;font-size:13.5px;line-height:2.1;}
+.plan-notes p{margin:0;}
+
+/* ---------- gallery ---------- */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+}
+.gallery-grid img{width:100%;height:auto;}
+
+/* ---------- profile ---------- */
+.profile{background:var(--band);}
+.profile-inner{
+  display:grid;
+  grid-template-columns:5fr 6fr;
+  gap:64px;
+  align-items:start;
+}
+.profile-inner img{width:100%;height:auto;}
+.profile-name{
+  font-family:"Shippori Mincho",serif;
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:.1em;
+  margin-bottom:32px;
+}
+.profile-text p{margin-bottom:32px;}
+.career{
+  border-top:1px solid var(--line);
+  margin-top:8px;
+}
+.career li{
+  list-style:none;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14.5px;
+}
+
+/* ---------- access ---------- */
+.access-inner{
+  display:grid;
+  grid-template-columns:6fr 5fr;
+  gap:64px;
+  align-items:start;
+}
+.access-inner img{width:100%;height:auto;}
+.access-table{width:100%;border-collapse:collapse;border-top:1px solid var(--line);}
+.access-table th,.access-table td{
+  padding:20px 16px 20px 0;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+  font-weight:300;
+}
+.access-table th{
+  width:112px;
+  font-size:12.5px;
+  letter-spacing:.2em;
+  color:var(--accent-deep);
+  font-weight:500;
+  white-space:nowrap;
+}
+
+/* ---------- reserve ---------- */
+.reserve{
+  background:var(--ink);
+  color:var(--bg);
+  text-align:left;
+}
+.reserve h2{color:var(--bg);}
+.reserve .label{color:#C9B99B;}
+.reserve p{max-width:640px;margin-bottom:48px;}
+.reserve-link{
+  display:inline-block;
+  color:var(--bg);
+  text-decoration:none;
+  border:1px solid #94846C;
+  padding:16px 48px;
+  font-size:14.5px;
+  letter-spacing:.16em;
+  font-weight:400;
+}
+
+/* ---------- footer ---------- */
+footer{
+  padding:80px 0 64px;
+  border-top:1px solid var(--line);
+}
+.footer-name{
+  font-family:"Shippori Mincho",serif;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.16em;
+  margin-bottom:24px;
+}
+footer p{font-size:12.5px;line-height:2.1;color:var(--accent-deep);}
+footer .note{margin-top:32px;}
+
+/* ---------- responsive ---------- */
+@media (max-width:834px){
+  section{padding:96px 0;}
+  .facts dl{grid-template-columns:repeat(2,1fr);}
+  .profile-inner,.access-inner{grid-template-columns:1fr;gap:48px;}
+  .site-header nav{display:none;}
+}
+@media (max-width:560px){
+  section{padding:80px 0;}
+  h2{font-size:24px;margin-bottom:40px;}
+  .hero-text{left:24px;right:24px;bottom:48px;}
+  .gallery-grid{grid-template-columns:1fr;gap:24px;}
+  .plan-table thead{display:none;}
+  .plan-table,.plan-table tbody,.plan-table tr,.plan-table td{display:block;}
+  .plan-table tr{padding:24px 0;border-bottom:1px solid var(--line);}
+  .plan-table td{border-bottom:none;padding:4px 0;}
+  .plan-table td::before{
+    content:attr(data-label);
+    display:inline-block;
+    min-width:72px;
+    font-size:12px;
+    letter-spacing:.16em;
+    color:var(--accent-deep);
+    font-weight:500;
+  }
+  .plan-table .plan-name{font-size:18px;}
+  .plan-table .plan-name::before{content:none;}
+  .plan-table .price{text-align:left;font-size:15px;}
+  .facts div{padding:24px 16px 0 0;}
+  .site-header{padding:20px 24px;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="#">穂波写真室</a>
+  <nav>
+    <a href="#about">スタジオについて</a>
+    <a href="#plans">料金</a>
+    <a href="#gallery">ギャラリー</a>
+    <a href="#profile">運営者</a>
+    <a href="#access">アクセス</a>
+    <a href="#reserve">ご予約</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- hero -->
+  <div class="hero">
+    <img src="images/hero.jpg" alt="穂波写真室の撮影スペース。格子窓から自然光が入る古民家の和室" width="1600" height="1066">
+    <div class="hero-text">
+      <p class="label">HONAMI PHOTO STUDIO</p>
+      <h1>穂波写真室</h1>
+      <p class="hero-sub">
+        <span class="nb">新潟県柏崎市</span><br>
+        <span class="nb">築90年の空き家を改装した</span><br>
+        <span class="nb">自然光の写真スタジオです</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- about -->
+  <section id="about">
+    <div class="wrap">
+      <p class="label">ABOUT</p>
+      <h2>スタジオについて</h2>
+      <div class="about-text">
+        <p>
+          <span class="nb">穂波写真室は、</span><span class="nb">築90年の空き家を改装した</span><span class="nb">写真スタジオです。</span><span class="nb">2021年に柏崎市で開業し、</span><span class="nb">今年で5年目を迎えています。</span>
+        </p>
+        <p>
+          <span class="nb">壁の塗装は運営者自身が行いました。</span><span class="nb">家具と小物は一点ずつ選び、</span><span class="nb">撮影用の装花も店内で仕上げています。</span>
+        </p>
+        <p>
+          <span class="nb">撮影は窓から入る自然光を</span><span class="nb">基本にしています。</span><span class="nb">家族写真、七五三、成人式、</span><span class="nb">ウェディング撮影に</span><span class="nb">対応しています。</span>
+        </p>
+      </div>
+      <div class="about-photo">
+        <img src="images/about.jpg" alt="改装した古民家の内部。太い梁と囲炉裏のある空間" width="1600" height="1066" loading="lazy">
+      </div>
+      <div class="facts">
+        <dl>
+          <div>
+            <dt>開業</dt>
+            <dd>2021年</dd>
+          </div>
+          <div>
+            <dt>建物</dt>
+            <dd><span class="nb">築90年の</span><span class="nb">空き家を改装</span></dd>
+          </div>
+          <div>
+            <dt>撮影</dt>
+            <dd><span class="nb">家族写真・七五三・</span><span class="nb">成人式・</span><span class="nb">ウェディング撮影</span></dd>
+          </div>
+          <div>
+            <dt>予約</dt>
+            <dd>完全予約制</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- plans -->
+  <section class="plans" id="plans">
+    <div class="wrap">
+      <p class="label">PLANS</p>
+      <h2>撮影プランと料金</h2>
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th>プラン</th>
+            <th>撮影時間</th>
+            <th>内容</th>
+            <th>料金</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="plan-name">家族写真</td>
+            <td data-label="撮影時間">60分</td>
+            <td data-label="内容">データ30カット・2面台紙1冊</td>
+            <td class="price" data-label="料金">33,000円</td>
+          </tr>
+          <tr>
+            <td class="plan-name">七五三</td>
+            <td data-label="撮影時間">90分</td>
+            <td data-label="内容">データ50カット・衣装1着・着付け</td>
+            <td class="price" data-label="料金">44,000円</td>
+          </tr>
+          <tr>
+            <td class="plan-name">成人式</td>
+            <td data-label="撮影時間">60分</td>
+            <td data-label="内容">データ30カット・ヘアメイク</td>
+            <td class="price" data-label="料金">38,500円</td>
+          </tr>
+          <tr>
+            <td class="plan-name">ウェディング</td>
+            <td data-label="撮影時間">120分</td>
+            <td data-label="内容">データ100カット・装花ブーケ</td>
+            <td class="price" data-label="料金">88,000円</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="plan-notes">
+        <p>※料金は税込表示です</p>
+        <p>※土日祝も同料金です</p>
+        <p>※衣装と小物の持ち込みもできます</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- gallery -->
+  <section id="gallery">
+    <div class="wrap">
+      <p class="label">GALLERY</p>
+      <h2>ギャラリー</h2>
+      <div class="gallery-grid">
+        <img src="images/gallery-family.jpg" alt="庭で撮影した家族写真" width="1125" height="750" loading="lazy">
+        <img src="images/gallery-shichigosan.jpg" alt="水辺で撮影した七五三の着物姿" width="1124" height="750" loading="lazy">
+        <img src="images/gallery-seijin.jpg" alt="桜の前で撮影した成人式の振袖姿" width="1125" height="750" loading="lazy">
+        <img src="images/gallery-wedding.jpg" alt="ブーケの上で指輪を交換する手元" width="999" height="750" loading="lazy">
+        <img src="images/gallery-baby.jpg" alt="白い服の両親に抱かれた赤ちゃん" width="1260" height="750" loading="lazy">
+        <img src="images/gallery-flowers.jpg" alt="撮影用の花を束ねる手元" width="1260" height="750" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- profile -->
+  <section class="profile" id="profile">
+    <div class="wrap">
+      <p class="label">PROFILE</p>
+      <h2>運営者について</h2>
+      <div class="profile-inner">
+        <img src="images/profile.jpg" alt="花束を仕上げる運営者" width="1200" height="627" loading="lazy">
+        <div class="profile-text">
+          <p class="profile-name">佐藤 ほなみ</p>
+          <p>
+            <span class="nb">フラワーデザイン、</span><span class="nb">空間コーディネート、</span><span class="nb">インテリア雑貨のバイヤー、</span><span class="nb">ディレクターとして、</span><span class="nb">15年近く花と空間に</span><span class="nb">携わってきました。</span>
+          </p>
+          <p>
+            <span class="nb">2021年に穂波写真室を開業し、</span><span class="nb">撮影の装花と空間のしつらえを</span><span class="nb">自身で担当しています。</span>
+          </p>
+          <ul class="career">
+            <li>生花店でフラワーデザインを担当</li>
+            <li>インテリア雑貨のバイヤー</li>
+            <li><span class="nb">店舗とイベントの</span><span class="nb">空間コーディネート、ディレクション</span></li>
+            <li>2021年、穂波写真室を開業</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- access -->
+  <section id="access">
+    <div class="wrap">
+      <p class="label">ACCESS</p>
+      <h2>アクセス</h2>
+      <div class="access-inner">
+        <table class="access-table">
+          <tbody>
+            <tr>
+              <th>住所</th>
+              <td>新潟県柏崎市東本町2-3-8</td>
+            </tr>
+            <tr>
+              <th>電話</th>
+              <td>0257-00-0000</td>
+            </tr>
+            <tr>
+              <th>営業時間</th>
+              <td>9:00〜17:00</td>
+            </tr>
+            <tr>
+              <th>定休日</th>
+              <td>火曜日・水曜日</td>
+            </tr>
+            <tr>
+              <th>駐車場</th>
+              <td>店舗前に2台</td>
+            </tr>
+            <tr>
+              <th>最寄り駅</th>
+              <td><span class="nb">JR信越本線・</span><span class="nb">柏崎駅から徒歩12分</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <img src="images/access.jpg" alt="穂波写真室の外観。庭の緑と木の外壁" width="1260" height="750" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- reserve -->
+  <section class="reserve" id="reserve">
+    <div class="wrap">
+      <p class="label">RESERVATION</p>
+      <h2>ご予約</h2>
+      <p>
+        <span class="nb">ご予約は予約サイト</span><span class="nb">「SelectType」から</span><span class="nb">承っています。</span><span class="nb">撮影内容のご相談は</span><span class="nb">お電話でも承ります。</span>
+      </p>
+      <a class="reserve-link" href="#">予約ページへ（SelectType）</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="footer-name">穂波写真室</p>
+    <p><span class="nb">新潟県柏崎市東本町2-3-8</span>／<span class="nb">9:00〜17:00</span>／<span class="nb">火曜日・水曜日 定休</span></p>
+    <p class="note"><span class="nb">このページは制作サンプルです。</span><span class="nb">スタジオ名、住所、電話番号、料金は仮のもので、</span><span class="nb">予約リンクは省略しています。</span><br><span class="nb">写真：PAKUTASO、Pexelsの</span><span class="nb">フリー素材を使用しています。</span></p>
+  </div>
+</footer>
+
+</body>
+</html>
