@@ -33,14 +33,38 @@ a{color:var(--accent)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 .back{display:inline-block;margin:24px 0 0;font-size:14px}
 
+/* headline char reveal (hero moment only) */
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
+html.armed [data-reveal] .ch{transform:translateY(135%);transition:transform 1.25s cubic-bezier(.65,.05,0,1)}
+html.armed [data-reveal].in .ch{transform:translateY(0)}
+[data-rise]{transition:opacity 1.6s ease,transform 1.6s cubic-bezier(.65,.05,0,1)}
+html.armed [data-rise]{opacity:0;transform:translateY(24px)}
+html.armed [data-rise].in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion: reduce){
+  html.armed [data-reveal] .ch{transform:none;transition:none}
+  [data-rise]{transition:none}
+  html.armed [data-rise]{opacity:1;transform:none}
+}
+
+header{position:relative}
+.head-ghost{
+  position:absolute;top:0;right:0;z-index:0;pointer-events:none;user-select:none;
+  font-family:ui-monospace,Menlo,monospace;font-weight:700;line-height:1;
+  font-size:17vw;white-space:nowrap;color:transparent;
+  -webkit-text-stroke:1.5px var(--ink);opacity:.08;
+}
+header>*{position:relative;z-index:1}
+
 /* ---------- header ---------- */
-header{padding:48px 0 64px}
+header{padding:72px 0 96px}
 .kicker{font-size:12px;font-weight:700;letter-spacing:.18em}
 h1{font-size:48px;line-height:1.35;margin:16px 0 24px;font-weight:700}
 .lead{max-width:680px}
 .meta{
-  display:flex;flex-wrap:wrap;gap:16px 48px;margin-top:32px;
-  border-top:4px solid var(--ink);padding-top:24px;
+  display:flex;flex-wrap:wrap;gap:24px 48px;margin-top:48px;
+  border-top:4px solid var(--ink);padding-top:32px;
 }
 .meta dt{font-size:12px;font-weight:700;letter-spacing:.12em}
 .meta dd{font-size:17px;font-weight:700;margin-top:4px}
@@ -53,20 +77,20 @@ h1{font-size:48px;line-height:1.35;margin:16px 0 24px;font-weight:700}
 .pdf-btn:hover{background:var(--good)}
 
 /* ---------- metrics strip ---------- */
-.metrics{background:var(--sun);padding:48px 0}
-.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.metrics{background:var(--sun);padding:72px 0}
+.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
 .metrics .num{font-family:ui-monospace,Menlo,monospace;font-size:48px;font-weight:700;line-height:1.1}
 .metrics .lbl{font-size:14px;font-weight:700;margin-top:8px}
 .metrics .how{font-size:12px;margin-top:4px}
 .metrics .note{grid-column:1 / -1;font-size:12px}
 
 /* ---------- before / after ---------- */
-.ba{padding:96px 0}
+.ba{padding:144px 0}
 .ba h2,.map h2,.plan h2{
   font-size:24px;line-height:1.5;margin-bottom:32px;
   border-left:8px solid var(--ink);padding-left:16px;
 }
-.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
 .ba figure img{width:100%;border:1px solid #CDCDCD}
 .tag{
   display:inline-block;font-family:ui-monospace,Menlo,monospace;
@@ -78,9 +102,9 @@ h1{font-size:48px;line-height:1.35;margin:16px 0 24px;font-weight:700}
 .ba .cap{font-size:14px;margin-top:16px;font-weight:700}
 
 /* ---------- mapping table ---------- */
-.map{padding:0 0 96px}
+.map{padding:0 0 144px}
 table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.7}
-th,td{border-bottom:1px solid #D9D9D9;padding:16px 16px 16px 0;text-align:left;vertical-align:top}
+th,td{border-bottom:1px solid #D9D9D9;padding:24px 16px 24px 0;text-align:left;vertical-align:top}
 thead th{background:var(--ink);color:var(--paper);padding:8px 16px 8px 8px;border:0}
 td.no{font-family:ui-monospace,Menlo,monospace;font-weight:700;text-align:center;width:48px}
 td .from{display:block;font-weight:700;color:var(--bad)}
@@ -88,8 +112,8 @@ td .to{display:block;margin-top:4px}
 td.src{font-size:12px;white-space:nowrap}
 
 /* ---------- plan ---------- */
-.plan{padding:0 0 96px}
-.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.plan{padding:0 0 144px}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:64px}
 .kpi div{border-top:4px solid var(--ink);padding-top:16px}
 .kpi .target{font-family:ui-monospace,Menlo,monospace;font-size:24px;font-weight:700;color:var(--good);display:block;margin:8px 0 4px}
 .kpi .src{font-size:12px}
@@ -104,7 +128,7 @@ footer{border-top:1px solid #D9D9D9;padding:32px 0 48px;font-size:12px}
 @media (max-width:600px){
   body{font-size:16px}
   h1{font-size:28px}
-  .ba{padding:64px 0}
+  .ba{padding:96px 0}
   .metrics .num{font-size:40px}
 }
 </style>
@@ -116,8 +140,9 @@ footer{border-top:1px solid #D9D9D9;padding:32px 0 48px;font-size:12px}
   <a class="back" href="../../../index.html">← ポートフォリオ索引</a>
 
   <header>
+    <div class="head-ghost" aria-hidden="true">FORM</div>
     <p class="kicker mono">UI/UX PROPOSAL｜A4・2ページ</p>
-    <h1><span class="nb">申込フォームの</span><span class="seg">UI／UX改善提案書</span></h1>
+    <h1 data-reveal="chars"><span class="nb">申込フォームの</span><span class="seg">UI／UX改善提案書</span></h1>
     <p class="lead"><span class="seg"><span class="nb">一般社団法人 えんぴつ学習ネット 様の</span></span><span class="seg"><span class="nb">学習室の利用登録フォームを題材に、</span></span><span class="seg"><span class="nb">現在の画面の問題7件と</span><span class="nb">改善案をまとめた提案書です</span></span><span class="seg"><span class="nb">項目の数は変えずに、</span><span class="nb">見出しの位置・入力の補助・</span></span><span class="seg"><span class="nb">エラーの出し方を直す提案です</span></span></p>
     <dl class="meta">
       <div><dt>作成日</dt><dd>2026年11月22日</dd></div>
@@ -214,5 +239,59 @@ footer{border-top:1px solid #D9D9D9;padding:32px 0 48px;font-size:12px}
   </footer>
 </div>
 </main>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function splitChars(el){
+    var chars = [];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType === 3){
+          var frag = document.createDocumentFragment(); var word = null;
+          n.textContent.split("").forEach(function(c){
+            var s = document.createElement("span"); s.className = "ch"; s.textContent = c; chars.push(s);
+            if(c === " " || c === "\u3000"){ word = null; frag.appendChild(s); }
+            else { if(!word){ word = document.createElement("span"); word.className = "w"; frag.appendChild(word); } word.appendChild(s); }
+          });
+          node.replaceChild(frag, n);
+        } else if(n.nodeType === 1 && n.tagName !== "BR"){ walk(n); }
+      });
+    }
+    el.querySelectorAll(".line").forEach(function(line){ walk(line); });
+    return chars;
+  }
+  function ensureLine(el){
+    if(el.querySelector(".line")) return;
+    var line = document.createElement("span"); line.className = "line";
+    while(el.firstChild) line.appendChild(el.firstChild);
+    el.appendChild(line);
+  }
+  var wide = window.innerWidth >= 601;
+  var targets = [];
+  document.querySelectorAll("[data-reveal='chars']").forEach(function(el){
+    if(el.tagName === "H1" && !wide) return;
+    ensureLine(el); var chars = splitChars(el);
+    chars.forEach(function(ch,i){ ch.style.transitionDelay = (i * 45) + "ms"; });
+    targets.push(el);
+  });
+  if(reduced || !targets.length){ return; }
+  document.documentElement.classList.add("armed");
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.2 });
+  targets.forEach(function(el){ io.observe(el); });
+  /* slow one-time rise for the page's key visual(s) */
+  var rises = document.querySelectorAll("[data-rise]");
+  if(rises.length){
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io2.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    rises.forEach(function(el){ io2.observe(el); });
+  }
+})();
+</script>
+
 </body>
 </html>

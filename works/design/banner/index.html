@@ -35,8 +35,32 @@ a{color:var(--accent)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 .back{display:inline-block;margin:24px 0 0;font-size:14px}
 
+/* headline char reveal (hero moment only) */
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
+html.armed [data-reveal] .ch{transform:translateY(135%);transition:transform 1.25s cubic-bezier(.65,.05,0,1)}
+html.armed [data-reveal].in .ch{transform:translateY(0)}
+[data-rise]{transition:opacity 1.6s ease,transform 1.6s cubic-bezier(.65,.05,0,1)}
+html.armed [data-rise]{opacity:0;transform:translateY(24px)}
+html.armed [data-rise].in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion: reduce){
+  html.armed [data-reveal] .ch{transform:none;transition:none}
+  [data-rise]{transition:none}
+  html.armed [data-rise]{opacity:1;transform:none}
+}
+
+header{position:relative}
+.head-ghost{
+  position:absolute;top:0;right:0;z-index:0;pointer-events:none;user-select:none;
+  font-family:"Shippori Mincho B1",serif;font-weight:700;line-height:1;
+  font-size:15vw;white-space:nowrap;color:transparent;
+  -webkit-text-stroke:1.5px var(--ink);opacity:.1;
+}
+header>*{position:relative;z-index:1}
+
 /* ---------- header ---------- */
-header{padding:48px 0 64px}
+header{padding:72px 0 96px}
 .kicker{font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--accent)}
 h1{
   font-family:"Shippori Mincho B1",serif;font-weight:700;
@@ -44,8 +68,8 @@ h1{
 }
 .lead{max-width:640px}
 .facts{
-  display:flex;flex-wrap:wrap;gap:16px 48px;margin-top:32px;
-  border-top:2px solid var(--ink);padding-top:24px;
+  display:flex;flex-wrap:wrap;gap:24px 48px;margin-top:48px;
+  border-top:2px solid var(--ink);padding-top:32px;
 }
 .facts div{min-width:160px}
 .facts dt{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--accent)}
@@ -53,16 +77,16 @@ h1{
 .facts dd small{font-size:14px;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:500}
 
 /* ---------- wall ---------- */
-.wall{background:var(--wall);color:var(--paper);padding:96px 0}
+.wall{background:var(--wall);color:var(--paper);padding:144px 0}
 .wall h2{
   font-family:"Shippori Mincho B1",serif;font-weight:700;
   font-size:24px;line-height:1.5;margin-bottom:16px;
 }
 .wall .wall-lead{max-width:640px;color:var(--paper)}
-.slot{margin-top:64px;border-bottom:8px solid rgba(228,231,229,.22);padding-bottom:32px}
+.slot{margin-top:96px;border-bottom:8px solid rgba(228,231,229,.22);padding-bottom:48px}
 .slot-head{
   display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;
-  border-bottom:1px solid rgba(228,231,229,.35);padding-bottom:16px;margin-bottom:24px;
+  border-bottom:1px solid rgba(228,231,229,.35);padding-bottom:24px;margin-bottom:32px;
 }
 .dim{
   font-family:"Shippori Mincho B1",serif;font-weight:700;
@@ -77,8 +101,8 @@ h1{
 .w300{width:25%;min-width:200px}
 
 /* ---------- menu ---------- */
-.menu{background:var(--sheet);padding:96px 0}
-.menu-grid{display:grid;grid-template-columns:520px 1fr;gap:64px;align-items:start}
+.menu{background:var(--sheet);padding:144px 0}
+.menu-grid{display:grid;grid-template-columns:520px 1fr;gap:96px;align-items:start}
 .menu h2{
   font-family:"Shippori Mincho B1",serif;font-weight:700;
   font-size:24px;line-height:1.5;margin-bottom:24px;
@@ -93,15 +117,15 @@ h1{
 .menu-links a:hover{background:var(--paper)}
 
 /* ---------- policy / files ---------- */
-.policy{padding:96px 0 0}
+.policy{padding:144px 0 0}
 .policy h2,.files h2{
   font-family:"Shippori Mincho B1",serif;font-weight:700;
   font-size:24px;line-height:1.5;
   border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:32px;
 }
 .policy ul{list-style:none;max-width:760px}
-.policy li{padding:16px 0;border-bottom:1px solid rgba(43,33,27,.25)}
-.files{padding:64px 0 96px}
+.policy li{padding:24px 0;border-bottom:1px solid rgba(43,33,27,.25)}
+.files{padding:96px 0 144px}
 table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.7}
 th,td{border-bottom:1px solid rgba(43,33,27,.25);padding:8px 16px 8px 0;text-align:left;vertical-align:top}
 thead th{border-bottom:2px solid var(--ink)}
@@ -119,8 +143,8 @@ footer{
 @media (max-width:600px){
   body{font-size:16px}
   h1{font-size:28px}
-  .wall,.menu{padding:64px 0}
-  .slot{margin-top:48px}
+  .wall,.menu{padding:96px 0}
+  .slot{margin-top:72px}
   .w728{width:100%}
   .w300{width:56%}
   .facts{gap:16px 32px}
@@ -134,8 +158,9 @@ footer{
   <a class="back" href="../../../index.html">← ポートフォリオ索引</a>
 
   <header>
+    <div class="head-ghost" aria-hidden="true">BANNER</div>
     <p class="kicker">BANNER ＆ MENU｜自主制作サンプル</p>
-    <h1><span class="nb">バナー4サイズと</span><span class="nb">メニュー表</span><span class="seg">白杢珈琲</span></h1>
+    <h1 data-reveal="chars"><span class="nb">バナー4サイズと</span><span class="nb">メニュー表</span><span class="seg">白杢珈琲</span></h1>
     <p class="lead"><span class="seg"><span class="nb">架空のカフェ「白杢珈琲」の</span></span><span class="seg"><span class="nb">平日14時〜16時の焼き菓子セットを</span><span class="nb">告知するバナーと</span></span><span class="seg"><span class="nb">店頭に置くメニュー表です</span></span><span class="seg"><span class="nb">焼き菓子セットは</span><span class="nb">プレゼン資料サンプルの施策3です</span></span></p>
     <dl class="facts">
       <div><dt>バナー</dt><dd>4<small> サイズ</small></dd></div>
@@ -156,7 +181,7 @@ footer{
         <p class="dim">1200<small>×628</small></p>
         <p class="slot-use">Facebook・X の投稿、Webの記事内</p>
       </div>
-      <img class="w1200" src="out/banner-1200x628.png" alt="バナー 1200×628" width="1200" height="628">
+      <img data-rise class="w1200" src="out/banner-1200x628.png" alt="バナー 1200×628" width="1200" height="628">
     </div>
 
     <div class="slot">
@@ -164,7 +189,7 @@ footer{
         <p class="dim">1080<small>×1080</small></p>
         <p class="slot-use">Instagram の投稿・広告</p>
       </div>
-      <img class="w1080" src="out/banner-1080x1080.png" alt="バナー 1080×1080" width="1080" height="1080" loading="lazy">
+      <img data-rise class="w1080" src="out/banner-1080x1080.png" alt="バナー 1080×1080" width="1080" height="1080" loading="lazy">
     </div>
 
     <div class="slot">
@@ -172,7 +197,7 @@ footer{
         <p class="dim">728<small>×90</small></p>
         <p class="slot-use">Webサイトの横長の広告枠</p>
       </div>
-      <img class="w728" src="out/banner-728x90.png" alt="バナー 728×90" width="728" height="90" loading="lazy">
+      <img data-rise class="w728" src="out/banner-728x90.png" alt="バナー 728×90" width="728" height="90" loading="lazy">
     </div>
 
     <div class="slot">
@@ -180,7 +205,7 @@ footer{
         <p class="dim">300<small>×250</small></p>
         <p class="slot-use">Webサイトのレクタングル広告枠</p>
       </div>
-      <img class="w300" src="out/banner-300x250.png" alt="バナー 300×250" width="300" height="250" loading="lazy">
+      <img data-rise class="w300" src="out/banner-300x250.png" alt="バナー 300×250" width="300" height="250" loading="lazy">
     </div>
   </div>
 </section>
@@ -251,5 +276,58 @@ footer{
   </footer>
 </div>
 </main>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function splitChars(el){
+    var chars = [];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType === 3){
+          var frag = document.createDocumentFragment(); var word = null;
+          n.textContent.split("").forEach(function(c){
+            var s = document.createElement("span"); s.className = "ch"; s.textContent = c; chars.push(s);
+            if(c === " " || c === "\u3000"){ word = null; frag.appendChild(s); }
+            else { if(!word){ word = document.createElement("span"); word.className = "w"; frag.appendChild(word); } word.appendChild(s); }
+          });
+          node.replaceChild(frag, n);
+        } else if(n.nodeType === 1 && n.tagName !== "BR"){ walk(n); }
+      });
+    }
+    el.querySelectorAll(".line").forEach(function(line){ walk(line); });
+    return chars;
+  }
+  function ensureLine(el){
+    if(el.querySelector(".line")) return;
+    var line = document.createElement("span"); line.className = "line";
+    while(el.firstChild) line.appendChild(el.firstChild);
+    el.appendChild(line);
+  }
+  var wide = window.innerWidth >= 601;
+  var targets = [];
+  document.querySelectorAll("[data-reveal='chars']").forEach(function(el){
+    if(el.tagName === "H1" && !wide) return;
+    ensureLine(el); var chars = splitChars(el);
+    chars.forEach(function(ch,i){ ch.style.transitionDelay = (i * 45) + "ms"; });
+    targets.push(el);
+  });
+  if(reduced || !targets.length){ return; }
+  document.documentElement.classList.add("armed");
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.2 });
+  targets.forEach(function(el){ io.observe(el); });
+  /* slow one-time rise for the page's key visual(s) */
+  var rises = document.querySelectorAll("[data-rise]");
+  if(rises.length){
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io2.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    rises.forEach(function(el){ io2.observe(el); });
+  }
+})();
+</script>
 </body>
 </html>
