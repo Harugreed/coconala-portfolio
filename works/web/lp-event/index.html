@@ -6,6 +6,7 @@
 <title>中小店舗のためのInstagram集客講座（オンライン）｜自主制作サンプル</title>
 <meta name="description" content="中小店舗向けInstagram集客のオンライン講座（架空）の申込ページ。ココナラ出品用の自主制作サンプルです。">
 <meta name="robots" content="noindex">
+<script>setTimeout(function(){document.documentElement.classList.add('ready')},3500);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Noto+Serif+JP:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
@@ -23,7 +24,7 @@ html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{
   font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
-  font-size:16px;line-height:1.9;color:var(--deep);background:var(--paper);
+  font-size:16px;line-height:2;color:var(--deep);background:var(--paper);
   overflow-x:clip;
 }
 /* Japanese line breaks are decided by markup, not CSS:
@@ -31,6 +32,10 @@ body{
    Never combine word-break:keep-all with overflow-wrap:anywhere (splits words). */
 .nb{display:inline-block;white-space:nowrap}
 .seg{display:block}
+html:not(.ready) [data-reveal]{visibility:hidden}
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
 img{display:block;max-width:100%;height:auto}
 ul,ol{list-style:none}
 ::selection{background:var(--rose);color:var(--paper)}
@@ -40,26 +45,28 @@ ul,ol{list-style:none}
 
 /* ---------- flag / title ---------- */
 .sample-flag{background:var(--deep);color:var(--paper);font-size:13px;line-height:1.6;padding:8px 40px}
-.masthead{padding:64px 0 48px}
-.organizer{font-weight:700;font-size:14px;color:var(--gold);letter-spacing:.12em;margin-bottom:16px}
+.masthead{padding:96px 0 72px;position:relative;overflow:hidden}
+.masthead .wrap{position:relative;z-index:1}
+.masthead-ghost{position:absolute;right:0;bottom:8px;z-index:0;font-weight:600;line-height:1;font-size:20vw;white-space:nowrap;pointer-events:none;user-select:none;color:transparent;-webkit-text-stroke:1.5px rgba(126,51,72,.16)}
+.organizer{font-weight:700;font-size:14px;color:var(--gold);letter-spacing:.12em;margin-bottom:24px}
 h1{font-family:"Noto Serif JP",serif;font-weight:700;font-size:36px;line-height:1.35;color:var(--deep)}
-h1 .big{display:block;font-size:48px;margin-top:8px}
+h1 .big{display:block;font-size:48px;margin-top:16px}
 h1 .big .num{letter-spacing:.01em}
-.fv-sub{margin-top:24px;font-size:18px;max-width:640px}
+.fv-sub{margin-top:32px;font-size:18px;max-width:640px}
 
 /* ---------- date band + overview ledger ---------- */
 .dateband{background:var(--rose);color:var(--paper)}
-.dateband-in{display:flex;flex-wrap:wrap;align-items:baseline;gap:16px 32px;padding-top:32px;padding-bottom:32px}
+.dateband-in{display:flex;flex-wrap:wrap;align-items:baseline;gap:16px 40px;padding-top:40px;padding-bottom:40px}
 .dateband .date{font-size:72px;line-height:1;font-weight:600;letter-spacing:.01em}
 .dateband .dow{font-family:"Noto Serif JP",serif;font-size:24px;font-weight:700;border:2px solid var(--paper);padding:4px 12px;align-self:center}
 .dateband .time{font-size:36px;line-height:1.2;font-weight:600}
 .dateband .fmt{font-size:16px;font-weight:700;margin-left:auto}
-.ledger{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding-top:24px;padding-bottom:8px}
-.ledger div{border-top:3px solid var(--rose);padding-top:12px}
+.ledger{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;padding-top:40px;padding-bottom:16px}
+.ledger div{border-top:3px solid var(--rose);padding-top:16px}
 .ledger dt{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.08em}
-.ledger dd{font-size:18px;font-weight:700;margin-top:4px}
+.ledger dd{font-size:18px;font-weight:700;margin-top:8px}
 .cta{
-  display:inline-block;margin-top:32px;margin-bottom:48px;background:var(--rose);color:var(--paper);
+  display:inline-block;margin-top:48px;margin-bottom:72px;background:var(--rose);color:var(--paper);
   font-weight:700;font-size:18px;text-decoration:none;padding:16px 40px;border:2px solid var(--rose);
   transition:background-color .3s,color .3s;
 }
@@ -67,51 +74,58 @@ h1 .big .num{letter-spacing:.01em}
 .photo-shoot{width:100%;aspect-ratio:3/1;max-height:432px;object-fit:cover;object-position:center 55%}
 
 /* ---------- sections : booklet margin column ---------- */
-.sec{padding:96px 0}
+.sec{padding:144px 0}
 .sec.tint{background:var(--tint)}
-.two{display:grid;grid-template-columns:12em minmax(0,1fr);gap:64px;align-items:start}
+.two{display:grid;grid-template-columns:12em minmax(0,1fr);gap:80px;align-items:start}
 h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:1.4;color:var(--rose);white-space:nowrap}
-.note{margin-top:16px;font-size:14px}
+h2::before{display:block;font-family:"Barlow",sans-serif;font-weight:600;font-size:20px;line-height:1.4;color:var(--gold);margin-bottom:16px}
+#target h2::before{content:"01"}
+#program h2::before{content:"02"}
+#format h2::before{content:"03"}
+#lecturer h2::before{content:"04"}
+#apply h2::before{content:"05"}
+#notes h2::before{content:"06"}
+.note{margin-top:24px;font-size:14px}
 
-.checks li{position:relative;padding:16px 0 16px 40px;border-bottom:1px solid var(--line);font-size:16px}
+.checks li{position:relative;padding:24px 0 24px 40px;border-bottom:1px solid var(--line);font-size:16px}
 .checks li:first-child{border-top:2px solid var(--rose)}
-.checks li::before{content:"";position:absolute;left:4px;top:24px;width:20px;height:12px;border-left:3px solid var(--rose);border-bottom:3px solid var(--rose);transform:rotate(-45deg)}
+.checks li::before{content:"";position:absolute;left:4px;top:32px;width:20px;height:12px;border-left:3px solid var(--rose);border-bottom:3px solid var(--rose);transform:rotate(-45deg)}
 
 .timetable{border-top:2px solid var(--rose)}
-.timetable li{display:grid;grid-template-columns:6em minmax(0,1fr);gap:32px;padding:24px 0;border-bottom:1px solid var(--line)}
+.timetable li{display:grid;grid-template-columns:6em minmax(0,1fr);gap:40px;padding:32px 0;border-bottom:1px solid var(--line)}
 .timetable time{font-size:28px;line-height:1.2;font-weight:600;color:var(--gold)}
 .timetable h3{font-size:20px;line-height:1.5;font-weight:700}
-.timetable p{margin-top:4px;font-size:16px}
+.timetable p{margin-top:8px;font-size:16px}
 
-.photo-online{width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:8px}
+.photo-online{width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:16px}
 .steps{counter-reset:s}
-.steps li{counter-increment:s;display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:24px 0;border-bottom:1px solid var(--line);font-size:16px}
 .steps li::before{content:counter(s);font-family:"Barlow",sans-serif;font-weight:600;font-size:28px;color:var(--rose);line-height:1.3}
 
-.lecturer{display:grid;grid-template-columns:120px minmax(0,1fr);gap:40px;align-items:start}
+.lecturer{display:grid;grid-template-columns:120px minmax(0,1fr);gap:56px;align-items:start}
 .initial{width:120px;height:120px;display:grid;place-items:center;background:var(--rose);color:var(--paper);font-size:48px;font-weight:600}
-.l-name{font-family:"Noto Serif JP",serif;font-weight:700;font-size:24px;line-height:1.4;margin-bottom:16px}
+.l-name{font-family:"Noto Serif JP",serif;font-weight:700;font-size:24px;line-height:1.4;margin-bottom:24px}
 .l-name small{display:block;font-family:"Noto Sans JP",sans-serif;font-size:14px;color:var(--gold);font-weight:700;margin-top:4px}
 
-.notes-list li{position:relative;padding:12px 0 12px 24px;border-bottom:1px solid var(--line);font-size:16px}
+.notes-list li{position:relative;padding:20px 0 20px 24px;border-bottom:1px solid var(--line);font-size:16px}
 .notes-list li:first-child{border-top:2px solid var(--rose)}
-.notes-list li::before{content:"※";position:absolute;left:0;top:12px;color:var(--rose)}
+.notes-list li::before{content:"※";position:absolute;left:0;top:20px;color:var(--rose)}
 
 /* form */
-.field{padding:12px 0}
+.field{padding:20px 0}
 .field label{display:block;font-weight:700;margin-bottom:8px}
 .req{margin-left:8px;font-size:13px;padding:4px 8px;background:var(--rose);color:var(--paper);vertical-align:2px}
 .field input,.field textarea{width:100%;font:inherit;padding:12px 16px;border:2px solid var(--line);background:var(--paper);color:var(--deep);border-radius:0}
 .field textarea{min-height:120px}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--rose)}
-.submit-area{padding-top:24px}
+.submit-area{padding-top:32px}
 .submit{font:inherit;font-weight:700;font-size:18px;padding:16px 48px;background:var(--rose);color:var(--paper);border:0;opacity:.5;cursor:not-allowed}
-.sample-note{margin-top:16px;font-size:14px;padding:16px;background:var(--tint);border-left:4px solid var(--gold)}
+.sample-note{margin-top:24px;font-size:14px;padding:24px;background:var(--tint);border-left:4px solid var(--gold)}
 
 /* footer */
-.foot{background:var(--deep);color:var(--paper);padding:64px 0;font-size:14px;line-height:1.9}
+.foot{background:var(--deep);color:var(--paper);padding:96px 0;font-size:14px;line-height:1.9}
 .foot-name{font-weight:700;font-size:18px;margin-bottom:8px}
-.foot .disclaimer{margin-top:24px;padding-top:16px;border-top:1px solid var(--rose);font-size:13px}
+.foot .disclaimer{margin-top:32px;padding-top:24px;border-top:1px solid var(--rose);font-size:13px}
 
 @media (max-width:900px){
   .two{grid-template-columns:1fr;gap:32px}
@@ -121,7 +135,7 @@ h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:
 @media (max-width:640px){
   .wrap{padding:0 16px}
   .sample-flag{padding:8px 16px}
-  .masthead{padding:48px 0 32px}
+  .masthead{padding:64px 0 48px}
   h1{font-size:28px}
   h1 .big{font-size:36px}
   .fv-sub{font-size:16px}
@@ -129,7 +143,7 @@ h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:
   .dateband .time{font-size:28px}
   .cta{display:block;text-align:center}
   .photo-shoot{aspect-ratio:16/10;max-height:none}
-  .sec{padding:64px 0}
+  .sec{padding:96px 0}
   h2{font-size:24px}
   .timetable li{grid-template-columns:1fr;gap:8px}
   .timetable time{font-size:24px}
@@ -143,9 +157,10 @@ h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:
 <p class="sample-flag"><span class="nb">自主制作サンプルです</span><span class="nb">講座名・講師・主催者・日程は架空のものです</span></p>
 
 <header class="masthead">
+  <div class="masthead-ghost num" aria-hidden="true">1.16</div>
   <div class="wrap">
     <p class="organizer">まちの商い研究所 オンライン講座</p>
-    <h1>中小店舗のための<span class="big"><span class="num">Instagram</span>集客講座</span></h1>
+    <h1 data-reveal="chars">中小店舗のための<span class="big"><span class="num">Instagram</span>集客講座</span></h1>
     <p class="fv-sub"><span class="nb">投稿の作り方・プロフィールの整え方・</span><span class="nb">来店につなげる導線を</span><span class="nb">90分で実演します</span></p>
   </div>
 </header>
@@ -176,7 +191,7 @@ h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:
 
 <section class="sec" id="target">
   <div class="wrap two">
-    <h2>対象</h2>
+    <h2 data-reveal="chars">対象</h2>
     <ul class="checks">
       <li><span class="nb">飲食店・美容室・小売店など</span><span class="nb">店舗を運営している方</span></li>
       <li><span class="nb">Instagramのアカウントはあるが</span><span class="nb">投稿が月に数回で止まっている方</span></li>
@@ -187,7 +202,7 @@ h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:
 
 <section class="sec tint" id="program">
   <div class="wrap two">
-    <h2>内容</h2>
+    <h2 data-reveal="chars">内容</h2>
     <div>
       <ol class="timetable">
         <li><time class="num">14:00</time><div><h3>来店につながるプロフィールの整え方</h3><p><span class="nb">店名・営業時間・予約方法を</span><span class="nb">プロフィール欄とハイライトに</span><span class="nb">置く手順を説明します</span></p></div></li>
@@ -202,7 +217,7 @@ h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:
 
 <section class="sec" id="format">
   <div class="wrap two">
-    <h2>参加のしかた</h2>
+    <h2 data-reveal="chars">参加のしかた</h2>
     <div>
       <img class="photo-online" src="img/online.jpg" alt="ノートパソコンでオンライン講座に参加している人" width="1800" height="1200" loading="lazy">
       <ol class="steps">
@@ -216,7 +231,7 @@ h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:
 
 <section class="sec tint" id="lecturer">
   <div class="wrap two">
-    <h2>講師</h2>
+    <h2 data-reveal="chars">講師</h2>
     <div class="lecturer">
       <p class="initial num" aria-hidden="true">KM</p>
       <div>
@@ -230,7 +245,7 @@ h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:
 
 <section class="sec" id="apply">
   <div class="wrap two">
-    <h2>申込フォーム</h2>
+    <h2 data-reveal="chars">申込フォーム</h2>
     <form class="form" onsubmit="return false" novalidate>
       <div class="field"><label for="name">お名前<span class="req">必須</span></label><input type="text" id="name" autocomplete="name"></div>
       <div class="field"><label for="shop">店名・業種<span class="req">必須</span></label><input type="text" id="shop" placeholder="例：パン屋 こむぎ堂"></div>
@@ -247,7 +262,7 @@ h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:
 
 <section class="sec tint" id="notes">
   <div class="wrap two">
-    <h2>注意事項</h2>
+    <h2 data-reveal="chars">注意事項</h2>
     <ul class="notes-list">
       <li><span class="nb">参加費のお振り込み後のキャンセルは</span><span class="nb">1月14日（木）までに</span><span class="nb">ご連絡いただいた場合のみ返金します</span></li>
       <li><span class="nb">通信環境による音声・映像の乱れは</span><span class="nb">主催者側で補償できません</span></li>
@@ -267,5 +282,85 @@ h2{font-family:"Noto Serif JP",serif;font-weight:700;font-size:28px;line-height:
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.documentElement.classList.add("ready");
+  function splitChars(el){
+    var chars = [];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType === 3){
+          var frag = document.createDocumentFragment();
+          var word = null;
+          n.textContent.split("").forEach(function(c){
+            var sp = document.createElement("span");
+            sp.className = "ch";
+            sp.textContent = c;
+            chars.push(sp);
+            if(c === " " || c === "\u3000"){ word = null; frag.appendChild(sp); }
+            else {
+              if(!word){ word = document.createElement("span"); word.className = "w"; frag.appendChild(word); }
+              word.appendChild(sp);
+            }
+          });
+          node.replaceChild(frag, n);
+        } else if(n.nodeType === 1 && n.tagName !== "BR"){ walk(n); }
+      });
+    }
+    el.querySelectorAll(".line").forEach(function(line){ walk(line); });
+    return chars;
+  }
+  function ensureLines(el){
+    var segs = el.querySelectorAll(".seg");
+    if(segs.length){ segs.forEach(function(g){ g.classList.add("line"); }); return; }
+    var line = document.createElement("span");
+    line.className = "line";
+    while(el.firstChild) line.appendChild(el.firstChild);
+    el.appendChild(line);
+  }
+  var wide = window.innerWidth >= 641;
+  var revealChars = {};
+  document.querySelectorAll("[data-reveal='chars']").forEach(function(el, i){
+    if(el.tagName === "H1" && !wide) return;
+    ensureLines(el);
+    revealChars[i] = splitChars(el);
+    el.dataset.revealIdx = i;
+  });
+  if(typeof gsap === "undefined" || reduced){ return; }
+  gsap.registerPlugin(ScrollTrigger);
+  var h1 = document.querySelector("h1");
+  if(h1 && revealChars[h1.dataset.revealIdx]){
+    gsap.fromTo(revealChars[h1.dataset.revealIdx], { yPercent: 135 },
+      { yPercent: 0, duration: 1.2, ease: "expo.out", stagger: 0.025, delay: 0.25 });
+  }
+  gsap.fromTo(".organizer, .fv-sub",
+    { y: 24, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 1.1, ease: "expo.out", stagger: 0.16, delay: 0.6 });
+  gsap.fromTo(".dateband-in > *",
+    { y: 24, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 1.1, ease: "expo.out", stagger: 0.12,
+      scrollTrigger: { trigger: ".dateband", start: "top 88%", once: true } });
+  gsap.fromTo(".ledger div",
+    { y: 20, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 1, ease: "expo.out", stagger: 0.1,
+      scrollTrigger: { trigger: ".ledger", start: "top 88%", once: true } });
+  document.querySelectorAll(".sec [data-reveal='chars']").forEach(function(el){
+    var chars = revealChars[el.dataset.revealIdx];
+    if(!chars) return;
+    gsap.fromTo(chars, { yPercent: 135 }, {
+      yPercent: 0, duration: 1, ease: "expo.out", stagger: 0.04,
+      scrollTrigger: { trigger: el, start: "top 88%", once: true }
+    });
+  });
+  gsap.to(".masthead-ghost", {
+    yPercent: 20, ease: "none",
+    scrollTrigger: { trigger: ".masthead", start: "top top", end: "bottom top", scrub: 0.4 }
+  });
+})();
+</script>
 </body>
 </html>

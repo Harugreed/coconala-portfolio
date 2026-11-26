@@ -6,6 +6,7 @@
 <title>介護タクシー あおば移送サービス｜自主制作サンプル</title>
 <meta name="description" content="通院・買い物の外出を車いすのまま送迎する介護タクシー（架空）の申込ページ。ココナラ出品用の自主制作サンプルです。">
 <meta name="robots" content="noindex">
+<script>setTimeout(function(){document.documentElement.classList.add('ready')},3500);</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
@@ -23,7 +24,7 @@ html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{
   font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
-  font-size:18px;line-height:1.8;color:var(--deep);background:var(--paper);
+  font-size:18px;line-height:1.9;color:var(--deep);background:var(--paper);
   overflow-x:clip;
 }
 /* Japanese line breaks are decided by markup, not CSS:
@@ -31,6 +32,10 @@ body{
    Never combine word-break:keep-all with overflow-wrap:anywhere (splits words). */
 .nb{display:inline-block;white-space:nowrap}
 .seg{display:block}
+html:not(.ready) [data-reveal]{visibility:hidden}
+.line{display:block;overflow:hidden;padding-top:.1em;padding-bottom:.14em;margin-top:-.1em;margin-bottom:-.14em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 ul,ol{list-style:none}
@@ -50,83 +55,85 @@ ul,ol{list-style:none}
 
 /* ---------- hero : fare chart ---------- */
 .hero-photo{width:100%;aspect-ratio:21/9;max-height:440px;object-fit:cover;object-position:center 30%}
-.hero{background:var(--white);border-bottom:4px solid var(--blue)}
-.hero-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;padding-top:48px;padding-bottom:64px}
-.hero-kicker{font-size:14px;font-weight:700;color:var(--blue);letter-spacing:.12em;margin-bottom:16px}
+.hero{background:var(--white);border-bottom:4px solid var(--blue);position:relative;overflow:hidden}
+.hero-ghost{position:absolute;right:0;bottom:16px;z-index:0;font-weight:600;line-height:1;font-size:22vw;white-space:nowrap;pointer-events:none;user-select:none;color:transparent;-webkit-text-stroke:1.5px rgba(44,90,136,.18)}
+.hero-in{position:relative;z-index:1}
+.hero-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;padding-top:72px;padding-bottom:96px}
+.hero-kicker{font-size:14px;font-weight:700;color:var(--blue);letter-spacing:.12em;margin-bottom:24px}
 h1{font-size:32px;font-weight:900;line-height:1.55;letter-spacing:.02em}
-.hero-lead{margin-top:24px;font-size:18px}
+.hero-lead{margin-top:32px;font-size:18px}
 .fare{border:2px solid var(--deep);background:var(--paper);align-self:start}
-.fare-head{padding:16px 24px 8px;font-size:14px;font-weight:700;letter-spacing:.1em;color:var(--blue)}
-.fare-main{display:flex;align-items:baseline;gap:8px;padding:0 24px 16px;border-bottom:1px solid var(--line)}
+.fare-head{padding:24px 24px 8px;font-size:14px;font-weight:700;letter-spacing:.1em;color:var(--blue)}
+.fare-main{display:flex;align-items:baseline;gap:8px;padding:0 24px 24px;border-bottom:1px solid var(--line)}
 .fare-main .yen{font-size:28px;font-weight:600}
-.fare-main .amount{font-size:96px;line-height:1;font-weight:600;color:var(--deep)}
+.fare-main .amount{font-size:96px;line-height:1;font-weight:600;color:var(--deep);display:inline-block;transform:scale(1.18);transform-origin:left center;margin-right:24px}
 .fare-main .unit{font-size:16px;font-weight:700}
-.fare-rows{padding:8px 24px 16px}
-.fare-rows div{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.fare-rows{padding:8px 24px 24px}
+.fare-rows div{display:flex;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 .fare-rows div:last-child{border-bottom:0}
 .fare-rows dt{font-size:14px;color:var(--blue);font-weight:700}
 .fare-rows dd{font-size:16px;font-weight:700;text-align:right}
 .cta{
-  display:inline-block;margin-top:32px;background:var(--red);color:var(--white);
+  display:inline-block;margin-top:40px;background:var(--red);color:var(--white);
   font-weight:700;font-size:20px;text-decoration:none;padding:16px 40px;border-radius:4px;
   transition:background-color .3s;
 }
 .cta:hover{background:var(--deep)}
-.formula{margin-top:24px;font-size:16px;font-weight:700}
+.formula{margin-top:32px;font-size:16px;font-weight:700}
 .formula .num{color:var(--blue)}
 
 /* ---------- sections ---------- */
-.sec{padding:96px 0}
+.sec{padding:144px 0}
 .sec.alt{background:var(--white)}
-h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bottom:16px;margin-bottom:40px;border-bottom:3px solid var(--blue)}
-.lead{margin-bottom:40px}
-.note{margin-top:24px;font-size:14px}
+h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bottom:24px;margin-bottom:56px;border-bottom:3px solid var(--blue)}
+.lead{margin-bottom:56px}
+.note{margin-top:32px;font-size:14px}
 
 /* scenes / fare examples */
-.scenes{display:grid;grid-template-columns:1fr;gap:48px}
-.scene{display:grid;grid-template-columns:12em minmax(0,1fr);gap:40px;padding-bottom:48px;border-bottom:1px solid var(--line)}
+.scenes{display:grid;grid-template-columns:1fr;gap:72px}
+.scene{display:grid;grid-template-columns:12em minmax(0,1fr);gap:56px;padding-bottom:72px;border-bottom:1px solid var(--line)}
 .scene:last-child{border-bottom:0;padding-bottom:0}
 .scene h3{font-size:28px;font-weight:900;color:var(--blue)}
 .scene p{font-size:18px}
-.example{margin-top:24px;background:var(--white);border-left:6px solid var(--blue);padding:24px}
+.example{margin-top:40px;background:var(--white);border-left:6px solid var(--blue);padding:32px}
 .alt .example{background:var(--paper)}
 .example dt{font-weight:700;font-size:16px;line-height:1.6;margin-bottom:8px}
 .example dd{display:flex;flex-wrap:wrap;gap:8px 32px;font-size:16px}
 .example .sum{margin-top:8px;padding-top:8px;border-top:1px dashed var(--blue);font-weight:900;font-size:24px;color:var(--red)}
 
 /* flow ledger */
-.flow-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:start}
-.flow li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:24px;padding-top:24px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.flow-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:80px;align-items:start}
+.flow li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:24px;padding-top:32px;padding-bottom:32px;border-bottom:1px solid var(--line)}
 .flow li:first-child{padding-top:0}
 .flow .no{font-size:48px;line-height:1.1;font-weight:600;color:var(--blue)}
 .flow h3{font-size:20px;font-weight:900;color:var(--deep);margin-bottom:8px}
 .flow p{font-size:16px}
 .flow-photo{width:100%;aspect-ratio:3/2;object-fit:cover}
-.video-slot{margin-top:24px}
+.video-slot{margin-top:40px}
 .video-frame{aspect-ratio:16/9;display:grid;place-items:center;text-align:center;padding:24px;border:2px dashed var(--blue);background:var(--white);font-size:14px;color:var(--blue)}
 .video-slot figcaption{margin-top:8px;font-size:13px}
 
 /* price tables */
-.price-stack{display:grid;grid-template-columns:1fr;gap:48px}
+.price-stack{display:grid;grid-template-columns:1fr;gap:72px}
 .price{width:100%;border-collapse:collapse;background:var(--white)}
-.price caption{text-align:left;font-weight:900;font-size:20px;color:var(--blue);padding-bottom:8px}
-.price th,.price td{padding:16px 24px 16px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;vertical-align:top}
+.price caption{text-align:left;font-weight:900;font-size:20px;color:var(--blue);padding-bottom:16px}
+.price th,.price td{padding:24px 24px 24px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.6;vertical-align:top}
 .price tr:first-child th,.price tr:first-child td{border-top:3px solid var(--blue)}
 .price th{text-align:left;font-weight:500}
 .price td{text-align:right;font-weight:700;font-size:20px;white-space:nowrap;padding-right:0}
 
 /* faq */
-.faq details{background:var(--white);border-left:6px solid var(--blue);margin-bottom:16px}
-.faq summary{cursor:pointer;list-style:none;padding:16px 56px 16px 24px;font-weight:700;font-size:18px;position:relative}
+.faq details{background:var(--white);border-left:6px solid var(--blue);margin-bottom:24px}
+.faq summary{cursor:pointer;list-style:none;padding:24px 56px 24px 24px;font-weight:700;font-size:18px;position:relative}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:28px;color:var(--blue)}
 .faq details[open] summary::after{content:"−"}
-.faq details p{padding:0 24px 16px;font-size:16px}
+.faq details p{padding:0 24px 24px;font-size:16px}
 
 /* form */
 .form{max-width:832px}
-.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.field{padding:16px 0;border:0}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.field{padding:24px 0;border:0}
 .field label,.field legend{display:block;font-weight:700;margin-bottom:8px;padding:0}
 .req{margin-left:8px;font-size:13px;padding:4px 8px;border-radius:4px;background:var(--red);color:var(--white);vertical-align:2px}
 .field input[type=text],.field input[type=tel],.field input[type=date],.field input[type=time],.field textarea{
@@ -137,14 +144,14 @@ h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bott
 .choices{display:flex;flex-wrap:wrap;gap:8px 24px}
 .choices label{font-weight:500;display:flex;align-items:center;gap:8px;margin:0}
 .choices input{width:20px;height:20px;accent-color:var(--blue)}
-.submit-area{padding-top:24px}
+.submit-area{padding-top:40px}
 .submit{font:inherit;font-weight:700;font-size:20px;padding:16px 48px;border:0;border-radius:4px;background:var(--red);color:var(--white);opacity:.5;cursor:not-allowed}
 .sample-note{margin-top:16px;font-size:14px;padding:16px;background:var(--white);border-left:4px solid var(--blue)}
 
 .sticky-cta{display:none}
 
 /* footer */
-.foot{background:var(--deep);color:var(--white);padding:64px 0 96px;font-size:14px;line-height:1.9}
+.foot{background:var(--deep);color:var(--white);padding:96px 0 128px;font-size:14px;line-height:1.9}
 .foot-name{font-size:20px;font-weight:900;margin-bottom:8px}
 .foot .disclaimer{margin-top:24px;padding-top:16px;border-top:1px solid var(--blue);font-size:13px}
 
@@ -160,12 +167,12 @@ h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bott
   .head-tel{display:none}
   .logo{font-size:18px}
   .hero-photo{aspect-ratio:4/3;max-height:none}
-  .hero-in{padding-top:32px;padding-bottom:48px}
+  .hero-in{padding-top:48px;padding-bottom:64px}
   h1{font-size:24px}
-  .fare-main .amount{font-size:64px}
+  .fare-main .amount{font-size:64px;transform:none;margin-right:0}
   .cta{display:block;text-align:center}
-  .sec{padding:64px 0}
-  h2{font-size:24px;margin-bottom:32px}
+  .sec{padding:96px 0}
+  h2{font-size:24px;margin-bottom:40px}
   .scene h3{font-size:24px}
   .flow li{grid-template-columns:48px minmax(0,1fr);gap:16px}
   .flow .no{font-size:32px}
@@ -193,10 +200,11 @@ h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bott
 <!-- 最初の画面：運賃表 -->
 <section class="hero">
   <img class="hero-photo" src="img/care.jpg" alt="公園で車いすを押して散歩する介助者" width="2200" height="1468">
+  <div class="hero-ghost num" aria-hidden="true">750</div>
   <div class="wrap hero-in">
     <div>
       <p class="hero-kicker">介護タクシー</p>
-      <h1>
+      <h1 data-reveal="chars">
         <span class="seg"><span class="nb">車いすのまま乗れる</span><span class="nb">介護タクシーです</span></span>
         <span class="seg"><span class="nb">通院・買い物の外出を</span><span class="nb">玄関から玄関まで</span><span class="nb">送迎しています</span></span>
       </h1>
@@ -222,7 +230,7 @@ h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bott
 <!-- 利用場面 -->
 <section class="sec" id="scene">
   <div class="wrap">
-    <h2>よく使われている場面</h2>
+    <h2 data-reveal="chars">よく使われている場面</h2>
     <div class="scenes">
       <article class="scene">
         <h3>通院</h3>
@@ -253,7 +261,7 @@ h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bott
 <!-- 利用の流れ -->
 <section class="sec alt" id="flow">
   <div class="wrap">
-    <h2>予約から帰宅までの流れ</h2>
+    <h2 data-reveal="chars">予約から帰宅までの流れ</h2>
     <div class="flow-grid">
       <ol class="flow">
         <li>
@@ -308,7 +316,7 @@ h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bott
 <!-- 料金 -->
 <section class="sec" id="price">
   <div class="wrap">
-    <h2>料金</h2>
+    <h2 data-reveal="chars">料金</h2>
     <p class="lead"><span class="nb">料金は「運賃」「介助料」</span><span class="nb">「機材の料金」の合計です</span><span class="nb">価格はすべて税込です</span></p>
     <div class="price-stack">
       <table class="price">
@@ -338,7 +346,7 @@ h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bott
 <!-- よくある質問 -->
 <section class="sec alt" id="faq">
   <div class="wrap">
-    <h2>よくある質問</h2>
+    <h2 data-reveal="chars">よくある質問</h2>
     <div class="faq">
       <details><summary><span class="nb">車いすを持っていなくても</span><span class="nb">利用できますか</span></summary><p>利用できます。普通型の車いすは無料でお貸ししています。予約時にお申し付けください。</p></details>
       <details><summary>家族は一緒に乗れますか</summary><p>付き添いの方は2人まで同乗できます。同乗の料金はかかりません。</p></details>
@@ -353,7 +361,7 @@ h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bott
 <!-- 申込フォーム -->
 <section class="sec" id="apply">
   <div class="wrap">
-    <h2>申込フォーム</h2>
+    <h2 data-reveal="chars">申込フォーム</h2>
     <p class="lead"><span class="nb">送信後、営業時間内に電話で</span><span class="nb">予約内容と料金の目安をお伝えします</span><span class="nb">電話がつながった時点で予約が確定します</span></p>
     <form class="form" onsubmit="return false" novalidate>
       <div class="row2">
@@ -403,5 +411,83 @@ h2{font-size:32px;font-weight:900;line-height:1.4;color:var(--deep);padding-bott
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.documentElement.classList.add("ready");
+  function splitChars(el){
+    var chars = [];
+    function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType === 3){
+          var frag = document.createDocumentFragment();
+          var word = null;
+          n.textContent.split("").forEach(function(c){
+            var sp = document.createElement("span");
+            sp.className = "ch";
+            sp.textContent = c;
+            chars.push(sp);
+            if(c === " " || c === "\u3000"){ word = null; frag.appendChild(sp); }
+            else {
+              if(!word){ word = document.createElement("span"); word.className = "w"; frag.appendChild(word); }
+              word.appendChild(sp);
+            }
+          });
+          node.replaceChild(frag, n);
+        } else if(n.nodeType === 1 && n.tagName !== "BR"){ walk(n); }
+      });
+    }
+    el.querySelectorAll(".line").forEach(function(line){ walk(line); });
+    return chars;
+  }
+  function ensureLines(el){
+    var segs = el.querySelectorAll(".seg");
+    if(segs.length){ segs.forEach(function(g){ g.classList.add("line"); }); return; }
+    var line = document.createElement("span");
+    line.className = "line";
+    while(el.firstChild) line.appendChild(el.firstChild);
+    el.appendChild(line);
+  }
+  var wide = window.innerWidth >= 641;
+  var revealChars = {};
+  document.querySelectorAll("[data-reveal='chars']").forEach(function(el, i){
+    if(el.tagName === "H1" && !wide) return;
+    ensureLines(el);
+    revealChars[i] = splitChars(el);
+    el.dataset.revealIdx = i;
+  });
+  if(typeof gsap === "undefined" || reduced){ return; }
+  gsap.registerPlugin(ScrollTrigger);
+  var h1 = document.querySelector("h1");
+  if(h1 && revealChars[h1.dataset.revealIdx]){
+    gsap.fromTo(revealChars[h1.dataset.revealIdx], { yPercent: 135 },
+      { yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.02, delay: 0.25 });
+  }
+  gsap.fromTo(".hero-kicker, .hero-lead, .formula",
+    { y: 24, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 1, ease: "expo.out", stagger: 0.14, delay: 0.6 });
+  gsap.fromTo(".fare",
+    { y: 32, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 1.1, ease: "expo.out", delay: 0.85, clearProps: "transform,opacity,visibility" });
+  gsap.fromTo(".hero .cta",
+    { y: 20, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 1, ease: "expo.out", delay: 1, clearProps: "transform,opacity,visibility" });
+  document.querySelectorAll("section:not(.hero) [data-reveal='chars']").forEach(function(el){
+    var chars = revealChars[el.dataset.revealIdx];
+    if(!chars) return;
+    gsap.fromTo(chars, { yPercent: 135 }, {
+      yPercent: 0, duration: 1, ease: "expo.out", stagger: 0.03,
+      scrollTrigger: { trigger: el, start: "top 88%", once: true }
+    });
+  });
+  gsap.to(".hero-ghost", {
+    yPercent: 18, ease: "none",
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.4 }
+  });
+})();
+</script>
 </body>
 </html>
