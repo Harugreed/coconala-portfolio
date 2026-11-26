@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HIKARI FILMS｜ショート動画制作スタジオ（ポートフォリオ用サンプル）</title>
+<meta name="description" content="15秒で指を止めるショート動画制作スタジオ HIKARI FILMS のサービス紹介LP（ポートフォリオ用サンプル）。">
+<script>setTimeout(function(){document.documentElement.classList.add('ready')},3500);</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Playfair+Display:ital,wght@1,400..800&family=Yellowtail&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FAF3E4;
+  --ink:#141110;
+  --tomato:#EF4A23;
+  --tomato-deep:#C93A1B;
+  --page:var(--cream);
+  --ease:cubic-bezier(.65,.05,0,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:calc(100vw / 90)}
+@media (max-width:991px){html{font-size:calc(100vw / 60)}}
+@media (max-width:600px){html{font-size:calc(100vw / 24.375)}}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+body{
+  font-size:16px;
+  font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;
+  background:var(--page);
+  color:var(--ink);
+  line-height:1.8;
+  overflow-x:clip;
+  transition:background-color .7s var(--ease);
+}
+html.is-dark body{background:var(--ink)}
+img{display:block;max-width:none}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+::selection{background:var(--tomato);color:var(--cream)}
+
+/* ---------- reveal scaffolding ---------- */
+html:not(.ready) [data-reveal]{visibility:hidden}
+.line{display:block;overflow:hidden;padding-bottom:.07em;margin-bottom:-.07em}
+.ch{display:inline-block;white-space:pre;will-change:transform}
+.w{display:inline-block;white-space:nowrap}
+.serif{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;letter-spacing:-.02em;text-transform:none}
+
+/* ---------- cursor label ---------- */
+.cursor-label{
+  position:fixed;left:0;top:0;z-index:120;pointer-events:none;
+  background:#FFD46E;color:var(--ink);
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:13px;letter-spacing:.02em;text-transform:uppercase;
+  padding:.45em .8em;transform:scale(0);
+}
+.cursor-label.on{transform:scale(1)}
+@media (hover:none){.cursor-label{display:none}}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:1.25rem 3rem;pointer-events:none;
+}
+.nav>*{pointer-events:auto}
+.logo{
+  font-family:"Yellowtail",cursive;font-size:2.4rem;line-height:1;
+  color:var(--tomato);transform:rotate(-8deg);transform-origin:left center;
+  margin-top:.3rem;
+}
+.nav-pill{
+  position:absolute;left:50%;top:1.25rem;transform:translateX(-50%);
+  display:flex;gap:1.75rem;align-items:center;height:3rem;padding:0 1.5rem;
+  background:#fff;border-radius:999px;
+  font-family:"Archivo",sans-serif;font-weight:700;font-stretch:72%;
+  font-size:15px;text-transform:uppercase;letter-spacing:-.01em;
+}
+.nav-pill a{position:relative;padding:.2em 0}
+.nav-pill a::after{
+  content:"";position:absolute;left:0;top:100%;width:100%;height:.14em;
+  background:var(--tomato);transform:scaleX(0);transform-origin:left;
+  transition:transform .45s var(--ease);
+}
+.nav-pill a:hover::after{transform:scaleX(1)}
+.nav-contact{
+  display:flex;align-items:center;gap:.55rem;height:3rem;padding:0 1.25rem;
+  background:#fff;border-radius:999px;
+  font-family:"Archivo",sans-serif;font-weight:700;font-stretch:72%;
+  font-size:15px;text-transform:uppercase;
+  transition:background-color .3s,color .3s;
+}
+.nav-contact:hover{background:var(--tomato);color:#fff}
+.nav-contact .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--tomato)}
+.nav-contact:hover .dot{background:#fff}
+@media (max-width:991px){.nav-pill{display:none}}
+@media (max-width:600px){
+  .nav{padding:1rem 1.25rem}
+  .logo{font-size:1.9rem}
+  .nav-contact{height:2.5rem;font-size:.85rem;padding:0 .95rem}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100vh;min-height:36rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;overflow:hidden}
+.hero-bg img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  animation:kenburns 22s ease-in-out infinite alternate;
+}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
+.hero-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(250,243,228,.42) 0%,rgba(250,243,228,.66) 46%,rgba(250,243,228,.94) 82%,var(--cream) 100%);
+}
+.hero-card{
+  position:absolute;left:50%;top:50%;width:16rem;aspect-ratio:1;z-index:1;
+  overflow:hidden;opacity:0;visibility:hidden;
+}
+.hero-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.hero-card img.on{opacity:1}
+.hero-content{
+  position:relative;z-index:2;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:1.6rem;padding:0 1.5rem;margin-top:-2rem;
+}
+.hero-eyebrow{
+  font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+  font-size:1.5rem;letter-spacing:-.02em;color:var(--ink);
+}
+.hero-eyebrow b{color:var(--tomato);font-weight:500}
+h1{
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:8.2rem;line-height:.86;letter-spacing:-.02em;text-transform:uppercase;
+}
+h1 .serif{font-size:.94em}
+.hero-sub{max-width:34rem;font-size:16px;font-weight:500;word-break:keep-all;overflow-wrap:anywhere}
+.hero-link{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+  font-size:1.6rem;letter-spacing:-.02em;
+  border-bottom:.09em solid var(--tomato);padding-bottom:.12em;
+}
+.hero-link .arr{
+  display:inline-grid;place-items:center;width:1.05em;height:1.05em;
+  background:var(--tomato);color:#fff;flex:none;
+  transition:transform .45s var(--ease);
+}
+.hero-link:hover .arr{transform:translateY(.18em)}
+.hero-link .arr svg{width:.62em;height:.62em}
+@media (max-width:991px){h1{font-size:6.2rem}}
+@media (max-width:600px){
+  h1{font-size:3.4rem}
+  .hero-content{gap:1.1rem;margin-top:3.5rem}
+  .hero-eyebrow{font-size:1.15rem}
+  .hero-link{font-size:1.3rem}
+  .hero-card{
+    opacity:1;visibility:visible;width:8rem;top:11%;left:50%;
+    transform:translateX(-50%) rotate(-5deg);
+  }
+}
+
+/* ---------- marquee ---------- */
+.marquee{
+  position:absolute;left:0;right:0;bottom:1.4rem;z-index:2;overflow:hidden;
+  border-top:1px solid rgba(20,17,16,.25);border-bottom:1px solid rgba(20,17,16,.25);
+  padding:.55rem 0;
+}
+.mq-track{display:flex;width:max-content;animation:mq 26s linear infinite}
+.mq-group{
+  display:flex;align-items:center;gap:2.5rem;padding-right:2.5rem;
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:16px;text-transform:uppercase;letter-spacing:.01em;white-space:nowrap;
+}
+.mq-group svg{width:.85rem;height:.85rem;flex:none}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- works ---------- */
+.works{position:relative}
+.works-pin{
+  height:100vh;display:grid;grid-template-columns:38fr 62fr;gap:2rem;
+  align-items:center;padding:0 3rem 0 5rem;overflow:hidden;
+}
+.works-left{display:flex;flex-direction:column;gap:1.4rem;max-width:30rem}
+.eyebrow{
+  font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+  font-size:1.45rem;letter-spacing:-.02em;line-height:1.3;
+}
+h2{
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:6.6rem;line-height:.86;letter-spacing:-.02em;text-transform:uppercase;
+}
+.works-note{font-size:15px;max-width:24rem}
+.works-stage{position:relative;height:100%;perspective:1400px}
+.stack{position:absolute;inset:0;transform-style:preserve-3d}
+.slide{
+  position:absolute;left:50%;top:50%;translate:-50% -50%;
+  width:min(80vh,52vw);aspect-ratio:1.75;display:block;
+}
+.slide .frame{position:absolute;inset:0;padding:1.75vh}
+.slide .ph{position:relative;width:100%;height:100%;overflow:hidden}
+.slide .ph img{width:100%;height:100%;object-fit:cover}
+.slide .ph::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 52%,rgba(0,0,0,.42) 100%);
+}
+.slide figcaption{
+  position:absolute;left:0;right:0;bottom:1.1em;z-index:2;text-align:center;color:var(--cream);
+}
+.slide .cat{display:block;font-size:13px;font-weight:700;letter-spacing:.14em;margin-bottom:.3em}
+.slide .ttl{
+  display:block;font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:6.2vh;line-height:.85;letter-spacing:-.02em;text-transform:uppercase;
+  text-shadow:0 .04em .3em rgba(0,0,0,.3);
+}
+.badge{
+  position:absolute;right:.5rem;bottom:1rem;width:9rem;height:9rem;z-index:6;
+  pointer-events:none;
+}
+.badge svg{width:100%;height:100%;display:block}
+@media (max-width:991px){
+  .works-pin{height:auto;display:block;padding:6rem 1.5rem 5rem;overflow:visible}
+  .works-left{margin-bottom:3rem}
+  h2{font-size:4.6rem}
+  .works-stage{height:auto;perspective:none}
+  .stack{position:relative;display:flex;flex-direction:column;gap:1.5rem;transform:none !important}
+  .slide{position:relative;left:auto;top:auto;translate:none;width:100%;transform:none !important;opacity:1 !important;visibility:visible !important}
+  .slide .ttl{font-size:2.6rem}
+  .badge{display:none}
+}
+@media (max-width:600px){h2{font-size:3.6rem}.slide .ttl{font-size:2rem}}
+
+/* ---------- team ---------- */
+.team{position:relative;height:340vh;color:var(--ink);transition:color .7s var(--ease)}
+html.is-dark .team{color:var(--cream)}
+.team-sticky{
+  position:sticky;top:0;height:100vh;z-index:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:1.3rem;padding:0 1.5rem;
+}
+.team-sticky h2{font-size:6rem}
+.team-sub{max-width:26rem;font-size:15px}
+.team-stamp{
+  font-family:"Yellowtail",cursive;font-size:2rem;color:var(--tomato);
+  transform:rotate(-8deg);
+}
+.team-photos{position:absolute;inset:0;z-index:2;pointer-events:none}
+.team-photo{position:absolute;aspect-ratio:4/5;background:#E9DCC6}
+.team-photo img{width:100%;height:100%;object-fit:cover}
+.sticker{
+  position:absolute;left:50%;bottom:-.85rem;transform:translateX(-50%) rotate(var(--sr,-4deg));
+  font-weight:900;font-size:1.9rem;line-height:1;color:var(--tomato);white-space:nowrap;
+  -webkit-text-stroke:.14rem var(--cream);paint-order:stroke fill;
+}
+.tag{
+  position:absolute;left:.6rem;bottom:.6rem;background:var(--cream);color:var(--ink);
+  font-family:"Archivo",sans-serif;font-weight:700;font-stretch:72%;
+  font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:.28em .55em;
+}
+.p1{left:2.5vw;top:3%;width:14rem;transform:rotate(-4deg)}
+.p2{right:3vw;top:5%;width:13rem;transform:rotate(3deg)}
+.p3{left:20vw;top:23%;width:11rem;transform:rotate(5deg)}
+.p4{right:21vw;top:27%;width:12rem;transform:rotate(-5deg)}
+.p5{left:3vw;top:45%;width:13rem;transform:rotate(-3deg)}
+.p6{right:2.5vw;top:49%;width:14rem;transform:rotate(4deg)}
+.p7{left:21vw;top:67%;width:11.5rem;transform:rotate(6deg)}
+.p8{right:20vw;top:71%;width:13rem;transform:rotate(-4deg)}
+@media (max-width:991px){.team{height:280vh}.team-sticky h2{font-size:4.4rem}}
+@media (max-width:600px){
+  .team-sticky h2{font-size:3.2rem}
+  .team-photo{width:8rem !important}
+  .p1{left:-1rem;top:2%}.p2{right:-1rem;top:11%}
+  .p3{left:3.5rem;top:24%}.p4{right:3.5rem;top:36%}
+  .p5{left:-1rem;top:48%}.p6{right:-1rem;top:60%}
+  .p7{left:3.5rem;top:72%}.p8{right:3.5rem;top:85%}
+  .sticker{font-size:1.15rem;-webkit-text-stroke:.09rem var(--cream)}
+  .tag{display:none}
+}
+
+/* ---------- cta ---------- */
+.cta{padding:8rem 3rem 7rem;max-width:76rem;margin:0 auto}
+.cta h2{font-size:4.6rem;margin-bottom:1.2rem}
+.cta .lead{max-width:36rem;margin-bottom:4rem}
+.price-list{border-top:1px solid var(--ink)}
+.price-list li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:2rem;
+  padding:1.4rem 0;border-bottom:1px solid var(--ink);
+}
+.price-list .name{font-weight:700;font-size:1.05rem}
+.price-list .desc{display:block;font-weight:400;font-size:13px;margin-top:.2rem}
+.price-list .amt{
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:2.2rem;white-space:nowrap;
+}
+.price-list .amt small{font-size:.85rem;font-family:"Noto Sans JP",sans-serif;font-weight:500}
+.steps{margin-top:4.5rem;border-top:1px solid var(--ink)}
+.steps li{
+  display:flex;gap:2rem;align-items:baseline;padding:1.3rem 0;
+  border-bottom:1px solid var(--ink);
+}
+.steps .no{
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:1.6rem;color:var(--tomato);flex:none;width:3.2rem;
+}
+.steps .st{font-weight:700}
+.steps .sd{font-size:14px}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:.6em;margin-top:3.5rem;
+  background:var(--tomato);color:#fff;font-weight:700;font-size:1.05rem;
+  padding:1em 2.2em;border-radius:999px;
+  transition:background-color .3s,transform .15s;
+}
+.cta-btn:hover{background:var(--tomato-deep)}
+.cta-btn:active{transform:scale(.97)}
+.cta-note{margin-top:1rem;font-size:13px}
+@media (max-width:600px){
+  .cta{padding:5rem 1.25rem 4.5rem}
+  .cta h2{font-size:2.7rem}
+  .price-list .amt{font-size:1.5rem}
+  .steps li{gap:1.1rem}
+}
+
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid rgba(20,17,16,.25);
+  padding:2.5rem 3rem 3rem;display:flex;flex-wrap:wrap;gap:1rem 3rem;
+  justify-content:space-between;font-size:12px;
+}
+footer .flogo{font-family:"Yellowtail",cursive;font-size:1.5rem;color:var(--tomato);transform:rotate(-6deg)}
+@media (max-width:600px){footer{padding:2rem 1.25rem}}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  .hero-bg img{animation:none}
+  .mq-track{animation:none}
+  .works-pin{height:auto}
+  .stack{position:relative;display:flex;flex-direction:column;gap:1.5rem}
+  .slide{position:relative;left:auto;top:auto;translate:none;width:min(100%,44rem);margin:0 auto}
+  .team{height:auto;padding:6rem 0}
+  .team-sticky{position:relative;height:auto}
+  .team-photos{position:relative;display:grid;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));gap:2rem;padding:3rem 1.5rem 0}
+  .team-photo{position:relative;left:auto;right:auto;top:auto;width:auto;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-label" id="cursorLabel" aria-hidden="true">View case →</div>
+
+<header class="nav">
+  <a class="logo" href="#top">Hikari</a>
+  <nav class="nav-pill" aria-label="メインメニュー">
+    <a href="#works">Works</a>
+    <a href="#studio">Studio</a>
+    <a href="#contact">Price</a>
+  </nav>
+  <a class="nav-contact" href="#contact"><span class="dot"></span>Contact</a>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-bg"><img src="images/hero.jpg" alt="夕景の撮影現場でカメラを構えるクルー" width="1600" height="1067"></div>
+    <div class="hero-veil"></div>
+    <div class="hero-card" id="heroCard" aria-hidden="true">
+      <img src="images/work-surf.jpg" alt="" class="on">
+      <img src="images/work-bakery.jpg" alt="">
+      <img src="images/work-cosme.jpg" alt="">
+      <img src="images/work-cafe.jpg" alt="">
+      <img src="images/work-watch.jpg" alt="">
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Short-form film studio <b>— Tokyo</b></p>
+      <h1 data-reveal="chars" data-weight-hover>
+        <span class="line">Short films,</span>
+        <span class="line">big <em class="serif">stories.</em></span>
+      </h1>
+      <p class="hero-sub">15秒で指を止める。HIKARI FILMSは、SNSのための短尺動画を企画から撮影、編集まで一貫して手がける小さな制作スタジオです。</p>
+      <a class="hero-link" href="#works">制作実績を見る
+        <span class="arr"><svg viewBox="0 0 14 13" fill="none" aria-hidden="true"><path d="M12.94 5.7 9.95 8 6.9 10.37l.84 1.86V0H5.19v12.23l.85-1.86L3 8 0 5.7v3.35l6.47 4.95 6.47-4.95V5.7Z" fill="currentColor" transform="translate(0,-0.5)"/></svg></span>
+      </a>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="mq-track" id="mqTrack">
+        <div class="mq-group">
+          <span>Reels</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+          <span>Shorts</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+          <span>TikTok</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+          <span>Brand film</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+          <span>Music video</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+          <span>CM</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+        </div>
+        <div class="mq-group">
+          <span>Reels</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+          <span>Shorts</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+          <span>TikTok</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+          <span>Brand film</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+          <span>Music video</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+          <span>CM</span><svg viewBox="0 0 24 24" fill="#EF4A23" aria-hidden="true"><path d="M11 2h2v7.2l6.2-3.6 1 1.7L14 11l6.2 3.7-1 1.7L13 12.8V20h-2v-7.2l-6.2 3.6-1-1.7L10 11 3.8 7.3l1-1.7L11 9.2V2Z"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORKS ============ -->
+  <section class="works" id="works">
+    <div class="works-pin">
+      <div class="works-left">
+        <p class="eyebrow">Made to be watched twice.<br>編集デスクから届いたばかりの仕事です。</p>
+        <h2 data-reveal="chars" data-weight-hover>
+          <span class="line">Latest</span>
+          <span class="line"><em class="serif">works</em></span>
+        </h2>
+        <p class="works-note">スクロールすると、実績が1本ずつめくれていきます。食品、旅行、美容、プロダクト。ジャンルが違っても、最初の1秒の作り方は同じです。</p>
+      </div>
+      <div class="works-stage">
+        <div class="stack" id="stack">
+          <a class="slide" href="#contact" data-cursor style="z-index:5">
+            <figure class="frame" style="background:#EF4A23"><div class="ph"><img src="images/work-bakery.jpg" alt="焼きたてのクロワッサン" width="1200" height="800"></div></figure>
+            <figcaption><span class="cat">ベーカリー・商品紹介</span><span class="ttl">Bake the morning</span></figcaption>
+          </a>
+          <a class="slide" href="#contact" data-cursor style="z-index:4">
+            <figure class="frame" style="background:#8FC6E8"><div class="ph"><img src="images/work-surf.jpg" alt="波に乗るサーファー" width="1200" height="800"></div></figure>
+            <figcaption><span class="cat">旅行・ツーリズム</span><span class="ttl">Deep end days</span></figcaption>
+          </a>
+          <a class="slide" href="#contact" data-cursor style="z-index:3">
+            <figure class="frame" style="background:#FFD46E"><div class="ph"><img src="images/work-cosme.jpg" alt="コスメのフラットレイ" width="1200" height="800"></div></figure>
+            <figcaption><span class="cat">美容・コスメ</span><span class="ttl">Color me in</span></figcaption>
+          </a>
+          <a class="slide" href="#contact" data-cursor style="z-index:2">
+            <figure class="frame" style="background:#B9C48A"><div class="ph"><img src="images/work-watch.jpg" alt="腕時計のプロダクトショット" width="1200" height="800"></div></figure>
+            <figcaption><span class="cat">プロダクト・EC</span><span class="ttl">Keep the time</span></figcaption>
+          </a>
+          <a class="slide" href="#contact" data-cursor style="z-index:1">
+            <figure class="frame" style="background:#F6A9C2"><div class="ph"><img src="images/work-cafe.jpg" alt="灯りのともるレストラン店内" width="1200" height="800"></div></figure>
+            <figcaption><span class="cat">飲食・店舗紹介</span><span class="ttl">Night bites</span></figcaption>
+          </a>
+        </div>
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="98" fill="#EF4A23"/>
+            <defs><path id="badgecirc" d="M100,100 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0"/></defs>
+            <text fill="#FAF3E4" font-family="Archivo, sans-serif" font-weight="800" font-size="21" letter-spacing="3">
+              <textPath href="#badgecirc" textLength="436" lengthAdjust="spacing">SCROLL · WATCH · SAVE · SHARE ·</textPath>
+            </text>
+            <g stroke="#FAF3E4" stroke-width="5" stroke-linecap="round" fill="none">
+              <circle cx="100" cy="100" r="17"/>
+              <path d="M100 68v10M100 122v10M68 100h10M122 100h10M77 77l7 7M116 116l7 7M123 77l-7 7M84 116l-7 7"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAM ============ -->
+  <section class="team" id="studio">
+    <div class="team-sticky">
+      <p class="team-stamp" aria-hidden="true">Hikari</p>
+      <p class="eyebrow">The people behind the frames</p>
+      <h2 data-reveal="chars" data-weight-hover>
+        <span class="line">Meet the</span>
+        <span class="line"><em class="serif">makers</em></span>
+      </h2>
+      <p class="team-sub">8人の作り手、1つのグループチャット。コーヒーが冷める前に、撮って、切って、動かします。</p>
+    </div>
+    <div class="team-photos" aria-hidden="true">
+      <figure class="team-photo p1" data-speed="1"><img src="images/team-1.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:-7deg">アオイ</figcaption></figure>
+      <figure class="team-photo p2" data-speed="0.7" style="transform:rotate(3deg)"><img src="images/team-2.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:5deg">ケンジ</figcaption></figure>
+      <figure class="team-photo p3" data-speed="1.3" style="transform:rotate(5deg)"><img src="images/bts-1.jpg" alt="" loading="lazy"><figcaption class="tag">On set</figcaption></figure>
+      <figure class="team-photo p4" data-speed="0.85" style="transform:rotate(-5deg)"><img src="images/team-3.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:-5deg">ミラ</figcaption></figure>
+      <figure class="team-photo p5" data-speed="1.15" style="transform:rotate(-3deg)"><img src="images/team-4.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:4deg">ソウタ</figcaption></figure>
+      <figure class="team-photo p6" data-speed="0.65" style="transform:rotate(4deg)"><img src="images/team-5.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:-6deg">ハナ</figcaption></figure>
+      <figure class="team-photo p7" data-speed="1.25" style="transform:rotate(6deg)"><img src="images/bts-2.jpg" alt="" loading="lazy"><figcaption class="tag">Edit room</figcaption></figure>
+      <figure class="team-photo p8" data-speed="0.95" style="transform:rotate(-4deg)"><img src="images/team-6.jpg" alt="" loading="lazy"><figcaption class="sticker" style="--sr:-4deg">レン</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta" id="contact">
+    <p class="eyebrow">Price &amp; flow</p>
+    <h2 data-reveal="chars">
+      <span class="line">まず、15秒の</span>
+      <span class="line">企画案から。</span>
+    </h2>
+    <p class="lead">相談は無料です。商品やサービスの資料をいただければ、48時間以内に企画案とお見積りをお返しします。料金はすべて税別、サンプル内の設定です。</p>
+    <ul class="price-list">
+      <li>
+        <span class="name">ショート動画 1本<span class="desc">企画・撮影・編集・テロップ・書き出しまで</span></span>
+        <span class="amt">¥88,000<small>〜</small></span>
+      </li>
+      <li>
+        <span class="name">月4本プラン<span class="desc">毎月のSNS運用に合わせた継続制作</span></span>
+        <span class="amt">¥298,000<small>〜 / 月</small></span>
+      </li>
+      <li>
+        <span class="name">ブランドフィルム<span class="desc">30〜60秒、Webサイトや展示会向け</span></span>
+        <span class="amt">¥480,000<small>〜</small></span>
+      </li>
+    </ul>
+    <ul class="steps">
+      <li><span class="no">01</span><div><p class="st">ヒアリング</p><p class="sd">売りたいもの、届けたい相手、使える素材を確認します（オンライン可）。</p></div></li>
+      <li><span class="no">02</span><div><p class="st">企画・絵コンテ</p><p class="sd">最初の1秒の絵から決めます。修正はこの段階でまとめて反映します。</p></div></li>
+      <li><span class="no">03</span><div><p class="st">撮影・編集・納品</p><p class="sd">撮影から最短5営業日で初稿。縦型・横型の両形式で書き出します。</p></div></li>
+    </ul>
+    <a class="cta-btn" href="mailto:hello@hikari-films.example">制作を相談する</a>
+    <p class="cta-note">※返信は2営業日以内。連絡先はサンプル用のダミーアドレスです。</p>
+  </section>
+</main>
+
+<footer>
+  <span class="flogo">Hikari</span>
+  <span>© 2026 HIKARI FILMS — 本ページはポートフォリオ用の架空サンプルです。登場する人物・料金・実績は実在しません。</span>
+  <span>Photos: Unsplash / Design reference: MotionSites “Video Studio”</span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  document.documentElement.classList.add("ready");
+
+  /* ---- split headline text into chars ---- */
+  function splitChars(el){
+    var chars = [];
+    function walk(node, parent){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType === 3){
+          var frag = document.createDocumentFragment();
+          var word = null;
+          n.textContent.split("").forEach(function(c){
+            var s = document.createElement("span");
+            s.className = "ch";
+            s.textContent = c;
+            if(parent && parent.classList.contains("serif")){
+              s.classList.add("serif");
+              s.dataset.serif = "1";
+            }
+            chars.push(s);
+            if(c === " "){
+              word = null;
+              frag.appendChild(s);
+            } else {
+              if(!word){
+                word = document.createElement("span");
+                word.className = "w";
+                frag.appendChild(word);
+              }
+              word.appendChild(s);
+            }
+          });
+          node.replaceChild(frag, n);
+        } else if(n.nodeType === 1 && n.tagName !== "BR"){
+          walk(n, n);
+        }
+      });
+    }
+    el.querySelectorAll(".line").forEach(function(line){ walk(line, null); });
+    return chars;
+  }
+  var revealChars = {};
+  document.querySelectorAll("[data-reveal='chars']").forEach(function(el, i){
+    revealChars[i] = splitChars(el);
+    el.dataset.revealIdx = i;
+  });
+
+  if(typeof gsap === "undefined"){
+    return; /* everything stays visible thanks to .ready */
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- Lenis smooth scroll ---- */
+  var lenis = null;
+  if(!reduced && typeof Lenis !== "undefined"){
+    lenis = new Lenis({ lerp: 0.165, wheelMultiplier: 1.25 });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      var target = document.querySelector(a.getAttribute("href"));
+      if(!target) return;
+      e.preventDefault();
+      if(lenis) lenis.scrollTo(target, { duration: 1.4 });
+      else target.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+    });
+  });
+
+  /* ---- hero load reveal ---- */
+  var h1 = document.querySelector("h1");
+  if(!reduced && h1){
+    var chars = revealChars[h1.dataset.revealIdx] || [];
+    gsap.fromTo(chars, { yPercent: 135 }, {
+      yPercent: 0, duration: 1, ease: "expo.out", stagger: 0.0175, delay: 0.35
+    });
+    gsap.fromTo(".hero-eyebrow, .hero-sub, .hero-link",
+      { y: 24, autoAlpha: 0 },
+      { y: 0, autoAlpha: 1, duration: 0.9, ease: "expo.out", stagger: 0.12, delay: 0.7 });
+  }
+
+  /* ---- scroll reveals for section headlines ---- */
+  if(!reduced){
+    document.querySelectorAll("section:not(.hero) [data-reveal='chars']").forEach(function(el){
+      var chars = revealChars[el.dataset.revealIdx] || [];
+      gsap.fromTo(chars, { yPercent: 135 }, {
+        yPercent: 0, duration: 1, ease: "expo.out", stagger: 0.0175,
+        scrollTrigger: { trigger: el, start: "top 88%", once: true }
+      });
+    });
+  }
+
+  /* ---- font weight follows cursor ---- */
+  if(!reduced && finePointer){
+    var weighted = [];
+    document.querySelectorAll("[data-weight-hover]").forEach(function(el){
+      (revealChars[el.dataset.revealIdx] || []).forEach(function(ch){
+        weighted.push({
+          el: ch,
+          rest: ch.dataset.serif ? 500 : 800,
+          near: ch.dataset.serif ? 800 : 300,
+          cx: 0, cy: 0
+        });
+      });
+    });
+    function measure(){
+      weighted.forEach(function(w){
+        var r = w.el.getBoundingClientRect();
+        w.cx = r.left + r.width / 2 + window.scrollX;
+        w.cy = r.top + r.height / 2 + window.scrollY;
+      });
+    }
+    var px = -9999, py = -9999, RADIUS = 300;
+    window.addEventListener("pointermove", function(e){ px = e.pageX; py = e.pageY; }, { passive: true });
+    gsap.ticker.add(function(){
+      if(px < -1000) return;
+      weighted.forEach(function(w){
+        var d = Math.hypot(w.cx - px, w.cy - py);
+        var f = d >= RADIUS ? 0 : 1 - d / RADIUS;
+        var target = Math.round(w.rest + (w.near - w.rest) * f);
+        if(w.cur !== target){
+          w.cur = target;
+          w.el.style.fontVariationSettings = "'wght' " + target;
+        }
+      });
+    });
+    window.addEventListener("resize", measure);
+    window.addEventListener("scroll", measure, { passive: true });
+    setTimeout(measure, 1200);
+  }
+
+  /* ---- hero cursor card ---- */
+  var hero = document.querySelector(".hero");
+  var card = document.getElementById("heroCard");
+  if(card && finePointer && window.innerWidth > 991){
+    var cardImgs = card.querySelectorAll("img");
+    var idx = 0, travel = 0, lastX = null, lastY = null, placed = false;
+    gsap.set(card, { xPercent: -50, yPercent: -50, x: 0, y: 0 });
+    var qx = gsap.quickTo(card, "x", { duration: 1, ease: "power4" });
+    var qy = gsap.quickTo(card, "y", { duration: 1, ease: "power4" });
+    var qr = gsap.quickTo(card, "rotation", { duration: 1, ease: "power4" });
+    hero.addEventListener("pointermove", function(e){
+      var r = hero.getBoundingClientRect();
+      var x = e.clientX - r.left - r.width / 2;
+      var y = e.clientY - r.top - r.height / 2;
+      if(lastX === null){ lastX = e.clientX; lastY = e.clientY; }
+      var dx = e.clientX - lastX, dy = e.clientY - lastY;
+      lastX = e.clientX; lastY = e.clientY;
+      travel += Math.abs(dx) + Math.abs(dy);
+      if(travel > 600){
+        travel = 0;
+        cardImgs[idx].classList.remove("on");
+        idx = (idx + 1) % cardImgs.length;
+        cardImgs[idx].classList.add("on");
+      }
+      var overLink = e.target.closest("a, button");
+      if(overLink){
+        gsap.to(card, { autoAlpha: 0, duration: 0.25 });
+        return;
+      }
+      if(!placed){
+        placed = true;
+        gsap.set(card, { x: x, y: y });
+      }
+      qx(x); qy(y); qr(dx / 4);
+      gsap.to(card, { autoAlpha: 1, duration: 0.3 });
+    });
+    hero.addEventListener("pointerleave", function(){
+      placed = false; lastX = null;
+      gsap.to(card, { autoAlpha: 0, duration: 0.3 });
+    });
+  }
+
+  /* ---- marquee flips with scroll direction ---- */
+  var mq = document.getElementById("mqTrack");
+  if(mq && !reduced){
+    ScrollTrigger.create({
+      trigger: document.body, start: "top top", end: "bottom bottom",
+      onUpdate: function(self){
+        mq.style.animationDirection = self.direction === 1 ? "normal" : "reverse";
+      }
+    });
+  }
+
+  /* ---- works: pinned 3D stack ---- */
+  var slides = gsap.utils.toArray(".slide");
+  var mm = gsap.matchMedia();
+  mm.add("(min-width: 992px)", function(){
+    if(reduced) return;
+    slides.forEach(function(s, i){
+      gsap.set(s, { z: -i * 120, y: -i * 36 });
+    });
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".works", start: "top top",
+        end: "+=" + (slides.length - 1) * window.innerHeight * 1.1,
+        scrub: 0.3, pin: true, anticipatePin: 1, invalidateOnRefresh: true
+      }
+    });
+    for(var i = 0; i < slides.length - 1; i++){
+      tl.to(slides[i], { y: window.innerHeight * 0.95, duration: 1, ease: "power2.in" }, i);
+      tl.to(slides[i], { autoAlpha: 0, duration: 0.25, ease: "none" }, i + 0.7);
+      for(var j = i + 1; j < slides.length; j++){
+        tl.to(slides[j], { z: -(j - i - 1) * 120, y: -(j - i - 1) * 36, duration: 1, ease: "none" }, i);
+      }
+    }
+    tl.to(".badge", { rotation: 180, duration: slides.length - 1, ease: "none" }, 0);
+    /* stack tilt */
+    if(finePointer){
+      var stage = document.querySelector(".works-pin");
+      var rX = gsap.quickTo("#stack", "rotationX", { duration: 0.6, ease: "power3" });
+      var rY = gsap.quickTo("#stack", "rotationY", { duration: 0.6, ease: "power3" });
+      stage.addEventListener("pointermove", function(e){
+        var r = stage.getBoundingClientRect();
+        rX(-((e.clientY - r.top) / r.height - 0.5) * 6);
+        rY(((e.clientX - r.left) / r.width - 0.5) * 10);
+      });
+      stage.addEventListener("pointerleave", function(){ rX(0); rY(0); });
+    }
+  });
+
+  /* ---- "View case" cursor label over slides ---- */
+  var label = document.getElementById("cursorLabel");
+  if(label && finePointer){
+    var lx = gsap.quickTo(label, "x", { duration: 0.4, ease: "power3" });
+    var ly = gsap.quickTo(label, "y", { duration: 0.4, ease: "power3" });
+    window.addEventListener("pointermove", function(e){
+      lx(e.clientX + 14); ly(e.clientY + 14);
+      if(e.target.closest("[data-cursor]")) label.classList.add("on");
+      else label.classList.remove("on");
+    }, { passive: true });
+  }
+
+  /* ---- team: dark theme switch + parallax ---- */
+  ScrollTrigger.create({
+    trigger: ".team", start: "top 55%", end: "bottom 45%",
+    toggleClass: { targets: "html", className: "is-dark" }
+  });
+  if(!reduced){
+    gsap.utils.toArray(".team-photo").forEach(function(ph){
+      var speed = parseFloat(ph.dataset.speed || "1");
+      var dist = 170 * speed;
+      gsap.fromTo(ph, { y: dist }, {
+        y: -dist, ease: "none",
+        scrollTrigger: { trigger: ".team", start: "top bottom", end: "bottom top", scrub: true }
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
