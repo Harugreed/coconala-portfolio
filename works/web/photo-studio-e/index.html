@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>穂波写真室｜柏崎市の古民家写真スタジオ（制作サンプル）</title>
+<meta name="description" content="新潟県柏崎市の古民家写真スタジオ「穂波写真室」。家族写真、七五三、成人式、ウェディング撮影に対応しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F0E2;
+  --ink:#38302A;
+  --muted:#6E6252;
+  --accent:#9C2B23;
+  --line:#E3D9C4;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Zen Kaku Gothic New",sans-serif;
+  font-weight:300;
+  font-size:15px;
+  line-height:1.9;
+  letter-spacing:.05em;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:var(--ink);}
+.nb{white-space:nowrap;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
+.label{
+  font-size:12px;
+  letter-spacing:.42em;
+  color:var(--muted);
+  font-weight:500;
+}
+.label::before{
+  content:"";
+  display:inline-block;
+  width:8px;
+  height:8px;
+  background:var(--accent);
+  vertical-align:middle;
+  margin-right:16px;
+}
+h2{
+  font-family:"Shippori Mincho",serif;
+  font-weight:600;
+  font-size:clamp(24px,2.6vw,28px);
+  line-height:1.5;
+  letter-spacing:.16em;
+  margin:20px 0 64px;
+}
+section{padding:128px 0;}
+
+/* ---------- loader ---------- */
+.loader{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  transition:opacity .8s ease,visibility .8s ease;
+  animation:loaderSafety .8s ease 4.5s forwards;
+}
+.loader.is-done{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+@keyframes loaderSafety{
+  to{opacity:0;visibility:hidden;}
+}
+.loader-frame{
+  border:1px solid var(--ink);
+  padding:48px 64px;
+  text-align:center;
+  animation:frameIn 1.2s ease both;
+}
+@keyframes frameIn{
+  from{opacity:0;transform:scale(.98);}
+  to{opacity:1;transform:scale(1);}
+}
+.loader-frame .logo-en{
+  font-size:11px;
+  letter-spacing:.42em;
+  color:var(--muted);
+  font-weight:500;
+  margin-bottom:16px;
+}
+.loader-frame .logo-note{
+  font-size:13px;
+  letter-spacing:.24em;
+  font-weight:400;
+}
+.loader-bar{
+  width:120px;
+  height:2px;
+  background:var(--line);
+  margin-top:40px;
+  overflow:hidden;
+}
+.loader-bar span{
+  display:block;
+  height:100%;
+  background:var(--accent);
+  transform-origin:left;
+  animation:barGrow 1.6s ease .2s both;
+}
+@keyframes barGrow{
+  from{transform:scaleX(0);}
+  to{transform:scaleX(1);}
+}
+
+/* ---------- header ---------- */
+.site-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:24px 32px;
+}
+.site-header .logo{
+  font-family:"Shippori Mincho",serif;
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:.3em;
+  text-decoration:none;
+}
+.site-header nav{display:flex;gap:32px;align-items:center;}
+.site-header nav a{
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:.2em;
+  font-weight:400;
+}
+.site-header nav a:hover{color:var(--accent);}
+.site-header nav a.nav-reserve{
+  border:1px solid var(--accent);
+  color:var(--accent);
+  padding:8px 20px;
+}
+.site-header nav a.nav-reserve:hover{
+  background:var(--accent);
+  color:var(--bg);
+}
+
+/* ---------- hero slideshow ---------- */
+.hero{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:3/2;
+  max-height:calc(100vh - 88px);
+  background:var(--ink);
+}
+.hero-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  animation:slideShow 18s linear infinite;
+}
+.hero-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  animation:slideZoom 18s linear infinite;
+}
+.hero-slide.s2{animation-delay:6s;}
+.hero-slide.s2 img{animation-delay:6s;}
+.hero-slide.s3{animation-delay:12s;}
+.hero-slide.s3 img{animation-delay:12s;}
+@keyframes slideShow{
+  0%{opacity:0;}
+  4%{opacity:1;}
+  33%{opacity:1;}
+  38%{opacity:0;}
+  100%{opacity:0;}
+}
+@keyframes slideZoom{
+  0%{transform:scale(1);}
+  38%{transform:scale(1.06);}
+  100%{transform:scale(1.06);}
+}
+.hero-plate{
+  position:absolute;
+  left:48px;
+  bottom:48px;
+  z-index:3;
+  background:var(--bg);
+  padding:24px 32px;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .9s ease .15s,transform .9s ease .15s;
+}
+body.is-loaded .hero-plate{opacity:1;transform:none;}
+.hero-plate h1{
+  font-family:"Shippori Mincho",serif;
+  font-weight:700;
+  font-size:clamp(28px,3.4vw,40px);
+  line-height:1.4;
+  letter-spacing:.22em;
+}
+.hero-plate p{
+  font-size:12px;
+  letter-spacing:.2em;
+  color:var(--muted);
+  font-weight:400;
+  margin-top:8px;
+}
+.hero-dots{
+  position:absolute;
+  right:48px;
+  bottom:48px;
+  z-index:3;
+  display:flex;
+  gap:8px;
+}
+.hero-dots span{
+  display:block;
+  width:24px;
+  height:2px;
+  background:var(--bg);
+  opacity:.55;
+  animation:dotShow 18s linear infinite;
+}
+.hero-dots span.d2{animation-delay:6s;}
+.hero-dots span.d3{animation-delay:12s;}
+@keyframes dotShow{
+  0%{opacity:1;background:var(--accent);}
+  33%{opacity:1;background:var(--accent);}
+  38%{opacity:.55;background:var(--bg);}
+  100%{opacity:.55;background:var(--bg);}
+}
+
+/* ---------- about ---------- */
+.about-inner{
+  display:grid;
+  grid-template-columns:5fr 6fr;
+  gap:64px;
+  align-items:start;
+}
+.about-text p{margin-bottom:32px;}
+.about-text p:last-child{margin-bottom:0;}
+.about-inner img{width:100%;height:auto;}
+.facts{
+  margin-top:80px;
+  border-top:1px solid var(--line);
+}
+.facts dl{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.facts div{padding:32px 24px 8px 0;}
+.facts dt{
+  font-size:11px;
+  letter-spacing:.3em;
+  color:var(--muted);
+  font-weight:500;
+  margin-bottom:8px;
+}
+.facts dd{font-size:14px;line-height:1.9;}
+
+/* ---------- plans ---------- */
+.plan-table{
+  width:100%;
+  border-collapse:collapse;
+  border-top:2px solid var(--ink);
+}
+.plan-table th,.plan-table td{
+  padding:32px 16px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+  font-weight:300;
+}
+.plan-table thead th{
+  font-size:11px;
+  letter-spacing:.3em;
+  color:var(--muted);
+  font-weight:500;
+  padding:16px;
+}
+.plan-table .plan-name{
+  font-family:"Shippori Mincho",serif;
+  font-size:17px;
+  font-weight:600;
+  letter-spacing:.1em;
+  white-space:nowrap;
+}
+.plan-table .price{
+  font-family:"Shippori Mincho",serif;
+  font-size:20px;
+  font-weight:600;
+  font-variant-numeric:tabular-nums lining-nums;
+  letter-spacing:.05em;
+  color:var(--accent);
+  text-align:right;
+  white-space:nowrap;
+}
+.plan-table th:last-child{text-align:right;}
+.plan-notes{margin-top:32px;font-size:13px;line-height:2.0;color:var(--muted);}
+.plan-notes p{margin:0;}
+
+/* ---------- gallery ---------- */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:32px;
+}
+.gallery-grid figure{overflow:hidden;}
+.gallery-grid img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  aspect-ratio:3/2;
+}
+
+/* ---------- profile ---------- */
+.profile-inner{
+  display:grid;
+  grid-template-columns:6fr 5fr;
+  gap:64px;
+  align-items:start;
+}
+.profile-inner img{width:100%;height:auto;}
+.profile-name{
+  font-family:"Shippori Mincho",serif;
+  font-size:17px;
+  font-weight:600;
+  letter-spacing:.16em;
+  margin-bottom:32px;
+}
+.profile-text p{margin-bottom:32px;}
+.career{
+  border-top:1px solid var(--line);
+  margin-top:8px;
+}
+.career li{
+  list-style:none;
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+
+/* ---------- access ---------- */
+.access-inner{
+  display:grid;
+  grid-template-columns:5fr 6fr;
+  grid-template-areas:"photo table";
+  gap:64px;
+  align-items:start;
+}
+.access-inner img{grid-area:photo;width:100%;height:auto;}
+.access-table{
+  grid-area:table;
+  width:100%;
+  border-collapse:collapse;
+  border-top:1px solid var(--line);
+}
+.access-table th,.access-table td{
+  padding:16px 16px 16px 0;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+  font-weight:300;
+}
+.access-table th{
+  width:112px;
+  font-size:11px;
+  letter-spacing:.3em;
+  color:var(--muted);
+  font-weight:500;
+  white-space:nowrap;
+  padding-top:20px;
+}
+
+/* ---------- reserve ---------- */
+.reserve{border-top:1px solid var(--line);}
+.reserve p{max-width:640px;margin-bottom:48px;}
+.reserve-link{
+  display:inline-block;
+  color:var(--accent);
+  text-decoration:none;
+  border:1px solid var(--accent);
+  padding:16px 48px;
+  font-size:13px;
+  letter-spacing:.22em;
+  font-weight:400;
+  transition:background .3s ease,color .3s ease;
+}
+.reserve-link:hover{background:var(--accent);color:var(--bg);}
+
+/* ---------- footer ---------- */
+footer{
+  padding:80px 0 64px;
+  border-top:1px solid var(--line);
+}
+.footer-index{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px 40px;
+  margin-bottom:48px;
+}
+.footer-index a{
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:.16em;
+  font-weight:400;
+}
+.footer-index a span{
+  font-family:"Shippori Mincho",serif;
+  font-size:13px;
+  font-weight:600;
+  font-variant-numeric:tabular-nums lining-nums;
+  color:var(--accent);
+  margin-left:8px;
+  letter-spacing:.04em;
+}
+.footer-name{
+  font-family:"Shippori Mincho",serif;
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:.28em;
+  margin-bottom:24px;
+}
+footer p{font-size:12px;line-height:2.0;color:var(--muted);}
+footer .note{margin-top:32px;}
+
+/* ---------- responsive ---------- */
+@media (max-width:834px){
+  section{padding:96px 0;}
+  .site-header nav{display:none;}
+  .about-inner,.profile-inner{grid-template-columns:1fr;gap:48px;}
+  .access-inner{grid-template-columns:1fr;grid-template-areas:"table" "photo";gap:48px;}
+  .facts dl{grid-template-columns:repeat(2,1fr);}
+  .hero{max-height:none;}
+  .hero-plate{left:32px;bottom:32px;padding:20px 24px;}
+  .hero-dots{right:32px;bottom:32px;}
+}
+@media (max-width:560px){
+  section{padding:80px 0;}
+  h2{margin-bottom:48px;}
+  .wrap{padding:0 24px;}
+  .site-header{padding:20px 24px;}
+  .loader-frame{padding:40px 32px;}
+  .hero-plate{left:16px;bottom:16px;padding:16px 20px;}
+  .hero-dots{display:none;}
+  .gallery-grid{grid-template-columns:1fr;gap:24px;}
+  .plan-table thead{display:none;}
+  .plan-table,.plan-table tbody,.plan-table tr,.plan-table td{display:block;}
+  .plan-table tr{padding:24px 0;border-bottom:1px solid var(--line);}
+  .plan-table td{border-bottom:none;padding:4px 0;}
+  .plan-table td::before{
+    content:attr(data-label);
+    display:inline-block;
+    min-width:72px;
+    font-size:11px;
+    letter-spacing:.16em;
+    color:var(--muted);
+    font-weight:500;
+  }
+  .plan-table .plan-name{font-size:17px;}
+  .plan-table .plan-name::before{content:none;}
+  .plan-table .price{text-align:left;font-size:20px;}
+  .facts div{padding:24px 16px 0 0;}
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .loader{display:none;}
+  .hero-plate{opacity:1;transform:none;transition:none;}
+  .hero-slide{animation:none;opacity:0;}
+  .hero-slide.s1{opacity:1;}
+  .hero-slide img{animation:none;}
+  .hero-dots span{animation:none;}
+  .loader-frame,.loader-bar span{animation:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- loader: logo placeholder opening -->
+<div class="loader" id="loader" role="presentation">
+  <div class="loader-frame">
+    <p class="logo-en">LOGO</p>
+    <p class="logo-note">ロゴをここに入れます</p>
+  </div>
+  <div class="loader-bar" aria-hidden="true"><span></span></div>
+</div>
+
+<header class="site-header">
+  <a class="logo" href="#">穂波写真室</a>
+  <nav>
+    <a href="#about">スタジオについて</a>
+    <a href="#plans">料金</a>
+    <a href="#gallery">ギャラリー</a>
+    <a href="#profile">運営者</a>
+    <a href="#access">アクセス</a>
+    <a class="nav-reserve" href="#reserve">ご予約</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- hero: slideshow running from the moment the page opens -->
+  <div class="hero">
+    <div class="hero-slide s1">
+      <img src="images/gallery-flowers.jpg" alt="撮影用の装花を仕上げる手元" width="1260" height="750">
+    </div>
+    <div class="hero-slide s2" aria-hidden="true">
+      <img src="images/hero.jpg" alt="" width="1600" height="1066" loading="lazy">
+    </div>
+    <div class="hero-slide s3" aria-hidden="true">
+      <img src="images/gallery-family.jpg" alt="" width="1125" height="750" loading="lazy">
+    </div>
+    <div class="hero-plate">
+      <h1>穂波写真室</h1>
+      <p><span class="nb">新潟県柏崎市</span>／<span class="nb">自然光の写真スタジオ</span></p>
+    </div>
+    <div class="hero-dots" aria-hidden="true">
+      <span class="d1"></span><span class="d2"></span><span class="d3"></span>
+    </div>
+  </div>
+
+  <!-- about -->
+  <section id="about">
+    <div class="wrap">
+      <p class="label">ABOUT</p>
+      <h2>スタジオについて</h2>
+      <div class="about-inner">
+        <div class="about-text">
+          <p>
+            <span class="nb">穂波写真室は、</span><span class="nb">築90年の空き家を改装した</span><span class="nb">写真スタジオです。</span><span class="nb">2021年に柏崎市で開業し、</span><span class="nb">今年で5年目を迎えています。</span>
+          </p>
+          <p>
+            <span class="nb">壁の塗装は運営者自身が行いました。</span><span class="nb">家具と小物は一点ずつ選び、</span><span class="nb">撮影用の装花も店内で仕上げています。</span>
+          </p>
+          <p>
+            <span class="nb">撮影は窓から入る自然光を</span><span class="nb">基本にしています。</span><span class="nb">家族写真、七五三、成人式、</span><span class="nb">ウェディング撮影に</span><span class="nb">対応しています。</span>
+          </p>
+        </div>
+        <img src="images/about.jpg" alt="改装した古民家の内部。太い梁と囲炉裏のある空間" width="1600" height="1066" loading="lazy">
+      </div>
+      <div class="facts">
+        <dl>
+          <div>
+            <dt>開業</dt>
+            <dd>2021年</dd>
+          </div>
+          <div>
+            <dt>建物</dt>
+            <dd><span class="nb">築90年の</span><span class="nb">空き家を改装</span></dd>
+          </div>
+          <div>
+            <dt>撮影</dt>
+            <dd><span class="nb">家族写真・七五三・</span><span class="nb">成人式・</span><span class="nb">ウェディング撮影</span></dd>
+          </div>
+          <div>
+            <dt>予約</dt>
+            <dd>完全予約制</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- plans -->
+  <section id="plans">
+    <div class="wrap">
+      <p class="label">PLANS</p>
+      <h2>撮影プランと料金</h2>
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th>プラン</th>
+            <th>撮影時間</th>
+            <th>内容</th>
+            <th>料金</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="plan-name">家族写真</td>
+            <td data-label="撮影時間">60分</td>
+            <td data-label="内容">データ30カット・2面台紙1冊</td>
+            <td class="price" data-label="料金">33,000円</td>
+          </tr>
+          <tr>
+            <td class="plan-name">七五三</td>
+            <td data-label="撮影時間">90分</td>
+            <td data-label="内容">データ50カット・衣装1着・着付け</td>
+            <td class="price" data-label="料金">44,000円</td>
+          </tr>
+          <tr>
+            <td class="plan-name">成人式</td>
+            <td data-label="撮影時間">60分</td>
+            <td data-label="内容">データ30カット・ヘアメイク</td>
+            <td class="price" data-label="料金">38,500円</td>
+          </tr>
+          <tr>
+            <td class="plan-name">ウェディング</td>
+            <td data-label="撮影時間">120分</td>
+            <td data-label="内容">データ100カット・装花ブーケ</td>
+            <td class="price" data-label="料金">88,000円</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="plan-notes">
+        <p>※料金は税込表示です</p>
+        <p>※土日祝も同料金です</p>
+        <p>※衣装と小物の持ち込みもできます</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- gallery -->
+  <section id="gallery">
+    <div class="wrap">
+      <p class="label">GALLERY</p>
+      <h2>ギャラリー</h2>
+      <div class="gallery-grid">
+        <figure><img src="images/gallery-family.jpg" alt="庭で撮影した家族写真" width="1125" height="750" loading="lazy"></figure>
+        <figure><img src="images/gallery-shichigosan.jpg" alt="水辺で撮影した七五三の着物姿" width="1124" height="750" loading="lazy"></figure>
+        <figure><img src="images/gallery-seijin.jpg" alt="桜の前で撮影した成人式の振袖姿" width="1125" height="750" loading="lazy"></figure>
+        <figure><img src="images/gallery-baby.jpg" alt="白い服の両親に抱かれた赤ちゃん" width="1260" height="750" loading="lazy"></figure>
+        <figure><img src="images/gallery-wedding.jpg" alt="ブーケの上で指輪を交換する手元" width="999" height="750" loading="lazy"></figure>
+        <figure><img src="images/gallery-flowers.jpg" alt="撮影用の花を束ねる手元" width="1260" height="750" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- profile -->
+  <section id="profile">
+    <div class="wrap">
+      <p class="label">PROFILE</p>
+      <h2>運営者について</h2>
+      <div class="profile-inner">
+        <div class="profile-text">
+          <p class="profile-name">佐藤 ほなみ</p>
+          <p>
+            <span class="nb">フラワーデザイン、</span><span class="nb">空間コーディネート、</span><span class="nb">インテリア雑貨のバイヤー、</span><span class="nb">ディレクターとして、</span><span class="nb">15年近く花と空間に</span><span class="nb">携わってきました。</span>
+          </p>
+          <p>
+            <span class="nb">2021年に穂波写真室を開業し、</span><span class="nb">撮影の装花と空間のしつらえを</span><span class="nb">自身で担当しています。</span>
+          </p>
+          <ul class="career">
+            <li>生花店でフラワーデザインを担当</li>
+            <li>インテリア雑貨のバイヤー</li>
+            <li><span class="nb">店舗とイベントの</span><span class="nb">空間コーディネート、ディレクション</span></li>
+            <li>2021年、穂波写真室を開業</li>
+          </ul>
+        </div>
+        <img src="images/profile.jpg" alt="花束を仕上げる運営者" width="1200" height="627" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- access -->
+  <section id="access">
+    <div class="wrap">
+      <p class="label">ACCESS</p>
+      <h2>アクセス</h2>
+      <div class="access-inner">
+        <img src="images/access.jpg" alt="穂波写真室の外観。庭の緑と木の外壁" width="1260" height="750" loading="lazy">
+        <table class="access-table">
+          <tbody>
+            <tr>
+              <th>住所</th>
+              <td>新潟県柏崎市東本町2-3-8</td>
+            </tr>
+            <tr>
+              <th>電話</th>
+              <td>0257-00-0000</td>
+            </tr>
+            <tr>
+              <th>営業時間</th>
+              <td>9:00〜17:00</td>
+            </tr>
+            <tr>
+              <th>定休日</th>
+              <td>火曜日・水曜日</td>
+            </tr>
+            <tr>
+              <th>駐車場</th>
+              <td>店舗前に2台</td>
+            </tr>
+            <tr>
+              <th>最寄り駅</th>
+              <td><span class="nb">JR信越本線・</span><span class="nb">柏崎駅から徒歩12分</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- reserve -->
+  <section class="reserve" id="reserve">
+    <div class="wrap">
+      <p class="label">RESERVATION</p>
+      <h2>ご予約</h2>
+      <p>
+        <span class="nb">ご予約は予約サイト</span><span class="nb">「SelectType」から</span><span class="nb">承っています。</span><span class="nb">撮影内容のご相談は</span><span class="nb">お電話でも承ります。</span>
+      </p>
+      <a class="reserve-link" href="#">予約ページへ（SelectType）</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav class="footer-index" aria-label="撮影プラン">
+      <a href="#plans">家族写真<span>33,000円</span></a>
+      <a href="#plans">七五三<span>44,000円</span></a>
+      <a href="#plans">成人式<span>38,500円</span></a>
+      <a href="#plans">ウェディング<span>88,000円</span></a>
+    </nav>
+    <p class="footer-name">穂波写真室</p>
+    <p><span class="nb">新潟県柏崎市東本町2-3-8</span>／<span class="nb">9:00〜17:00</span>／<span class="nb">火曜日・水曜日 定休</span></p>
+    <p class="note"><span class="nb">このページは制作サンプルです。</span><span class="nb">スタジオ名、住所、電話番号、料金は仮のもので、</span><span class="nb">予約リンクは省略しています。</span><br><span class="nb">写真：PAKUTASO、Pexelsの</span><span class="nb">フリー素材を使用しています。</span></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var loader = document.getElementById('loader');
+  var done = false;
+  function dismiss(){
+    if(done) return;
+    done = true;
+    document.body.classList.add('is-loaded');
+    loader.classList.add('is-done');
+    setTimeout(function(){ loader.style.display = 'none'; }, 900);
+  }
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.body.classList.add('is-loaded');
+    loader.style.display = 'none';
+    return;
+  }
+  setTimeout(dismiss, 1900);
+  loader.addEventListener('click', dismiss);
+})();
+</script>
+
+</body>
+</html>
