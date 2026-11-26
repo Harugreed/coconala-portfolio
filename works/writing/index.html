@@ -4,51 +4,221 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>記事・文書サンプル｜自主制作サンプル</title>
+<meta name="description" content="IT解説記事、SEO記事、商品紹介文・レビュー記事、ビジネス文書の自主制作サンプル9文書の目次です。各文書はHTMLとMarkdownの両方を置いています。">
 <meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Playfair+Display:ital,wght@1,400..800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  :root { --ink: #24262B; --sub: #5D626B; --line: #DCDFE4; --accent: #3D5A80; --bg: #F3F4F6; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif; font-size: 16px; line-height: 1.8; word-break: auto-phrase; }
-  .flag { margin: 0; background: var(--ink); color: #fff; font-size: 13px; padding: 6px 20px; }
-  main { max-width: 880px; margin: 0 auto; padding: 48px 20px 80px; }
-  h1 { font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; font-size: 28px; margin: 0 0 8px; }
-  h2 { font-size: 18px; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 2px solid var(--ink); }
-  table { width: 100%; border-collapse: collapse; background: #fff; }
-  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { width: 15em; font-weight: 700; }
-  a { color: var(--accent); }
-  td small { display: block; color: var(--sub); font-size: 13.5px; }
-  @media (max-width: 640px) { th, td { display: block; width: auto; } th { border-bottom: 0; padding-bottom: 0; } }
+:root{
+  --cream:#FAF3E4;
+  --ink:#141110;
+  --tomato:#EF4A23;
+  --line:rgba(20,17,16,.28);
+  --ease:cubic-bezier(.65,.05,0,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;
+  background:var(--cream);color:var(--ink);
+  font-size:16px;line-height:1.8;overflow-x:clip;
+}
+a{color:inherit}
+ul{list-style:none}
+/* Japanese line breaks are decided by markup, not CSS:
+   each meaning chunk is a .nb (nowrap) span; breaks happen only between chunks.
+   Never combine word-break:keep-all with overflow-wrap:anywhere (splits words). */
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+::selection{background:var(--tomato);color:var(--cream)}
+.serif{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;letter-spacing:-.02em}
+
+.flag{background:var(--ink);color:var(--cream);font-size:13px;padding:.55rem 3rem}
+.wrap{max-width:64rem;margin:0 auto;padding:0 3rem}
+
+/* ---------- header ---------- */
+.top{
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  padding:1.4rem 0 0;font-size:13px;font-weight:700;letter-spacing:.06em;
+}
+.top .by{font-weight:500}
+.top .idx{
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  text-transform:uppercase;letter-spacing:.02em;
+}
+
+/* ---------- hero ---------- */
+.hero{padding:4.5rem 0 3rem;border-bottom:2px solid var(--ink)}
+.hero .eyebrow{
+  font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+  font-size:1.4rem;letter-spacing:-.02em;margin-bottom:1rem;
+}
+.hero .eyebrow b{color:var(--tomato);font-weight:500}
+h1{
+  font-size:3.2rem;line-height:1.16;font-weight:900;letter-spacing:.01em;
+  margin-bottom:1.4rem;
+}
+h1 .en{
+  display:block;font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tomato);
+  margin-bottom:1rem;
+}
+.hero p{max-width:36rem;font-size:15px}
+
+/* ---------- contents ---------- */
+.chapter{padding:3.2rem 0 2.6rem;border-bottom:1px solid var(--ink)}
+.chapter-head{display:flex;align-items:baseline;gap:1.6rem;margin-bottom:1.4rem}
+.chapter-head .no{
+  font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+  font-size:3rem;line-height:1;color:var(--tomato);letter-spacing:-.02em;flex:none;
+}
+h2{font-size:1.4rem;font-weight:700;line-height:1.4}
+.chapter-head .count{
+  margin-left:auto;font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;
+}
+.doc{padding:1.3rem 0;border-top:1px solid var(--line)}
+.doc:first-of-type{border-top:0}
+.doc h3{font-size:1.05rem;font-weight:700;line-height:1.55;margin-bottom:.45rem}
+.doc h3 a{text-decoration:none;border-bottom:.09em solid var(--tomato);padding-bottom:.06em}
+.doc h3 a:hover{color:var(--tomato)}
+.doc p{font-size:14.5px;max-width:38rem}
+.doc .meta{
+  display:flex;align-items:baseline;gap:1rem;margin-top:.55rem;
+  font-size:12.5px;
+}
+.doc .meta .dots{
+  flex:1;border-bottom:2px dotted var(--line);transform:translateY(-.3em);
+  min-width:2rem;
+}
+.doc .meta .fmt{
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
+}
+.doc .meta .src{white-space:nowrap}
+
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--line);margin-top:3rem;
+  padding:2.2rem 0 3rem;font-size:12px;
+  display:flex;flex-wrap:wrap;gap:.6rem 3rem;justify-content:space-between;
+}
+
+@media (max-width:991px){
+  .flag{padding:.55rem 1.5rem}
+  .wrap{padding:0 1.5rem}
+}
+@media (max-width:600px){
+  .wrap{padding:0 1.25rem}
+  .flag{padding:.55rem 1.25rem}
+  h1{font-size:2.2rem}
+  .hero{padding:3rem 0 2.4rem}
+  .top{flex-wrap:wrap}
+  .chapter-head{gap:1rem}
+  .chapter-head .no{font-size:2.2rem}
+  .chapter-head .count{display:none}
+  .doc .meta .src{white-space:normal}
+}
 </style>
 </head>
 <body>
-<p class="flag">自主制作サンプルです。会社名・人名・商品は架空のものです。</p>
-<main>
-  <h1>記事・文書サンプル</h1>
-  <p>ココナラ出品者「ハル｜よろずサポート屋」の文章サンプルです。各文書は HTML（読みやすい表示）と Markdown（入稿用の原稿）の両方を置いています。</p>
+<p class="flag"><span class="nb">自主制作サンプルです</span><span class="nb">会社名・人名・商品は架空のものです</span></p>
 
-  <h2>IT解説記事</h2>
-  <table><tr><th><a href="it-article/article.html">社員10人の会社が業務効率化ツールを選ぶときの5つの手順</a></th><td>約3,000字。特定の製品を勧めず、どの製品にも使える選び方の手順を書いた記事です。<small>原稿：it-article/article.md</small></td></tr></table>
+<div class="wrap">
+  <header class="top">
+    <span class="by"><span class="nb">ココナラ出品者</span><span class="nb">「ハル｜よろずサポート屋」</span></span>
+    <span class="idx">Writing / Contents</span>
+  </header>
 
-  <h2>SEO記事</h2>
-  <table>
-    <tr><th><a href="seo-article/intent-memo.html">検索意図の分析メモ</a></th><td>対象キーワード・読み手・知りたいことの優先順位・記事の方針</td></tr>
-    <tr><th><a href="seo-article/outline.html">見出し構成案</a></th><td>H2ごとに書く内容・対応する検索意図</td></tr>
-    <tr><th><a href="seo-article/article.html">個人店のホームページを作り直す費用は？</a></th><td>約2,500字。費用の数値は出典（ココナラの公開ページ・2026年11月22日確認）に基づいています。</td></tr>
-  </table>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Articles <b>&amp; documents</b></p>
+      <h1><span class="en">Writing works</span><span class="seg"><span class="nb">記事・文書サンプル</span></span></h1>
+      <p><span class="seg"><span class="nb">文書は9点です</span></span><span class="seg"><span class="nb">各文書はHTML（読みやすい表示）と</span></span><span class="seg"><span class="nb">Markdown（入稿用の原稿）の両方を置いています</span></span></p>
+    </section>
 
-  <h2>商品紹介文・レビュー記事</h2>
-  <table>
-    <tr><th><a href="product-review/product.html">商品紹介文：電動コーヒーミル KOTO M-20</a></th><td>ECサイトの商品ページ用。紹介文・仕様表・注意事項（架空の商品）</td></tr>
-    <tr><th><a href="product-review/review.html">レビュー記事：3週間使って分かったこと</a></th><td>約1,000字。良かった点・気になった点・向いている人（架空の商品）</td></tr>
-  </table>
+    <section class="chapter">
+      <div class="chapter-head">
+        <span class="no" aria-hidden="true">No.1</span>
+        <h2>IT解説記事</h2>
+        <span class="count">1 document</span>
+      </div>
+      <article class="doc">
+        <h3><a href="it-article/article.html">社員10人の会社が業務効率化ツールを選ぶときの5つの手順</a></h3>
+        <p><span class="nb">特定の製品を勧めず、</span><span class="nb">どの製品にも使える選び方の手順を</span><span class="nb">書いた記事です</span></p>
+        <p class="meta"><span class="src">原稿：it-article/article.md</span><span class="dots" aria-hidden="true"></span><span class="fmt">約3,000字</span></p>
+      </article>
+    </section>
 
-  <h2>ビジネス文書</h2>
-  <table>
-    <tr><th><a href="business-docs/01-guide-mail.html">案内メール</a></th><td>取引先向けセミナーの案内。敬語の確認記録つき</td></tr>
-    <tr><th><a href="business-docs/02-request.html">依頼文</a></th><td>地域情報誌の取材依頼（記書き）。敬語の確認記録つき</td></tr>
-    <tr><th><a href="business-docs/03-minutes.html">議事録</a></th><td>ホームページリニューアルの打ち合わせ。決定事項・宿題・次回予定</td></tr>
-  </table>
-</main>
+    <section class="chapter">
+      <div class="chapter-head">
+        <span class="no" aria-hidden="true">No.2</span>
+        <h2>SEO記事</h2>
+        <span class="count">3 documents</span>
+      </div>
+      <article class="doc">
+        <h3><a href="seo-article/intent-memo.html">検索意図の分析メモ</a></h3>
+        <p><span class="nb">対象キーワード・読み手・</span><span class="nb">知りたいことの優先順位・記事の方針を</span><span class="nb">まとめています</span></p>
+        <p class="meta"><span class="src">作る順：1番目</span><span class="dots" aria-hidden="true"></span><span class="fmt">分析メモ</span></p>
+      </article>
+      <article class="doc">
+        <h3><a href="seo-article/outline.html">見出し構成案</a></h3>
+        <p><span class="nb">H2ごとに書く内容と</span><span class="nb">対応する検索意図を書いています</span></p>
+        <p class="meta"><span class="src">作る順：2番目</span><span class="dots" aria-hidden="true"></span><span class="fmt">構成案</span></p>
+      </article>
+      <article class="doc">
+        <h3><a href="seo-article/article.html">個人店のホームページを作り直す費用は？</a></h3>
+        <p><span class="nb">費用の数値は出典に基づいています</span></p>
+        <p class="meta"><span class="src">出典：ココナラの公開ページ・2026年11月22日確認</span><span class="dots" aria-hidden="true"></span><span class="fmt">約2,500字</span></p>
+      </article>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-head">
+        <span class="no" aria-hidden="true">No.3</span>
+        <h2>商品紹介文・レビュー記事</h2>
+        <span class="count">2 documents</span>
+      </div>
+      <article class="doc">
+        <h3><a href="product-review/product.html">商品紹介文：電動コーヒーミル KOTO M-20</a></h3>
+        <p><span class="nb">ECサイトの商品ページ用です</span><span class="nb">紹介文・仕様表・注意事項を書いています</span><span class="nb">架空の商品です</span></p>
+        <p class="meta"><span class="src">用途：商品ページ</span><span class="dots" aria-hidden="true"></span><span class="fmt">紹介文</span></p>
+      </article>
+      <article class="doc">
+        <h3><a href="product-review/review.html">レビュー記事：3週間使って分かったこと</a></h3>
+        <p><span class="nb">良かった点・気になった点・</span><span class="nb">向いている人を書いています</span><span class="nb">架空の商品です</span></p>
+        <p class="meta"><span class="src">用途：レビュー記事</span><span class="dots" aria-hidden="true"></span><span class="fmt">約1,000字</span></p>
+      </article>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-head">
+        <span class="no" aria-hidden="true">No.4</span>
+        <h2>ビジネス文書</h2>
+        <span class="count">3 documents</span>
+      </div>
+      <article class="doc">
+        <h3><a href="business-docs/01-guide-mail.html">案内メール</a></h3>
+        <p><span class="nb">取引先向けセミナーの案内です</span><span class="nb">敬語の確認記録を付けています</span></p>
+        <p class="meta"><span class="src">形式：メール</span><span class="dots" aria-hidden="true"></span><span class="fmt">確認記録つき</span></p>
+      </article>
+      <article class="doc">
+        <h3><a href="business-docs/02-request.html">依頼文</a></h3>
+        <p><span class="nb">地域情報誌の取材依頼です</span><span class="nb">記書きで書き、</span><span class="nb">敬語の確認記録を付けています</span></p>
+        <p class="meta"><span class="src">形式：依頼文</span><span class="dots" aria-hidden="true"></span><span class="fmt">確認記録つき</span></p>
+      </article>
+      <article class="doc">
+        <h3><a href="business-docs/03-minutes.html">議事録</a></h3>
+        <p><span class="nb">ホームページリニューアルの打ち合わせです</span><span class="nb">決定事項・宿題・次回予定を書いています</span></p>
+        <p class="meta"><span class="src">形式：議事録</span><span class="dots" aria-hidden="true"></span><span class="fmt">決定事項つき</span></p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>ハル｜よろずサポート屋</span>
+    <span><span class="nb">自主制作サンプルです</span><span class="nb">会社名・人名・商品は架空のものです</span></span>
+  </footer>
+</div>
 </body>
 </html>

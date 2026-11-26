@@ -4,31 +4,230 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>自動化・データ処理サンプル｜自主制作サンプル</title>
+<meta name="description" content="スクレイピング実演、データ変換・Excel自動化、リスト作成の自主制作サンプル3組の索引です。入力ファイル・スクリプト・出力ファイルを1組ずつ置いています。">
 <meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Playfair+Display:ital,wght@1,400..800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  :root { --ink: #24262B; --sub: #5D626B; --line: #DCDFE4; --accent: #3D5A80; --bg: #F3F4F6; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif; font-size: 16px; line-height: 1.8; word-break: auto-phrase; }
-  .flag { margin: 0; background: var(--ink); color: #fff; font-size: 13px; padding: 6px 20px; }
-  main { max-width: 880px; margin: 0 auto; padding: 48px 20px 80px; }
-  h1 { font-size: 26px; margin: 0 0 8px; }
-  table { width: 100%; border-collapse: collapse; background: #fff; margin-top: 32px; }
-  th, td { text-align: left; padding: 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { width: 15em; }
-  a { color: var(--accent); }
-  @media (max-width: 640px) { th, td { display: block; width: auto; } th { border-bottom: 0; padding-bottom: 0; } }
+:root{
+  --cream:#FAF3E4;
+  --ink:#141110;
+  --tomato:#EF4A23;
+  --line:rgba(20,17,16,.28);
+  --ease:cubic-bezier(.65,.05,0,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Noto Sans JP","Helvetica Neue",Arial,sans-serif;
+  background:var(--cream);color:var(--ink);
+  font-size:16px;line-height:1.8;overflow-x:clip;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+ul{list-style:none}
+/* Japanese line breaks are decided by markup, not CSS:
+   each meaning chunk is a .nb (nowrap) span; breaks happen only between chunks.
+   Never combine word-break:keep-all with overflow-wrap:anywhere (splits words). */
+.nb{display:inline-block;white-space:nowrap}
+.seg{display:block}
+::selection{background:var(--tomato);color:var(--cream)}
+.serif{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;letter-spacing:-.02em}
+
+.flag{background:var(--ink);color:var(--cream);font-size:13px;padding:.55rem 3rem}
+.wrap{max-width:72rem;margin:0 auto;padding:0 3rem}
+
+/* ---------- header ---------- */
+.top{
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  padding:1.4rem 0 0;font-size:13px;font-weight:700;letter-spacing:.06em;
+}
+.top a{text-decoration:none;border-bottom:2px solid var(--tomato);padding-bottom:.15em}
+.top .idx{
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  text-transform:uppercase;letter-spacing:.02em;
+}
+
+/* ---------- hero ---------- */
+.hero{padding:4.5rem 0 3.5rem;border-bottom:2px solid var(--ink)}
+.hero .eyebrow{
+  font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+  font-size:1.4rem;letter-spacing:-.02em;margin-bottom:1rem;
+}
+.hero .eyebrow b{color:var(--tomato);font-weight:500}
+h1{
+  font-size:3.4rem;line-height:1.16;font-weight:900;letter-spacing:.01em;
+  margin-bottom:1.4rem;
+}
+h1 .en{
+  display:block;font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tomato);
+  margin-bottom:1rem;
+}
+.hero p{max-width:38rem;font-size:15px}
+.flow{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;
+  margin-top:2.2rem;padding:1rem 0 0;border-top:1px solid var(--line);
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.flow .arr{color:var(--tomato);font-size:1.1rem}
+.flow .step small{
+  display:block;font-family:"Noto Sans JP",sans-serif;font-weight:400;
+  font-size:12px;letter-spacing:0;text-transform:none;color:var(--ink);
+}
+
+/* ---------- ledger ---------- */
+.ledger{padding:1rem 0 2rem}
+.entry{
+  display:grid;grid-template-columns:9rem 1fr 15rem;gap:2.5rem;
+  padding:3rem 0;border-bottom:1px solid var(--ink);
+  align-items:start;
+}
+.entry .no{
+  font-family:"Archivo",sans-serif;font-weight:800;font-stretch:72%;
+  font-size:6.5rem;line-height:.85;letter-spacing:-.02em;color:var(--tomato);
+}
+.entry h2{font-size:1.5rem;line-height:1.45;font-weight:700;margin-bottom:.7rem}
+.entry h2 a{text-decoration:none;border-bottom:.09em solid var(--tomato);padding-bottom:.08em}
+.entry h2 a:hover{color:var(--tomato)}
+.entry .desc{font-size:15px;max-width:32rem}
+.entry .spec{
+  margin-top:1.1rem;border-top:1px solid var(--line);
+  font-size:13px;
+}
+.entry .spec li{
+  display:flex;justify-content:space-between;gap:1rem;
+  padding:.45rem 0;border-bottom:1px solid var(--line);
+}
+.entry .spec .k{font-weight:700;white-space:nowrap}
+.entry .spec .v{text-align:right}
+.entry figure{border:1px solid var(--ink);background:#fff}
+.entry figure .ph{aspect-ratio:16/10;overflow:hidden}
+.entry figure img{width:100%;height:100%;object-fit:cover}
+.entry figure img.top{align-self:flex-start}
+.entry figcaption{font-size:12px;padding:.5rem .7rem;border-top:1px solid var(--line)}
+.go{
+  display:inline-flex;align-items:center;gap:.5em;margin-top:1.2rem;
+  font-weight:700;font-size:.95rem;text-decoration:none;
+}
+.go .arr{
+  display:inline-grid;place-items:center;width:1.6em;height:1.6em;flex:none;
+  background:var(--tomato);color:#fff;transition:transform .4s var(--ease);
+}
+.go:hover .arr{transform:translateX(.25em)}
+.go .arr svg{width:.8em;height:.8em}
+
+/* ---------- footer ---------- */
+footer{
+  border-top:1px solid var(--line);margin-top:3rem;
+  padding:2.2rem 0 3rem;font-size:12px;
+  display:flex;flex-wrap:wrap;gap:.6rem 3rem;justify-content:space-between;
+}
+footer a{font-weight:700}
+
+@media (max-width:991px){
+  .flag{padding:.55rem 1.5rem}
+  .wrap{padding:0 1.5rem}
+  .entry{grid-template-columns:6rem 1fr;gap:1.5rem}
+  .entry .no{font-size:4.4rem}
+  .entry figure{grid-column:2;max-width:22rem}
+}
+@media (max-width:600px){
+  .wrap{padding:0 1.25rem}
+  .flag{padding:.55rem 1.25rem}
+  h1{font-size:2.3rem}
+  .hero{padding:3rem 0 2.5rem}
+  .entry{grid-template-columns:1fr;gap:1rem;padding:2.2rem 0}
+  .entry .no{font-size:3.4rem}
+  .entry figure{grid-column:auto}
+  .flow{gap:.5rem}
+}
+@media (prefers-reduced-motion: reduce){
+  .go .arr{transition:none}
+}
 </style>
 </head>
 <body>
-<p class="flag">自主制作サンプルです。データはすべて架空、または練習用に公開されているサイトのものです。</p>
-<main>
-  <h1>自動化・データ処理サンプル</h1>
-  <p>入力ファイル・スクリプト・出力ファイルを1組ずつ置いています。</p>
-  <table>
-    <tr><th><a href="scraping/">スクレイピング実演</a></th><td>練習用ECサイトから商品100件を集めてExcelに保存（実行画面のキャプチャつき）</td></tr>
-    <tr><th><a href="data-convert/">データ変換・Excel自動化</a></th><td>CSV→出荷伝票PDF、請求書自動生成ブック、表記ゆれのデータ整形（Before／After）</td></tr>
-    <tr><th><a href="list-sample/">リスト作成（形式見本）</a></th><td>営業リスト50行・SNSインフルエンサーリスト30行（架空データ）</td></tr>
-  </table>
-</main>
+<p class="flag"><span class="nb">自主制作サンプルです</span><span class="nb">データはすべて架空、</span><span class="nb">または練習用に公開されているサイトのものです</span></p>
+
+<div class="wrap">
+  <header class="top">
+    <a href="../../index.html">← ポートフォリオ索引</a>
+    <span class="idx">Automation / Index 03</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Scripts, spreadsheets <b>&amp; data</b></p>
+      <h1><span class="en">Automation / Data</span><span class="seg"><span class="nb">自動化・</span><span class="nb">データ処理サンプル</span></span></h1>
+      <p><span class="seg"><span class="nb">入力ファイル・スクリプト・出力ファイルを</span></span><span class="seg"><span class="nb">1組ずつ置いています</span></span><span class="seg"><span class="nb">サンプルは3組です</span></span></p>
+      <div class="flow" aria-label="各サンプルの構成">
+        <span class="step">Input<small>入力ファイル</small></span>
+        <span class="arr" aria-hidden="true">→</span>
+        <span class="step">Script<small>Pythonスクリプト</small></span>
+        <span class="arr" aria-hidden="true">→</span>
+        <span class="step">Output<small>Excel・PDF</small></span>
+      </div>
+    </section>
+
+    <div class="ledger">
+      <article class="entry">
+        <span class="no" aria-hidden="true">01</span>
+        <div>
+          <h2><a href="scraping/">スクレイピング実演</a></h2>
+          <p class="desc"><span class="nb">練習用ECサイトから</span><span class="nb">商品100件を集めて</span><span class="nb">Excelに保存しています</span><span class="nb">実行画面のキャプチャを付けています</span></p>
+          <ul class="spec">
+            <li><span class="k">件数</span><span class="v">100件</span></li>
+            <li><span class="k">所要時間</span><span class="v">137秒</span></li>
+            <li><span class="k">納品形式</span><span class="v">Excel（.xlsx）</span></li>
+          </ul>
+          <a class="go" href="scraping/">実演の詳細を見る<span class="arr"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h11M8 2.5 12.5 7 8 11.5" stroke="currentColor" stroke-width="1.8"/></svg></span></a>
+        </div>
+        <figure>
+          <div class="ph"><img src="scraping/screenshots/excel.png" alt="収集結果のExcel（商品一覧シート）" loading="lazy" width="1300" height="560"></div>
+          <figcaption>収集結果のExcel</figcaption>
+        </figure>
+      </article>
+
+      <article class="entry">
+        <span class="no" aria-hidden="true">02</span>
+        <div>
+          <h2><a href="data-convert/">データ変換・Excel自動化</a></h2>
+          <p class="desc"><span class="nb">CSVから出荷伝票PDFを作る変換、</span><span class="nb">請求書自動生成ブック、</span><span class="nb">表記ゆれのデータ整形の</span><span class="nb">3点を置いています</span><span class="nb">データ整形はBeforeとAfterを</span><span class="nb">並べて確認できます</span></p>
+          <ul class="spec">
+            <li><span class="k">内容</span><span class="v">変換・請求書・整形の3点</span></li>
+            <li><span class="k">請求書ブック</span><span class="v">マクロなし・数式で自動作成</span></li>
+            <li><span class="k">納品形式</span><span class="v">PDF・Excel（.xlsx）</span></li>
+          </ul>
+          <a class="go" href="data-convert/">変換サンプルの詳細を見る<span class="arr"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h11M8 2.5 12.5 7 8 11.5" stroke="currentColor" stroke-width="1.8"/></svg></span></a>
+        </div>
+        <figure>
+          <div class="ph"><img src="data-convert/excel-invoice/screenshots/invoice-pdf.png" alt="請求書の出力例（PDF）" loading="lazy" width="774" height="1095"></div>
+          <figcaption>請求書の出力例</figcaption>
+        </figure>
+      </article>
+
+      <article class="entry">
+        <span class="no" aria-hidden="true">03</span>
+        <div>
+          <h2><a href="list-sample/">リスト作成（形式見本）</a></h2>
+          <p class="desc"><span class="nb">営業リストと</span><span class="nb">SNSインフルエンサーリストの</span><span class="nb">形式見本です</span><span class="nb">データはすべて架空です</span></p>
+          <ul class="spec">
+            <li><span class="k">営業リスト</span><span class="v">50行</span></li>
+            <li><span class="k">インフルエンサーリスト</span><span class="v">30行</span></li>
+            <li><span class="k">納品形式</span><span class="v">Excel・CSV</span></li>
+          </ul>
+          <a class="go" href="list-sample/">リスト見本の詳細を見る<span class="arr"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h11M8 2.5 12.5 7 8 11.5" stroke="currentColor" stroke-width="1.8"/></svg></span></a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <a href="../../index.html">← ポートフォリオ索引に戻る</a>
+    <span><span class="nb">自主制作サンプルです</span><span class="nb">会社名・金額・データは架空、</span><span class="nb">または練習用サイトのものです</span></span>
+  </footer>
+</div>
 </body>
 </html>
